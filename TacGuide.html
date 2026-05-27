@@ -153,6 +153,23 @@
             letter-spacing: 1px;
             margin-bottom: 10px;
         }
+
+        .video-player {
+            margin-top: 12px;
+        }
+
+        .video-player video {
+            display: block;
+            width: 100%;
+            max-height: 280px;
+            background-color: #000;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+        }
+
+        .video-player a {
+            color: var(--accent-green);
+        }
     </style>
 </head>
 <body>
@@ -365,6 +382,13 @@
                             </ul>
                         </li>
                     </ul>
+                    <p>Watch this video multiple times and internalize the movements:</p>
+                    <div class="video-player">
+                        <video controls preload="metadata" playsinline>
+                            <source src="cqcna.mp4" type="video/mp4">
+                            Your browser cannot play this video. <a href="cqcna.mp4">Open the MP4 directly</a>.
+                        </video>
+                    </div>
                 </div>
             </div>
             <h3>Staircases:</h3>
@@ -502,5 +526,3 @@
 </body>
 
 </html>
-
-
