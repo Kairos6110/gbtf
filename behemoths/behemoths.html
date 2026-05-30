@@ -16,13 +16,15 @@
         }
 
         h1 {
+            font-size: 1.8rem;
             border-bottom: 2px solid #4a5e4a;
             display: inline-block;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
             letter-spacing: 2px;
             text-transform: uppercase;
             text-shadow: 0 0 5px #000;
-            margin-bottom: 10px;
+            margin-top: 10px;
+            margin-bottom: 15px;
         }
 
         .tip-text {
@@ -37,7 +39,7 @@
             position: relative;
             display: inline-block;
             width: min(910px, 100%);
-            aspect-ratio: 1;
+            aspect-ratio: 5135 / 4706;
             overflow: hidden;
             border: 5px solid #0f140f;
             box-shadow: 0 0 20px rgba(0,0,0,0.8);
@@ -61,13 +63,8 @@
         #map-content {
             position: absolute;
             width: 910px;
-            height: 910px;
+            height: 834px;
             transform-origin: 0 0;
-        }
-
-        #saved-markers-area {
-            position: absolute;
-            inset: 0;
         }
 
         #main-map {
@@ -78,226 +75,35 @@
             pointer-events: none;
         }
 
-        .marker {
-            position: absolute;
-            background-color: rgba(255, 0, 0, 0.6);
-            border: 2px solid #a3bfa3;
-            border-radius: 50%;
-            cursor: pointer;
-            width: 14px;
-            height: 14px;
-            transform: translate(-50%, -50%) scale(calc(1 / var(--map-zoom)));
-            transform-origin: center;
-            box-shadow: 0 0 10px rgb(255, 217, 0);
-            z-index: 10;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
-        }
-
-        .marker:hover {
-            background-color: rgba(255, 0, 0, 0.8);
-            border-color: #fff;
-            z-index: 100;
-        }
-
-        body.editor-mode .marker {
-            cursor: move;
-        }
-
-        .marker.selected {
-            background-color: rgba(255, 217, 0, 0.85);
-            border-color: #fff;
-            box-shadow: 0 0 14px #ffffff;
-            z-index: 110;
-        }
-
-        .editor-panel {
-            display: none;
-            max-width: 910px;
-            margin: 0 auto 18px;
-            padding: 12px;
-            background: rgba(15, 20, 15, 0.94);
-            border: 1px solid #4a5e4a;
-            box-shadow: 0 0 12px rgba(0,0,0,0.6);
-            text-align: left;
-        }
-
-        body.editor-mode .editor-panel {
-            display: block;
-        }
-
-        .editor-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .editor-actions button,
-        .editor-actions a {
-            background: #2f3b2f;
-            color: #ffffff;
-            border: 1px solid #7d947d;
-            padding: 8px 10px;
-            font-family: inherit;
-            font-size: 0.82rem;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .editor-actions button:hover,
-        .editor-actions a:hover {
-            background: #435443;
-        }
-
-        .editor-row {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
-        .editor-field {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            font-size: 0.78rem;
-            text-transform: uppercase;
-        }
-
-        .editor-field input,
-        .editor-field textarea {
-            background: #111711;
-            color: #ffffff;
-            border: 1px solid #4a5e4a;
-            padding: 8px;
-            font-family: inherit;
-            font-size: 0.9rem;
-        }
-
-        .editor-field textarea {
-            min-height: 120px;
-            resize: vertical;
-            white-space: pre;
-        }
-
-        #editor-status {
-            color: #ffffff;
-            font-size: 0.82rem;
-            opacity: 0.85;
-        }
-
-        #overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            cursor: zoom-out;
-        }
-
-        #overlay img {
-            max-width: 90%;
-            max-height: 90%;
-            border: 2px solid #a3bfa3;
-            box-shadow: 0 0 30px #000;
-        }
-
-        #overlay-caption {
-            position: absolute;
-            bottom: 20px;
-            color: white;
-            background: rgba(30, 38, 30, 0.8);
-            padding: 5px 10px;
-            font-size: 1.2rem;
-            border: 1px solid #4a5e4a;
-        }
-
         @media (max-width: 700px) {
             body {
                 padding: 12px;
             }
 
-            .editor-row {
-                grid-template-columns: 1fr;
+            h1 {
+                font-size: 1.2rem;
+                letter-spacing: 1px;
+                padding-bottom: 6px;
+                margin-top: 5px;
+                margin-bottom: 10px;
             }
         }
     </style>
 </head>
 <body>
-    <h1>Behemoths Map</h1>
-    <p class="tip-text" id="mode-tip">CLICK MARKERS TO VIEW EACH BEHEMOTH</p>
-
-    <div class="editor-panel" id="editor-panel">
-        <div class="editor-actions">
-            <button type="button" id="new-marker-button">ADD MARKER CENTER</button>
-            <button type="button" id="delete-marker-button">DELETE SELECTED</button>
-            <button type="button" id="save-json-button">SAVE ALL</button>
-            <button type="button" id="load-json-button">LOAD JSON</button>
-            <button type="button" id="copy-markers-button">COPY MARKER HTML</button>
-            <a href="behemoths.html">READ ONLY VIEW</a>
-            <span id="editor-status">Click the map to add. Drag markers to reposition.</span>
-        </div>
-
-        <div class="editor-row">
-            <label class="editor-field">
-                Caption
-                <input type="text" id="marker-caption-input" placeholder="Behemoth name / location">
-            </label>
-            <label class="editor-field">
-                Image filename
-                <input type="text" id="marker-image-input" placeholder="example.jpg">
-            </label>
-        </div>
-
-        <div class="editor-row">
-            <label class="editor-field">
-                Left %
-                <input type="number" id="marker-left-input" min="0" max="100" step="0.01">
-            </label>
-            <label class="editor-field">
-                Top %
-                <input type="number" id="marker-top-input" min="0" max="100" step="0.01">
-            </label>
-        </div>
-
-        <label class="editor-field">
-            Exported marker HTML
-            <textarea id="markers-export" readonly></textarea>
-        </label>
-    </div>
+    <h1>Behemoths (24 🔴) Map</h1>
+    <p class="tip-text">DRAG TO PAN | SCROLL OR PINCH TO ZOOM</p>
 
     <div class="map-container" id="map-area">
         <div id="map-content">
-            <img src="map.jpg" alt="Operations Map" width="910" height="910" id="main-map">
-            <div id="saved-markers-area"></div>
+            <img src="map.jpg" alt="Operations Map" width="910" height="834" id="main-map">
         </div>
     </div>
 
-    <div id="overlay" onclick="closeOverlay()">
-        <img id="overlay-img" src="" alt="Intel View">
-        <div id="overlay-caption"></div>
-    </div>
-
     <script>
-        const EDIT_MODE = new URLSearchParams(window.location.search).get('edit') === '1';
-        const MARKER_SIZE = 14;
-        const MARKERS_JSON_FILE = 'behemoths-markers.json';
         const MIN_MAP_ZOOM = 0.1;
         const MAX_MAP_ZOOM = 4096;
 
-        let selectedMarker = null;
-        let draggingMarker = null;
-        let didDrag = false;
-        let markerFileHandle = null;
         let mapZoom = 1;
         let mapPanX = 0;
         let mapPanY = 0;
@@ -311,260 +117,6 @@
         let pinchStartZoom = 1;
         let pinchMapAnchorX = 0;
         let pinchMapAnchorY = 0;
-
-        function openOverlay(imageSrc, captionText) {
-            if (!imageSrc) {
-                return;
-            }
-
-            const overlay = document.getElementById('overlay');
-            const img = document.getElementById('overlay-img');
-            const caption = document.getElementById('overlay-caption');
-
-            img.src = imageSrc;
-            caption.innerText = captionText || '';
-            caption.style.display = captionText ? 'block' : 'none';
-            overlay.style.display = 'flex';
-        }
-
-        function closeOverlay() {
-            document.getElementById('overlay').style.display = 'none';
-            document.getElementById('overlay-img').src = '';
-        }
-
-        function getMarkerPosition(marker) {
-            return {
-                left: parseFloat(marker.style.left) || 0,
-                top: parseFloat(marker.style.top) || 0
-            };
-        }
-
-        function setMarkerPosition(marker, left, top) {
-            const safeLeft = Math.max(0, Math.min(100, left));
-            const safeTop = Math.max(0, Math.min(100, top));
-
-            marker.style.left = `${safeLeft.toFixed(2)}%`;
-            marker.style.top = `${safeTop.toFixed(2)}%`;
-
-            if (marker === selectedMarker) {
-                syncEditorFromMarker(marker);
-            }
-
-            updateExport();
-        }
-
-        function createMarker(left, top, caption = '', image = '') {
-            const marker = document.createElement('div');
-            marker.className = 'marker';
-            marker.dataset.img = image;
-            marker.dataset.caption = caption;
-            document.getElementById('saved-markers-area').appendChild(marker);
-            bindMarker(marker);
-            setMarkerPosition(marker, left, top);
-            selectMarker(marker);
-            return marker;
-        }
-
-        function markerToData(marker) {
-            const position = getMarkerPosition(marker);
-
-            return {
-                left: Number(position.left.toFixed(2)),
-                top: Number(position.top.toFixed(2)),
-                caption: marker.dataset.caption || '',
-                image: marker.dataset.img || ''
-            };
-        }
-
-        function getMarkersData() {
-            return Array.from(document.querySelectorAll('.marker')).map(markerToData);
-        }
-
-        function clearMarkers() {
-            document.getElementById('saved-markers-area').innerHTML = '';
-            selectedMarker = null;
-        }
-
-        function loadMarkersData(markers) {
-            if (!Array.isArray(markers)) {
-                throw new Error('Marker JSON must be an array.');
-            }
-
-            clearMarkers();
-
-            markers.forEach(marker => {
-                createMarker(
-                    Number(marker.left) || 0,
-                    Number(marker.top) || 0,
-                    marker.caption || '',
-                    marker.image || ''
-                );
-            });
-
-            if (!EDIT_MODE && selectedMarker) {
-                selectedMarker.classList.remove('selected');
-                selectedMarker = null;
-            }
-
-            updateExport();
-        }
-
-        function markersJson() {
-            return `${JSON.stringify(getMarkersData(), null, 2)}\n`;
-        }
-
-        async function saveMarkersJson() {
-            const json = markersJson();
-
-            if (window.showSaveFilePicker) {
-                markerFileHandle = await window.showSaveFilePicker({
-                    suggestedName: MARKERS_JSON_FILE,
-                    types: [{
-                        description: 'JSON files',
-                        accept: { 'application/json': ['.json'] }
-                    }]
-                });
-
-                const writable = await markerFileHandle.createWritable();
-                await writable.write(json);
-                await writable.close();
-                updateStatus(`Saved ${getMarkersData().length} markers to ${MARKERS_JSON_FILE}.`);
-                return;
-            }
-
-            const blob = new Blob([json], { type: 'application/json' });
-            const downloadUrl = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = downloadUrl;
-            link.download = MARKERS_JSON_FILE;
-            link.click();
-            URL.revokeObjectURL(downloadUrl);
-            updateStatus(`Downloaded ${MARKERS_JSON_FILE}. Move it beside behemoths.html if needed.`);
-        }
-
-        async function chooseMarkersJson() {
-            if (window.showOpenFilePicker) {
-                const [handle] = await window.showOpenFilePicker({
-                    types: [{
-                        description: 'JSON files',
-                        accept: { 'application/json': ['.json'] }
-                    }],
-                    multiple: false
-                });
-                markerFileHandle = handle;
-                const file = await handle.getFile();
-                loadMarkersData(JSON.parse(await file.text()));
-                updateStatus(`Loaded ${getMarkersData().length} markers from ${file.name}.`);
-                return;
-            }
-
-            document.getElementById('json-file-input').click();
-        }
-
-        async function loadMarkersJsonFromFolder() {
-            const response = await fetch(`${MARKERS_JSON_FILE}?v=${Date.now()}`, { cache: 'no-store' });
-
-            if (!response.ok) {
-                throw new Error(`Could not load ${MARKERS_JSON_FILE}: ${response.status}`);
-            }
-
-            loadMarkersData(await response.json());
-            updateStatus(`Loaded ${getMarkersData().length} markers from ${MARKERS_JSON_FILE}.`);
-        }
-
-        function selectMarker(marker) {
-            if (!EDIT_MODE) {
-                return;
-            }
-
-            if (selectedMarker) {
-                selectedMarker.classList.remove('selected');
-            }
-
-            selectedMarker = marker;
-            selectedMarker.classList.add('selected');
-            syncEditorFromMarker(marker);
-            updateStatus(`Selected: ${marker.dataset.caption || 'Unnamed marker'}`);
-        }
-
-        function syncEditorFromMarker(marker) {
-            if (!marker) {
-                return;
-            }
-
-            const position = getMarkerPosition(marker);
-            document.getElementById('marker-caption-input').value = marker.dataset.caption || '';
-            document.getElementById('marker-image-input').value = marker.dataset.img || '';
-            document.getElementById('marker-left-input').value = position.left.toFixed(2);
-            document.getElementById('marker-top-input').value = position.top.toFixed(2);
-        }
-
-        function normalizeImageFilename(value) {
-            const filename = value.trim();
-
-            if (!filename || /\.[a-z0-9]+$/i.test(filename)) {
-                return filename;
-            }
-
-            return `${filename}.jpg`;
-        }
-
-        function syncMarkerFromEditor() {
-            if (!selectedMarker) {
-                return;
-            }
-
-            selectedMarker.dataset.caption = document.getElementById('marker-caption-input').value.trim();
-            selectedMarker.dataset.img = normalizeImageFilename(document.getElementById('marker-image-input').value);
-            document.getElementById('marker-image-input').value = selectedMarker.dataset.img;
-            setMarkerPosition(
-                selectedMarker,
-                Number(document.getElementById('marker-left-input').value),
-                Number(document.getElementById('marker-top-input').value)
-            );
-            updateStatus(`Updated: ${selectedMarker.dataset.caption || 'Unnamed marker'}`);
-        }
-
-        function escapeAttribute(value) {
-            return String(value || '').replaceAll('&', '&amp;').replaceAll('"', '&quot;');
-        }
-
-        function markerHtml(marker) {
-            const caption = escapeAttribute(marker.dataset.caption);
-            const image = escapeAttribute(marker.dataset.img);
-
-            return `            <div class="marker" style="left: ${marker.style.left}; top: ${marker.style.top};"\n                data-img="${image}" data-caption="${caption}"></div>`;
-        }
-
-        function updateExport() {
-            const exportBox = document.getElementById('markers-export');
-            if (!exportBox) {
-                return;
-            }
-
-            exportBox.value = Array.from(document.querySelectorAll('.marker'))
-                .map(markerHtml)
-                .join('\n');
-        }
-
-        function updateStatus(message) {
-            const status = document.getElementById('editor-status');
-            if (status) {
-                status.innerText = message;
-            }
-        }
-
-        function mapPointToPercent(event) {
-            const mapArea = document.getElementById('map-area');
-            const rect = mapArea.getBoundingClientRect();
-            const mapX = (event.clientX - rect.left - mapPanX) / mapZoom;
-            const mapY = (event.clientY - rect.top - mapPanY) / mapZoom;
-
-            return {
-                left: (mapX / 910) * 100,
-                top: (mapY / 910) * 100
-            };
-        }
 
         function clamp(value, min, max) {
             return Math.max(min, Math.min(max, value));
@@ -677,10 +229,6 @@
             }, { passive: false });
 
             mapArea.addEventListener('pointerdown', function(event) {
-                if (EDIT_MODE || event.target.classList.contains('marker')) {
-                    return;
-                }
-
                 event.preventDefault();
                 activeMapPointers.set(event.pointerId, {
                     clientX: event.clientX,
@@ -736,182 +284,15 @@
             applyMapTransform();
         }
 
-        function promptForMarkerImage(marker) {
-            const image = window.prompt('Image filename for this marker:', marker.dataset.img || '');
-
-            if (image === null) {
-                return;
-            }
-
-            marker.dataset.img = normalizeImageFilename(image);
-            syncEditorFromMarker(marker);
-            updateExport();
-            updateStatus(`Image set to: ${marker.dataset.img || 'none'}`);
-        }
-
-        function bindMarker(marker) {
-            marker.onclick = function(event) {
-                if (EDIT_MODE) {
-                    event.stopPropagation();
-
-                    if (!didDrag) {
-                        selectMarker(marker);
-                        promptForMarkerImage(marker);
-                    }
-
-                    didDrag = false;
-                    return;
-                }
-
-                openOverlay(marker.dataset.img, marker.dataset.caption);
-            };
-
-            marker.addEventListener('pointerdown', function(event) {
-                if (!EDIT_MODE) {
-                    return;
-                }
-
-                event.preventDefault();
-                event.stopPropagation();
-                selectMarker(marker);
-                draggingMarker = marker;
-                didDrag = false;
-                marker.setPointerCapture(event.pointerId);
-            });
-        }
-
-        function initEditorMode() {
-            document.body.classList.add('editor-mode');
-            document.getElementById('mode-tip').innerText = 'EDITOR MODE: CLICK MAP TO ADD, DRAG MARKERS, EXPORT WHEN FINISHED';
-
-            document.getElementById('map-area').addEventListener('click', function(event) {
-                if (event.target.classList.contains('marker')) {
-                    return;
-                }
-
-                const position = mapPointToPercent(event);
-                createMarker(position.left, position.top);
-            });
-
-            document.addEventListener('pointermove', function(event) {
-                if (!draggingMarker) {
-                    return;
-                }
-
-                didDrag = true;
-                const position = mapPointToPercent(event);
-                setMarkerPosition(draggingMarker, position.left, position.top);
-            });
-
-            document.addEventListener('pointerup', function() {
-                draggingMarker = null;
-            });
-
-            ['marker-caption-input', 'marker-image-input', 'marker-left-input', 'marker-top-input'].forEach(id => {
-                document.getElementById(id).addEventListener('input', syncMarkerFromEditor);
-            });
-
-            document.getElementById('new-marker-button').addEventListener('click', function() {
-                createMarker(50, 50);
-            });
-
-            document.getElementById('delete-marker-button').addEventListener('click', function() {
-                if (!selectedMarker) {
-                    updateStatus('Select a marker first.');
-                    return;
-                }
-
-                const removedCaption = selectedMarker.dataset.caption || 'marker';
-                selectedMarker.remove();
-                selectedMarker = document.querySelector('.marker');
-
-                if (selectedMarker) {
-                    selectMarker(selectedMarker);
-                }
-
-                updateExport();
-                updateStatus(`Deleted: ${removedCaption}`);
-            });
-
-            document.getElementById('save-json-button').addEventListener('click', async function() {
-                try {
-                    await saveMarkersJson();
-                } catch (error) {
-                    updateStatus(`Save cancelled or failed: ${error.message}`);
-                }
-            });
-
-            document.getElementById('load-json-button').addEventListener('click', async function() {
-                try {
-                    await chooseMarkersJson();
-                } catch (error) {
-                    updateStatus(`Load cancelled or failed: ${error.message}`);
-                }
-            });
-
-            document.getElementById('copy-markers-button').addEventListener('click', async function() {
-                updateExport();
-                const exportBox = document.getElementById('markers-export');
-                exportBox.select();
-
-                try {
-                    await navigator.clipboard.writeText(exportBox.value);
-                    updateStatus('Marker HTML copied.');
-                } catch (error) {
-                    document.execCommand('copy');
-                    updateStatus('Marker HTML selected and copied.');
-                }
-            });
-
-            const firstMarker = document.querySelector('.marker');
-            if (firstMarker) {
-                selectMarker(firstMarker);
-            }
-
-            updateExport();
-        }
-
-        window.onload = async function() {
+        window.onload = function() {
             initMapZoom();
 
             const mapArea = document.getElementById('map-area');
             const rect = mapArea.getBoundingClientRect();
             mapZoom = rect.width / 910;
-            mapPanY = (rect.height - (910 * mapZoom)) / 2;
+            mapPanY = (rect.height - (834 * mapZoom)) / 2;
             applyMapTransform();
-
-            document.querySelectorAll('.marker').forEach(bindMarker);
-
-            if (EDIT_MODE) {
-                initEditorMode();
-            }
-
-            try {
-                await loadMarkersJsonFromFolder();
-            } catch (error) {
-                clearMarkers();
-                updateStatus(`Could not load ${MARKERS_JSON_FILE}: ${error.message}`);
-            }
         };
-    </script>
-
-    <input type="file" id="json-file-input" accept="application/json" hidden>
-    <script>
-        document.getElementById('json-file-input').addEventListener('change', async function(event) {
-            const file = event.target.files[0];
-            if (!file) {
-                return;
-            }
-
-            try {
-                loadMarkersData(JSON.parse(await file.text()));
-                updateStatus(`Loaded ${getMarkersData().length} markers from ${file.name}.`);
-            } catch (error) {
-                updateStatus(`Load failed: ${error.message}`);
-            } finally {
-                event.target.value = '';
-            }
-        });
     </script>
 </body>
 </html>
