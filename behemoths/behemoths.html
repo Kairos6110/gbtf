@@ -31,8 +31,15 @@
             color: #ffffff;
             font-size: 0.85rem;
             margin-top: 0;
-            margin-bottom: 25px;
+            margin-bottom: 8px;
             opacity: 0.8;
+        }
+
+        .progress-text {
+            color: #ffffff;
+            font-size: 0.85rem;
+            margin-top: 0;
+            margin-bottom: 16px;
         }
 
         .map-container {
@@ -75,6 +82,41 @@
             pointer-events: none;
         }
 
+        .map-marker {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            background: transparent;
+            color: #ffffff;
+            cursor: pointer;
+            transform: translate(-50%, -50%) scale(var(--marker-scale));
+            transform-origin: center;
+        }
+
+        .map-marker:hover,
+        .map-marker:focus-visible {
+            border-color: #ffffff;
+            outline: none;
+        }
+
+        .map-marker.is-checked {
+            border-color: #d7ffd7;
+            background: rgba(24, 117, 45, 0.92);
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.85);
+        }
+
+        .map-marker.is-checked::after {
+            content: "✓";
+            display: block;
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 26px;
+        }
+
         @media (max-width: 700px) {
             body {
                 padding: 12px;
@@ -92,7 +134,8 @@
 </head>
 <body>
     <h1>Behemoths (25🔴) Map</h1>
-    <p class="tip-text">DRAG TO PAN | SCROLL OR PINCH TO ZOOM</p>
+    <p class="tip-text">CLICK MARKERS TO CHECK THEM OFF | DRAG TO PAN | SCROLL OR PINCH TO ZOOM</p>
+    <p class="progress-text" id="progress-text">COMPLETED: 0 / 25</p>
 
     <div class="map-container" id="map-area">
         <div id="map-content">
@@ -117,6 +160,83 @@
         let pinchStartZoom = 1;
         let pinchMapAnchorX = 0;
         let pinchMapAnchorY = 0;
+        const MARKER_STORAGE_KEY = 'behemoths-completed-markers';
+        const markerPositions = [
+            [831, 42], [770, 56], [781, 106], [516, 167], [440, 249],
+            [549, 263], [314, 268], [211, 279], [468, 324], [428, 348],
+            [289, 349], [230, 368], [274, 377], [354, 423], [154, 437],
+            [339, 450], [182, 469], [231, 497], [207, 516], [129, 525],
+            [179, 529], [321, 532], [295, 558], [179, 598], [154, 705]
+        ];
+        let completedMarkers = new Set();
+
+        function loadCompletedMarkers() {
+            try {
+                const storedMarkers = JSON.parse(localStorage.getItem(MARKER_STORAGE_KEY) || '[]');
+
+                if (Array.isArray(storedMarkers)) {
+                    completedMarkers = new Set(storedMarkers.filter(function(markerId) {
+                        return Number.isInteger(markerId) && markerId >= 0 && markerId < markerPositions.length;
+                    }));
+                }
+            } catch (error) {
+                completedMarkers = new Set();
+            }
+        }
+
+        function saveCompletedMarkers() {
+            try {
+                localStorage.setItem(MARKER_STORAGE_KEY, JSON.stringify(Array.from(completedMarkers)));
+            } catch (error) {
+                // Tracking still works for the current page when storage is unavailable.
+            }
+        }
+
+        function updateProgress() {
+            document.getElementById('progress-text').textContent =
+                `COMPLETED: ${completedMarkers.size} / ${markerPositions.length}`;
+        }
+
+        function toggleMarker(markerId, markerButton) {
+            if (completedMarkers.has(markerId)) {
+                completedMarkers.delete(markerId);
+            } else {
+                completedMarkers.add(markerId);
+            }
+
+            const isChecked = completedMarkers.has(markerId);
+            markerButton.classList.toggle('is-checked', isChecked);
+            markerButton.setAttribute('aria-pressed', String(isChecked));
+            saveCompletedMarkers();
+            updateProgress();
+        }
+
+        function initMarkers() {
+            const mapContent = document.getElementById('map-content');
+
+            loadCompletedMarkers();
+
+            markerPositions.forEach(function(position, markerId) {
+                const markerButton = document.createElement('button');
+                const isChecked = completedMarkers.has(markerId);
+
+                markerButton.type = 'button';
+                markerButton.className = `map-marker${isChecked ? ' is-checked' : ''}`;
+                markerButton.style.left = `${position[0]}px`;
+                markerButton.style.top = `${position[1]}px`;
+                markerButton.setAttribute('aria-label', `Behemoth marker ${markerId + 1}`);
+                markerButton.setAttribute('aria-pressed', String(isChecked));
+                markerButton.addEventListener('pointerdown', function(event) {
+                    event.stopPropagation();
+                });
+                markerButton.addEventListener('click', function() {
+                    toggleMarker(markerId, markerButton);
+                });
+                mapContent.appendChild(markerButton);
+            });
+
+            updateProgress();
+        }
 
         function clamp(value, min, max) {
             return Math.max(min, Math.min(max, value));
@@ -127,6 +247,7 @@
             const mapContent = document.getElementById('map-content');
 
             mapArea.style.setProperty('--map-zoom', mapZoom);
+            mapArea.style.setProperty('--marker-scale', 1 / mapZoom);
             mapContent.style.transform = `translate(${mapPanX}px, ${mapPanY}px) scale(${mapZoom})`;
         }
 
@@ -285,6 +406,7 @@
         }
 
         window.onload = function() {
+            initMarkers();
             initMapZoom();
 
             const mapArea = document.getElementById('map-area');
