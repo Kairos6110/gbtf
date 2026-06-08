@@ -119,6 +119,17 @@
       justify-content: center;
     }
 
+    @keyframes nav-glow {
+      0%, 100% {
+        box-shadow: 0 0 4px rgba(165, 168, 102, 0.15);
+        border-color: var(--line);
+      }
+      50% {
+        box-shadow: 0 0 12px rgba(165, 168, 102, 0.55);
+        border-color: var(--olive-2);
+      }
+    }
+
     .nav-toggle {
       width: 100%;
       max-width: 100%;
@@ -138,6 +149,7 @@
       font-weight: 900;
       text-transform: uppercase;
       white-space: nowrap;
+      animation: nav-glow 3s ease-in-out infinite;
     }
 
     .nav-toggle svg {
