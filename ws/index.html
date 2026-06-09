@@ -4,8 +4,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080d0b">
+  <meta name="description" content="Auroa Special Forces 1st Special Forces Group TACSIM community for Ghost Recon Breakpoint.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ASF 1st SFG">
+  <meta property="og:description" content="Auroa Special Forces 1st Special Forces Group TACSIM community for Ghost Recon Breakpoint.">
+  <meta property="og:url" content="https://kairos6110.github.io/asf1stsfg/">
+  <meta property="og:image" content="https://kairos6110.github.io/asf1stsfg/OpenGraphImage.jpg">
+  <meta property="og:image:secure_url" content="https://kairos6110.github.io/asf1stsfg/OpenGraphImage.jpg">
+  <meta property="og:image:alt" content="ASF 1st SFG unit logo">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ASF 1st SFG">
+  <meta name="twitter:description" content="Auroa Special Forces 1st Special Forces Group TACSIM community for Ghost Recon Breakpoint.">
+  <meta name="twitter:image" content="https://kairos6110.github.io/asf1stsfg/OpenGraphImage.jpg">
   <title>ASF 1st SFG</title>
   <link rel="icon" href="unitlogo.png">
+  <link rel="image_src" href="https://kairos6110.github.io/asf1stsfg/OpenGraphImage.jpg">
   <link rel="stylesheet" href="icons/node_modules/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="preload" as="image" href="gallery/thumbs/00.jpg" fetchpriority="high">
   <link rel="preload" as="image" href="gallery/thumbs/01.jpg" fetchpriority="high">
@@ -548,6 +561,7 @@
     }
 
     .guide-media img {
+      display: block;
       width: 100%;
       height: auto;
     }
@@ -1114,9 +1128,9 @@
     .image-overlay-viewport {
       position: relative;
       width: 100%;
-      flex: 1 1 auto;
+      flex: 0 1 auto;
       min-height: 0;
-      padding: 3.75rem clamp(0.75rem, 2vw, 1.5rem) 1rem;
+      padding: 3.75rem clamp(0.75rem, 2vw, 1.5rem) 0.6rem;
       box-sizing: border-box;
       display: flex;
       justify-content: center;
@@ -1135,7 +1149,7 @@
 
     .image-overlay img {
       max-width: min(90vw, calc(100% - clamp(6rem, 15vw, 12rem)));
-      max-height: 85vh;
+      max-height: min(78vh, calc(100vh - 8.5rem));
       object-fit: contain;
       border: 1px solid var(--line);
       background: #050807;
@@ -1596,6 +1610,7 @@
     }
 
     .guide-media {
+      width: 100%;
       min-width: 0;
       overflow: hidden;
       background: #050807;
@@ -1695,6 +1710,10 @@
         grid-template-columns: 1fr;
       }
 
+      .nav-links.is-open {
+        gap: 0.45rem;
+      }
+
       .section-head {
         grid-template-columns: 1fr;
         gap: 0.45rem;
@@ -1730,7 +1749,7 @@
       .principle {
         grid-template-columns: minmax(0, 1fr) max-content;
         align-items: center;
-        column-gap: clamp(0.7rem, 1.4vw, 1.1rem);
+        column-gap: clamp(0.35rem, 0.8vw, 0.7rem);
       }
 
       .principle-logo {
@@ -1775,7 +1794,7 @@
       .principle {
         grid-template-columns: minmax(0, 1fr) max-content;
         align-items: center;
-        column-gap: clamp(0.8rem, 1.2vw, 1.25rem);
+        column-gap: clamp(0.35rem, 0.8vw, 0.7rem);
       }
 
       .principle-logo {
@@ -2001,7 +2020,7 @@
     <nav class="nav" aria-label="Primary navigation">
       <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
         <span class="icon bi bi-list" aria-hidden="true"></span>
-        <span>CLICK TO NAVIGATE</span>
+        <span>Click for more</span>
       </button>
       <div class="nav-links" id="nav-links">
         <div class="nav-section nav-section-primary" aria-label="Page sections">
