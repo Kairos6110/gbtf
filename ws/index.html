@@ -357,8 +357,26 @@
 
     .principle {
       display: grid;
-      gap: 1.2rem;
+      gap: 1rem;
       padding: 1rem;
+    }
+
+    .principle-media,
+    .principle-content,
+    .principle-actions {
+      min-width: 0;
+    }
+
+    .principle-media,
+    .principle-actions {
+      display: grid;
+      justify-items: center;
+      gap: 0.85rem;
+    }
+
+    .principle-content {
+      display: grid;
+      gap: 1rem;
     }
 
     .principle-logo {
@@ -380,12 +398,10 @@
     }
 
     .principle .button {
-      grid-column: 1 / -1;
       justify-self: center;
     }
 
     .platforms-row {
-      grid-column: 1 / -1;
       display: flex;
       justify-content: center;
       gap: 0.6rem;
@@ -1193,33 +1209,9 @@
         padding-inline: 1.25rem;
       }
 
-      .principle {
-        grid-template-columns: 1.1fr 0.9fr;
-        align-items: start;
-        padding: 1.5rem;
-      }
-
       .discord-panel {
         grid-template-columns: 1fr auto;
         padding: 1.2rem 1.5rem;
-      }
-
-      .principle .wide {
-        grid-column: 1 / -1;
-      }
-
-      .principle .button,
-      .platforms-row {
-        grid-column: 1 / -1;
-      }
-
-      .principle .button {
-        justify-self: start;
-      }
-
-      .platforms-row {
-        justify-self: start;
-        justify-content: flex-start;
       }
 
       .footer-platforms {
@@ -1524,8 +1516,11 @@
       width: 100%;
       min-width: 0;
       grid-template-columns: 1fr;
-      gap: clamp(1.3rem, 3vw, 2.4rem);
-      padding: clamp(1.1rem, 3vw, 2.25rem);
+      gap: clamp(1rem, 2.4vw, 1.8rem);
+      padding: clamp(1rem, 2.7vw, 1.8rem);
+      background:
+        linear-gradient(135deg, rgba(165, 168, 102, 0.16), transparent 32%),
+        linear-gradient(180deg, rgba(18, 27, 21, 0.96), rgba(10, 15, 12, 0.98));
     }
 
     .principle::before {
@@ -1537,22 +1532,27 @@
     }
 
     .principle-logo {
-      width: min(13.5rem, 52vw);
+      width: min(12.5rem, 54vw);
     }
 
     .image-zoom.principle-logo {
-      width: min(13.5rem, 52vw);
+      width: min(12.5rem, 54vw);
     }
 
     .principle p {
       width: 100%;
       min-width: 0;
-      max-width: 76ch;
+      max-width: none;
       color: var(--muted);
       font-size: clamp(1.03rem, 0.98rem + 0.28vw, 1.24rem);
-      line-height: 1.66;
+      line-height: 1.62;
       text-align: justify;
       overflow-wrap: break-word;
+    }
+
+    .principle-actions {
+      align-content: start;
+      padding-top: 0.1rem;
     }
 
     .kits-grid {
@@ -1747,33 +1747,38 @@
       }
 
       .principle {
-        grid-template-columns: minmax(0, 1fr) max-content;
-        align-items: center;
-        column-gap: clamp(0.35rem, 0.8vw, 0.7rem);
+        grid-template-columns: minmax(13.5rem, 0.34fr) minmax(0, 1fr);
+        align-items: stretch;
+        column-gap: clamp(1.35rem, 3vw, 2.6rem);
+        padding: clamp(1.25rem, 2.4vw, 2rem);
       }
 
-      .principle-logo {
+      .principle-media {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        align-content: center;
+        padding: clamp(0.9rem, 2vw, 1.35rem);
+        border: 1px solid var(--line-soft);
+        border-radius: var(--radius);
+        background: rgba(8, 13, 11, 0.34);
+      }
+
+      .principle-content {
         grid-column: 2;
-        grid-row: 1 / span 3;
-      }
-
-      .principle p {
-        grid-column: 1;
         grid-row: 1;
+        align-content: center;
       }
 
-      .principle .button,
-      .platforms-row {
-        grid-column: 1;
-      }
-
-      .principle .button {
-        justify-self: start;
-      }
-
-      .principle .platforms-row {
-        justify-self: start;
-        justify-content: flex-start;
+      .principle-actions {
+        grid-column: 2;
+        grid-row: 2;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding-top: clamp(0.8rem, 1.8vw, 1.15rem);
+        border-top: 1px solid var(--line-soft);
       }
 
       .guide-card {
@@ -1792,33 +1797,7 @@
       }
 
       .principle {
-        grid-template-columns: minmax(0, 1fr) max-content;
-        align-items: center;
-        column-gap: clamp(0.35rem, 0.8vw, 0.7rem);
-      }
-
-      .principle-logo {
-        grid-column: 2;
-        grid-row: 1 / span 3;
-      }
-
-      .principle p,
-      .principle .button,
-      .principle .platforms-row {
-        grid-column: 1;
-      }
-
-      .principle p {
-        grid-row: 1;
-      }
-
-      .principle .button {
-        justify-self: start;
-      }
-
-      .principle .platforms-row {
-        justify-self: start;
-        justify-content: flex-start;
+        grid-template-columns: minmax(15rem, 0.32fr) minmax(0, 1fr);
       }
 
       #tactical .guide-card,
@@ -2068,15 +2047,21 @@
         <h2 id="principle-title">Overview</h2>
       </div>
       <div class="panel principle">
-        <button class="image-zoom principle-logo" type="button" aria-label="Open ASF 1st SFG patch">
-          <img src="unitlogo.png" alt="ASF 1st SFG patch">
-        </button>
-        <p>Auroa Special Forces (ASF) 1st Special Forces Group is a Ghost Recon Breakpoint community offering a streamlined, player-first TACSIM experience built around realism, teamwork, and freedom. There is no mandatory training, micromanagement, or restrictions on gear, weapons, classes, or game settings, operators are free to enjoy everything the game has to offer. We simply expect members to communicate, coordinate, and approach each operation with a realistic tactical mindset. With more than 100 custom operations, advanced immersion tools, detailed self-paced guides, and a friendly yet professional community, ASF welcomes both new and experienced players seeking authentic special forces gameplay. Welcome Home, Operator. Respect. Integrity. Honor.</p>
-        <a class="button" href="https://discord.com/invite/BXvQFwBq8z" target="_blank" rel="noopener noreferrer" aria-label="Join us on Discord"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/discord.svg');"></span>Join us on Discord</a>
-        <div class="platforms-row" aria-label="Supported platforms">
-          <span class="platform-chip"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/playstation.svg');" aria-hidden="true"></span>PlayStation</span>
-          <span class="platform-chip"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/xbox.svg');" aria-hidden="true"></span>Xbox</span>
-          <span class="platform-chip"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/pc.svg');" aria-hidden="true"></span>PC</span>
+        <div class="principle-media">
+          <button class="image-zoom principle-logo" type="button" aria-label="Open ASF 1st SFG patch">
+            <img src="unitlogo.png" alt="ASF 1st SFG patch">
+          </button>
+        </div>
+        <div class="principle-content">
+          <p>Auroa Special Forces (ASF) 1st Special Forces Group is a Ghost Recon Breakpoint community offering a streamlined, player-first TACSIM experience built around realism, teamwork, and freedom. There is no mandatory training, micromanagement, or restrictions on gear, weapons, classes, or game settings, operators are free to enjoy everything the game has to offer. We simply expect members to communicate, coordinate, and approach each operation with a realistic tactical mindset. With more than 100 custom operations, advanced immersion tools, detailed self-paced guides, and a friendly yet professional community, ASF welcomes both new and experienced players seeking authentic special forces gameplay. Welcome home, Operator. Respect. Integrity. Honor.</p>
+        </div>
+        <div class="principle-actions">
+          <a class="button" href="https://discord.com/invite/BXvQFwBq8z" target="_blank" rel="noopener noreferrer" aria-label="Join us on Discord"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/discord.svg');"></span>Join us on Discord</a>
+          <div class="platforms-row" aria-label="Supported platforms">
+            <span class="platform-chip"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/playstation.svg');" aria-hidden="true"></span>PlayStation</span>
+            <span class="platform-chip"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/xbox.svg');" aria-hidden="true"></span>Xbox</span>
+            <span class="platform-chip"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/pc.svg');" aria-hidden="true"></span>PC</span>
+          </div>
         </div>
       </div>
     </section>
