@@ -7,6 +7,53 @@
   <title>ASF 1st SFG</title>
   <link rel="icon" href="unitlogo.png">
   <link rel="stylesheet" href="icons/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+  <link rel="preload" as="image" href="gallery/00.png" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/01.png" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/02.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/03.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/04.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/05.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/06.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/07.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/09.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/10.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/11.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/12.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/13.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/14.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/15.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/16.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/17.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/18.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/19.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/21.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/22.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/23.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/24.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/25.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/26.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/27.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/28.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/30.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/31.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/32.png" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/34.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/35.png" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/36.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/37.png" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/38.png" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/40.png" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/41.png" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/42.png" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/43.png" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/44.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/45.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/46.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/47.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/48.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/49.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/50.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="gallery/51.jpg" fetchpriority="high">
   <style>
     :root {
       --bg: #080d0b;
@@ -320,7 +367,51 @@
     }
 
     .principle .button {
+      grid-column: 1 / -1;
       justify-self: center;
+    }
+
+    .platforms-row {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: -0.2rem;
+      justify-self: center;
+    }
+
+    .footer-platforms {
+      grid-column: auto;
+      margin-top: 0.75rem;
+      justify-self: center;
+    }
+
+    .platforms-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      vertical-align: middle;
+    }
+
+    .platform-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.55rem;
+      border: 1px solid var(--line-soft);
+      border-radius: 999px;
+      background: rgba(21, 30, 24, 0.72);
+      color: var(--ink);
+      font-size: 0.84em;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .platform-chip .icon {
+      --size: 0.95rem;
+      color: var(--olive-2);
     }
 
     .freedom-list {
@@ -586,7 +677,101 @@
     }
 
     .audio-card audio {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .audio-player {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem;
+      align-items: center;
+      padding: 0.75rem;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(165, 168, 102, 0.12), transparent 44%),
+        rgba(16, 23, 19, 0.82);
+    }
+
+    .audio-toggle {
+      width: 2.75rem;
+      height: 2.75rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--olive-2);
+      background: #202916;
+      color: var(--ink);
+      cursor: pointer;
+      transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .audio-toggle:hover,
+    .audio-toggle:focus-visible {
+      border-color: var(--ink);
+      background: #2a351c;
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    .audio-toggle .icon {
+      --size: 1.15rem;
+    }
+
+    .audio-track {
+      display: grid;
+      gap: 0.35rem;
+      min-width: 0;
+    }
+
+    .audio-meta {
+      min-width: 0;
+      color: var(--muted);
+      font: 0.78rem/1.2 "Roboto Mono", "Cascadia Mono", Consolas, monospace;
+      font-weight: 800;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .audio-time {
+      color: var(--olive-2);
+    }
+
+    .audio-seek {
+      position: relative;
       width: 100%;
+      height: 0.35rem;
+      border: 0;
+      border-radius: 999px;
+      background:
+        linear-gradient(90deg, var(--olive-2) 0 var(--audio-progress, 0%), rgba(241, 238, 224, 0.16) var(--audio-progress, 0%) 100%);
+      cursor: pointer;
+      display: block;
+      padding: 0;
+      touch-action: none;
+    }
+
+    .audio-seek::after {
+      content: "";
+      position: absolute;
+      left: var(--audio-progress, 0%);
+      top: 50%;
+      width: 0.9rem;
+      height: 0.9rem;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--olive-2);
+      border: 2px solid var(--ink);
+      box-shadow: 0 0 0 0.35rem rgba(165, 168, 102, 0.12);
+    }
+
+    .audio-seek:focus-visible {
+      outline: 2px solid var(--olive-2);
+      outline-offset: 0.25rem;
     }
 
     .backstory-body {
@@ -654,22 +839,29 @@
       padding: 0 1rem 2rem;
     }
 
+    .footer-cta {
+      display: flex;
+      justify-content: center;
+      margin-top: 0.65rem;
+    }
+
     .status-times {
       display: flex;
       flex-wrap: nowrap;
       align-items: center;
       justify-content: center;
-      gap: 0.35rem;
-      width: fit-content;
+      gap: 0.5rem;
+      width: 100%;
       max-width: 100%;
       overflow-x: auto;
       margin: 1rem auto 0;
-      padding: 0.8rem 1rem;
-      border: 1px solid var(--line);
-      background: rgba(8, 13, 11, 0.55);
+      padding: 0.55rem 0.85rem;
+      border: 1px solid rgba(165, 168, 102, 0.22);
+      background: rgba(8, 13, 11, 0.38);
       color: var(--muted);
-      font: 0.86rem/1.3 "Roboto Mono", "Cascadia Mono", Consolas, monospace;
-      font-weight: 850;
+      font: 0.82rem/1.2 "Roboto Mono", "Cascadia Mono", Consolas, monospace;
+      font-weight: 800;
+      letter-spacing: 0;
       text-align: center;
       text-transform: uppercase;
     }
@@ -683,7 +875,7 @@
       white-space: nowrap;
     }
     .status-time + .status-time::before {
-      content: "-";
+      content: "|";
       margin-right: 0.45rem;
       color: var(--olive-2);
     }
@@ -693,7 +885,7 @@
       inset: 0;
       z-index: 1000;
       display: none;
-      padding: 0;
+      padding: clamp(0.75rem, 2vw, 1.35rem);
       box-sizing: border-box;
       border: 0;
       background: rgba(0, 0, 0, 0.94);
@@ -706,7 +898,7 @@
     }
 
     .image-overlay-close {
-      position: fixed;
+      position: absolute;
       top: clamp(0.75rem, 2vw, 1.35rem);
       right: clamp(0.75rem, 2vw, 1.35rem);
       z-index: 1002;
@@ -735,9 +927,7 @@
 
     .image-overlay-prev,
     .image-overlay-next {
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
+      position: static;
       z-index: 1002;
       width: 3.2rem;
       height: 3.2rem;
@@ -750,15 +940,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex: 0 0 auto;
       transition: border-color 0.2s, color 0.2s, background-color 0.2s;
     }
 
     .image-overlay-prev {
-      left: clamp(0.5rem, 2vw, 2rem);
+      order: 1;
     }
 
     .image-overlay-next {
-      right: clamp(0.5rem, 2vw, 2rem);
+      order: 2;
     }
 
     .image-overlay-prev:hover,
@@ -772,23 +963,39 @@
     }
 
     .image-overlay figure {
-      display: contents;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       margin: 0;
+      width: 100%;
+      height: 100%;
+      min-height: 0;
     }
 
     .image-overlay-viewport {
-      position: fixed;
-      inset: 0;
-      padding: clamp(3.75rem, 6vw, 5rem) clamp(0.75rem, 2vw, 1.5rem) clamp(3.75rem, 6vw, 5rem);
+      position: relative;
+      width: 100%;
+      flex: 1 1 auto;
+      min-height: 0;
+      padding: 3.75rem clamp(0.75rem, 2vw, 1.5rem) 1rem;
       box-sizing: border-box;
-      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image-overlay-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 0 0.25rem;
+      flex-wrap: wrap;
+      flex: 0 0 auto;
     }
 
     .image-overlay img {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       max-width: min(90vw, calc(100% - clamp(6rem, 15vw, 12rem)));
       max-height: 85vh;
       object-fit: contain;
@@ -849,6 +1056,25 @@
         grid-column: 1 / -1;
       }
 
+      .principle .button,
+      .platforms-row {
+        grid-column: 1 / -1;
+      }
+
+      .principle .button {
+        justify-self: start;
+      }
+
+      .platforms-row {
+        justify-self: start;
+        justify-content: flex-start;
+      }
+
+      .footer-platforms {
+        justify-self: center;
+        justify-content: center;
+      }
+
       .kits-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
@@ -879,7 +1105,6 @@
       }
 
       .backstory-grid {
-        grid-template-columns: 0.82fr 1.18fr;
         align-items: start;
       }
     }
@@ -1059,7 +1284,7 @@
     }
 
     main {
-      padding-bottom: clamp(2.5rem, 5vw, 5rem);
+      padding-bottom: 0.55rem;
     }
 
     section {
@@ -1071,7 +1296,7 @@
       border-bottom: 1px solid rgba(165, 168, 102, 0.24);
     }
 
-    .section:first-child {
+    .section:first-of-type {
       padding-top: clamp(2rem, 5vw, 4.75rem);
     }
 
@@ -1307,9 +1532,9 @@
     }
 
     .status-times {
-      width: min(100%, 58rem);
+      width: 100%;
       justify-content: center;
-      gap: 0.25rem;
+      gap: 0.5rem;
     }
 
     .image-overlay {
@@ -1349,7 +1574,7 @@
       }
 
       .status-time + .status-time::before {
-        content: "-";
+        content: "|";
         margin-right: 0.3rem;
       }
     }
@@ -1376,6 +1601,11 @@
       .principle p {
         grid-column: 1;
         grid-row: 1;
+      }
+
+      .principle .button,
+      .platforms-row {
+        grid-column: 1 / -1;
       }
 
       .guide-card {
@@ -1408,6 +1638,10 @@
         min-width: 0;
       }
 
+      .status-times {
+        width: 50%;
+      }
+
       .nav-links {
         grid-column: 1 / -1;
         justify-self: center;
@@ -1434,17 +1668,6 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      #tactical .guide-card,
-      #teamlead .guide-card {
-        grid-template-columns: minmax(0, 1fr) 14rem;
-      }
-
-      #tactical .guide-media,
-      #teamlead .guide-media {
-        grid-column: 1;
-        grid-row: 1 / span 2;
-      }
-
       #tactical .guide-video {
         width: auto;
         max-width: min(100% - 1.5rem, 28rem);
@@ -1453,13 +1676,10 @@
 
       #tactical .button,
       #teamlead .button {
-        grid-column: 2;
+        grid-column: 1 / -1;
         justify-self: stretch;
       }
 
-      .backstory-grid {
-        grid-template-columns: minmax(21rem, 0.72fr) minmax(0, 1.28fr);
-      }
     }
 
     .gallery-grid {
@@ -1467,18 +1687,48 @@
       grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
       gap: 0.5rem;
       padding: 0.5rem;
-      content-visibility: auto;
-      contain-intrinsic-size: auto 500px;
     }
 
     .gallery-item {
+      position: relative;
       aspect-ratio: 1 / 1;
       overflow: hidden;
       border: 1px solid var(--line);
-      background: #050807;
-      transition: border-color 0.25s ease, transform 0.25s ease;
+      background:
+        linear-gradient(135deg, rgba(165, 168, 102, 0.16), rgba(5, 8, 7, 0.98)),
+        #050807;
+      transition: border-color 0.25s ease, transform 0.25s ease, filter 0.25s ease;
       cursor: zoom-in;
       will-change: transform, border-color;
+    }
+
+    .gallery-item::before,
+    .gallery-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 1;
+      opacity: 0;
+    }
+
+    .gallery-item::before {
+      background:
+        linear-gradient(100deg, transparent 0 34%, rgba(241, 238, 224, 0.11) 44%, transparent 55% 100%),
+        repeating-linear-gradient(135deg, rgba(241, 238, 224, 0.035) 0 1px, transparent 1px 9px);
+      background-size: 210% 100%, auto;
+      animation: gallery-tile-load 1.35s ease-in-out infinite;
+    }
+
+    .gallery-item::after {
+      inset: 50%;
+      width: 2rem;
+      height: 2rem;
+      transform: translate(-50%, -50%);
+      background: var(--muted);
+      -webkit-mask: url('icons/node_modules/bootstrap-icons/icons/image.svg') center / contain no-repeat;
+      mask: url('icons/node_modules/bootstrap-icons/icons/image.svg') center / contain no-repeat;
     }
 
     .gallery-item:hover {
@@ -1495,8 +1745,35 @@
       will-change: transform;
     }
 
+    .gallery-item.is-error {
+      border-color: rgba(200, 179, 93, 0.74);
+      cursor: default;
+      filter: saturate(0.75);
+    }
+
+    .gallery-item.is-error::before {
+      animation: none;
+      opacity: 0.34;
+    }
+
+    .gallery-item.is-error::after {
+      -webkit-mask-image: url('icons/node_modules/bootstrap-icons/icons/image-alt.svg');
+      mask-image: url('icons/node_modules/bootstrap-icons/icons/image-alt.svg');
+      background: var(--danger);
+      opacity: 0.82;
+    }
+
     .gallery-item:hover img {
       transform: scale(1.04);
+    }
+
+    @keyframes gallery-tile-load {
+      from {
+        background-position: 120% 0, 0 0;
+      }
+      to {
+        background-position: -120% 0, 0 0;
+      }
     }
 
     @media (min-width: 760px) {
@@ -1556,6 +1833,14 @@
   </header>
 
   <main id="top">
+    <div class="status-times" aria-label="Current timezone status">
+      <span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/clock.svg');" aria-hidden="true"></span>
+      <span class="status-time" id="pacific-time"></span>
+      <span class="status-time" id="eastern-time"></span>
+      <span class="status-time" id="zulu-time"></span>
+      <span class="status-time" id="berlin-time"></span>
+    </div>
+
     <section class="section" id="principle" aria-labelledby="principle-title">
       <div class="section-head">
         <span class="section-kicker">Unit Philosophy</span>
@@ -1566,8 +1851,13 @@
         <button class="image-zoom principle-logo" type="button" aria-label="Open ASF 1st SFG patch">
           <img src="unitlogo.png" alt="ASF 1st SFG patch">
         </button>
-        <p>Auroa Special Forces (ASF) is a Ghost Recon Breakpoint community offering a streamlined, player-first TACSIM experience built around realism, teamwork, and freedom. There is no mandatory training, micromanagement, or restrictions on gear, weapons, classes, or game settings, operators are free to enjoy everything the game has to offer. We simply expect members to communicate, coordinate, and approach each operation with a realistic tactical mindset. With more than 100 custom operations, advanced immersion tools, detailed self-paced guides, and a friendly yet professional community, ASF welcomes both new and experienced players seeking authentic special forces gameplay. ALL PLATFORMS WELCOME (PSN XBOX PC). Respect. Integrity. Honor. Welcome Home, Operator.</p>
+        <p>Auroa Special Forces (ASF) 1st Special Forces Group is a Ghost Recon Breakpoint community offering a streamlined, player-first TACSIM experience built around realism, teamwork, and freedom. There is no mandatory training, micromanagement, or restrictions on gear, weapons, classes, or game settings, operators are free to enjoy everything the game has to offer. We simply expect members to communicate, coordinate, and approach each operation with a realistic tactical mindset. With more than 100 custom operations, advanced immersion tools, detailed self-paced guides, and a friendly yet professional community, ASF welcomes both new and experienced players seeking authentic special forces gameplay. Welcome Home, Operator. Respect. Integrity. Honor.</p>
         <a class="button" href="https://discord.com/invite/BXvQFwBq8z" target="_blank" rel="noopener noreferrer" aria-label="Join us on Discord"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/discord.svg');"></span>Join us on Discord</a>
+        <div class="platforms-row" aria-label="Supported platforms">
+          <span class="platform-chip"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/playstation.svg');" aria-hidden="true"></span>PlayStation</span>
+          <span class="platform-chip"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/xbox.svg');" aria-hidden="true"></span>Xbox</span>
+          <span class="platform-chip"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/pc.svg');" aria-hidden="true"></span>PC</span>
+        </div>
       </div>
     </section>
 
@@ -1577,7 +1867,55 @@
         <span class="icon icon-lg" style="--icon: url('icons/node_modules/bootstrap-icons/icons/images.svg');" aria-hidden="true"></span>
         <h2 id="gallery-title">Gallery</h2>
       </div>
-      <div class="panel gallery-grid" id="gallery-grid"></div>
+      <div class="panel gallery-grid" id="gallery-grid">
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 00.png"><img src="gallery/00.png" alt="Gallery image 00.png" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 01.png"><img src="gallery/01.png" alt="Gallery image 01.png" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 02.jpg"><img src="gallery/02.jpg" alt="Gallery image 02.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 03.jpg"><img src="gallery/03.jpg" alt="Gallery image 03.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 04.jpg"><img src="gallery/04.jpg" alt="Gallery image 04.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 05.jpg"><img src="gallery/05.jpg" alt="Gallery image 05.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 06.jpg"><img src="gallery/06.jpg" alt="Gallery image 06.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 07.jpg"><img src="gallery/07.jpg" alt="Gallery image 07.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 09.jpg"><img src="gallery/09.jpg" alt="Gallery image 09.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 10.jpg"><img src="gallery/10.jpg" alt="Gallery image 10.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 11.jpg"><img src="gallery/11.jpg" alt="Gallery image 11.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 12.jpg"><img src="gallery/12.jpg" alt="Gallery image 12.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 13.jpg"><img src="gallery/13.jpg" alt="Gallery image 13.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 14.jpg"><img src="gallery/14.jpg" alt="Gallery image 14.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 15.jpg"><img src="gallery/15.jpg" alt="Gallery image 15.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 16.jpg"><img src="gallery/16.jpg" alt="Gallery image 16.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 17.jpg"><img src="gallery/17.jpg" alt="Gallery image 17.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 18.jpg"><img src="gallery/18.jpg" alt="Gallery image 18.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 19.jpg"><img src="gallery/19.jpg" alt="Gallery image 19.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 21.jpg"><img src="gallery/21.jpg" alt="Gallery image 21.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 22.jpg"><img src="gallery/22.jpg" alt="Gallery image 22.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 23.jpg"><img src="gallery/23.jpg" alt="Gallery image 23.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 24.jpg"><img src="gallery/24.jpg" alt="Gallery image 24.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 25.jpg"><img src="gallery/25.jpg" alt="Gallery image 25.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 26.jpg"><img src="gallery/26.jpg" alt="Gallery image 26.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 27.jpg"><img src="gallery/27.jpg" alt="Gallery image 27.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 28.jpg"><img src="gallery/28.jpg" alt="Gallery image 28.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 30.jpg"><img src="gallery/30.jpg" alt="Gallery image 30.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 31.jpg"><img src="gallery/31.jpg" alt="Gallery image 31.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 32.png"><img src="gallery/32.png" alt="Gallery image 32.png" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 34.jpg"><img src="gallery/34.jpg" alt="Gallery image 34.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 35.png"><img src="gallery/35.png" alt="Gallery image 35.png" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 36.jpg"><img src="gallery/36.jpg" alt="Gallery image 36.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 37.png"><img src="gallery/37.png" alt="Gallery image 37.png" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 38.png"><img src="gallery/38.png" alt="Gallery image 38.png" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 40.png"><img src="gallery/40.png" alt="Gallery image 40.png" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 41.png"><img src="gallery/41.png" alt="Gallery image 41.png" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 42.png"><img src="gallery/42.png" alt="Gallery image 42.png" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 43.png"><img src="gallery/43.png" alt="Gallery image 43.png" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 44.jpg"><img src="gallery/44.jpg" alt="Gallery image 44.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 45.jpg"><img src="gallery/45.jpg" alt="Gallery image 45.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 46.jpg"><img src="gallery/46.jpg" alt="Gallery image 46.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 47.jpg"><img src="gallery/47.jpg" alt="Gallery image 47.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 48.jpg"><img src="gallery/48.jpg" alt="Gallery image 48.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 49.jpg"><img src="gallery/49.jpg" alt="Gallery image 49.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 50.jpg"><img src="gallery/50.jpg" alt="Gallery image 50.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+        <button class="image-zoom gallery-item" type="button" aria-label="Open gallery image 51.jpg"><img src="gallery/51.jpg" alt="Gallery image 51.jpg" loading="eager" fetchpriority="high" decoding="async"></button>
+      </div>
     </section>
 
     <section class="section" id="kits" aria-labelledby="kits-title">
@@ -1782,34 +2120,24 @@ Roger, Jester copies. CAS inbound. Will standby for final heading. Jester out.</
 
       <div class="backstory-grid">
         <article class="panel backstory-card">
-          <h3><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/patch-check.svg');"></span>Patch Symbolism</h3>
-          <button class="image-zoom patch-image" type="button" aria-label="Open ASF patch image">
-            <img src="patch.webp" alt="ASF 1st SFG unit patch">
-          </button>
-          <ul class="symbol-list">
-            <li>
-              <strong>Top - Sword and Lightning</strong>
-              <p>Symbolizing precision, decisive action, and warrior ethos, this element represents our ability to conduct surgical strikes against high-value targets with speed, unpredictability, and overwhelming force.</p>
-            </li>
-            <li>
-              <strong>Bottom Left - Trident</strong>
-              <p>Reflecting our maritime heritage and multi-domain capability, the trident signifies dominance across sea, air, and land, as well as adaptability in complex and contested environments.</p>
-            </li>
-            <li>
-              <strong>Bottom Right - Omega (&Omega;)</strong>
-              <p>Meaning "the end," the symbol conveys our mission to terminate all hostile threats, end the oppression of the civilian population, and cease the occupation of our homeland.</p>
-            </li>
-          </ul>
-        </article>
-
-        <article class="panel backstory-card">
           <h3><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/flag.svg');"></span>ASF 1st SFG</h3>
           <button class="image-zoom" type="button" aria-label="Open ASF unit photo">
             <img src="unitphoto.webp" alt="ASF 1st SFG, c. 2025">
           </button>
           <div class="audio-card">
             <h3><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/soundwave.svg');"></span>Audio Version</h3>
-            <audio controls src="ASF-Backstory.mp3">Your browser does not support the audio element.</audio>
+            <div class="audio-player" data-audio-player>
+              <button class="audio-toggle" type="button" aria-label="Play audio briefing" data-audio-toggle>
+                <span class="icon bi bi-play-fill" aria-hidden="true"></span>
+              </button>
+              <div class="audio-track">
+                <div class="audio-meta">
+                  <span class="audio-time" data-audio-time>0:00 / 0:00</span>
+                </div>
+                <div class="audio-seek" role="slider" tabindex="0" aria-label="Seek audio briefing" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" data-audio-seek></div>
+              </div>
+              <audio preload="metadata" src="ASF-Backstory.mp3">Your browser does not support the audio element.</audio>
+            </div>
           </div>
 
           <div class="backstory-body">
@@ -1848,6 +2176,25 @@ Roger, Jester copies. CAS inbound. Will standby for final heading. Jester out.</
             <p>Operating via covert land, maritime and rotary-wing platforms, ASF elements employ a strategy of cumulative disruption. By dismantling enemy command nodes and attriting occupational control from within, the 1st Special Forces Group continuously outpaces the adversary's decision-making cycle, maintaining its status as Auroa's premier guardian.</p>
             <p class="backstory-close">Small footprint.<br>Surgical execution.<br>Maximum impact.</p>
             <p class="backstory-close">The tip of the spear.</p>
+
+            <h3><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/patch-check.svg');"></span>Patch Symbolism</h3>
+            <button class="image-zoom patch-image" type="button" aria-label="Open ASF patch image">
+              <img src="patch.webp" alt="ASF 1st SFG unit patch">
+            </button>
+            <ul class="symbol-list">
+              <li>
+                <strong>Top - Sword and Lightning</strong>
+                <p>Symbolizing precision, decisive action, and warrior ethos, this element represents our ability to conduct surgical strikes against high-value targets with speed, unpredictability, and overwhelming force.</p>
+              </li>
+              <li>
+                <strong>Bottom Left - Trident</strong>
+                <p>Reflecting our maritime heritage and multi-domain capability, the trident signifies dominance across sea, air, and land, as well as adaptability in complex and contested environments.</p>
+              </li>
+              <li>
+                <strong>Bottom Right - Omega (&Omega;)</strong>
+                <p>Meaning "the end," the symbol conveys our mission to terminate all hostile threats, end the oppression of the civilian population, and cease the occupation of our homeland.</p>
+              </li>
+            </ul>
           </div>
         </article>
       </div>
@@ -1855,29 +2202,30 @@ Roger, Jester copies. CAS inbound. Will standby for final heading. Jester out.</
 
   </main>
 
-  <footer class="site-footer" aria-label="Current timezone status">
-    <div class="status-times">
-      <span class="status-time" id="pacific-time"></span>
-      <span class="status-time" id="eastern-time"></span>
-      <span class="status-time" id="zulu-time"></span>
-      <span class="status-time" id="berlin-time"></span>
-    </div>
-    <div style="display: flex; justify-content: center; margin-top: 1.5rem;">
+  <footer class="site-footer">
+    <div class="footer-cta">
       <a class="button" href="https://discord.com/invite/BXvQFwBq8z" target="_blank" rel="noopener noreferrer" aria-label="Join us on Discord"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/discord.svg');"></span>Join us on Discord</a>
+    </div>
+    <div class="platforms-row footer-platforms" aria-label="Supported platforms">
+      <span class="platform-chip"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/playstation.svg');" aria-hidden="true"></span>PlayStation</span>
+      <span class="platform-chip"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/xbox.svg');" aria-hidden="true"></span>Xbox</span>
+      <span class="platform-chip"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/pc.svg');" aria-hidden="true"></span>PC</span>
     </div>
   </footer>
 
   <div class="image-overlay" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
     <button class="image-overlay-close" type="button" aria-label="Close image viewer">X</button>
-    <button class="image-overlay-prev" type="button" aria-label="Previous image">
-      <svg viewBox="0 0 16 16" width="24" height="24" fill="currentColor"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/></svg>
-    </button>
-    <button class="image-overlay-next" type="button" aria-label="Next image">
-      <svg viewBox="0 0 16 16" width="24" height="24" fill="currentColor"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
-    </button>
     <figure>
       <div class="image-overlay-viewport">
         <img src="" alt="" draggable="false">
+      </div>
+      <div class="image-overlay-controls" aria-label="Image navigation">
+        <button class="image-overlay-prev" type="button" aria-label="Previous image">
+          <svg viewBox="0 0 16 16" width="24" height="24" fill="currentColor"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/></svg>
+        </button>
+        <button class="image-overlay-next" type="button" aria-label="Next image">
+          <svg viewBox="0 0 16 16" width="24" height="24" fill="currentColor"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+        </button>
       </div>
     </figure>
   </div>
@@ -1934,6 +2282,128 @@ Roger, Jester copies. CAS inbound. Will standby for final heading. Jester out.</
       }
     });
 
+    const formatAudioTime = (seconds) => {
+      if (!Number.isFinite(seconds)) return "0:00";
+
+      const rounded = Math.max(0, Math.floor(seconds));
+      const minutes = Math.floor(rounded / 60);
+      const remainingSeconds = String(rounded % 60).padStart(2, "0");
+      return `${minutes}:${remainingSeconds}`;
+    };
+
+    document.querySelectorAll("[data-audio-player]").forEach((player) => {
+      const audio = player.querySelector("audio");
+      const toggleButton = player.querySelector("[data-audio-toggle]");
+      const toggleIcon = toggleButton.querySelector(".icon");
+      const seek = player.querySelector("[data-audio-seek]");
+      const time = player.querySelector("[data-audio-time]");
+      let pendingSeekRatio = null;
+
+      if (!audio || !toggleButton || !seek || !time) return;
+
+      const updateAudioPlayer = () => {
+        const duration = audio.duration || 0;
+        const progress = duration ? (audio.currentTime / duration) * 100 : 0;
+
+        seek.style.setProperty("--audio-progress", `${progress}%`);
+        seek.setAttribute("aria-valuemin", "0");
+        seek.setAttribute("aria-valuemax", String(Math.floor(duration)));
+        seek.setAttribute("aria-valuenow", String(Math.floor(audio.currentTime)));
+        time.textContent = `${formatAudioTime(audio.currentTime)} / ${formatAudioTime(duration)}`;
+      };
+
+      const setAudioPlayingState = () => {
+        const isPlaying = !audio.paused;
+        toggleButton.setAttribute("aria-label", isPlaying ? "Pause audio briefing" : "Play audio briefing");
+        toggleIcon.classList.toggle("bi-play-fill", !isPlaying);
+        toggleIcon.classList.toggle("bi-pause-fill", isPlaying);
+      };
+
+      const setAudioTimeFromRatio = (ratio) => {
+        const duration = audio.duration || 0;
+        const clampedRatio = Math.min(Math.max(ratio, 0), 1);
+
+        seek.style.setProperty("--audio-progress", `${clampedRatio * 100}%`);
+
+        if (!duration) {
+          pendingSeekRatio = clampedRatio;
+          if (audio.readyState === 0) {
+            audio.load();
+          }
+          return;
+        }
+
+        const targetTime = clampedRatio * duration;
+
+        audio.currentTime = targetTime;
+
+        pendingSeekRatio = null;
+        updateAudioPlayer();
+      };
+
+      toggleButton.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play();
+        } else {
+          audio.pause();
+        }
+      });
+
+      const seekToPointer = (event) => {
+        const rect = seek.getBoundingClientRect();
+        if (!rect.width) return;
+
+        const ratio = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1);
+
+        setAudioTimeFromRatio(ratio);
+      };
+
+      seek.addEventListener("pointerdown", (event) => {
+        event.preventDefault();
+        seek.setPointerCapture(event.pointerId);
+        seekToPointer(event);
+      });
+
+      seek.addEventListener("pointermove", (event) => {
+        if (!seek.hasPointerCapture(event.pointerId)) return;
+        seekToPointer(event);
+      });
+
+      seek.addEventListener("keydown", (event) => {
+        if (!audio.duration || !["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+
+        event.preventDefault();
+
+        if (event.key === "Home") {
+          setAudioTimeFromRatio(0);
+        } else if (event.key === "End") {
+          setAudioTimeFromRatio(1);
+        } else {
+          const direction = event.key === "ArrowRight" ? 1 : -1;
+          const targetTime = Math.min(Math.max(audio.currentTime + direction * 5, 0), audio.duration);
+          setAudioTimeFromRatio(targetTime / audio.duration);
+        }
+      });
+
+      audio.addEventListener("loadedmetadata", () => {
+        if (pendingSeekRatio !== null) {
+          setAudioTimeFromRatio(pendingSeekRatio);
+        } else {
+          updateAudioPlayer();
+        }
+      });
+      audio.addEventListener("timeupdate", updateAudioPlayer);
+      audio.addEventListener("play", setAudioPlayingState);
+      audio.addEventListener("pause", setAudioPlayingState);
+      audio.addEventListener("ended", () => {
+        setAudioPlayingState();
+        updateAudioPlayer();
+      });
+
+      updateAudioPlayer();
+      setAudioPlayingState();
+    });
+
     let activeImages = [];
     let currentImageIndex = -1;
 
@@ -1954,6 +2424,9 @@ Roger, Jester copies. CAS inbound. Will standby for final heading. Jester out.</
     const openOverlay = (clickedImg, groupSelector) => {
       if (groupSelector) {
         activeImages = Array.from(document.querySelectorAll(groupSelector));
+        if (groupSelector.includes("gallery-grid")) {
+          activeImages = activeImages.filter((img) => img.complete && img.naturalWidth > 0);
+        }
       } else {
         activeImages = [clickedImg];
       }
@@ -1993,16 +2466,6 @@ Roger, Jester copies. CAS inbound. Will standby for final heading. Jester out.</
       });
     });
 
-    // Gallery Setup
-    const galleryFiles = [
-      "00.png", "01.png", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg", "07.jpg",
-      "09.jpg", "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg",
-      "17.jpg", "18.jpg", "19.jpg", "21.jpg", "22.jpg", "23.jpg", "24.jpg", "25.jpg",
-      "26.jpg", "27.jpg", "28.jpg", "30.jpg", "31.jpg", "32.png", "34.jpg", "35.png",
-      "36.jpg", "37.png", "38.png", "39.png", "40.png", "41.png", "42.png", "43.png",
-      "44.jpg", "45.jpg", "46.jpg", "47.jpg", "48.jpg", "49.jpg", "50.jpg", "51.jpg"
-    ];
-
     const shuffleArray = (array) => {
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -2013,24 +2476,25 @@ Roger, Jester copies. CAS inbound. Will standby for final heading. Jester out.</
 
     const galleryGrid = document.getElementById("gallery-grid");
     if (galleryGrid) {
-      shuffleArray([...galleryFiles]).forEach((file) => {
-        const button = document.createElement("button");
-        button.className = "image-zoom gallery-item";
-        button.type = "button";
-        button.setAttribute("aria-label", `Open gallery image ${file}`);
+      const galleryItems = Array.from(galleryGrid.querySelectorAll(".gallery-item"));
 
-        const img = document.createElement("img");
-        img.src = `gallery/${file}`;
-        img.alt = `Gallery image ${file}`;
-        img.loading = "lazy";
-        img.decoding = "async";
+      shuffleArray([...galleryItems]).forEach((button, index) => {
+        const img = button.querySelector("img");
+        button.style.order = String(index);
 
-        button.appendChild(img);
-        button.addEventListener("click", () => {
-          openOverlay(img, "#gallery-grid .gallery-item img");
-        });
+        if (!img) return;
 
-        galleryGrid.appendChild(button);
+        if (img.complete && img.naturalWidth > 0) {
+          button.classList.add("is-loaded");
+        } else {
+          img.addEventListener("load", () => {
+            button.classList.add("is-loaded");
+          }, { once: true });
+
+          img.addEventListener("error", () => {
+            button.classList.add("is-error");
+          }, { once: true });
+        }
       });
     }
 
