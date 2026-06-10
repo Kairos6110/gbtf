@@ -1178,6 +1178,16 @@
       user-select: none;
     }
 
+    .image-overlay img.is-wheel-zoomed {
+      max-width: none;
+      max-height: none;
+      cursor: grab;
+    }
+
+    .image-overlay img.is-wheel-zoomed.is-panning {
+      cursor: grabbing;
+    }
+
     @media (min-width: 640px) {
       .kits-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2481,6 +2491,7 @@ Roger, Jester copies. CAS inbound. Will standby for final heading. Jester out.</
     const links = document.querySelector("#nav-links");
     const overlay = document.querySelector(".image-overlay");
     const overlayImage = overlay.querySelector("img");
+    const overlayViewport = overlay.querySelector(".image-overlay-viewport");
     const overlayClose = overlay.querySelector(".image-overlay-close");
     const overlayPrev = overlay.querySelector(".image-overlay-prev");
     const overlayNext = overlay.querySelector(".image-overlay-next");
@@ -2530,12 +2541,141 @@ Roger, Jester copies. CAS inbound. Will standby for final heading. Jester out.</
 
     let activeImages = [];
     let currentImageIndex = -1;
+    let overlayZoom = 1;
+    let overlayMinZoom = 1;
+    let overlayMaxZoom = 1;
+    let overlayBaseWidth = 0;
+    let overlayBaseHeight = 0;
+    let overlayPanX = 0;
+    let overlayPanY = 0;
+    let overlayDragStartX = 0;
+    let overlayDragStartY = 0;
+    let overlayDragOriginX = 0;
+    let overlayDragOriginY = 0;
+    let isOverlayPanning = false;
+    const overlayZoomStep = 0.40;
+    const desktopWheelZoomQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+    const resetOverlayZoom = () => {
+      overlayZoom = 1;
+      overlayMinZoom = 1;
+      overlayMaxZoom = 1;
+      overlayBaseWidth = 0;
+      overlayBaseHeight = 0;
+      overlayPanX = 0;
+      overlayPanY = 0;
+      isOverlayPanning = false;
+      overlayImage.classList.remove("is-wheel-zoomed");
+      overlayImage.classList.remove("is-panning");
+      overlayImage.style.removeProperty("width");
+      overlayImage.style.removeProperty("height");
+      overlayImage.style.removeProperty("transform");
+    };
+
+    const clampOverlayPan = () => {
+      if (!overlayBaseWidth || !overlayBaseHeight) {
+        overlayPanX = 0;
+        overlayPanY = 0;
+        return;
+      }
+
+      const viewportRect = overlayViewport.getBoundingClientRect();
+      const zoomedWidth = overlayBaseWidth * overlayZoom;
+      const zoomedHeight = overlayBaseHeight * overlayZoom;
+      const maxPanX = Math.max(0, (zoomedWidth - viewportRect.width) / 2);
+      const maxPanY = Math.max(0, (zoomedHeight - viewportRect.height) / 2);
+
+      overlayPanX = Math.min(maxPanX, Math.max(-maxPanX, overlayPanX));
+      overlayPanY = Math.min(maxPanY, Math.max(-maxPanY, overlayPanY));
+    };
+
+    const setupOverlayZoom = () => {
+      resetOverlayZoom();
+      if (!desktopWheelZoomQuery.matches || !overlayImage.naturalWidth || !overlayImage.naturalHeight) return;
+
+      const rect = overlayImage.getBoundingClientRect();
+      overlayBaseWidth = rect.width;
+      overlayBaseHeight = rect.height;
+
+      if (!overlayBaseWidth || !overlayBaseHeight) return;
+
+      const maxWidthScale = (overlayImage.naturalWidth * 1.1) / overlayBaseWidth;
+      const maxHeightScale = (overlayImage.naturalHeight * 1.1) / overlayBaseHeight;
+      overlayMaxZoom = Math.max(1, Math.min(maxWidthScale, maxHeightScale));
+    };
+
+    const applyOverlayZoom = () => {
+      if (!overlayBaseWidth || !overlayBaseHeight) return;
+
+      if (overlayZoom === overlayMinZoom) {
+        overlayImage.classList.remove("is-wheel-zoomed");
+        overlayImage.style.removeProperty("width");
+        overlayImage.style.removeProperty("height");
+        overlayImage.style.removeProperty("transform");
+        overlayPanX = 0;
+        overlayPanY = 0;
+        return;
+      }
+
+      clampOverlayPan();
+      overlayImage.classList.add("is-wheel-zoomed");
+      overlayImage.style.width = `${overlayBaseWidth * overlayZoom}px`;
+      overlayImage.style.height = `${overlayBaseHeight * overlayZoom}px`;
+      overlayImage.style.transform = `translate(${overlayPanX}px, ${overlayPanY}px)`;
+    };
+
+    const handleOverlayWheel = (event) => {
+      if (!overlay.classList.contains("is-open") || !desktopWheelZoomQuery.matches) return;
+      if (!overlayBaseWidth || !overlayBaseHeight || overlayMaxZoom <= overlayMinZoom) return;
+
+      event.preventDefault();
+      const direction = event.deltaY < 0 ? 1 : -1;
+      const nextZoom = overlayZoom + (direction * overlayZoomStep);
+      overlayZoom = Math.min(overlayMaxZoom, Math.max(overlayMinZoom, nextZoom));
+      applyOverlayZoom();
+    };
+
+    const startOverlayPan = (event) => {
+      if (!desktopWheelZoomQuery.matches || overlayZoom <= overlayMinZoom) return;
+
+      event.preventDefault();
+      isOverlayPanning = true;
+      overlayDragStartX = event.clientX;
+      overlayDragStartY = event.clientY;
+      overlayDragOriginX = overlayPanX;
+      overlayDragOriginY = overlayPanY;
+      overlayImage.classList.add("is-panning");
+      overlayImage.setPointerCapture(event.pointerId);
+    };
+
+    const moveOverlayPan = (event) => {
+      if (!isOverlayPanning) return;
+
+      overlayPanX = overlayDragOriginX + event.clientX - overlayDragStartX;
+      overlayPanY = overlayDragOriginY + event.clientY - overlayDragStartY;
+      clampOverlayPan();
+      overlayImage.style.transform = `translate(${overlayPanX}px, ${overlayPanY}px)`;
+    };
+
+    const endOverlayPan = (event) => {
+      if (!isOverlayPanning) return;
+
+      isOverlayPanning = false;
+      overlayImage.classList.remove("is-panning");
+      if (overlayImage.hasPointerCapture(event.pointerId)) {
+        overlayImage.releasePointerCapture(event.pointerId);
+      }
+    };
 
     const updateOverlayImage = () => {
+      resetOverlayZoom();
       if (currentImageIndex >= 0 && currentImageIndex < activeImages.length) {
         const img = activeImages[currentImageIndex];
         overlayImage.src = img.dataset.full || img.currentSrc || img.src;
         overlayImage.alt = img.alt || "Viewer image";
+        if (overlayImage.complete) {
+          requestAnimationFrame(setupOverlayZoom);
+        }
       }
     };
 
@@ -2579,6 +2719,7 @@ Roger, Jester copies. CAS inbound. Will standby for final heading. Jester out.</
       overlay.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
       overlayClose.focus();
+      requestAnimationFrame(setupOverlayZoom);
     };
 
     document.querySelectorAll(".kit-zoom, .image-zoom").forEach((button) => {
@@ -2631,11 +2772,20 @@ Roger, Jester copies. CAS inbound. Will standby for final heading. Jester out.</
       overlay.setAttribute("aria-hidden", "true");
       overlayImage.src = "";
       overlayImage.alt = "";
+      resetOverlayZoom();
       document.body.style.overflow = "";
       activeImages = [];
       currentImageIndex = -1;
     };
 
+    overlayImage.addEventListener("load", () => {
+      requestAnimationFrame(setupOverlayZoom);
+    });
+    overlayImage.addEventListener("pointerdown", startOverlayPan);
+    overlayImage.addEventListener("pointermove", moveOverlayPan);
+    overlayImage.addEventListener("pointerup", endOverlayPan);
+    overlayImage.addEventListener("pointercancel", endOverlayPan);
+    overlay.addEventListener("wheel", handleOverlayWheel, { passive: false });
     overlayClose.addEventListener("click", closeOverlay);
     overlayPrev.addEventListener("click", () => navigateOverlay(-1));
     overlayNext.addEventListener("click", () => navigateOverlay(1));
