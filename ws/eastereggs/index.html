@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Breakpoint Easter Eggs and Oddities</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #07100b;
+      --panel: #0f1b13;
+      --panel-2: #14251a;
+      --line: #324833;
+      --text: #edf4e8;
+      --muted: #aebaa3;
+      --accent: #b6d36e;
+      --accent-2: #d6b765;
+      --shadow: rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, rgba(68, 91, 45, 0.18), transparent 34rem),
+        linear-gradient(180deg, #08120d 0%, var(--bg) 38%, #040806 100%);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--accent);
+      text-underline-offset: 0.2em;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid rgba(182, 211, 110, 0.24);
+      background: #050806;
+      box-shadow: 0 18px 34px var(--shadow);
+    }
+
+    body.lightbox-open {
+      overflow: hidden;
+    }
+
+    .site {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 40px 0 56px;
+    }
+
+    .hero {
+      min-height: 42vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 56px 0 40px;
+    }
+
+    .hero-inner {
+      width: min(820px, 100%);
+    }
+
+    h1 {
+      margin: 0;
+      color: #f6faef;
+      font-size: clamp(2.3rem, 8vw, 5.25rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    .gallery {
+      display: grid;
+      gap: 28px;
+    }
+
+    .egg {
+      overflow: hidden;
+      border: 1px solid rgba(182, 211, 110, 0.18);
+      border-radius: 8px;
+      background: linear-gradient(180deg, rgba(20, 37, 26, 0.96), rgba(10, 19, 13, 0.96));
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    .egg-header {
+      display: grid;
+      gap: 8px;
+      justify-items: center;
+      padding: 24px 20px 18px;
+      text-align: center;
+      border-bottom: 1px solid rgba(182, 211, 110, 0.16);
+      background:
+        linear-gradient(90deg, transparent, rgba(182, 211, 110, 0.07), transparent),
+        var(--panel);
+    }
+
+    .egg h2 {
+      margin: 0;
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .egg p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: 16px;
+      align-items: start;
+      padding: 18px;
+    }
+
+    .shot {
+      display: grid;
+      gap: 10px;
+      align-content: start;
+      min-width: 0;
+    }
+
+    .shot img {
+      cursor: zoom-in;
+    }
+
+    .shot figcaption {
+      color: #d8e2cf;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .map img {
+      border-color: rgba(214, 183, 101, 0.44);
+    }
+
+    .map figcaption {
+      color: #ecd99e;
+    }
+
+    .video-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 16px;
+      border: 1px solid rgba(182, 211, 110, 0.42);
+      border-radius: 6px;
+      background: rgba(182, 211, 110, 0.1);
+      color: #f4ffdc;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .video-link:hover,
+    .video-link:focus-visible {
+      background: rgba(182, 211, 110, 0.18);
+      outline: 2px solid rgba(182, 211, 110, 0.45);
+      outline-offset: 3px;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: none;
+      place-items: center;
+      padding: 18px;
+      background: rgba(0, 0, 0, 0.9);
+    }
+
+    .lightbox.active {
+      display: grid;
+    }
+
+    .lightbox-stage {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      touch-action: pan-x pan-y pinch-zoom;
+      overscroll-behavior: contain;
+    }
+
+    .lightbox-image {
+      width: auto;
+      max-width: 94vw;
+      max-height: 88vh;
+      border-radius: 8px;
+      cursor: grab;
+      user-select: none;
+      transform: translate(0, 0) scale(1);
+      transition: transform 120ms ease;
+      will-change: transform;
+    }
+
+    .lightbox-image.dragging {
+      cursor: grabbing;
+      transition: none;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(237, 244, 232, 0.32);
+      border-radius: 999px;
+      background: rgba(7, 16, 11, 0.86);
+      color: #fff;
+      font: 700 1.4rem/1 Arial, Helvetica, sans-serif;
+      cursor: pointer;
+    }
+
+    .lightbox-close:hover,
+    .lightbox-close:focus-visible {
+      background: rgba(20, 37, 26, 0.96);
+      outline: 2px solid rgba(182, 211, 110, 0.55);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 640px) {
+      .site {
+        width: min(100% - 20px, 1180px);
+        padding-top: 18px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 38px 0 30px;
+      }
+
+      .egg-header {
+        padding: 20px 14px 16px;
+      }
+
+      .media-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 12px;
+      }
+
+      img {
+        border-radius: 6px;
+      }
+
+      .lightbox {
+        padding: 8px;
+      }
+
+      .lightbox-image {
+        max-width: 100vw;
+        max-height: 92vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="site">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-inner">
+        <h1 id="page-title">Breakpoint Easter Eggs and Oddities</h1>
+      </div>
+    </section>
+
+    <div class="gallery">
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Cave of the Cross</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="cave%20of%20the%20cross.webp" alt="Cave of the Cross entrance and cross in Ghost Recon Breakpoint">
+            <figcaption>Cave View</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="cave%20of%20the%20cross2%20.webp" alt="Second view inside the Cave of the Cross">
+            <figcaption>Cave View 2</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="cave%20of%20the%20cross%203.webp" alt="Third view of the Cave of the Cross">
+            <figcaption>Cave View 3</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="cave%20of%20the%20cross%20map.webp" alt="Map location for Cave of the Cross">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Assassin's Creed Black Flag</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="assasins%20creed%20black%20flag.webp" alt="Assassin's Creed Black Flag Easter egg view">
+            <figcaption>Black Flag View</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assasins%20creed%20black%20flag%202.webp" alt="Second Assassin's Creed Black Flag Easter egg view">
+            <figcaption>Black Flag View 2</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assasins%20creed%20black%20flag%203.webp" alt="Third Assassin's Creed Black Flag Easter egg view">
+            <figcaption>Black Flag View 3</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="assassin's%20creed%20black%20flag%20map.jpg" alt="Map location for Assassin's Creed Black Flag Easter egg">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Assassin's Creed Leap of Faith</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="assassin's%20creed%20leap%20of%20faith.jpg" alt="Assassin's Creed Leap of Faith Easter egg">
+            <figcaption>Leap of Faith</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="assassin's%20creed%20leap%20of%20faith%20map.jpg" alt="Map location for Assassin's Creed Leap of Faith Easter egg">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Dynamite Lake Creatures</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="Dynamite%20Lake%20creatures%20%201.jpg" alt="Dynamite Lake creature Easter egg first view">
+            <figcaption>Creature View 1</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="Dynamite%20Lake%20creatures%20%202.jpg" alt="Dynamite Lake creature Easter egg second view">
+            <figcaption>Creature View 2</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="dynamite%20lake%20creatures%20map.jpg" alt="Map location for Dynamite Lake creatures">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Godzilla</h2>
+          <a class="video-link" href="https://youtu.be/fLTkXHlPpAY?si=tv6QZh-bg8mXtv02&amp;t=49" target="_blank" rel="noopener">Watch Video</a>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="godzilla.png" alt="Godzilla Easter egg in Ghost Recon Breakpoint">
+            <figcaption>Godzilla View</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="godzilla%20map.jpg" alt="Map location for Godzilla Easter egg">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Maniac of Golem Island Hideout</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="mania%20of%20golem%20island%20hideout.webp" alt="Maniac of Golem Island hideout first view">
+            <figcaption>Hideout View 1</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="mania%20of%20golem%20island%20hideout%202.webp" alt="Maniac of Golem Island hideout second view">
+            <figcaption>Hideout View 2</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="maniac%20of%20golem%20island%20map.jpg" alt="Map location for Maniac of Golem Island hideout">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Maniac Shack</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="maniac%20shack%201.webp" alt="Maniac Shack first view">
+            <figcaption>Shack View 1</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="maniac%20shack%202.webp" alt="Maniac Shack second view">
+            <figcaption>Shack View 2</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="maniac%20shack%203.webp" alt="Maniac Shack third view">
+            <figcaption>Shack View 3</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="maniac%20shack%204.webp" alt="Maniac Shack fourth view">
+            <figcaption>Shack View 4</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="maniac%20shack%20map.jpg" alt="Map location for Maniac Shack">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Memorial Cave</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="memorial%20cave.webp" alt="Memorial Cave first view">
+            <figcaption>Cave View 1</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="memorial%20cave%202.webp" alt="Memorial Cave second view">
+            <figcaption>Cave View 2</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="memorial%20cave%20map.webp" alt="Map location for Memorial Cave">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Santa Blanca Gambling Den</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="santa%20blanc%20gambling%20den.jpg" alt="Santa Blanca gambling den first view">
+            <figcaption>Den View 1</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="santa%20blanca%20gambling%20den%201.jpg" alt="Santa Blanca gambling den bottle close-up">
+            <figcaption>Bottle Close-up</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="santa%20blanca%20gambling%20den%202.jpg" alt="Santa Blanca gambling den second view">
+            <figcaption>Den View 2</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="santa%20blanca%20gambling%20den%203.jpg" alt="Santa Blanca gambling den third view">
+            <figcaption>Den View 3</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="santa%20blanca%20gambling%20den%20map.jpg" alt="Map location for Santa Blanca gambling den">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Toy Story Andy Unicorns</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="toy%20story%20andy%20unicorns.jpg" alt="Toy Story Andy unicorns Easter egg first view">
+            <figcaption>Andy Unicorns View 1</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="toy%20story%20andy%20unicorns%202.jpg" alt="Toy Story Andy unicorns Easter egg second view">
+            <figcaption>Andy Unicorns View 2</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="toy%20story%20andy%20unicorns%20map.jpg" alt="Map location for Toy Story Andy unicorns">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Chainsaw House</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="chainsaw.jpg" alt="Chainsaw house oddity in Ghost Recon Breakpoint">
+            <figcaption>Chainsaw House</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="chainsaw%20map.jpg" alt="Map location for Chainsaw House">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Dam Fireworks</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="dam%20fireworks.png" alt="Dam fireworks Easter egg">
+            <figcaption>Dam Fireworks</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="dam%20fireworks%20map.png" alt="Map location for Dam Fireworks">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Jack Rackham Fan</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="dead%20hacker%20pirate.jpg" alt="Jack Rackham Fan oddity">
+            <figcaption>Jack Rackham Fan</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="dead%20hacker%20pirate%202.jpg" alt="Jack Rackham Fan symbol close-up">
+            <figcaption>Flag Close-up</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="dead%20hacker%20pirate%20map.jpg" alt="Map location for Jack Rackham Fan">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Glowing Cave</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="glowing%20cave.jpg" alt="Glowing Cave oddity">
+            <figcaption>Glowing Cave</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="glowing%20cave%20map.jpg" alt="Map location for Glowing Cave">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Growling Bunker</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="growling%20bunker.jpg" alt="Growling Bunker oddity">
+            <figcaption>Growling Bunker</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="growling%20bunker%20map.webp" alt="Map location for Growling Bunker">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Hang Man</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="hang%20man.jpg" alt="Hang Man oddity">
+            <figcaption>Hang Man</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="hang%20man%20map.jpg" alt="Map location for Hang Man">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Ice Volcano</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="ice%20volcano.jpg" alt="Ice Volcano oddity">
+            <figcaption>Ice Volcano</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="ice%20volcano%20map.jpg" alt="Map location for Ice Volcano">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>IT Balloon</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="itballoon.jpg" alt="IT Balloon Easter egg">
+            <figcaption>IT Balloon</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="itballoon%20map.jpg" alt="Map location for IT Balloon">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Mysterious Circle and Obelisk</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="mysterious%20circle%20and%20obelisk.jpg" alt="Mysterious circle and obelisk oddity">
+            <figcaption>Mysterious Circle and Obelisk</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="mysterious%20circle%20and%20obelisk%20map.jpg" alt="Map location for Mysterious Circle and Obelisk">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Plant a Tree</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="plant%20a%20tree.jpg" alt="Plant a Tree oddity">
+            <figcaption>Plant a Tree</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="plant%20a%20tree%20map.jpg" alt="Map location for Plant a Tree">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Terminators</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="terminators.jpg" alt="Terminator Easter egg">
+            <figcaption>Terminators</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="terminators%20map.jpg" alt="Map location for Terminators">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="egg">
+        <header class="egg-header">
+          <h2>Yeti Cave</h2>
+        </header>
+        <div class="media-grid">
+          <figure class="shot">
+            <img src="yeti.jpg" alt="Yeti Cave Easter egg">
+            <figcaption>Yeti Cave</figcaption>
+          </figure>
+          <figure class="shot map">
+            <img src="yeti%20map.jpg" alt="Map location for Yeti Cave">
+            <figcaption>Map Location</figcaption>
+          </figure>
+        </div>
+      </article>
+
+    </div>
+  </main>
+  <div class="lightbox" id="image-lightbox" aria-hidden="true">
+    <button class="lightbox-close" type="button" aria-label="Close image viewer">&times;</button>
+    <div class="lightbox-stage">
+      <img class="lightbox-image" src="" alt="">
+    </div>
+  </div>
+  <script>
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxStage = lightbox.querySelector('.lightbox-stage');
+    const lightboxImage = lightbox.querySelector('.lightbox-image');
+    const closeLightboxButton = lightbox.querySelector('.lightbox-close');
+    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    let scale = 1;
+    let translateX = 0;
+    let translateY = 0;
+    let dragStart = null;
+
+    function renderLightboxImage() {
+      lightboxImage.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+    }
+
+    function resetLightboxImage() {
+      scale = 1;
+      translateX = 0;
+      translateY = 0;
+      renderLightboxImage();
+    }
+
+    function openLightbox(image) {
+      lightboxImage.src = image.currentSrc || image.src;
+      lightboxImage.alt = image.alt || '';
+      resetLightboxImage();
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lightbox-open');
+      closeLightboxButton.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('lightbox-open');
+      lightboxImage.src = '';
+      dragStart = null;
+    }
+
+    document.querySelectorAll('.shot img').forEach((image) => {
+      image.tabIndex = 0;
+      image.addEventListener('click', () => openLightbox(image));
+      image.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openLightbox(image);
+        }
+      });
+    });
+
+    closeLightboxButton.addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox || event.target === lightboxStage) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+
+    lightboxStage.addEventListener('wheel', (event) => {
+      if (!canHover) {
+        return;
+      }
+
+      event.preventDefault();
+      const previousScale = scale;
+      const zoomStep = event.deltaY < 0 ? 1.16 : 0.86;
+      scale = Math.min(8, Math.max(1, scale * zoomStep));
+
+      const rect = lightboxStage.getBoundingClientRect();
+      const offsetX = event.clientX - rect.left - rect.width / 2;
+      const offsetY = event.clientY - rect.top - rect.height / 2;
+      const zoomRatio = scale / previousScale;
+
+      translateX = offsetX - (offsetX - translateX) * zoomRatio;
+      translateY = offsetY - (offsetY - translateY) * zoomRatio;
+
+      if (scale === 1) {
+        translateX = 0;
+        translateY = 0;
+      }
+
+      renderLightboxImage();
+    }, { passive: false });
+
+    lightboxImage.addEventListener('pointerdown', (event) => {
+      if (!canHover || scale === 1 || event.button !== 0) {
+        return;
+      }
+
+      dragStart = {
+        pointerId: event.pointerId,
+        x: event.clientX,
+        y: event.clientY,
+        translateX,
+        translateY
+      };
+      lightboxImage.classList.add('dragging');
+      lightboxImage.setPointerCapture(event.pointerId);
+    });
+
+    lightboxImage.addEventListener('pointermove', (event) => {
+      if (!dragStart || event.pointerId !== dragStart.pointerId) {
+        return;
+      }
+
+      translateX = dragStart.translateX + event.clientX - dragStart.x;
+      translateY = dragStart.translateY + event.clientY - dragStart.y;
+      renderLightboxImage();
+    });
+
+    function stopDragging() {
+      dragStart = null;
+      lightboxImage.classList.remove('dragging');
+    }
+
+    lightboxImage.addEventListener('pointerup', stopDragging);
+    lightboxImage.addEventListener('pointercancel', stopDragging);
+  </script>
+</body>
+</html>
