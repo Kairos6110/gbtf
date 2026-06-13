@@ -648,18 +648,18 @@
       color: var(--olive-2);
     }
 
-    .backstory-grid {
+    .presentation-grid {
       display: grid;
       gap: 1rem;
     }
 
-    .backstory-card {
+    .presentation-card {
       display: grid;
       gap: 1rem;
       padding: 1rem;
     }
 
-    .backstory-card h3 {
+    .presentation-card h3 {
       display: flex;
       align-items: center;
       gap: 0.55rem;
@@ -669,23 +669,23 @@
       text-transform: uppercase;
     }
 
-    .backstory-card p {
+    .presentation-card p {
       margin: 0;
       color: var(--muted);
     }
 
-    .backstory-card img {
+    .presentation-card img {
       width: 100%;
       border: 1px solid var(--line-soft);
       background: #050807;
     }
 
-    .backstory-body {
+    .presentation-body {
       display: grid;
       gap: 1rem;
     }
 
-    .backstory-meta {
+    .presentation-meta {
       display: grid;
       gap: 0.35rem;
       margin: 0;
@@ -694,11 +694,11 @@
       list-style: none;
     }
 
-    .backstory-meta strong {
+    .presentation-meta strong {
       color: var(--ink);
     }
 
-    .backstory-close {
+    .presentation-close {
       color: var(--ink);
       font-weight: 900;
       text-transform: uppercase;
@@ -989,7 +989,7 @@
         grid-template-columns: repeat(4, minmax(0, 1fr));
       }
 
-      .backstory-grid {
+      .presentation-grid {
         align-items: start;
       }
     }
@@ -1338,7 +1338,7 @@
     }
 
     .guide-stack,
-    .backstory-grid,
+    .presentation-grid,
     .comms {
       gap: clamp(1rem, 2vw, 1.35rem);
     }
@@ -1394,31 +1394,31 @@
       font-size: clamp(0.78rem, 0.73rem + 0.18vw, 0.92rem);
     }
 
-    .backstory-grid {
+    .presentation-grid {
       align-items: start;
     }
 
-    .backstory-card {
+    .presentation-card {
       min-width: 0;
       padding: clamp(1rem, 2vw, 1.35rem);
     }
 
-    .backstory-card img {
+    .presentation-card img {
       border-radius: var(--radius);
     }
 
     @media (min-width: 760px) {
-      .backstory-card > .image-zoom {
+      .presentation-card > .image-zoom {
         width: min(100%, 32rem);
         justify-self: center;
       }
     }
 
-    .backstory-body {
+    .presentation-body {
       gap: 1.05rem;
     }
 
-    .backstory-body p {
+    .presentation-body p {
       color: var(--muted);
     }
 
@@ -1767,7 +1767,7 @@
         <a href="https://kairos6110.github.io/gbtf/hideouts/hideouts.html" target="_blank" rel="noopener noreferrer"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/geo-alt.svg');"></span>Field Hideouts</a>
         <a href="https://kairos6110.github.io/gbtf/behemoths/behemoths.html" target="_blank" rel="noopener noreferrer"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/map.svg');"></span>Behemoths Map</a>
         <a href="https://kairos6110.github.io/gbtf/ws/eastereggs/" target="_blank" rel="noopener noreferrer"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/egg.svg');"></span>Easter Eggs And Oddities</a>
-        <a href="#unit-backstory"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/book.svg');"></span>Unit Backstory</a>
+        <a href="#unit-presentation"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/book.svg');"></span>Unit presentation</a>
         </div>
       </div>
     </nav>
@@ -2058,21 +2058,21 @@ Roger, Jester copies. CAS inbound. Will standby for final heading. Jester out.</
       </div>
     </section>
 
-    <section class="section" id="unit-backstory" aria-labelledby="unit-backstory-title">
+    <section class="section" id="unit-presentation" aria-labelledby="unit-presentation-title">
       <div class="section-head">
         <span class="section-kicker">Lore Reference</span>
         <span class="icon icon-lg" style="--icon: url('icons/node_modules/bootstrap-icons/icons/book.svg');" aria-hidden="true"></span>
-        <h2 id="unit-backstory-title">Unit Backstory</h2>
+        <h2 id="unit-presentation-title">Unit presentation</h2>
       </div>
 
-      <div class="backstory-grid">
-        <article class="panel backstory-card">
+      <div class="presentation-grid">
+        <article class="panel presentation-card">
           <h3><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/flag.svg');"></span>GBTF</h3>
           <button class="image-zoom" type="button" aria-label="Open GBTF unit photo">
             <img src="ubspatch.jpg" alt="GBTF patch on plate carrier">
           </button>
 
-          <div class="backstory-body">
+          <div class="presentation-body">
             <p>The Ground Branch Task Force (GBTF), was formed to operate in the space where diplomacy, conventional military force, and public intervention are no longer viable options.</p>
             <p>Its mandate is simple: respond to critical threats before they escalate beyond control.</p>
             <p>GBTF is an international NATO-aligned paramilitary unit operating under classified authority and is tasked with missions requiring absolute discretion, limited visibility, and complete deniability. Its work exists outside traditional command structures, often in environments where official presence cannot be confirmed, acknowledged, or supported.</p>
