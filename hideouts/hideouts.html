@@ -321,7 +321,7 @@
       width: 100%;
       padding: 1rem 1.5rem;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       z-index: 1010;
       background: linear-gradient(to bottom, rgba(5,8,6,0.9) 0%, transparent 100%);
@@ -401,8 +401,8 @@
     }
 
     .zoom-image {
-      max-width: 90%;
-      max-height: 85%;
+      max-width: 98%;
+      max-height: 98%;
       object-fit: contain;
       transform-origin: center center;
       user-select: none;
@@ -826,26 +826,8 @@
 
   <!-- FULLSCREEN INTERACTIVE ZOOM OVERLAY -->
   <div id="overlay" class="overlay">
-    <div class="overlay-header">
-      <div class="overlay-title-wrapper">
-        <div id="overlay-title" class="overlay-title">Site View</div>
-        <div id="overlay-subtitle" class="overlay-subtitle">Tactical Asset</div>
-      </div>
-      <div class="overlay-controls">
-        <button class="btn-control" onclick="zoomIn()">Zoom In (+)</button>
-        <button class="btn-control" onclick="zoomOut()">Zoom Out (-)</button>
-        <button class="btn-control" onclick="resetZoom()">Reset (1:1)</button>
-        <button class="btn-control btn-close" onclick="closeOverlay()">Close [Esc]</button>
-      </div>
-    </div>
-
     <div class="zoom-viewport" id="zoom-viewport">
       <img id="zoom-image" class="zoom-image" src="" alt="Zoomable Field Intel">
-    </div>
-
-    <div class="interaction-hint">
-      Desktop: <span>Scroll Wheel</span> to zoom, <span>Click &amp; Drag</span> to pan.<br>
-      Mobile: <span>Pinch</span> to zoom, <span>Drag</span> to pan.
     </div>
   </div>
 
@@ -869,8 +851,6 @@
     const overlay = document.getElementById('overlay');
     const zoomImg = document.getElementById('zoom-image');
     const zoomViewport = document.getElementById('zoom-viewport');
-    const overlayTitle = document.getElementById('overlay-title');
-    const overlaySubtitle = document.getElementById('overlay-subtitle');
 
     // Zoom limits
     const MIN_SCALE = 0.5;
@@ -878,8 +858,6 @@
 
     function openOverlay(src, siteName, type) {
       zoomImg.src = src;
-      overlayTitle.textContent = siteName;
-      overlaySubtitle.textContent = type + ' — File: ' + src;
       overlay.classList.add('active');
       document.body.style.overflow = 'hidden'; // Prevent page scrolling
       resetZoom();
@@ -939,12 +917,19 @@
 
     // DESKTOP & MOBILE: Mouse/Touch Pan and Pinch Zoom
     
+    let clickStartX = 0;
+    let clickStartY = 0;
+    let hasDragged = false;
+
     // Mouse Down
     zoomViewport.addEventListener('mousedown', (e) => {
       if (e.button !== 0) return; // Only left click
       isDragging = true;
       startX = e.clientX - translateX;
       startY = e.clientY - translateY;
+      clickStartX = e.clientX;
+      clickStartY = e.clientY;
+      hasDragged = false;
       zoomViewport.style.cursor = 'grabbing';
       e.preventDefault();
     });
@@ -952,6 +937,9 @@
     // Mouse Move
     window.addEventListener('mousemove', (e) => {
       if (!isDragging) return;
+      if (Math.hypot(e.clientX - clickStartX, e.clientY - clickStartY) > 5) {
+        hasDragged = true;
+      }
       translateX = e.clientX - startX;
       translateY = e.clientY - startY;
       updateTransform();
@@ -959,8 +947,13 @@
 
     // Mouse Up
     window.addEventListener('mouseup', () => {
-      isDragging = false;
-      zoomViewport.style.cursor = 'grab';
+      if (isDragging) {
+        isDragging = false;
+        zoomViewport.style.cursor = 'grab';
+        if (!hasDragged) {
+          closeOverlay();
+        }
+      }
     });
 
     // Close on ESC
@@ -983,6 +976,10 @@
       };
     }
 
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchDragged = false;
+
     // Touch events for Mobile Pinch & Drag
     zoomViewport.addEventListener('touchstart', (e) => {
       if (e.touches.length === 1) {
@@ -990,9 +987,13 @@
         isDragging = true;
         startX = e.touches[0].clientX - translateX;
         startY = e.touches[0].clientY - translateY;
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        touchDragged = false;
       } else if (e.touches.length === 2) {
         // Multi touch -> pinch zoom
         isDragging = false; // Disable panning logic for single touch
+        touchDragged = true;
         startDist = getDistance(e.touches[0], e.touches[1]);
         startScale = scale;
         
@@ -1007,11 +1008,15 @@
     zoomViewport.addEventListener('touchmove', (e) => {
       if (e.touches.length === 1 && isDragging) {
         // Pan
+        if (Math.hypot(e.touches[0].clientX - touchStartX, e.touches[0].clientY - touchStartY) > 8) {
+          touchDragged = true;
+        }
         translateX = e.touches[0].clientX - startX;
         translateY = e.touches[0].clientY - startY;
         updateTransform();
       } else if (e.touches.length === 2) {
         // Pinch Zoom
+        touchDragged = true;
         const dist = getDistance(e.touches[0], e.touches[1]);
         const mid = getMidpoint(e.touches[0], e.touches[1]);
         
@@ -1038,6 +1043,9 @@
 
     zoomViewport.addEventListener('touchend', (e) => {
       if (e.touches.length === 0) {
+        if (isDragging && !touchDragged) {
+          closeOverlay();
+        }
         isDragging = false;
       } else if (e.touches.length === 1) {
         // Reset pan coordinates for remaining single finger
