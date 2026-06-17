@@ -1,206 +1,1052 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auroa Field Hideouts</title>
-    <style>
-        /* === MILITARY THEME CSS === */
-        body {
-            background-color: #1e261e;
-            color: #a3bfa3;
-            font-family: 'Courier New', Courier, monospace;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-            user-select: none;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tactical Field Hideouts</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗺️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-darker: #080d0a;
+      --bg-dark: #0f1812;
+      --bg-card: #15241b;
+      --border-color: #243d2d;
+      --border-accent: #3b6349;
+      --text-muted: #8ba894;
+      --text-light: #e6ede8;
+      --accent-neon: #5cf27e;
+      --accent-gold: #f5b041;
+      --font-mono: 'Share Tech Mono', monospace;
+      --font-sans: 'Inter', sans-serif;
+    }
 
-        h1 {
-            border-bottom: 2px solid #4a5e4a;
-            display: inline-block;
-            padding-bottom: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-shadow: 0px 0px 5px #000;
-            margin-bottom: 10px; /* Adjusted for tip spacing */
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        /* Unit Link Styling */
-        .unit-link {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.3s, text-shadow 0.3s;
-            border-bottom: 1px dotted rgba(163, 191, 163, 0.3); /* Subtle hint it's clickable */
-        }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      line-height: 1.5;
+      background-image: 
+        radial-gradient(circle at 50% 0%, #172a1e 0%, transparent 75%),
+        linear-gradient(rgba(15, 24, 18, 0.95) 0%, rgba(8, 13, 10, 0.98) 100%);
+      background-attachment: fixed;
+    }
 
-        .unit-link:hover {
-            color: #fff;
-            text-shadow: 0 0 10px #4a5e4a;
-            border-bottom: 1px solid #fff;
-        }
+    /* Scanlines / Grid overlay for tactical effect */
+    .tactical-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background-image: 
+        linear-gradient(to right, rgba(92, 242, 126, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(92, 242, 126, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 10;
+    }
 
-        /* Tip Text Styling */
-        .tip-text {
-            color: #ffffff;
-            font-size: 0.85rem;
-            margin-top: 0;
-            margin-bottom: 25px;
-           
-            opacity: 0.8;
-        }
+    .scanline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0),
+        rgba(255,255,255,0) 50%,
+        rgba(0, 0, 0, 0.1) 50%,
+        rgba(0, 0, 0, 0.1)
+      );
+      background-size: 100% 4px;
+      z-index: 11;
+    }
 
-        /* Map Container */
-        .map-container {
-            position: relative;
-            display: inline-block;
-            border: 5px solid #0f140f;
-            box-shadow: 0 0 20px rgba(0,0,0,0.8);
-        }
+    header {
+      text-align: center;
+      padding: 3rem 1.5rem 2rem;
+      border-bottom: 1px solid var(--border-color);
+      background-color: rgba(8, 13, 10, 0.8);
+      position: relative;
+      z-index: 20;
+    }
 
-        #main-map {
-            display: block;
-            max-width: 100%;
-            height: auto;
-        }
+    header h1 {
+      font-family: var(--font-mono);
+      font-size: 2.5rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-neon);
+      text-shadow: 0 0 10px rgba(92, 242, 126, 0.4);
+      margin-bottom: 0.5rem;
+    }
 
-        /* === MARKER STYLES === */
-        .marker {
-            position: absolute;
-            background-color: rgba(255, 0, 0, 0.6);
-            border: 2px solid #a3bfa3;
-            border-radius: 50%;
-            cursor: pointer;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 10px rgb(255, 217, 0);
-            z-index: 10;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: background-color 0.2s, border-color 0.2s;
-        }
+    header p {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
 
-        .marker:hover {
-            background-color: rgba(255, 0, 0, 0.8);
-            border-color: #fff;
-            z-index: 100;
-        }
+    header::before {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 3px;
+      background-color: var(--accent-neon);
+      box-shadow: 0 0 8px var(--accent-neon);
+    }
 
-        /* Overlay Styles */
-        #overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            cursor: zoom-out;
-        }
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      position: relative;
+      z-index: 20;
+    }
 
-        #overlay img {
-            max-width: 90%;
-            max-height: 90%;
-            border: 2px solid #a3bfa3;
-            box-shadow: 0 0 30px #000;
-        }
+    /* Quick stats / tactical status bar */
+    .tactical-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(21, 36, 27, 0.6);
+      border: 1px solid var(--border-color);
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      margin-bottom: 2rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
 
-        #overlay-caption {
-            position: absolute;
-            bottom: 20px;
-            color: white;
-            background: rgba(30, 38, 30, 0.8);
-            padding: 5px 10px;
-            font-size: 1.2rem;
-            border: 1px solid #4a5e4a;
-        }
-    </style>
+    .tactical-bar span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent-neon);
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 8px var(--accent-neon);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.9); opacity: 0.6; }
+      50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 12px var(--accent-neon); }
+      100% { transform: scale(0.9); opacity: 0.6; }
+    }
+
+    /* Hideout Grid Layout */
+    .hideout-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .hideout-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Cards */
+    .hideout-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .hideout-card:hover {
+      border-color: var(--border-accent);
+      box-shadow: 0 6px 25px rgba(92, 242, 126, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      background-color: rgba(8, 13, 10, 0.4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-title {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      color: var(--text-light);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .card-coord {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent-neon);
+    }
+
+    .card-media {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2px;
+      background-color: var(--border-color);
+    }
+
+    @media (min-width: 500px) {
+      .card-media {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .media-container {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background-color: #050806;
+      cursor: zoom-in;
+    }
+
+    .media-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .media-container:hover img {
+      transform: scale(1.03);
+    }
+
+    .media-badge {
+      position: absolute;
+      bottom: 0.5rem;
+      left: 0.5rem;
+      background-color: rgba(8, 13, 10, 0.85);
+      border: 1px solid var(--border-color);
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .media-badge.map-badge {
+      color: var(--accent-gold);
+      border-color: rgba(245, 176, 65, 0.3);
+    }
+
+    .card-footer {
+      padding: 1rem 1.25rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-color);
+      background-color: rgba(8, 13, 10, 0.2);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .card-footer p {
+      margin-bottom: 0.25rem;
+    }
+
+    .file-names {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      opacity: 0.7;
+      margin-top: 0.25rem;
+      word-break: break-all;
+    }
+
+    /* Modal / Overlay Style */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(5, 8, 6, 0.95);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .overlay-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1010;
+      background: linear-gradient(to bottom, rgba(5,8,6,0.9) 0%, transparent 100%);
+    }
+
+    .overlay-title-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .overlay-title {
+      font-family: var(--font-mono);
+      font-size: 1.2rem;
+      color: var(--accent-neon);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .overlay-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .overlay-controls {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .btn-control {
+      background-color: rgba(21, 36, 27, 0.8);
+      border: 1px solid var(--border-color);
+      color: var(--text-light);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+
+    .btn-control:hover {
+      background-color: var(--border-accent);
+      border-color: var(--accent-neon);
+      color: var(--accent-neon);
+    }
+
+    .btn-close {
+      background-color: rgba(180, 40, 40, 0.8);
+      border-color: rgba(255, 100, 100, 0.4);
+    }
+
+    .btn-close:hover {
+      background-color: rgb(220, 50, 50);
+      border-color: rgb(255, 150, 150);
+      color: #fff;
+    }
+
+    /* Zoom container */
+    .zoom-viewport {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      touch-action: none; /* Crucial to disable default browser pinch zoom/pan behavior */
+      cursor: grab;
+    }
+
+    .zoom-viewport:active {
+      cursor: grabbing;
+    }
+
+    .zoom-image {
+      max-width: 90%;
+      max-height: 85%;
+      object-fit: contain;
+      transform-origin: center center;
+      user-select: none;
+      -webkit-user-drag: none;
+      transition: transform 0.1s ease-out;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* Instructional overlay */
+    .interaction-hint {
+      position: absolute;
+      bottom: 2rem;
+      background-color: rgba(21, 36, 27, 0.85);
+      border: 1px solid var(--border-color);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      pointer-events: none;
+      z-index: 1010;
+      text-align: center;
+    }
+
+    .interaction-hint span {
+      color: var(--accent-neon);
+    }
+
+    /* Layout for Unpaired Section */
+    .section-title {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      color: var(--accent-gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 4rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(245, 176, 65, 0.25);
+      padding-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .unpaired-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .unpaired-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .unpaired-card .media-container {
+      aspect-ratio: 16 / 10;
+    }
+
+    .unpaired-card .card-footer {
+      padding: 0.75rem 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      border-top: 1px solid var(--border-color);
+      background-color: var(--bg-darker);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+  </style>
 </head>
 <body>
 
-    <h1>
-        Auroa Field Hideouts
-    </h1>
-    
-    <p class="tip-text">CLICK THE 🔴 MARKERS TO VIEW EACH HIDEOUT</p>
-    
-    <div class="map-container" id="map-area">
-        <img src="map.jpg" alt="Operations Map" width="910" height="910" id="main-map">
-        
-        <div id="saved-markers-area">
-            <div class="marker" style="left: 82.19%; top: 6.75%; width: 10px; height: 10px;" 
-                data-img="safehouse.jpg" data-caption="Safehouse Cape North"></div>
-            <div class="marker" style="left: 75.38%; top: 33.35%; width: 10px; height: 10px;" 
-                data-img="russell.jpg" data-caption="Russell Homestead Sinking Country"></div>
-            <div class="marker" style="left: 72.84%; top: 21.63%; width: 10px; height: 10px;" 
-                data-img="schulz.jpg" data-caption="Schulz Homestead Sinking Country"></div>
-            <div class="marker" style="left: 65%; top: 40.75%; width: 10px; height: 10px;" 
-                data-img="summers.jpg" data-caption="Summers Homestead Fen Bog"></div>
-            <div class="marker" style="left: 67.58%; top: 38.41%; width: 10px; height: 10px;" 
-                data-img="harris.jpg" data-caption="Harris Homestead Fen Bog"></div>
-            <div class="marker" style="left: 30.28%; top: 26.33%; width: 10px; height: 10px;" 
-                data-img="makeshift.jpg" data-caption="Makeshift Runway Wild Coast"></div>
-            <div class="marker" style="left: 51.28%; top: 42.4%; width: 10px; height: 10px;" 
-                data-img="brown.jpg" data-caption="Brown Homestead"></div>
-            <div class="marker" style="left: 13.33%; top: 47.62%; width: 10px; height: 10px;" 
-                data-img="bunker1.jpg" data-caption="Underground Bunker Channels"></div>
-            <div class="marker" style="left: 33.96%; top: 58.54%; width: 10px; height: 10px;" 
-                data-img="bunker2.jpg" data-caption="Underground Bunker Restricted Area 01"></div>
-            <div class="marker" style="left: 14.02%; top: 56.69%; width: 10px; height: 10px;" 
-                data-img="wed.jpg" data-caption="Equipment Depot Seal Islands"></div>
-            <div class="marker" style="left: 25.6%; top: 33.81%; width: 10px; height: 10px;" 
-                data-img="cave1.jpg" data-caption="Cave Hideout Whalers Bay"></div>
-            <div class="marker" style="left: 47.15%; top: 79.46%; width: 10px; height: 10px;" 
-                data-img="outcastfob.jpg" data-caption="Outcast FOB (Only on Conquest Mode)"></div>
-            <div class="marker" style="left: 56.09%; top: 32.52%; width: 10px; height: 10px;" 
-                data-img="erewhon.jpg" data-caption="Erewhon Mount Hodgson"></div>
-            <div class="marker" style="left: 25.98%; top: 82.64%; width: 10px; height: 10px;" 
-                data-img="southcape.jpg" data-caption="South Cape Station Windy Islands"></div>
-            <div class="marker" style="left: 63.92%; top: 77.16%; width: 10px; height: 10px;" 
-                data-img="egg.jpg" data-caption="Egg Island Safehouse"></div>
+  <div class="tactical-grid"></div>
+  <div class="scanline"></div>
+
+  <header>
+    <h1>Tactical Field Hideouts</h1>
+  </header>
+
+  <main>
+    <div class="hideout-grid">
+
+      <!-- Golem Food And Supplies Overwatch Tower -->
+      <div class="hideout-card">
+        <div class="card-header">
+          <span class="card-title">Golem Sector 1 Tower Food Water C4 Ammo</span>
+          <span class="card-coord">LOC 01</span>
         </div>
+        <div class="card-media">
+          <div class="media-container" onclick="openOverlay('Golem Food And Supplies Overwatch Tower .jpg', 'Golem Sector 1 Tower Food Water C4 Ammo', 'Site View')">
+            <img src="Golem Food And Supplies Overwatch Tower .jpg" alt="Golem Sector 1 Overwatch Tower View">
+            <span class="media-badge">Site View</span>
+          </div>
+          <div class="media-container" onclick="openOverlay('19ed72f3f2c61-screenshotUrl.jpg', 'Golem Sector 1 Tower Food Water C4 Ammo', 'Tactical Map')">
+            <img src="19ed72f3f2c61-screenshotUrl.jpg" alt="Golem Sector 1 Overwatch Tower Map">
+            <span class="media-badge map-badge">Tactical Map</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Golem Sector 3 Bunker -->
+      <div class="hideout-card">
+        <div class="card-header">
+          <span class="card-title">Golem Sector 3 Bunker</span>
+          <span class="card-coord">LOC 02</span>
+        </div>
+        <div class="card-media">
+          <div class="media-container" onclick="openOverlay('19ed72f597445-screenshotUrl.jpg', 'Golem Sector 3 Bunker', 'Site View')">
+            <img src="19ed72f597445-screenshotUrl.jpg" alt="Golem Sector 3 Bunker View">
+            <span class="media-badge">Site View</span>
+          </div>
+          <div class="media-container" onclick="openOverlay('golem sector 3 bunker.jpg', 'Golem Sector 3 Bunker', 'Tactical Map')">
+            <img src="golem sector 3 bunker.jpg" alt="Golem Sector 3 Bunker Map">
+            <span class="media-badge map-badge">Tactical Map</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Golem Sector 1 4-Story Deep Bunker -->
+      <div class="hideout-card">
+        <div class="card-header">
+          <span class="card-title">Golem Sector 1 4-Story Deep Bunker</span>
+          <span class="card-coord">LOC 03</span>
+        </div>
+        <div class="card-media">
+          <div class="media-container" onclick="openOverlay('golem sector 1 4 story bunker.jpg', 'Golem Sector 1 4-Story Deep Bunker', 'Site View')">
+            <img src="golem sector 1 4 story bunker.jpg" alt="Golem Sector 1 4-Story Deep Bunker View">
+            <span class="media-badge">Site View</span>
+          </div>
+          <div class="media-container" onclick="openOverlay('4 story deep bunker map.jpg', 'Golem Sector 1 4-Story Deep Bunker', 'Tactical Map')">
+            <img src="4 story deep bunker map.jpg" alt="4 Story Deep Bunker Map">
+            <span class="media-badge map-badge">Tactical Map</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cape North Safehouse -->
+      <div class="hideout-card">
+        <div class="card-header">
+          <span class="card-title">Cape North Safehouse</span>
+          <span class="card-coord">LOC 04</span>
+        </div>
+        <div class="card-media">
+          <div class="media-container" onclick="openOverlay('cape north safehouse.jpg', 'Cape North Safehouse', 'Site View')">
+            <img src="cape north safehouse.jpg" alt="Cape North Safehouse View">
+            <span class="media-badge">Site View</span>
+          </div>
+          <div class="media-container" onclick="openOverlay('Cape North Safehouse map.jpg', 'Cape North Safehouse', 'Tactical Map')">
+            <img src="Cape North Safehouse map.jpg" alt="Cape North Safehouse Map">
+            <span class="media-badge map-badge">Tactical Map</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Russell Homestead -->
+      <div class="hideout-card">
+        <div class="card-header">
+          <span class="card-title">Sinking Country Russell Homestead</span>
+          <span class="card-coord">LOC 05</span>
+        </div>
+        <div class="card-media">
+          <div class="media-container" onclick="openOverlay('russell.jpg', 'Sinking Country Russell Homestead', 'Site View')">
+            <img src="russell.jpg" alt="Russell Homestead View">
+            <span class="media-badge">Site View</span>
+          </div>
+          <div class="media-container" onclick="openOverlay('Russel Homestead Map.jpg', 'Sinking Country Russell Homestead', 'Tactical Map')">
+            <img src="Russel Homestead Map.jpg" alt="Russell Homestead Map">
+            <span class="media-badge map-badge">Tactical Map</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schulz Homestead -->
+      <div class="hideout-card">
+        <div class="card-header">
+          <span class="card-title">Sinking Country Schulz Homestead</span>
+          <span class="card-coord">LOC 06</span>
+        </div>
+        <div class="card-media">
+          <div class="media-container" onclick="openOverlay('schulz.jpg', 'Sinking Country Schulz Homestead', 'Site View')">
+            <img src="schulz.jpg" alt="Schulz Homestead View">
+            <span class="media-badge">Site View</span>
+          </div>
+          <div class="media-container" onclick="openOverlay('Shulz Homestead Map.jpg', 'Sinking Country Schulz Homestead', 'Tactical Map')">
+            <img src="Shulz Homestead Map.jpg" alt="Schulz Homestead Map">
+            <span class="media-badge map-badge">Tactical Map</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sinking Country TOC -->
+      <div class="hideout-card">
+        <div class="card-header">
+          <span class="card-title">Sinking Country TOC</span>
+          <span class="card-coord">LOC 07</span>
+        </div>
+        <div class="card-media">
+          <div class="media-container" onclick="openOverlay('sinking country TOC .jpg', 'Sinking Country TOC', 'Site View')">
+            <img src="sinking country TOC .jpg" alt="Sinking Country TOC View">
+            <span class="media-badge">Site View</span>
+          </div>
+          <div class="media-container" onclick="openOverlay('sinking country TOC MAP.jpg', 'Sinking Country TOC', 'Tactical Map')">
+            <img src="sinking country TOC MAP.jpg" alt="Sinking Country TOC Map">
+            <span class="media-badge map-badge">Tactical Map</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Outcast Makeshift Runway -->
+      <div class="hideout-card">
+        <div class="card-header">
+          <span class="card-title">Wild Coast Makeshift Runway</span>
+          <span class="card-coord">LOC 08</span>
+        </div>
+        <div class="card-media">
+          <div class="media-container" onclick="openOverlay('makeshift runway.jpg', 'Wild Coast Makeshift Runway', 'Site View')">
+            <img src="makeshift runway.jpg" alt="Makeshift Runway View">
+            <span class="media-badge">Site View</span>
+          </div>
+          <div class="media-container" onclick="openOverlay('Outcast Makeshift Runway Map.jpg', 'Wild Coast Makeshift Runway', 'Tactical Map')">
+            <img src="Outcast Makeshift Runway Map.jpg" alt="Makeshift Runway Map">
+            <span class="media-badge map-badge">Tactical Map</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summers Homestead -->
+      <div class="hideout-card">
+        <div class="card-header">
+          <span class="card-title">Fen Bog Summers Homestead</span>
+          <span class="card-coord">LOC 09</span>
+        </div>
+        <div class="card-media">
+          <div class="media-container" onclick="openOverlay('summers.jpg', 'Fen Bog Summers Homestead', 'Site View')">
+            <img src="summers.jpg" alt="Summers Homestead View">
+            <span class="media-badge">Site View</span>
+          </div>
+          <div class="media-container" onclick="openOverlay('Summers Homestead Map.jpg', 'Fen Bog Summers Homestead', 'Tactical Map')">
+            <img src="Summers Homestead Map.jpg" alt="Summers Homestead Map">
+            <span class="media-badge map-badge">Tactical Map</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Harris Homestead -->
+      <div class="hideout-card">
+        <div class="card-header">
+          <span class="card-title">Fen Bog Harris Homestead</span>
+          <span class="card-coord">LOC 10</span>
+        </div>
+        <div class="card-media">
+          <div class="media-container" onclick="openOverlay('harris homestead.jpg', 'Fen Bog Harris Homestead', 'Site View')">
+            <img src="harris homestead.jpg" alt="Harris Homestead View">
+            <span class="media-badge">Site View</span>
+          </div>
+          <div class="media-container" onclick="openOverlay('Harris map.jpg', 'Fen Bog Harris Homestead', 'Tactical Map')">
+            <img src="Harris map.jpg" alt="Harris Homestead Map">
+            <span class="media-badge map-badge">Tactical Map</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Luxury Whalers Bay Cave -->
+      <div class="hideout-card">
+        <div class="card-header">
+          <span class="card-title">Whalers Bay Luxury Cave</span>
+          <span class="card-coord">LOC 11</span>
+        </div>
+        <div class="card-media">
+          <div class="media-container" onclick="openOverlay('luxury cave.jpg', 'Whalers Bay Luxury Cave', 'Site View')">
+            <img src="luxury cave.jpg" alt="Luxury Cave View">
+            <span class="media-badge">Site View</span>
+          </div>
+          <div class="media-container" onclick="openOverlay('Luxury Whalers Bay Cave Map.jpg', 'Whalers Bay Luxury Cave', 'Tactical Map')">
+            <img src="Luxury Whalers Bay Cave Map.jpg" alt="Luxury Cave Map">
+            <span class="media-badge map-badge">Tactical Map</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brown Homestead -->
+      <div class="hideout-card">
+        <div class="card-header">
+          <span class="card-title">New Argyll Brown Homestead</span>
+          <span class="card-coord">LOC 12</span>
+        </div>
+        <div class="card-media">
+          <div class="media-container" onclick="openOverlay('brown.jpg', 'New Argyll Brown Homestead', 'Site View')">
+            <img src="brown.jpg" alt="Brown Homestead View">
+            <span class="media-badge">Site View</span>
+          </div>
+          <div class="media-container" onclick="openOverlay('Brown Homestead Map.jpg', 'New Argyll Brown Homestead', 'Tactical Map')">
+            <img src="Brown Homestead Map.jpg" alt="Brown Homestead Map">
+            <span class="media-badge map-badge">Tactical Map</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Windward Equipment Depot -->
+      <div class="hideout-card">
+        <div class="card-header">
+          <span class="card-title">Channels Equipment Depot</span>
+          <span class="card-coord">LOC 13</span>
+        </div>
+        <div class="card-media">
+          <div class="media-container" onclick="openOverlay('wed.jpg', 'Channels Equipment Depot', 'Site View')">
+            <img src="wed.jpg" alt="Windward Equipment Depot View">
+            <span class="media-badge">Site View</span>
+          </div>
+          <div class="media-container" onclick="openOverlay('channels equipment depot map.jpg', 'Channels Equipment Depot', 'Tactical Map')">
+            <img src="channels equipment depot map.jpg" alt="Windward Equipment Depot Map">
+            <span class="media-badge map-badge">Tactical Map</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Channels Bunker / Bunker 1 -->
+      <div class="hideout-card">
+        <div class="card-header">
+          <span class="card-title">Channels Bunker</span>
+          <span class="card-coord">LOC 14</span>
+        </div>
+        <div class="card-media">
+          <div class="media-container" onclick="openOverlay('bunker1.jpg', 'Channels Bunker', 'Site View')">
+            <img src="bunker1.jpg" alt="Bunker View">
+            <span class="media-badge">Site View</span>
+          </div>
+          <div class="media-container" onclick="openOverlay('channels bunker map.jpg', 'Channels Bunker', 'Tactical Map')">
+            <img src="channels bunker map.jpg" alt="Channels Bunker Map">
+            <span class="media-badge map-badge">Tactical Map</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deep Bunker / Bunker 2 -->
+      <div class="hideout-card">
+        <div class="card-header">
+          <span class="card-title">RA01 Shelter Bunker</span>
+          <span class="card-coord">LOC 15</span>
+        </div>
+        <div class="card-media">
+          <div class="media-container" onclick="openOverlay('bunker2.jpg', 'RA01 Shelter Bunker', 'Site View')">
+            <img src="bunker2.jpg" alt="Bunker 2 View">
+            <span class="media-badge">Site View</span>
+          </div>
+          <div class="media-container" onclick="openOverlay('RA01 bunker map.jpg', 'RA01 Shelter Bunker', 'Tactical Map')">
+            <img src="RA01 bunker map.jpg" alt="RA01 Bunker Map">
+            <span class="media-badge map-badge">Tactical Map</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conquest mode Liberty FOB -->
+      <div class="hideout-card">
+        <div class="card-header">
+          <span class="card-title">Liberty Conquest Mode FOB</span>
+          <span class="card-coord">LOC 16</span>
+        </div>
+        <div class="card-media">
+          <div class="media-container" onclick="openOverlay('conquest mode liberty fob .jpg', 'Liberty Conquest Mode FOB', 'Site View')">
+            <img src="conquest mode liberty fob .jpg" alt="Liberty FOB View">
+            <span class="media-badge">Site View</span>
+          </div>
+          <div class="media-container" onclick="openOverlay('Conquest mode Liberty FOB MAP.jpg', 'Liberty Conquest Mode FOB', 'Tactical Map')">
+            <img src="Conquest mode Liberty FOB MAP.jpg" alt="Liberty FOB Map">
+            <span class="media-badge map-badge">Tactical Map</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Egg Island Cabin -->
+      <div class="hideout-card">
+        <div class="card-header">
+          <span class="card-title">Egg Island Cabin</span>
+          <span class="card-coord">LOC 17</span>
+        </div>
+        <div class="card-media">
+          <div class="media-container" onclick="openOverlay('egg island cabinn.jpg', 'Egg Island Cabin', 'Site View')">
+            <img src="egg island cabinn.jpg" alt="Egg Island Cabin View">
+            <span class="media-badge">Site View</span>
+          </div>
+          <div class="media-container" onclick="openOverlay('egg island cabin map.jpg', 'Egg Island Cabin', 'Tactical Map')">
+            <img src="egg island cabin map.jpg" alt="Egg Island Cabin Map">
+            <span class="media-badge map-badge">Tactical Map</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- South Cape Station -->
+      <div class="hideout-card">
+        <div class="card-header">
+          <span class="card-title">Windy Islands South Cape Station</span>
+          <span class="card-coord">LOC 18</span>
+        </div>
+        <div class="card-media">
+          <div class="media-container" onclick="openOverlay('southcape.jpg', 'Windy Islands South Cape Station', 'Site View')">
+            <img src="southcape.jpg" alt="South Cape Station View">
+            <span class="media-badge">Site View</span>
+          </div>
+          <div class="media-container" onclick="openOverlay('soutch cape map.jpg', 'Windy Islands South Cape Station', 'Tactical Map')">
+            <img src="soutch cape map.jpg" alt="South Cape Station Map">
+            <span class="media-badge map-badge">Tactical Map</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  <!-- FULLSCREEN INTERACTIVE ZOOM OVERLAY -->
+  <div id="overlay" class="overlay">
+    <div class="overlay-header">
+      <div class="overlay-title-wrapper">
+        <div id="overlay-title" class="overlay-title">Site View</div>
+        <div id="overlay-subtitle" class="overlay-subtitle">Tactical Asset</div>
+      </div>
+      <div class="overlay-controls">
+        <button class="btn-control" onclick="zoomIn()">Zoom In (+)</button>
+        <button class="btn-control" onclick="zoomOut()">Zoom Out (-)</button>
+        <button class="btn-control" onclick="resetZoom()">Reset (1:1)</button>
+        <button class="btn-control btn-close" onclick="closeOverlay()">Close [Esc]</button>
+      </div>
     </div>
 
-    <div id="overlay" onclick="closeOverlay()">
-        <img id="overlay-img" src="" alt="Intel View">
-        <div id="overlay-caption"></div>
+    <div class="zoom-viewport" id="zoom-viewport">
+      <img id="zoom-image" class="zoom-image" src="" alt="Zoomable Field Intel">
     </div>
 
-    <script>
-        // 1. OVERLAY LOGIC
-        function openOverlay(imageSrc, captionText) {
-            const overlay = document.getElementById('overlay');
-            const img = document.getElementById('overlay-img');
-            const caption = document.getElementById('overlay-caption');
-            
-            // Set source and caption
-            img.src = imageSrc || 'placeholder.jpg';
-            caption.innerText = captionText || 'CLASSIFIED INTEL';
-            
-            // Show overlay
-            overlay.style.display = 'flex';
-        }
+    <div class="interaction-hint">
+      Desktop: <span>Scroll Wheel</span> to zoom, <span>Click &amp; Drag</span> to pan.<br>
+      Mobile: <span>Pinch</span> to zoom, <span>Drag</span> to pan.
+    </div>
+  </div>
 
-        function closeOverlay() {
-            document.getElementById('overlay').style.display = 'none';
-            document.getElementById('overlay-img').src = '';
-        }
+  <script>
+    // Zooming and Panning State
+    let scale = 1;
+    let translateX = 0;
+    let translateY = 0;
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
 
-        // 2. INITIALIZATION (Read Only Mode)
-        window.onload = function() {
-            const markers = document.querySelectorAll('.marker');
-            
-            markers.forEach(marker => {
-                // Attach simple click event only
-                marker.onclick = function() {
-                    openOverlay(marker.dataset.img, marker.dataset.caption);
-                };
-            });
-        };
-    </script>
+    // Mobile Pinch-to-Zoom State
+    let startDist = 0;
+    let startScale = 1;
+    let startMidX = 0;
+    let startMidY = 0;
+    let startTransX = 0;
+    let startTransY = 0;
 
+    const overlay = document.getElementById('overlay');
+    const zoomImg = document.getElementById('zoom-image');
+    const zoomViewport = document.getElementById('zoom-viewport');
+    const overlayTitle = document.getElementById('overlay-title');
+    const overlaySubtitle = document.getElementById('overlay-subtitle');
+
+    // Zoom limits
+    const MIN_SCALE = 0.5;
+    const MAX_SCALE = 8;
+
+    function openOverlay(src, siteName, type) {
+      zoomImg.src = src;
+      overlayTitle.textContent = siteName;
+      overlaySubtitle.textContent = type + ' — File: ' + src;
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Prevent page scrolling
+      resetZoom();
+    }
+
+    function closeOverlay() {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function updateTransform() {
+      zoomImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+    }
+
+    function resetZoom() {
+      scale = 1;
+      translateX = 0;
+      translateY = 0;
+      updateTransform();
+    }
+
+    function zoomIn() {
+      adjustScale(1.3);
+    }
+
+    function zoomOut() {
+      adjustScale(0.7);
+    }
+
+    function adjustScale(factor, targetX, targetY) {
+      const oldScale = scale;
+      scale = Math.min(Math.max(scale * factor, MIN_SCALE), MAX_SCALE);
+      
+      // If we zoomed relative to a target point (e.g. mouse cursor or pinch center)
+      if (targetX !== undefined && targetY !== undefined) {
+        // Calculate target relative to image coordinate system
+        const rect = zoomImg.getBoundingClientRect();
+        
+        // Find click coordinate offset relative to current transformation
+        const dx = targetX - (rect.left + rect.width / 2);
+        const dy = targetY - (rect.top + rect.height / 2);
+        
+        // Offset shift logic to keep target under cursor
+        translateX -= dx * (scale / oldScale - 1);
+        translateY -= dy * (scale / oldScale - 1);
+      }
+      
+      updateTransform();
+    }
+
+    // DESKTOP: Mouse Wheel Zoom
+    zoomViewport.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const zoomFactor = e.deltaY < 0 ? 1.15 : 0.85;
+      adjustScale(zoomFactor, e.clientX, e.clientY);
+    }, { passive: false });
+
+    // DESKTOP & MOBILE: Mouse/Touch Pan and Pinch Zoom
+    
+    // Mouse Down
+    zoomViewport.addEventListener('mousedown', (e) => {
+      if (e.button !== 0) return; // Only left click
+      isDragging = true;
+      startX = e.clientX - translateX;
+      startY = e.clientY - translateY;
+      zoomViewport.style.cursor = 'grabbing';
+      e.preventDefault();
+    });
+
+    // Mouse Move
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      translateX = e.clientX - startX;
+      translateY = e.clientY - startY;
+      updateTransform();
+    });
+
+    // Mouse Up
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+      zoomViewport.style.cursor = 'grab';
+    });
+
+    // Close on ESC
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeOverlay();
+      }
+    });
+
+    // Get distance between two touches
+    function getDistance(t1, t2) {
+      return Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
+    }
+
+    // Get midpoint of two touches
+    function getMidpoint(t1, t2) {
+      return {
+        x: (t1.clientX + t2.clientX) / 2,
+        y: (t1.clientY + t2.clientY) / 2
+      };
+    }
+
+    // Touch events for Mobile Pinch & Drag
+    zoomViewport.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        // Single touch -> pan
+        isDragging = true;
+        startX = e.touches[0].clientX - translateX;
+        startY = e.touches[0].clientY - translateY;
+      } else if (e.touches.length === 2) {
+        // Multi touch -> pinch zoom
+        isDragging = false; // Disable panning logic for single touch
+        startDist = getDistance(e.touches[0], e.touches[1]);
+        startScale = scale;
+        
+        const mid = getMidpoint(e.touches[0], e.touches[1]);
+        startMidX = mid.x;
+        startMidY = mid.y;
+        startTransX = translateX;
+        startTransY = translateY;
+      }
+    }, { passive: true });
+
+    zoomViewport.addEventListener('touchmove', (e) => {
+      if (e.touches.length === 1 && isDragging) {
+        // Pan
+        translateX = e.touches[0].clientX - startX;
+        translateY = e.touches[0].clientY - startY;
+        updateTransform();
+      } else if (e.touches.length === 2) {
+        // Pinch Zoom
+        const dist = getDistance(e.touches[0], e.touches[1]);
+        const mid = getMidpoint(e.touches[0], e.touches[1]);
+        
+        // Calculate scale ratio
+        const scaleRatio = dist / startDist;
+        const newScale = Math.min(Math.max(startScale * scaleRatio, MIN_SCALE), MAX_SCALE);
+        
+        // Perform zoom relative to midpoint
+        const oldScale = scale;
+        scale = newScale;
+
+        // Midpoint translation offset
+        const dx = mid.x - startMidX;
+        const dy = mid.y - startMidY;
+
+        // Apply shift relative to pinch midpoint
+        const zoomDeltaRatio = scale / oldScale;
+        translateX = startTransX + dx;
+        translateY = startTransY + dy;
+        
+        updateTransform();
+      }
+    }, { passive: true });
+
+    zoomViewport.addEventListener('touchend', (e) => {
+      if (e.touches.length === 0) {
+        isDragging = false;
+      } else if (e.touches.length === 1) {
+        // Reset pan coordinates for remaining single finger
+        isDragging = true;
+        startX = e.touches[0].clientX - translateX;
+        startY = e.touches[0].clientY - translateY;
+      }
+    });
+
+  </script>
 </body>
 </html>
