@@ -384,13 +384,11 @@
       padding: 1rem;
     }
 
-    .principle-media,
     .principle-content,
     .principle-actions {
       min-width: 0;
     }
 
-    .principle-media,
     .principle-actions {
       display: grid;
       justify-items: center;
@@ -403,10 +401,10 @@
     }
 
     .principle-logo {
-      width: min(11rem, 48vw);
+      display: block;
+      width: min(18rem, 70vw);
+      margin: 0 auto clamp(0.2rem, 0.8vw, 0.45rem);
       aspect-ratio: 1;
-      justify-self: center;
-      align-self: center;
       filter: drop-shadow(0 1rem 1.6rem rgba(0, 0, 0, 0.45));
     }
 
@@ -612,6 +610,67 @@
       margin: 0.5rem auto 0;
       border: 1px solid var(--line-soft);
       background: #050807;
+    }
+
+    .sps-video-panel {
+      display: grid;
+      gap: 1rem;
+      justify-items: center;
+      width: 100%;
+      margin-top: 1.25rem;
+      padding: clamp(0.6rem, 2vw, 1rem);
+    }
+
+    .sps-video-shell {
+      position: relative;
+      width: min(100%, 58rem);
+      overflow: hidden;
+      border: 1px solid var(--line-soft);
+      background: #050807;
+      box-shadow: 0 1rem 2.4rem rgba(0, 0, 0, 0.38);
+    }
+
+    .sps-video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #050807;
+      object-fit: contain;
+    }
+
+    .sps-video-play {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      border: 0;
+      background:
+        linear-gradient(180deg, rgba(5, 8, 7, 0.18), rgba(5, 8, 7, 0.62));
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .sps-video-play .icon {
+      --size: clamp(3.4rem, 12vw, 6.5rem);
+      display: grid;
+      place-items: center;
+      width: clamp(5rem, 16vw, 8.5rem);
+      height: clamp(5rem, 16vw, 8.5rem);
+      border: 1px solid rgba(229, 230, 203, 0.8);
+      border-radius: 999px;
+      background: rgba(32, 41, 22, 0.84);
+      box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.45);
+    }
+
+    .sps-video-play:hover,
+    .sps-video-play:focus-visible {
+      outline: none;
+      background:
+        linear-gradient(180deg, rgba(5, 8, 7, 0.05), rgba(5, 8, 7, 0.5));
+    }
+
+    .sps-video-shell.is-playing .sps-video-play {
+      display: none;
     }
 
     .media-label {
@@ -1225,7 +1284,7 @@
     }
 
     .section:first-of-type {
-      padding-top: clamp(2rem, 5vw, 4.75rem);
+      padding-top: clamp(1rem, 3vw, 2rem);
     }
 
     .section-head {
@@ -1260,6 +1319,8 @@
     .kit-card,
     .guide-media,
     .guide-video,
+    .sps-video-panel,
+    .sps-video-shell,
     .guide-embed,
     .comms-card,
     .status-times,
@@ -1315,11 +1376,13 @@
     }
 
     .principle-logo {
-      width: min(12.5rem, 54vw);
+      width: min(20rem, 72vw);
     }
 
     .image-zoom.principle-logo {
-      width: min(12.5rem, 54vw);
+      width: min(20rem, 72vw);
+      border: 0;
+      background: transparent;
     }
 
     .principle p {
@@ -1531,36 +1594,26 @@
       }
 
       .principle {
-        grid-template-columns: minmax(13.5rem, 0.34fr) minmax(0, 1fr);
-        align-items: stretch;
-        column-gap: clamp(1.35rem, 3vw, 2.6rem);
+        grid-template-columns: 1fr;
+        justify-items: center;
         padding: clamp(1.25rem, 2.4vw, 2rem);
       }
 
-      .principle-media {
-        grid-column: 1;
-        grid-row: 1 / span 2;
-        align-content: center;
-        padding: clamp(0.9rem, 2vw, 1.35rem);
-        border: 1px solid var(--line-soft);
-        border-radius: var(--radius);
-        background: rgba(8, 13, 11, 0.34);
-      }
-
       .principle-content {
-        grid-column: 2;
-        grid-row: 1;
+        grid-column: 1;
+        grid-row: auto;
         align-content: center;
       }
 
       .principle-actions {
-        grid-column: 2;
-        grid-row: 2;
-        display: flex;
-        flex-wrap: wrap;
+        grid-column: 1;
+        grid-row: auto;
+        width: 100%;
+        display: grid;
         align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
+        justify-items: center;
+        justify-content: center;
+        gap: 0.75rem;
         padding-top: clamp(0.8rem, 1.8vw, 1.15rem);
         border-top: 1px solid var(--line-soft);
       }
@@ -1581,7 +1634,7 @@
       }
 
       .principle {
-        grid-template-columns: minmax(15rem, 0.32fr) minmax(0, 1fr);
+        grid-template-columns: 1fr;
       }
 
       #tactical .guide-card,
@@ -1826,19 +1879,25 @@
     </div>
 
     <section class="section" id="principle" aria-labelledby="principle-title">
+      <button class="image-zoom principle-logo" type="button" aria-label="Open GBTF patch">
+        <img src="unitlogo.png" alt="GBTF patch">
+      </button>
       <div class="section-head">
         <span class="section-kicker">Unit Philosophy</span>
         <span class="icon icon-lg" style="--icon: url('icons/node_modules/bootstrap-icons/icons/compass.svg');" aria-hidden="true"></span>
         <h2 id="principle-title">Overview</h2>
       </div>
       <div class="panel principle">
-        <div class="principle-media">
-          <button class="image-zoom principle-logo" type="button" aria-label="Open GBTF patch">
-            <img src="unitlogo.png" alt="GBTF patch">
-          </button>
-        </div>
         <div class="principle-content">
           <p>GBTF is a Ghost Recon Breakpoint community, occasionally active in other games, offering a streamlined, player-first TACSIM experience built around realism, teamwork, and freedom. There is no mandatory training, micromanagement, or restrictions on gear, weapons, classes, or game settings, operators are free to enjoy everything the game has to offer. We simply expect members to communicate, coordinate, and approach each operation with a realistic tactical mindset. With more than 100 custom operations, advanced immersion tools, detailed self-paced guides, and a friendly yet professional community, GBTF welcomes both new and experienced players seeking authentic special forces gameplay. Welcome home, Operator. Respect. Integrity. Honor.</p>
+          <div class="sps-video-panel" aria-label="GBTF SPS video">
+            <div class="sps-video-shell">
+              <video class="sps-video" id="sps-presentation-video" src="GBTF_SPS.mp4" poster="vidpreviewimage.jpg" preload="metadata" playsinline aria-label="GBTF SPS presentation video"></video>
+              <button class="sps-video-play" type="button" aria-label="Play GBTF SPS video with audio in fullscreen">
+                <span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/play-fill.svg');" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
         </div>
         <div class="principle-actions">
           <a class="button" href="https://discord.com/invite/BXvQFwBq8z" target="_blank" rel="noopener noreferrer" aria-label="Join us on Discord"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/discord.svg');"></span>Join us on Discord</a>
@@ -2190,6 +2249,9 @@ Roger, Jester copies. CAS inbound. Will standby for final heading. Jester out.</
     const overlayClose = overlay.querySelector(".image-overlay-close");
     const overlayPrev = overlay.querySelector(".image-overlay-prev");
     const overlayNext = overlay.querySelector(".image-overlay-next");
+    const spsVideo = document.querySelector("#sps-presentation-video");
+    const spsVideoShell = document.querySelector(".sps-video-shell");
+    const spsVideoPlay = document.querySelector(".sps-video-play");
     const statusTimes = [
       { id: "pacific-time", zone: "America/Los_Angeles", fallbackLabel: "PDT" },
       { id: "eastern-time", zone: "America/New_York", fallbackLabel: "EDT" },
@@ -2233,6 +2295,47 @@ Roger, Jester copies. CAS inbound. Will standby for final heading. Jester out.</
         closeMenu();
       }
     });
+
+    const enterVideoFullscreen = async (video) => {
+      try {
+        if (video.requestFullscreen) {
+          await video.requestFullscreen();
+        } else if (video.webkitEnterFullscreen) {
+          video.webkitEnterFullscreen();
+        }
+      } catch (error) {
+        // Fullscreen can be blocked by browser policy; playback should still continue.
+      }
+    };
+
+    const playSpsVideo = async () => {
+      if (!spsVideo) {
+        return;
+      }
+
+      spsVideo.muted = false;
+      spsVideo.defaultMuted = false;
+      spsVideo.volume = 1;
+      spsVideo.controls = true;
+      spsVideoShell.classList.add("is-playing");
+      const playPromise = spsVideo.play();
+      const fullscreenPromise = enterVideoFullscreen(spsVideo);
+
+      try {
+        await playPromise;
+      } catch (error) {
+        spsVideoShell.classList.remove("is-playing");
+      }
+
+      await fullscreenPromise;
+    };
+
+    if (spsVideo && spsVideoPlay && spsVideoShell) {
+      spsVideoPlay.addEventListener("click", playSpsVideo);
+      spsVideo.addEventListener("ended", () => {
+        spsVideoShell.classList.remove("is-playing");
+      });
+    }
 
     let activeImages = [];
     let currentImageIndex = -1;
