@@ -1062,6 +1062,7 @@
     zoomViewport.addEventListener('touchend', (e) => {
       if (e.touches.length === 0) {
         if (isDragging && !touchDragged) {
+          e.preventDefault();
           closeOverlay();
         }
         isDragging = false;
