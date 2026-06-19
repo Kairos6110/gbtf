@@ -2483,11 +2483,21 @@ Roger, Jester copies. CAS inbound. Will standby for final heading. Jester out.</
       updateOverlayImage();
     };
 
+    const getGalleryImageOrder = (img) => {
+      const galleryItem = img.closest(".gallery-item");
+      if (!galleryItem) return 0;
+
+      const order = Number.parseInt(window.getComputedStyle(galleryItem).order, 10);
+      return Number.isNaN(order) ? 0 : order;
+    };
+
     const openOverlay = (clickedImg, groupSelector) => {
       if (groupSelector) {
         activeImages = Array.from(document.querySelectorAll(groupSelector));
         if (groupSelector.includes("gallery-grid")) {
-          activeImages = activeImages.filter((img) => img.complete && img.naturalWidth > 0);
+          activeImages = activeImages
+            .filter((img) => img.complete && img.naturalWidth > 0)
+            .sort((firstImg, secondImg) => getGalleryImageOrder(firstImg) - getGalleryImageOrder(secondImg));
         }
       } else {
         activeImages = [clickedImg];
