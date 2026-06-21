@@ -1892,8 +1892,8 @@
           <p>GBTF is a Ghost Recon Breakpoint community, occasionally active in other games, offering a streamlined, player-first TACSIM experience built around realism, teamwork, and freedom. There is no mandatory training, micromanagement, or restrictions on gear, weapons, classes, or game settings, operators are free to enjoy everything the game has to offer. We simply expect members to communicate, coordinate, and approach each operation with a realistic tactical mindset. With more than 100 custom operations, advanced immersion tools, detailed self-paced guides, and a friendly yet professional community, GBTF welcomes both new and experienced players seeking authentic special forces gameplay. Welcome home, Operator. Respect. Integrity. Honor.</p>
           <div class="sps-video-panel" aria-label="GBTF SPS video">
             <div class="sps-video-shell">
-              <video class="sps-video" id="sps-presentation-video" src="GBTF_SPS.mp4" poster="vidpreviewimage.jpg" preload="metadata" playsinline aria-label="GBTF SPS presentation video"></video>
-              <button class="sps-video-play" type="button" aria-label="Play GBTF SPS video with audio in fullscreen">
+              <video class="sps-video" id="sps-presentation-video" src="GBTF_PRES.mp4" poster="vidpreviewimage.jpg" preload="metadata" playsinline aria-label="GBTF SPS presentation video"></video>
+              <button class="sps-video-play" type="button" aria-label="Play GBTF presentation video with audio">
                 <span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/play-fill.svg');" aria-hidden="true"></span>
               </button>
             </div>
@@ -2296,18 +2296,6 @@ Roger, Jester copies. CAS inbound. Will standby for final heading. Jester out.</
       }
     });
 
-    const enterVideoFullscreen = async (video) => {
-      try {
-        if (video.requestFullscreen) {
-          await video.requestFullscreen();
-        } else if (video.webkitEnterFullscreen) {
-          video.webkitEnterFullscreen();
-        }
-      } catch (error) {
-        // Fullscreen can be blocked by browser policy; playback should still continue.
-      }
-    };
-
     const playSpsVideo = async () => {
       if (!spsVideo) {
         return;
@@ -2319,15 +2307,12 @@ Roger, Jester copies. CAS inbound. Will standby for final heading. Jester out.</
       spsVideo.controls = true;
       spsVideoShell.classList.add("is-playing");
       const playPromise = spsVideo.play();
-      const fullscreenPromise = enterVideoFullscreen(spsVideo);
 
       try {
         await playPromise;
       } catch (error) {
         spsVideoShell.classList.remove("is-playing");
       }
-
-      await fullscreenPromise;
     };
 
     if (spsVideo && spsVideoPlay && spsVideoShell) {
