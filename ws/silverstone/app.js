@@ -82,6 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
         activePage = pageNum;
         pageSelect.value = pageNum;
         
+        // Update URL hash to support sharing and browser history
+        if (window.location.hash !== `#page-${pageNum}`) {
+            history.replaceState(null, null, `#page-${pageNum}`);
+        }
+        
         // Show loading spinner and fade out image
         loadingSpinner.classList.add('active');
         pageImage.classList.remove('loaded');
@@ -271,8 +276,32 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', resetControlsTimeout);
     document.addEventListener('keydown', resetControlsTimeout);
 
+    // Helper to get page number from URL hash
+    function getPageFromHash() {
+        const hash = window.location.hash;
+        if (hash) {
+            const match = hash.match(/#page-(\d+)/);
+            if (match) {
+                const pageNum = parseInt(match[1], 10);
+                if (pageNum >= 1 && pageNum <= TOTAL_PAGES) {
+                    return pageNum;
+                }
+            }
+        }
+        return 1;
+    }
+
     // Init App
     initSelector();
-    loadPage(1);
+    const initialPage = getPageFromHash();
+    loadPage(initialPage);
     resetControlsTimeout();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', () => {
+        const pageNum = getPageFromHash();
+        if (pageNum !== activePage) {
+            loadPage(pageNum);
+        }
+    });
 });
