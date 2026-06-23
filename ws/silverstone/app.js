@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const TOTAL_PAGES = 73;
+    const TOTAL_PAGES = 154;
     const PAGES_DIR = 'pages';
     
     // UI Elements
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let touchStartDist = 0;
     let touchStartScale = 1;
 
-    // Helper to format page number (e.g., 01, 12, 73)
+    // Helper to format page number (e.g., 01, 12, 154)
     function formatPageNum(num) {
         return num.toString().padStart(2, '0');
     }
@@ -115,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Navigation triggers
     function goToNextPage() {
         if (activePage < TOTAL_PAGES) {
             loadPage(activePage + 1);
