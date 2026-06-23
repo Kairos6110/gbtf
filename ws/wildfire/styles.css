@@ -1,0 +1,207 @@
+:root {
+    --bg-color: #0b0c10;
+    --card-bg: rgba(22, 26, 35, 0.7);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-primary: #f3f4f6;
+    --text-muted: #9ca3af;
+    --accent-color: #ff6b35; /* Coral orange */
+    --accent-glow: rgba(255, 107, 53, 0.25);
+    --font-family: 'Outfit', sans-serif;
+    --transition-speed: 0.25s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Full Page Wrapper */
+.viewer-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Page Viewport */
+.page-viewport {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.page-display-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-img {
+    max-width: 90vw;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    background-color: #121318;
+    border: 1px solid var(--border-color);
+    display: block;
+    opacity: 0;
+    transform-origin: center center;
+    transition: opacity var(--transition-speed) ease-in-out, transform 0.1s ease-out;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.page-img.loaded {
+    opacity: 1;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255,255,255,0.05);
+    border-top-color: var(--accent-color);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    display: none;
+}
+
+.loading-spinner.active {
+    display: block;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Floating Clean Controls */
+.floating-controls {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color);
+    border-radius: 100px;
+    padding: 10px 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    transition: opacity 0.3s ease;
+}
+
+/* Auto-hide controls when mouse is inactive (optional, handled in JS) */
+.floating-controls.fade-out {
+    opacity: 0.1;
+}
+.floating-controls.fade-out:hover {
+    opacity: 1;
+}
+
+/* Control Buttons */
+.nav-btn, .action-btn {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-btn:hover, .action-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--accent-color);
+}
+
+.nav-btn:active, .action-btn:active {
+    transform: scale(0.9);
+}
+
+.control-divider {
+    width: 1px;
+    height: 20px;
+    background-color: var(--border-color);
+    margin: 0 5px;
+}
+
+/* Custom Minimal Dropdown Select */
+.page-selector-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.clean-select {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    text-align-last: center;
+}
+
+.clean-select:hover, .clean-select:focus {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.clean-select option {
+    background-color: #121318;
+    color: var(--text-primary);
+}
+
+.total-pages {
+    color: var(--text-muted);
+}
+
+/* Responsive adjustments */
+@media (max-height: 600px) {
+    .page-display-wrapper {
+        max-height: 80vh;
+    }
+    .floating-controls {
+        bottom: 15px;
+        padding: 6px 16px;
+    }
+}

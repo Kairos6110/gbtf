@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wildfire Document Viewer</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="minimal-theme">
+    <div class="viewer-container">
+        <!-- Main Document viewport displaying current page -->
+        <main class="page-viewport" id="pageViewport">
+            <div class="page-display-wrapper" id="pageDisplayWrapper">
+                <img id="currentPageImage" src="" alt="Wildfire Document Page" class="page-img">
+                <div class="loading-spinner" id="loadingSpinner"></div>
+            </div>
+        </main>
+
+        <!-- Floating Minimal Selector Panel -->
+        <div class="floating-controls">
+            <button class="nav-btn" id="prevPage" aria-label="Previous Page">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            
+            <div class="page-selector-wrapper">
+                <select id="pageSelect" class="clean-select" aria-label="Select Page">
+                    <!-- Options 1 to 73 will be injected dynamically -->
+                </select>
+                <span class="total-pages">/ 73</span>
+            </div>
+
+            <button class="nav-btn" id="nextPage" aria-label="Next Page">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <div class="control-divider"></div>
+
+            <button class="action-btn" id="toggleFullscreen" title="Toggle Fullscreen">
+                <i class="fa-solid fa-expand"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
