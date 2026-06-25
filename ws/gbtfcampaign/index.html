@@ -152,6 +152,37 @@
       text-transform: uppercase;
     }
 
+    @media (max-width: 48rem) {
+      .hud-header {
+        margin-top: 1rem;
+      }
+      .hud-branding {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding-bottom: 0.85rem;
+      }
+      .hud-title-group {
+        width: 100%;
+        gap: 0.75rem;
+      }
+      .hud-logo {
+        width: 2.25rem;
+        height: 2.25rem;
+      }
+      .hud-title-group h1 {
+        font-size: 1.15rem;
+        letter-spacing: 0.05em;
+      }
+      .hud-status-tag {
+        width: 100%;
+        text-align: center;
+        font-size: 0.65rem;
+        padding: 0.25rem 0.5rem;
+        box-sizing: border-box;
+      }
+    }
+
     /* Main Grid Layout */
     main {
       width: min(100%, var(--max));
@@ -782,20 +813,14 @@
   </header>
 
   <main>
-    <div class="status-times" aria-label="Current timezone status">
-      <span class="icon bi bi-clock-fill" aria-hidden="true" style="margin-right: 0.25rem;"></span>
-      <span class="status-time" id="pacific-time"></span>
-      <span class="status-time" id="eastern-time"></span>
-      <span class="status-time" id="zulu-time"></span>
-      <span class="status-time" id="berlin-time"></span>
-    </div>
+
 
     <div class="campaign-container">
       <!-- SIDEBAR -->
       <aside class="sidebar-panel">
         <div class="sidebar-title-row">
           <span class="icon bi bi-hdd-stack-fill" style="color: var(--olive-2);"></span>
-          <h2>Operation Matrix</h2>
+          <h2>Operation Orders</h2>
         </div>
 
         <div class="search-box-wrapper">
@@ -824,42 +849,6 @@
   <script src="campaign_data.js"></script>
 
   <script>
-    // Timezone clock setup
-    const statusTimes = [
-      { id: "pacific-time", zone: "America/Los_Angeles", fallbackLabel: "PDT" },
-      { id: "eastern-time", zone: "America/New_York", fallbackLabel: "EDT" },
-      { id: "zulu-time", zone: "UTC", fallbackLabel: "ZULU" },
-      { id: "berlin-time", zone: "Europe/Berlin", fallbackLabel: "CET" },
-    ];
-
-    const getTimeParts = (date, timeZone) => {
-      const parts = new Intl.DateTimeFormat("en-US", {
-        timeZone,
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false,
-        timeZoneName: "short",
-      }).formatToParts(date);
-      return Object.fromEntries(parts.map((part) => [part.type, part.value]));
-    };
-
-    const updateStatusTimes = () => {
-      const now = new Date();
-      statusTimes.forEach(({ id, zone, fallbackLabel }) => {
-        const target = document.querySelector(`#${id}`);
-        if (!target) return;
-        const parts = getTimeParts(now, zone);
-        const time = `${parts.hour}${parts.minute}`;
-        const label = zone === "UTC"
-          ? fallbackLabel
-          : (parts.timeZoneName || fallbackLabel).replace(/^GMT[+-]\d+$/, fallbackLabel);
-        target.textContent = `${time} ${label}`;
-      });
-    };
-
-    updateStatusTimes();
-    setInterval(updateStatusTimes, 60000);
-
     // PARSE AND LOAD CAMPAIGN DATA
     let operationsList = [];
     let sitrepData = "";
@@ -1296,6 +1285,12 @@
               <p style="font-size: 0.8rem; line-height: 1.5; color: var(--muted); margin-bottom: 0.75rem;">Mission tasks should be interpreted as <strong>operational intent</strong>, not rigid game mechanics. For example, if an objective says <strong>"Tag the containers with GPS beacons,"</strong> simply assume you've identified the correct containers through shipping manifests, captured intelligence, enemy interrogation, or other realistic means. Likewise, if ordered to <strong>"Capture the HVT,"</strong> you may designate <strong>any</strong> enemy present at the objective as the target—a rifleman, radio operator, breacher, or any other specialized enemy. The HVT doesn't have to be the "commander" unless you decide it is.</p>
               <p style="font-size: 0.8rem; line-height: 1.5; color: var(--muted); margin-bottom: 0.75rem;">The OPORD provides the complete operational framework, but <strong>you</strong> determine how events unfold on the ground. Adapt each mission, use sound tactical judgment, and fill in the small gaps with believable roleplay. Even a modest amount of imagination dramatically enhances the realism and immersion of the experience.</p>
               <p style="font-size: 0.8rem; line-height: 1.5; color: var(--muted); margin-bottom: 0;"><strong>Balanced realism and immersion</strong> are the foundation of this campaign. Treat every objective as a realistic mission directive, then bring it to life through your own execution. Enjoy the experience with your teammates!</p>
+            </div>
+
+            <div style="display: flex; justify-content: center; margin-top: 2rem; margin-bottom: 1rem;">
+              <button class="button" onclick="const idx = operationsList.findIndex(op => op.order === 1); if (idx !== -1) selectOperation(idx);" style="font-size: 0.95rem; padding: 0.8rem 2.5rem; letter-spacing: 0.08em; min-height: 3rem;">
+                <span class="bi bi-play-fill" style="font-size: 1.2rem; margin-right: 0.25rem;"></span> Start the Campaign
+              </button>
             </div>
           </div>
         </div>
