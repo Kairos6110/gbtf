@@ -1,0 +1,1353 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d0b">
+  <meta name="description" content="GBTF Auroa Operations Campaign Map and Briefing Dashboard.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GBTF Campaign">
+  <meta property="og:title" content="GBTF Campaign Briefing">
+  <meta property="og:description" content="Auroa Operation Briefing and Tactical Campaign Map for GBTF.">
+  <meta property="og:image" content="../OpenGraphImage.jpg">
+  <title>OPERATION BROKEN CROWN</title>
+  <link rel="icon" href="../unitlogo.png">
+  <link rel="stylesheet" href="../icons/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+  <style>
+    :root {
+      --bg: #080d0b;
+      --panel: #101713;
+      --panel-2: #151e18;
+      --ink: #f1eee0;
+      --muted: #bbb59f;
+      --olive: #7f8750;
+      --olive-2: #a5a866;
+      --line: rgba(165, 168, 102, 0.34);
+      --line-soft: rgba(241, 238, 224, 0.12);
+      --shadow: rgba(0, 0, 0, 0.6);
+      --danger: #c8b35d;
+      --accent-red: #ff3b30;
+      --max: 1200px;
+      --radius: 4px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 18% 8%, rgba(127, 135, 80, 0.18), transparent 26rem),
+        linear-gradient(180deg, rgba(16, 23, 19, 0.88), rgba(8, 13, 11, 0.97)),
+        var(--bg);
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+      line-height: 1.55;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(165, 168, 102, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(165, 168, 102, 0.025) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, black, transparent 88%);
+      pointer-events: none;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .icon {
+      --size: 1rem;
+      width: var(--size);
+      height: var(--size);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      color: currentColor;
+      font-size: var(--size);
+      line-height: 1;
+    }
+
+    .icon::before {
+      line-height: 1;
+    }
+
+    /* Standalone Header/HUD */
+    .hud-header {
+      width: min(100%, var(--max));
+      margin: 1.5rem auto 0;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .hud-branding {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 0.75rem;
+    }
+
+    .hud-title-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hud-logo {
+      width: 2.75rem;
+      height: 2.75rem;
+      object-fit: contain;
+    }
+
+    .hud-title-group h1 {
+      margin: 0;
+      font-size: 1.35rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink);
+    }
+
+    .hud-title-group p {
+      margin: 0;
+      font-size: 0.72rem;
+      color: var(--olive-2);
+      font-family: monospace;
+      letter-spacing: 0.05em;
+    }
+
+    .hud-status-tag {
+      font-family: monospace;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--danger);
+      background: rgba(200, 179, 93, 0.1);
+      border: 1px solid rgba(200, 179, 93, 0.3);
+      padding: 0.3rem 0.6rem;
+      border-radius: var(--radius);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* Main Grid Layout */
+    main {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .status-times {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.25rem;
+      align-items: center;
+      padding: 0.5rem 0.85rem;
+      border: 1px solid var(--line-soft);
+      background: rgba(16, 23, 19, 0.54);
+      font-family: monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.05em;
+      border-radius: var(--radius);
+    }
+
+    .status-times .icon {
+      color: var(--olive-2);
+    }
+
+    .status-time {
+      color: var(--muted);
+    }
+
+    /* Campaign Layout Structure */
+    .campaign-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      flex-grow: 1;
+    }
+
+    @media (min-width: 64rem) {
+      .campaign-container {
+        grid-template-columns: 320px 1fr;
+        align-items: start;
+      }
+    }
+
+    /* Sidebar Styles */
+    .sidebar-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      box-shadow: 0 4px 20px var(--shadow);
+    }
+
+    .sidebar-title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.75rem;
+    }
+
+    .sidebar-title-row h2 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+    }
+
+    .search-box-wrapper {
+      position: relative;
+    }
+
+    .search-box {
+      width: 100%;
+      background: rgba(8, 13, 11, 0.8);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      color: var(--ink);
+      padding: 0.6rem 1rem 0.6rem 2.2rem;
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-box:focus {
+      border-color: var(--olive-2);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .filter-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.25rem;
+      background: rgba(8, 13, 11, 0.4);
+      padding: 0.2rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--line-soft);
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.4rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      transition: all 0.2s;
+    }
+
+    .filter-btn.active {
+      background: var(--olive);
+      color: var(--ink);
+    }
+
+    .operation-list {
+      max-height: 270px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      padding-right: 0.25rem;
+    }
+
+    .operation-list::-webkit-scrollbar {
+      width: 4px;
+    }
+    .operation-list::-webkit-scrollbar-track {
+      background: rgba(8, 13, 11, 0.2);
+    }
+    .operation-list::-webkit-scrollbar-thumb {
+      background: var(--line);
+      border-radius: 2px;
+    }
+
+    .operation-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(21, 30, 24, 0.4);
+      border: 1px solid var(--line-soft);
+      padding: 0.65rem 0.85rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+
+    .operation-item:hover {
+      border-color: var(--olive-2);
+      background: rgba(32, 41, 22, 0.3);
+      transform: translateX(2px);
+    }
+
+    .operation-item.active {
+      border-color: var(--olive-2);
+      background: rgba(32, 41, 22, 0.7);
+      box-shadow: inset 3px 0 0 var(--olive-2);
+    }
+
+    .operation-num {
+      font-family: monospace;
+      font-weight: 800;
+      color: var(--olive-2);
+      background: rgba(165, 168, 102, 0.15);
+      width: 1.8rem;
+      height: 1.8rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+    }
+
+    .operation-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .operation-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .operation-callsign-sub {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .operation-type-badge {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      font-weight: 800;
+      padding: 0.15rem 0.35rem;
+      border-radius: 2px;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-mainland {
+      background: rgba(127, 135, 80, 0.2);
+      border: 1px solid rgba(127, 135, 80, 0.5);
+      color: var(--olive-2);
+    }
+
+    .badge-golem {
+      background: rgba(200, 179, 93, 0.15);
+      border: 1px solid rgba(200, 179, 93, 0.4);
+      color: var(--danger);
+    }
+
+    .badge-intro {
+      background: rgba(165, 168, 102, 0.15);
+      border: 1px solid rgba(165, 168, 102, 0.45);
+      color: var(--muted);
+    }
+
+    /* Content Area Styles */
+    .content-panel {
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .briefing-box {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      position: relative;
+      box-shadow: 0 4px 20px var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .briefing-box::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 4rem;
+      height: 4rem;
+      background: linear-gradient(135deg, transparent 45%, var(--line) 46%, var(--line) 50%, transparent 51%);
+      pointer-events: none;
+    }
+
+    /* OPORD Formats */
+    .opord-header {
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .opord-classification {
+      font-family: monospace;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--danger);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .opord-number {
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      margin: 0;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .opord-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.75rem;
+      background: rgba(8, 13, 11, 0.6);
+      padding: 0.75rem;
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .meta-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      font-weight: 700;
+    }
+
+    .meta-val {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--olive-2);
+      font-family: monospace;
+    }
+
+    .opord-section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      border-bottom: 1px solid var(--line-soft);
+      padding-bottom: 1.25rem;
+    }
+
+    .opord-section:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .opord-section h3 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--olive-2);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-left: 3px solid var(--olive);
+      padding-left: 0.6rem;
+    }
+
+    .opord-section p {
+      margin: 0;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--ink);
+      text-align: justify;
+    }
+
+    /* Execution phases list styles */
+    .phase-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .phase-card {
+      background: rgba(21, 30, 24, 0.6);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.85rem;
+      align-items: start;
+    }
+
+    .phase-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background: rgba(165, 168, 102, 0.1);
+      border: 1px solid var(--line);
+      color: var(--olive-2);
+      font-family: monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-top: 0.15rem;
+    }
+
+    .phase-content {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+
+    .phase-content strong {
+      color: var(--olive-2);
+    }
+
+    /* Support Lists */
+    .support-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0.75rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .support-card {
+      background: rgba(8, 13, 11, 0.4);
+      border: 1px solid var(--line-soft);
+      padding: 0.75rem 0.95rem;
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .support-title {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--olive-2);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .support-body {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* Codewords Grid */
+    .codewords-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.5rem;
+    }
+
+    .codeword-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(21, 30, 24, 0.5);
+      border: 1px solid var(--line-soft);
+      padding: 0.5rem 0.75rem;
+      border-radius: var(--radius);
+      font-size: 0.8rem;
+    }
+
+    .codeword-name {
+      font-weight: 800;
+      color: var(--danger);
+      font-family: monospace;
+      letter-spacing: 0.05em;
+    }
+
+    .codeword-meaning {
+      color: var(--muted);
+    }
+
+    /* General Briefing Style (Default intro content) */
+    .intro-briefing {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .intro-banner {
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      display: flex;
+    }
+
+    .intro-banner-text h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+    }
+
+    .intro-banner-text p {
+      margin: 0;
+      font-size: 0.75rem;
+      color: var(--olive-2);
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 48rem) {
+      .intro-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .intro-card {
+      background: rgba(21, 30, 24, 0.75);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+
+    .intro-card h4 {
+      margin: 0 0 0.5rem 0;
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--olive-2);
+      border-bottom: 1px solid var(--line-soft);
+      padding-bottom: 0.4rem;
+    }
+
+    .intro-card ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .callout-box {
+      background: rgba(200, 179, 93, 0.1);
+      border: 1px solid rgba(200, 179, 93, 0.3);
+      padding: 1rem;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .callout-box strong {
+      color: var(--danger);
+    }
+
+    .hud-footer {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      padding: 1.5rem 1rem;
+      border-top: 1px solid var(--line-soft);
+      text-align: center;
+      font-family: monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      min-height: 2.5rem;
+      padding: 0.6rem 1.2rem;
+      border: 1px solid var(--olive-2);
+      background: #202916;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      border-radius: var(--radius);
+      transition: all 0.2s;
+    }
+
+    .button:hover {
+      background: #2e3b20;
+      border-color: var(--ink);
+    }
+
+    /* Utility Helpers */
+    .button-sm {
+      min-height: 2rem;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.75rem;
+    }
+
+    .briefing-navigation {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid var(--line-soft);
+      padding-top: 1rem;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Standalone Header HUD -->
+  <header class="hud-header">
+    <div class="hud-branding">
+      <div class="hud-title-group">
+        <img class="hud-logo" src="../unitlogo.png" alt="GBTF Logo">
+        <div>
+          <h1>OPERATION BROKEN CROWN</h1>
+          <p style="margin: 0.15rem 0 0 0; font-size: 0.72rem; color: var(--olive-2); font-family: monospace; letter-spacing: 0.05em; text-transform: uppercase;">Official GBTF Campaign</p>
+        </div>
+      </div>
+      <div class="hud-status-tag">SEC CLR: OS1-X1 // TOP SECRET // EYES ONLY</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="status-times" aria-label="Current timezone status">
+      <span class="icon bi bi-clock-fill" aria-hidden="true" style="margin-right: 0.25rem;"></span>
+      <span class="status-time" id="pacific-time"></span>
+      <span class="status-time" id="eastern-time"></span>
+      <span class="status-time" id="zulu-time"></span>
+      <span class="status-time" id="berlin-time"></span>
+    </div>
+
+    <div class="campaign-container">
+      <!-- SIDEBAR -->
+      <aside class="sidebar-panel">
+        <div class="sidebar-title-row">
+          <span class="icon bi bi-hdd-stack-fill" style="color: var(--olive-2);"></span>
+          <h2>Operation Matrix</h2>
+        </div>
+
+        <div class="search-box-wrapper">
+          <span class="icon search-icon bi bi-search"></span>
+          <input type="text" class="search-box" id="search-input" placeholder="Filter by region, HVT, callsign..." aria-label="Search operations">
+        </div>
+
+
+
+        <div class="operation-list" id="operation-list-container">
+          <!-- Populated by JS -->
+        </div>
+      </aside>
+
+      <!-- BRIEFING AREA -->
+      <section class="content-panel" aria-label="Briefing Panel">
+        <div class="briefing-box" id="briefing-content">
+          <!-- Filled by JavaScript -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+
+  <!-- Include data source -->
+  <script src="campaign_data.js"></script>
+
+  <script>
+    // Timezone clock setup
+    const statusTimes = [
+      { id: "pacific-time", zone: "America/Los_Angeles", fallbackLabel: "PDT" },
+      { id: "eastern-time", zone: "America/New_York", fallbackLabel: "EDT" },
+      { id: "zulu-time", zone: "UTC", fallbackLabel: "ZULU" },
+      { id: "berlin-time", zone: "Europe/Berlin", fallbackLabel: "CET" },
+    ];
+
+    const getTimeParts = (date, timeZone) => {
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone,
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+        timeZoneName: "short",
+      }).formatToParts(date);
+      return Object.fromEntries(parts.map((part) => [part.type, part.value]));
+    };
+
+    const updateStatusTimes = () => {
+      const now = new Date();
+      statusTimes.forEach(({ id, zone, fallbackLabel }) => {
+        const target = document.querySelector(`#${id}`);
+        if (!target) return;
+        const parts = getTimeParts(now, zone);
+        const time = `${parts.hour}${parts.minute}`;
+        const label = zone === "UTC"
+          ? fallbackLabel
+          : (parts.timeZoneName || fallbackLabel).replace(/^GMT[+-]\d+$/, fallbackLabel);
+        target.textContent = `${time} ${label}`;
+      });
+    };
+
+    updateStatusTimes();
+    setInterval(updateStatusTimes, 60000);
+
+    // PARSE AND LOAD CAMPAIGN DATA
+    let operationsList = [];
+    let sitrepData = "";
+
+    // Parse files from global CAMPAIGN_DATA
+    if (typeof CAMPAIGN_DATA !== "undefined") {
+      Object.keys(CAMPAIGN_DATA).forEach((fileName) => {
+        const text = CAMPAIGN_DATA[fileName];
+        if (fileName === "INTRO TEXT.txt") {
+          sitrepData = text;
+        } else {
+          // Parse operation files
+          const parsed = parseOpord(fileName, text);
+          if (parsed) {
+            operationsList.push(parsed);
+          }
+        }
+      });
+    }
+
+    // Sort operations by their number prefix
+    operationsList.sort((a, b) => a.order - b.order);
+
+    // Prepend Introduction as element 00
+    operationsList.unshift({
+      fileName: "INTRO TEXT.txt",
+      order: 0,
+      name: "Introduction",
+      callsign: "SITREP",
+      isGolem: false,
+      isIntro: true,
+      opordNumber: "CO-SITREP-001-ALPHA",
+      situation: "",
+      execution: [],
+      support: {},
+      signal: {}
+    });
+
+    // Helpers to parse markdown OPORD files
+    function parseOpord(fileName, text) {
+      const numMatch = fileName.match(/^(\d+)/);
+      if (!numMatch) return null;
+      
+      const orderNum = parseInt(numMatch[1], 10);
+      const isGolem = fileName.toLowerCase().includes("golem");
+      
+      let opName = fileName.replace(/^\d+-/, '').replace('.txt', '').trim();
+      opName = opName.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+
+      let opordNumber = "OPORD NO. " + String(orderNum).padStart(2, '0');
+      let callsign = "UNKNOWN";
+      let situation = "";
+      let execution = [];
+      let support = {};
+      let signal = {};
+      
+      const lines = text.split("\n");
+      let currentSection = "";
+
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (!line) continue;
+
+        if (line.startsWith("**OPORD")) {
+          continue;
+        }
+
+        if (line.startsWith("**CALLSIGN:**")) {
+          callsign = line.replace("**CALLSIGN:**", "").replace(/\*/g, "").replace(/\bACTUAL\b/gi, '').replace(/\s+/g, ' ').trim();
+          continue;
+        }
+
+        if (line.includes("SITUATION & MISSION")) {
+          currentSection = "situation";
+          continue;
+        }
+        if (line.includes("EXECUTION")) {
+          currentSection = "execution";
+          continue;
+        }
+        if (line.includes("SERVICE & SUPPORT")) {
+          currentSection = "support";
+          continue;
+        }
+        if (line.includes("COMMAND & SIGNAL")) {
+          currentSection = "signal";
+          continue;
+        }
+
+        if (currentSection === "situation") {
+          if (line !== "---") {
+            situation += (situation ? " " : "") + line.replace(/^\*\*/, '').replace(/\*\*$/, '');
+          }
+        } else if (currentSection === "execution") {
+          if (line !== "---" && (line.startsWith("*") || line.startsWith("-"))) {
+            const cleanLine = line.replace(/^[\*\-\s]+/, '').trim();
+            if (cleanLine) {
+              execution.push(cleanLine);
+            }
+          }
+        } else if (currentSection === "support") {
+          if (line.startsWith("*") || line.startsWith("-")) {
+            const parts = line.replace(/^[\*\-\s]+/, '').split(":");
+            if (parts.length >= 2) {
+              const label = parts[0].replace(/\*\*/g, '').trim();
+              const val = parts.slice(1).join(":").replace(/\*\*/g, '').trim();
+              support[label] = val;
+            }
+          }
+        } else if (currentSection === "signal") {
+          if (line.startsWith("*") || line.startsWith("-")) {
+            const cleanLine = line.replace(/^[\*\-\s]+/, '').trim();
+            // Check if it's a codeword line, which uses a dash separator (–, —, or -)
+            const codewordMatch = cleanLine.match(/^\*\*(.*?)\*\*\s*[\u2013\u2014\-]\s*(.*)$/);
+            if (codewordMatch) {
+              const code = codewordMatch[1].replace(/\*\*/g, '').trim();
+              const meaning = codewordMatch[2].replace(/\*\*/g, '').trim();
+              signal[code] = meaning;
+            } else {
+              // Otherwise, look for a colon separation
+              const parts = cleanLine.split(":");
+              if (parts.length >= 2) {
+                let label = parts[0].replace(/\*\*/g, '').replace(/–/g, '').trim();
+                if (label.toLowerCase() === "task force callsign") {
+                  label = "Squad Callsign";
+                }
+                let val = parts.slice(1).join(":").replace(/\*\*/g, '').trim();
+                val = val.replace(/\bACTUAL\b/gi, '').replace(/\s+/g, ' ').trim();
+                if (label.toLowerCase() !== "codewords") {
+                  signal[label] = val;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      return {
+        fileName,
+        order: orderNum,
+        name: opName,
+        isGolem,
+        opordNumber,
+        callsign,
+        situation,
+        execution,
+        support,
+        signal
+      };
+    }
+
+    // STATE VARIABLES
+    let currentFilter = "all";
+    let currentSearch = "";
+    let activeOpIndex = 0;
+
+    // DOM ELEMENTS
+    const listContainer = document.getElementById("operation-list-container");
+    const briefingContent = document.getElementById("briefing-content");
+    const searchInput = document.getElementById("search-input");
+
+
+    // RENDER SITEMAP/LIST
+    function renderList() {
+      listContainer.innerHTML = "";
+      
+      const filtered = operationsList.filter(op => {
+        if (currentFilter === "mainland" && op.isGolem) return false;
+        if (currentFilter === "golem" && !op.isGolem) return false;
+        
+        if (currentSearch) {
+          const s = currentSearch.toLowerCase();
+          return op.name.toLowerCase().includes(s) || 
+                 op.callsign.toLowerCase().includes(s) || 
+                 op.situation.toLowerCase().includes(s) || 
+                 String(op.order).includes(s);
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        listContainer.innerHTML = `
+          <div style="padding: 1.5rem 0.5rem; text-align: center; color: var(--muted); font-size: 0.85rem;">
+            No operations match query.
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach((op) => {
+        const item = document.createElement("button");
+        item.className = `operation-item ${operationsList.indexOf(op) === activeOpIndex ? 'active' : ''}`;
+        item.setAttribute("aria-label", `Select operation ${op.order}: ${op.name}`);
+        
+        const badgeClass = op.isIntro ? "badge-intro" : (op.isGolem ? "badge-golem" : "badge-mainland");
+        const badgeLabel = op.isIntro ? "NZTOC" : (op.isGolem ? "Golem" : "Auroa");
+
+        item.innerHTML = `
+          <div class="operation-num">${String(op.order).padStart(2, '0')}</div>
+          <div class="operation-info">
+            <span class="operation-name">${op.name}</span>
+            <span class="operation-callsign-sub">${op.callsign}</span>
+          </div>
+          <span class="operation-type-badge ${badgeClass}">${badgeLabel}</span>
+        `;
+
+        item.addEventListener("click", () => {
+          selectOperation(operationsList.indexOf(op));
+        });
+
+        listContainer.appendChild(item);
+      });
+    }
+
+    // SELECT AN OPERATION BRIEFING
+    function selectOperation(index, updateHash = true) {
+      activeOpIndex = index;
+      
+      const items = listContainer.querySelectorAll(".operation-item");
+      items.forEach((item) => {
+        const op = operationsList[index];
+        const numDiv = item.querySelector(".operation-num");
+        if (op && numDiv && parseInt(numDiv.textContent, 10) === op.order) {
+          item.classList.add("active");
+        } else {
+          item.classList.remove("active");
+        }
+      });
+
+      if (index === 0 || (operationsList[index] && operationsList[index].isIntro)) {
+        showSitrep();
+        if (updateHash) {
+          window.location.hash = "sitrep";
+        }
+        return;
+      }
+
+      const op = operationsList[index];
+      if (updateHash && op) {
+        window.location.hash = "op=" + op.order;
+      }
+      
+      let supportHTML = "";
+      const supportKeys = Object.keys(op.support);
+      if (supportKeys.length > 0) {
+        supportHTML = `
+          <div class="opord-section">
+            <h3><span class="icon bi bi-shield-fill-check"></span>SERVICE & SUPPORT</h3>
+            <ul class="support-list">
+              ${supportKeys.map(k => `
+                <li class="support-card">
+                  <span class="support-title">${k}</span>
+                  <span class="support-body">${op.support[k]}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        `;
+      }
+
+
+
+      let tacmapHTML = "";
+      if (op.order === 1) {
+        tacmapHTML = `
+          <div class="opord-section">
+            <h3><span class="icon bi bi-map"></span>TACMAP SEQUENCE</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
+              <div>
+                <div style="font-size: 0.75rem; color: var(--muted); font-weight: bold; margin-bottom: 0.25rem; text-transform: uppercase;">Laptop to exploit during phase 2</div>
+                <img src="01 intel.jpg" alt="Windy Islands Intel" style="width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--muted); font-weight: bold; margin-bottom: 0.25rem; text-transform: uppercase;">Tactical Map Sequence</div>
+                <img src="01 tacmap sequence.png" alt="Windy Islands Tactical Map Sequence" style="width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      briefingContent.innerHTML = `
+        <div class="opord-header">
+          <h1 class="opord-number">${op.opordNumber}</h1>
+        </div>
+
+        <div class="opord-meta-grid" style="margin-bottom: 1.5rem;">
+          <div class="meta-item">
+            <span class="meta-label">Squad Callsign</span>
+            <span class="meta-val" style="color: var(--danger); font-size: 1.1rem;">${op.callsign}</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Command Callsign</span>
+            <span class="meta-val" style="color: var(--olive-2); font-size: 1.1rem;">${op.signal["Command"] || 'ECLIPSE'}</span>
+          </div>
+        </div>
+
+        <div class="opord-section">
+          <h3><span class="icon bi bi-bookmark-fill"></span>SITUATION & MISSION</h3>
+          <p>${op.situation.replace(/\*\*/g, '')}</p>
+        </div>
+
+        <div class="opord-section">
+          <h3><span class="icon bi bi-crosshair"></span>EXECUTION</h3>
+          <ul class="phase-list">
+            ${op.execution.map((phase, idx) => {
+              const splitIdx = phase.indexOf(":");
+              let mainContent = phase;
+              
+              if (splitIdx !== -1) {
+                const title = phase.slice(0, splitIdx);
+                const desc = phase.slice(splitIdx + 1);
+                mainContent = `<strong>${title.replace(/Phase\s+[IVXLCDM]+\s*-\s*/i, '').replace(/\*\*/g, '')}</strong>: ${desc.replace(/\*\*/g, '')}`;
+              } else {
+                mainContent = phase.replace(/\*\*/g, '');
+              }
+              
+              const indicatorHTML = (op.order === 1)
+                ? String(idx + 1)
+                : `<span class="bi bi-chevron-right" style="font-size: 0.65rem;"></span>`;
+              
+              return `
+                <li class="phase-card">
+                  <div class="phase-indicator">${indicatorHTML}</div>
+                  <div class="phase-content">${mainContent}</div>
+                </li>
+              `;
+            }).join('')}
+          </ul>
+        </div>
+
+        ${supportHTML}
+
+        ${tacmapHTML}
+
+        <div class="briefing-navigation">
+          <button class="button button-sm" id="btn-prev-op" ${index === 0 ? 'disabled style="opacity: 0.4; cursor: not-allowed;"' : ''}>
+            <span class="icon bi bi-arrow-left"></span> Previous Op
+          </button>
+          <button class="button button-sm" id="btn-next-op" ${index === operationsList.length - 1 ? 'disabled style="opacity: 0.4; cursor: not-allowed;"' : ''}>
+            Next Op <span class="icon bi bi-arrow-right"></span>
+          </button>
+        </div>
+      `;
+
+      briefingContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      document.getElementById("btn-prev-op")?.addEventListener("click", () => {
+        if (index > 0) selectOperation(index - 1);
+      });
+      document.getElementById("btn-next-op")?.addEventListener("click", () => {
+        if (index < operationsList.length - 1) selectOperation(index + 1);
+      });
+    }
+
+    // SHOW EXECUTIVE SITREP
+    function showSitrep() {
+      activeOpIndex = 0;
+      
+      const items = listContainer.querySelectorAll(".operation-item");
+      items.forEach((item) => {
+        const numDiv = item.querySelector(".operation-num");
+        if (numDiv && parseInt(numDiv.textContent, 10) === 0) {
+          item.classList.add("active");
+        } else {
+          item.classList.remove("active");
+        }
+      });
+
+      briefingContent.innerHTML = `
+        <div class="intro-briefing">
+          <div class="opord-header">
+            <h1 class="opord-number" style="font-size: 1.5rem; line-height: 1.3;">SITUATION REPORT</h1>
+
+          </div>
+
+          <div class="intro-banner" style="display: flex; justify-content: center; background: transparent; border: none; margin-bottom: 0.5rem;">
+            <img src="auroa.webp" alt="Archipelago Auroa Overview" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line);">
+          </div>
+
+          <div class="opord-section">
+            <h3><span class="icon bi bi-activity"></span>EXECUTIVE SUMMARY</h3>
+            <p>The Auroa Archipelago—a highly advanced, privatized tech-hub owned by Skell Technology—has gone completely dark. All commercial, civilian, and diplomatic communications from the island chain ceased less than 72 hours ago. National intelligence assets confirm a hostile corporate coup orchestrated by <strong>Sentinel Corp</strong>, a corrupt private military contractor (PMC). Sentinel has placed the entire civilian workforce under brutal martial law and seized control of Skell’s automated, cutting-edge drone manufacturing infrastructure.</p>
+          </div>
+
+          <div class="intro-grid">
+            <div class="intro-card" style="display: flex; flex-direction: column; gap: 0.75rem;">
+              <h4 style="margin: 0 0 0.25rem 0; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: var(--olive-2); border-bottom: 1px solid var(--line-soft); padding-bottom: 0.4rem;">THE CRISIS ENVIRONMENT</h4>
+              <p style="margin: 0; font-size: 0.85rem; line-height: 1.5; color: var(--ink);">The situation on the ground presents a catastrophic risk to global security. Sentinel Corp isn’t just holding an island hostage; they are weaponizing next-generation artificial intelligence.</p>
+              <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.82rem; color: var(--muted); display: flex; flex-direction: column; gap: 0.45rem; list-style-type: disc;">
+                <li><strong>The Drone Swarm Infrastructure:</strong> Skell's autonomous security drones (such as the <em>Murmur</em> UAVs and <em>Aamon</em> UGVs) are being mass-produced and reprogrammed as lethal offensive platforms.</li>
+                <li><strong>The Global Black Market:</strong> Intelligence reports indicate that Sentinel is already establishing logistics pipelines to sell high-tech tactical hardware to rogue states, insurgent cells, and international terrorist networks.</li>
+                <li><strong>The Hostage Workforce:</strong> From high-ranking engineers at Skell R&D to innocent agricultural laborers, thousands of civilians are being forced at gunpoint to run the factories, logistics corridors, and supply depots feeding the Sentinel machine.</li>
+              </ul>
+            </div>
+
+            <div class="intro-card" style="display: flex; flex-direction: column; justify-content: center; gap: 0.5rem; background: rgba(165,168,102,0.05); border-color: var(--line); padding: 0.5rem;">
+              <img src="crisis1.png" alt="Crisis Area 1" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+              <img src="crisis2.png" alt="Crisis Area 2" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            </div>
+          </div>
+
+          <div class="opord-section">
+            <h3><span class="icon bi bi-exclamation-octagon-fill"></span>THE PERIMETER VEIL: WHY CONVENTIONAL FORCES FAIL</h3>
+            <blockquote class="callout-box" style="margin: 0.5rem 0 1rem; border-left: 4px solid var(--danger); background: rgba(200, 179, 93, 0.05); padding: 1rem; border-radius: var(--radius); font-style: italic; border-top: 1px solid var(--line-soft); border-right: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);">
+              <strong>The Drone Defense Perimeter:</strong> Sentinel has activated Auroa's automated coastline defense grid. Any conventional military response—be it a NATO carrier strike group or a standard airborne insertion force—would be detected and torn apart by a defensive wall of hundreds of coordinated, autonomous drones. No nation wants to become openly involved in the fiasco, and negotiations have reached an impasse.
+            </blockquote>
+            <p>An overt, state-backed military invasion would result in unacceptable losses, public failure, and potentially trigger a massive geopolitical or economic crisis if the weaponized drone assets are deployed globally in retaliation.</p>
+          </div>
+
+          <div class="opord-section">
+            <h3><span class="icon bi bi-shield-check"></span>THE STRATEGIC MANDATE: TERTIA OPTIO</h3>
+            <p>With diplomacy exhausted and conventional warfare no longer an option, <strong>Ground Branch Task Force (GBTF)</strong> is being deployed to restore control of the archipelago.</p>
+            <p style="margin-top: 0.5rem;">As a deniable, tier-1 paramilitary element, your insertion will circumvent the drone perimeter through amphibious, high-risk infiltration tactics. You are entirely on your own. There is no official flag on your shoulder, no carrier strike group standing by, and no public acknowledgment of your existence. However, we have established contact with several undercover assets already embedded with local indigenous resistance forces, who are building an underground network to push back against the occupation.</p>
+            <p style="margin-top: 0.5rem;">Your campaign will span <strong>23 sectors in the AO</strong> across the mainland and Golem Island. To dismantle Sentinel's grip, you will fight an asymmetric war of attrition:</p>
+            
+            <ol style="font-size: 0.85rem; color: var(--muted); margin: 0.75rem 0 0.5rem; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; list-style-type: decimal;">
+              <li><strong>Exploit the Cracks:</strong> Partner with local indig forces ("The Outcasts" & "The Homesteaders") to gather actionable intelligence.</li>
+              <li><strong>Choke the Logistics:</strong> Systematically isolate and seize fuel depots, transport hubs, power grids, and manufacturing facilities.</li>
+              <li><strong>Neutralize the Core:</strong> Locate and hunt down high-value targets (HVTs) coordinating Sentinel’s sub-units while neutralizing the drone and weapon threats before they can be shipped off the island.</li>
+            </ol>
+            
+            <p style="margin-top: 1rem; font-family: monospace; font-size: 0.85rem; color: var(--olive-2); font-weight: bold; text-align: center;">At this stage, you are the only asset capable of accomplishing the mission without compromising plausible deniability or triggering a broader escalation.<br>Godspeed gentlemen.</p>
+            <div style="display: flex; justify-content: center; background: transparent; border: none; margin-top: 1rem;">
+              <img src="unit_logo_on_plate_carrier.jpg" alt="GBTF Plate Carrier Patch" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            </div>
+            <div style="display: flex; justify-content: center; background: transparent; border: none; margin-top: 1rem;">
+              <img src="4-man-squad-deploys.png" alt="GBTF 4-man squad deploys" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            </div>
+            
+            <div class="opord-section" style="margin-top: 1.5rem; padding: 1rem; border: 1px dashed var(--line); border-radius: var(--radius); background: rgba(165, 168, 102, 0.03);">
+              <h3 style="font-family: monospace; font-size: 0.9rem; color: var(--danger); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;"><span class="icon bi bi-gear-fill"></span>TECHNICAL GAMEPLAY NOTE</h3>
+              <p style="font-size: 0.8rem; line-height: 1.5; color: var(--muted); margin-bottom: 0.75rem;">This campaign uses real in-game locations, but to achieve a more authentic military experience it relies on a small amount of player imagination. Don't worry—you are <strong>not</strong> expected to pretend entire buildings, vehicles, or systems exist when they don't. The roleplay layer is intentionally very light and simply adds context to the objectives.</p>
+              <p style="font-size: 0.8rem; line-height: 1.5; color: var(--muted); margin-bottom: 0.75rem;">Mission tasks should be interpreted as <strong>operational intent</strong>, not rigid game mechanics. For example, if an objective says <strong>"Tag the containers with GPS beacons,"</strong> simply assume you've identified the correct containers through shipping manifests, captured intelligence, enemy interrogation, or other realistic means. Likewise, if ordered to <strong>"Capture the HVT,"</strong> you may designate <strong>any</strong> enemy present at the objective as the target—a rifleman, radio operator, breacher, or any other specialized enemy. The HVT doesn't have to be the "commander" unless you decide it is.</p>
+              <p style="font-size: 0.8rem; line-height: 1.5; color: var(--muted); margin-bottom: 0.75rem;">The OPORD provides the complete operational framework, but <strong>you</strong> determine how events unfold on the ground. Adapt each mission, use sound tactical judgment, and fill in the small gaps with believable roleplay. Even a modest amount of imagination dramatically enhances the realism and immersion of the experience.</p>
+              <p style="font-size: 0.8rem; line-height: 1.5; color: var(--muted); margin-bottom: 0;"><strong>Balanced realism and immersion</strong> are the foundation of this campaign. Treat every objective as a realistic mission directive, then bring it to life through your own execution. Enjoy the experience with your teammates!</p>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+
+
+    searchInput.addEventListener("input", (e) => {
+      currentSearch = e.target.value;
+      renderList();
+    });
+
+    // INITIALIZATION
+    renderList();
+    
+    function parseHashAndSelect() {
+      const hash = window.location.hash;
+      let initialIndex = 0;
+      if (hash && hash !== "#sitrep") {
+        const match = hash.match(/#op=(\d+)/);
+        if (match) {
+          const opOrder = parseInt(match[1], 10);
+          const foundIdx = operationsList.findIndex(op => op.order === opOrder);
+          if (foundIdx !== -1) {
+            initialIndex = foundIdx;
+          }
+        }
+      }
+      selectOperation(initialIndex, false);
+    }
+
+    parseHashAndSelect();
+
+    window.addEventListener("hashchange", () => {
+      const hash = window.location.hash;
+      let targetIndex = 0;
+      if (hash && hash !== "#sitrep") {
+        const match = hash.match(/#op=(\d+)/);
+        if (match) {
+          const opOrder = parseInt(match[1], 10);
+          const foundIdx = operationsList.findIndex(op => op.order === opOrder);
+          if (foundIdx !== -1) {
+            targetIndex = foundIdx;
+          }
+        }
+      }
+      if (targetIndex !== activeOpIndex) {
+        selectOperation(targetIndex, false);
+      }
+    });
+
+  </script>
+</body>
+</html>

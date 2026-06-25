@@ -1,0 +1,58 @@
+**GBTF STRATEGIC SITUATION REPORT: ARCHIPELAGO AUROA**
+
+**DOCUMENT REF:** CO-SITREP-001-ALPHA
+
+**CLASSIFICATION:** TOP SECRET // EYES ONLY // DENIABLE ASSET SELECTION
+
+---
+
+### EXECUTIVE SUMMARY
+
+The Auroa Archipelago—a highly advanced, privatized tech-hub owned by Skell Technology—has gone completely dark. All commercial, civilian, and diplomatic communications from the island chain ceased less than 72 hours ago. National intelligence assets confirm a hostile corporate coup orchestrated by **Sentinel Corp**, a corrupt private military contractor (PMC). Sentinel has placed the entire civilian workforce under brutal martial law and seized control of Skell’s automated, cutting-edge drone manufacturing infrastructure.
+
+---
+
+### THE CRISIS ENVIRONMENT
+
+The situation on the ground presents a catastrophic risk to global security. Sentinel Corp isn’t just holding an island hostage; they are weaponizing next-generation artificial intelligence.
+
+* **The Drone Swarm Infrastructure:** Skell's autonomous security drones (such as the *Murmur* UAVs and *Aamon* UGVs) are being mass-produced and reprogrammed as lethal, deniable offensive platforms.
+* **The Global Black Market:** Intelligence reports indicate that Sentinel is already establishing logistics pipelines to sell high-tech tactical hardware to rogue states, insurgent cells, and international terrorist networks.
+* **The Hostage Workforce:** From high-ranking engineers at Skell R&D to innocent agricultural laborers, thousands of civilians are being forced at gunpoint to run the factories, logistics corridors, and supply depots feeding the Sentinel machine.
+
+---
+
+### THE PERIMETER VEIL: WHY CONVENTIONAL FORCES FAIL
+
+> **The Drone Defense Perimeter:** Sentinel has activated Auroa's prototype automated coastline defense grid. Any conventional military response—be it a NATO carrier strike group or a standard airborne insertion force—will be detected and torn apart by a defensive wall of hundreds of coordinated, autonomous drones.
+
+An overt, state-backed military invasion would result in unacceptable losses, public failure, and potentially trigger a massive geopolitical or economic crisis if the weaponized drone assets are deployed globally in retaliation.
+
+---
+
+### THE STRATEGIC MANDATE: TERTIA OPTIO
+
+Because diplomacy is dead and conventional warfare is impossible, the **Ground Branch Task Force (GBTF)** has been activated.
+
+As a deniable, tier-1 paramilitary element, your insertion will circumvent the drone perimeter through amphibious, high-risk infiltration tactics. You are entirely on your own. There is no official flag on your shoulder, no carrier strike group standing by, and no public acknowledgment of your existence. However, we have established contact with several undercover assets already embedded with local indigenous resistance forces, who are building an underground network to push back against the occupation.
+
+Your campaign will span **23 sectors in the AO** across the mainland and Golem Island. To dismantle Sentinel's grip, you will fight an asymmetric war of attrition:
+
+1. **Exploit the Cracks:** Partner with local partisan groups ("The Outcasts") to gather actionable network intelligence.
+2. **Choke the Logistics:** Systematically isolate and seize fuel depots, transport hubs, power grids, and manufacturing facilities.
+3. **Neutralize the Core:** Locate and hunt down high-value targets (HVTs) coordinating Sentinel’s sub-units while neutralizing the prototype drone threats before they can be shipped off the island.
+
+You are the last resort to get the job done correctly. Good Hunting Team.
+godspeed
+
+---
+
+### Technical Gameplay Note
+
+This campaign uses real in-game locations, but to achieve a more authentic military experience it relies on a small amount of player imagination. Don't worry—you are **not** expected to pretend entire buildings, vehicles, or systems exist when they don't. The roleplay layer is intentionally very light and simply adds context to the objectives.
+
+Mission tasks should be interpreted as **operational intent**, not rigid game mechanics. For example, if an objective says **"Tag the containers with GPS beacons,"** simply assume you've identified the correct containers through shipping manifests, captured intelligence, enemy interrogation, or other realistic means. Likewise, if ordered to **"Capture the HVT,"** you may designate **any** enemy present at the objective as the target—a rifleman, radio operator, breacher, or any other specialized enemy. The HVT doesn't have to be the commander unless you decide it is.
+
+The OPORD provides the operational framework, but **you** determine how events unfold on the ground. Adapt each mission to the gameplay, use sound tactical judgment, and fill in the small gaps with believable roleplay. Even a modest amount of imagination dramatically enhances the realism and immersion of the experience.
+
+**Creativity, realism, and immersion** are the foundation of this campaign. Treat every objective as a realistic mission directive, then bring it to life through your own execution.

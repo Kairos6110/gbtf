@@ -1,0 +1,41 @@
+**OPORD NO. 7101**
+
+**CALLSIGN:** VOODOO
+
+### 1. SITUATION & MISSION
+
+Following a grueling, long-range covert amphibious insertion from Chatham Islands, New Zealand, VOODOO Team has established an undetected foothold in southern Auroa. With equipment prepped and secure communications established with Command, the squad is green-lit to deploy under low-profile status for the initial phase of operations. Sentinel Corp has established an illicit weapons-smuggling pipeline by leveraging the maritime infrastructure of the Windy Islands, coercing the local civilian population into forced labor to mask these logistics under the guise of commercial waste management. To dismantle this network, VOODOO is tasked with exploiting local rebel intelligence, mapping the enemy's maritime distribution nodes, liberating the forced-labor workforce, and capturing a senior Sentinel logistics handler for tactical interrogation.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Whalers Island Bivouac (Set Up):** Prep gear and patrol starting from Whalers Island Bivouac [PHASE CODE: ANCHOR]
+* **Phase II - Outcast Observation Post (SSE):** Infiltrate the compromised Outcast scout camp. Conduct Sensitive Site Exploitation (SSE) on a recovered enemy laptop to extract terminal manifests and serial numbers. [PHASE CODE: MERCURY]
+* **Phase III - Windy Islands Port (Interdiction):** Strike the primary port facility to neutralize Sentinel details, liberate civilian workers, and tag smuggling containers with encrypted GPS beacons. [PHASE CODE: TRITON]
+* **Phase IV - Garbage Dump (Clearance):** Sweep the secondary forced-labor site at the municipal garbage dump to free remaining workers and clear the immediate area. [PHASE CODE: HAUL]
+* **Phase V - Recycling Factory (HVT Capture):** Assault the Auroa Recycling Factory warehouse to eliminate the garrison and capture HVT "Package" (a high-ranking logistics handler). [PHASE CODE: GRIZZLY]
+* **Phase VI - South Cape Station (HVT Transfer & Debrief):** Exfiltrate to South Cape Station to hand over the HVT to indig forces and conduct an operational debrief. [PHASE CODE: DRY DOCK]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Aviation:** On-Site Procurment of enemy air assets in the AO to exfil team and HVT.
+* **Logistics:** Operators will utilize local rebel safehouses for resupply post-mission.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** VOODOO
+* **Command:** ECLIPSE ACTUAL
+* **Frequency:** 44.20 MHz (Frequency Hopping, Encrypted)
+* **Codewords:**
+* **ANCHOR** – Bivouac secured and patrol base established.
+* **MERCURY** – Outcast scout camp intelligence exploited (SSE complete).
+* **TRITON** – Port secured and smuggling containers tagged.
+* **HAUL** – Garbage dump cleared and forced labor liberated.
+* **GRIZZLY** – Recycling factory neutralized and HVT secured alive.
+* **DRY DOCK** – HVT handoff complete at South Cape Station.
+
