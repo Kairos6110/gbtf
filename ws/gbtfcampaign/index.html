@@ -1208,6 +1208,11 @@
               <img src="08tacmap.png" alt="Good Hope Mountain Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
             </div>
           ` : ''}
+          ${op.order === 9 ? `
+            <div style="margin-bottom: 1.5rem; max-width: 800px;">
+              <img src="09tacmap.png" alt="Lake Country Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            </div>
+          ` : ''}
           <ul class="phase-list">
             ${op.execution.map((phase, idx) => {
               const splitIdx = phase.indexOf(":");
@@ -1221,13 +1226,13 @@
                 mainContent = phase.replace(/\*\*/g, '');
               }
               
-              const indicatorHTML = (op.order === 1 || op.order === 2 || op.order === 3 || op.order === 4 || op.order === 5 || op.order === 6 || op.order === 7 || op.order === 8)
+              const indicatorHTML = (op.order === 1 || op.order === 2 || op.order === 3 || op.order === 4 || op.order === 5 || op.order === 6 || op.order === 7 || op.order === 8 || op.order === 9)
                 ? String(idx + 1)
                 : `<span class="bi bi-chevron-right" style="font-size: 0.65rem;"></span>`;
               
               return `
                 <li class="phase-card">
-                  <div class="phase-indicator ${(op.order === 1 || op.order === 2 || op.order === 3 || op.order === 4 || op.order === 5 || op.order === 6 || op.order === 7 || op.order === 8) ? 'phase-indicator-num' : ''}">${indicatorHTML}</div>
+                  <div class="phase-indicator ${(op.order === 1 || op.order === 2 || op.order === 3 || op.order === 4 || op.order === 5 || op.order === 6 || op.order === 7 || op.order === 8 || op.order === 9) ? 'phase-indicator-num' : ''}">${indicatorHTML}</div>
                   <div class="phase-content">
                     <div>${mainContent}</div>
                   </div>

@@ -333,6 +333,46 @@ GRIZZLY is tasked with infiltrating the alpine sector, eliminating the mountain 
   * **BLIND** – Natural Hazards Control servers wiped and arrays disabled.
   * **WEASEL** – Camp Weasel checkpoint neutralized and pass cleared.
   * **REDOUT** – Red Weasel Outpost cleared and pass reopened.`,
+  "9-lake country.txt": `**OPORD NO. 7109**
+
+**CALLSIGN:** PHANTOM
+
+### 1. SITUATION & MISSION
+
+Following GRIZZLY's successful disruption of Sentinel's alpine command nodes and the exploitation of the Camp Weasel underground TOC, recovered tactical logs have exposed a high-security industrial hub in Lake Country. Wiping the servers at Natural Hazards Control has temporarily blinded regional Sentinel network communications, forcing local garrisons to rely on isolated tactical nets. However, this has also caused Sentinel to consolidate its defense around its most critical assets.
+
+Lake Country serves as the primary technical incubator for Skell Security’s high-end counter-intrusion programs, now fully subverted by Sentinel Corp. Operating out of **Camp Viper**, Sentinel has deployed localized autonomous networks via **Drone Station W121** to patrol the major inland waterways and protect their primary prizes: the **Skell Security Assembly Hall** and the **Skell Security R&D Center**. Using the decrypted keys seized from the mountain TOC, GBTF element PHANTOM will infiltrate the lakeside perimeter, disable the autonomous security net, and execute a high-stakes raid on the ST facilities to secure next-gen system architectures before they are mass-produced.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Duart Mountain Bivouac (Set Up & Deploy):** Establish a staging area at the Duart Mountain Bivouac. Prepare gear and plan insertion parameters into Lake Country under cover of darkness. [PHASE CODE: MIRAGE]
+* **Phase II - Drone Station W121 (Deafen):** Infiltrate Drone Station W121 and sever the localized data-links managing the automated patrols to blind the lake security grid (Hack terminals). [PHASE CODE: STATIC]
+* **Phase III - Camp Viper (Amphibious Infiltration):** Conduct a covert amphibious approach from the southeast via Trough Lake. Flank Camp Viper and neutralize the quick-reaction force (QRF) stationed there to prevent reinforcements from responding to the industrial sector. [PHASE CODE: BLACKWATER]
+* **Phase IV - Skell Security Assembly Hall (Industrial Sabotage):** Advance east toward the Skell Security Assembly Hall under absolute noise discipline. Breach the facility’s primary power couplings and plant specialized electromagnetic pulse (EMP) delays within the automated assembly rigs to systematically brick the drone manufacturing hardware. [PHASE CODE: COBALT]
+* **Phase V - Skell Security R&D Center (Intel Extraction):** Execute a coordinated, high-intensity breach of the core Skell Security R&D Center. Isolate the server vault, clear out the specialized corporate security detachment, and initiate a hardware-level mirror of the uncompiled AI defensive matrices. Secure the physical encryption drives and debrief onsite providing care to liberated civilians. [PHASE CODE: NEXUS]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Aviation:** 1x Overseer Gatling (Unmarked) available for dynamic close-air support.
+* **CASEVAC:** Indig forces have made a limited rotary-wing CASEVAC asset available for this operation. PATCH 4 is on 5-MIKE standby and can be dispatched to our grid if casualty evacuation is required. Use only in the event of critical casualties.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** PHANTOM
+* **Command:** ECLIPSE ACTUAL
+* **Frequency:** 99.45 MHz (Secure SATCOM)
+* **Codewords:**
+  * **MIRAGE** – Staging area established at Duart Mountain Bivouac.
+  * **STATIC** – Drone Station W121 data-links severed and terminals hacked.
+  * **BLACKWATER** – Camp Viper neutralized via Trough Lake amphibious flank.
+  * **COBALT** – Assembly Hall power couplings disabled and EMP delays planted.
+  * **NEXUS** – Core R&D databases mirrored and liberated assets secured.`,
   "INTRO TEXT.txt": `**GBTF STRATEGIC SITUATION REPORT: ARCHIPELAGO AUROA**
 
 **DOCUMENT REF:** CO-SITREP-001-ALPHA
