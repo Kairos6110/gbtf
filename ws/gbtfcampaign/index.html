@@ -895,7 +895,8 @@
       situation: "",
       execution: [],
       support: {},
-      signal: {}
+      signal: {},
+      rawText: sitrepData
     });
 
     // Helpers to parse markdown OPORD files
@@ -1008,7 +1009,8 @@
         situation,
         execution,
         support,
-        signal
+        signal,
+        rawText: text
       };
     }
 
@@ -1023,6 +1025,27 @@
     const searchInput = document.getElementById("search-input");
 
 
+    // Helpers to check search queries with word-start boundary matching
+    function matchSearch(op, query) {
+      if (!query) return true;
+      const tokens = query.toLowerCase().split(/\s+/).filter(Boolean);
+      if (tokens.length === 0) return true;
+
+      const searchContent = [
+        op.name,
+        op.callsign,
+        op.opordNumber,
+        String(op.order),
+        op.rawText || ""
+      ].join(" ").toLowerCase();
+
+      return tokens.every(token => {
+        const escaped = token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp('\\b' + escaped, 'i');
+        return regex.test(searchContent);
+      });
+    }
+
     // RENDER SITEMAP/LIST
     function renderList() {
       listContainer.innerHTML = "";
@@ -1031,14 +1054,7 @@
         if (currentFilter === "mainland" && op.isGolem) return false;
         if (currentFilter === "golem" && !op.isGolem) return false;
         
-        if (currentSearch) {
-          const s = currentSearch.toLowerCase();
-          return op.name.toLowerCase().includes(s) || 
-                 op.callsign.toLowerCase().includes(s) || 
-                 op.situation.toLowerCase().includes(s) || 
-                 String(op.order).includes(s);
-        }
-        return true;
+        return matchSearch(op, currentSearch);
       });
 
       if (filtered.length === 0) {
