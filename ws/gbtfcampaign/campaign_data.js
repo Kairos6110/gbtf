@@ -257,7 +257,7 @@ Following our successful operation on Egg Island, which dismantled the live dron
 
 ### 1. SITUATION & MISSION
 
-The agricultural region of New Stirling has been weaponized by Sentinel Corp to secure a self-sustaining food supply chain for their occupying forces and to mask a localized electronic tracking web. Operating under the "Viper" network protocol, Sentinel has established highly fortified checkpoints and listening posts hidden within the rolling farmlands to monitor and suppress agrarian resistance groups. The situation is becoming increasingly dire. The remaining civilian population is facing severe food shortages, while Sentinel forces continue to raid local communities, abducting civilians and transporting them to forced labor camps further north. TALON is ordered to conduct rural interdiction operations, eliminate the tactical security layers, and dismantle the regional electronic surveillance hub.
+The agricultural region of New Stirling has been weaponized by Sentinel Corp to secure a self-sustaining food supply chain for their occupying forces and to mask a localized electronic tracking web. Operating under the "Viper" network protocol, Sentinel and Wolves SOF have established highly fortified checkpoints and listening posts within the rolling farmlands to monitor and suppress agrarian resistance groups. The situation is becoming increasingly dire. The remaining civilian population is facing severe food shortages, while Sentinel forces continue to raid local communities, abducting civilians and transporting them to forced labor camps further north. TALON is ordered to conduct rural interdiction operations, eliminate the tactical security layers, and dismantle the regional electronic surveillance hub.
 
 **Possible additional target of opportunity:** Keep an eye out for possible Intel trail linked to the Vega Residences or the Medical Center up north, there are rumors of an injured lieutenant that could be transiting through there. There is also ISR that seems to suggest the enemy are using supply trucks to transport IEDs to plant on bridges in the AO, if confirmed, conduct off site demolition of supply trucks.
 
@@ -289,6 +289,50 @@ The agricultural region of New Stirling has been weaponized by Sentinel Corp to 
   * **SCYTHE** – Forsyth Farm tracking relay dismantled.
   * **TROPIC** – Undercover asset QUAKER reached and access keycards obtained.
   * **MAMBA** – Blue Viper Outpost neutralized and tracking web offline.`,
+  "8-good hope mountain.txt": `**OPORD NO. 7108**
+
+**CALLSIGN:** GRIZZLY
+
+### 1. SITUATION & MISSION
+
+Following the collapse of Sentinel's southern defensive belt, enemy forces have withdrawn into the mountainous interior to establish a hardened regional command network beyond the reach of conventional surveillance. Using the former Natural Hazards Control facility as a secure communications and electronic warfare hub, Sentinel is coordinating patrols, directing QRF deployments, and monitoring movement throughout the surrounding valleys.
+
+The primary road network within the AO is controlled by Camp Weasel, a heavily fortified checkpoint that also serves as an underground tactical operations center (TOC) for Wolves QRF forces. Farther east, Red Weasel Outpost has been converted into a forced-labor camp where captured civilians and resistance members are processed before being transferred north. Together, these positions block civilian movement and deny resistance forces access through the mountain passes.
+
+Intelligence also confirms that dozens of displaced civilians remain trapped inside the nearby Auroa Survival Shelter after Sentinel sealed the facility and established security positions around its entrances.
+
+GRIZZLY is tasked with infiltrating the alpine sector, eliminating the mountain strongpoints, disrupting Sentinel's regional command-and-control capability, and securing the survival shelter until friendly forces can establish a humanitarian corridor.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Army Pass Bivouac (Observation Post):** Infiltrate the alpine sector under limited visibility. Establish a forward observation point at the Army Pass Bivouac to monitor enemy patrol patterns and coordinate team deployment. [PHASE CODE: OVERLOOK]
+* **Phase II - Auroa Survival Shelter (Humanitarian Relief):** Move to the Auroa Survival Shelter and eliminate the Sentinel security detachment controlling the entrance. Secure the shelter and prepare the civilian population for evacuation. *(Roleplay: Once the site is secure, radio **GUARDIAN 1** to coordinate the evacuation of all civilians trapped within the underground shelter.)* **[PHASE CODE: SHELTER]**
+* **Phase III - Natural Hazards Control (Command Disruption):** Breach the repurposed Natural Hazards Control facility. Seize intelligence logs, wipe the command servers, and permanently disable the regional communications arrays. [PHASE CODE: BLIND]
+* **Phase IV - Camp Weasel (Pass Clearance):** Advance to Camp Weasel to neutralize the first major alpine checkpoint. Disable localized communication links and clear the road blockade. Investigate the underground tunnel network and exploit the enemy TOC. [PHASE CODE: WEASEL]
+* **Phase V - Red Weasel Outpost (Pass Clearance):** Direct a coordinated assault on Red Weasel Outpost. Eliminate the remaining checkpoint forces to reopen the mountain pass for civilian transport. Liberate any survivors of the labor camp. [PHASE CODE: REDOUT]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Environment:** Sub-zero alpine conditions. Cold-weather gear and white snow-camouflage patterns are mandatory.
+* **Armament:** Designated marksman rifles combined with compact SMGs are recommended to effectively cover both the extended engagement distances of the alpine terrain and the confined close-quarters combat expected inside underground facilities and structures.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** GRIZZLY
+* **Command:** LYNX
+* **Frequency:** 112.85 MHz (SATCOM / TACSAT Secure)
+* **Codewords:**
+  * **OVERLOOK** – Observation post established at Army Pass.
+  * **SHELTER** – Subterranean survival shelter secured and civilian status verified.
+  * **BLIND** – Natural Hazards Control servers wiped and arrays disabled.
+  * **WEASEL** – Camp Weasel checkpoint neutralized and pass cleared.
+  * **REDOUT** – Red Weasel Outpost cleared and pass reopened.`,
   "INTRO TEXT.txt": `**GBTF STRATEGIC SITUATION REPORT: ARCHIPELAGO AUROA**
 
 **DOCUMENT REF:** CO-SITREP-001-ALPHA
