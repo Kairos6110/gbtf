@@ -21,7 +21,7 @@ Following our successful operation on Egg Island, which dismantled the live dron
 
 ### 4. SERVICE & SUPPORT
 
-* **Tactical Gear:** Standard CBRN (Chemical, Biological, Radiological, and Nuclear) protective masks are mandatory for all operators during the Phase II breach at Manchineel Station.
+* **Tactical Gear:** HAZMAT / CBRN kits (Gas Mask, Long Sleeves) mandatory for all operators during the Phase II breach at Manchineel Station. The agent is volatile.
 * **EXFIL:** 1x Unmarked Sentinel transport VHC will be hotwired and utilized to transport the captured HVT to the designated Outcast safehouse.
 
 ---
