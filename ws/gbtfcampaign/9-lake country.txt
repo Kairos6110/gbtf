@@ -4,7 +4,7 @@
 
 ### 1. SITUATION & MISSION
 
-Following GRIZZLY's successful disruption of Sentinel's alpine command nodes and the exploitation of the Camp Weasel underground TOC, recovered tactical logs have exposed a high-security industrial hub in Lake Country. Wiping the servers at Natural Hazards Control has temporarily blinded regional Sentinel network communications, forcing local garrisons to rely on isolated tactical nets. However, this has also caused Sentinel to consolidate its defense around its most critical assets.
+Following our successful disruption of Sentinel's alpine command nodes and the exploitation of the Camp Weasel underground TOC, recovered tactical logs have exposed a high-security industrial hub in Lake Country. Wiping the servers at Natural Hazards Control has temporarily blinded regional Sentinel network communications, forcing local garrisons to rely on isolated tactical nets. However, this has also caused Sentinel to consolidate its defense around its most critical assets.
 
 Lake Country serves as the primary technical incubator for Skell Security’s high-end counter-intrusion programs, now fully subverted by Sentinel Corp. Operating out of **Camp Viper**, Sentinel has deployed localized autonomous networks via **Drone Station W121** to patrol the major inland waterways and protect their primary prizes: the **Skell Security Assembly Hall** and the **Skell Security R&D Center**. Using the decrypted keys seized from the mountain TOC, GBTF element PHANTOM will infiltrate the lakeside perimeter, disable the autonomous security net, and execute a high-stakes raid on the ST facilities to secure next-gen system architectures before they are mass-produced.
 
