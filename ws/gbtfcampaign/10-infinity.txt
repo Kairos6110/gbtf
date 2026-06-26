@@ -1,0 +1,40 @@
+**OPORD NO. 7110**
+
+**CALLSIGN:** TITAN
+
+### 1. SITUATION & MISSION
+
+The exploitation of intelligence recovered during operations in Lake Country has identified Infinity Province as one of the administrative and logistical centers of Sentinel's occupation. Financial records, internal communications, and transportation manifests indicate that senior Sentinel personnel are preparing to consolidate operations and relocate key personnel and sensitive material to more secure locations following the recent raids.
+
+To preserve command continuity, Sentinel has increased security throughout the province, reinforcing transportation infrastructure, tightening access to Auroa Airport, and establishing a regional headquarters within the Skell Foundation Head Office. 
+TITAN is tasked with infiltrating Infinity Province, disrupting Sentinel's transportation network, preventing the evacuation of high-value personnel and intelligence, and conducting a precision raid against the Skell Foundation headquarters to capture a key administrative coordinator and exploit any intelligence left behind.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Diggers Gully Bivouac (Staging Area):** Establish a staging area at Diggers Gully Bivouac. Conduct final equipment checks and begin a covert southbound infiltration toward targets. [PHASE CODE: VIGIL]
+* **Phase II - Outpost Green Viper (Observation Post):** Seize the heavily defended FOB. Eliminate enemy observation elements and establish an overwatch position to monitor patrol movements. ISR indicates very heavy defenses on site. Generator strike via ARMAROS platform is recommended but watch for blue on blue as we have possible POWs in the cells. [PHASE CODE: SPECTER]
+* **Phase III - Infinity Transport Hub (Logistics Interdiction):** Infiltrate the Infinity Transport Hub and seize transportation schedules, cargo manifests, and movement records. Wipe the logistics management servers to disrupt Sentinel's ability to coordinate personnel and equipment across the province. [PHASE CODE: VECTOR]
+* **Phase IV - Auroa Airport (Airfield Denial):** Assault Auroa Airport and secure the air traffic control facilities. Disable runway support systems and destroy aircraft designated for executive transport to prevent the evacuation of high-value Sentinel personnel and sensitive material from the island. [PHASE CODE: TEMPEST]
+* **Phase V - Skell Foundation Head Office (HVT Capture & SSE):** Conduct a deliberate assault on the Skell Foundation Head Office, now serving as Sentinel's regional administrative headquarters. Clear the executive offices and underground secure facilities, capture the senior Sentinel administrative coordinator responsible for regional logistics (Roleplay: any enemy encountered within the lower secure facility may be designated as the HVT), and conduct Sensitive Site Exploitation (SSE) to recover financial records, communications, and operational planning documents before exfiltration. [PHASE CODE: CITADEL]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Logistics:** High-capacity, low-signature weapon setups highly recommended for urban-fringe operations.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** TITAN
+* **Command:** OLYMPUS
+* **Frequency:** 138.15 MHz (Secure Intra-urban Channel)
+* **Codewords:**
+  * **VIGIL** – Staging area established at Diggers Gully Bivouac.
+  * **SPECTER** – Outpost Green Viper secured and overwatch position established.
+  * **VECTOR** – Infinity Transport Hub logistics servers secured and wiped.
+  * **TEMPEST** – Auroa Airport secured and airfield transport denied.
+  * **CITADEL** – Skell Foundation Head Office breached and HVT coordinator captured.
