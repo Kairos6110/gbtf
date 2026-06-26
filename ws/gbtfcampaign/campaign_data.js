@@ -171,6 +171,46 @@ PEQUOD element is set to conduct a highly kinetic, air-to-ground interdiction of
   * **CRUSH** – Second Aamon UGV patrol destroyed.
   * **ECLIPSE** – Third Murmur UAV hotspot neutralized.
   * **SHIELD** – Third Aamon UGV patrol destroyed and HVT secured.`,
+  "5-channels.txt": `**OPORD NO. 7105**
+
+**CALLSIGN:** DYNAMO
+
+### 1. SITUATION & MISSION
+
+Following the successful interrogation of the commanding officer captured on Egg Island, GBTF intelligence has mapped Sentinel's broader power distribution strategy. Scrambling to contain the loss of tactical control in the eastern sectors, Sentinel and Wolves SOF have locked down the Channels province to weaponize the island's energy infrastructure. By manipulating the automated grid, they are intentionally diverting power away from civilian sectors to feed the massive manufacturing requirements of their deep-interior drone factories. Furthermore, they are preparing to isolate the island's internal power network permanently. 
+DYNAMO element is set to infiltrate the critical coastal and maritime energy nodes, reverse the power distribution vectors, and prevent a permanent blackout of non-industrial zones.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Harbor Cove Island Bivouac (Set Up):** Prep gear and deploy from Harbor Cove Island Bivouac. [PHASE CODE: COAL]
+* **Phase II - Auroa Power Plant (Grid Override):** Advance to the main onshore Auroa Power Plant compound. Clear the peripheral guard towers and break into the high-voltage substation. Physically tap the main transformer relays with a hardware override bypass module to restore energy access to regional urban networks. [PHASE CODE: LIVE WIRE]
+* **Phase III - Main Pumping Station (Flow Control):** Infiltrate the Main Pumping Station, neutralizing security patrols and configuring the hydraulic valves to prevent a critical thermal overload at the primary grid core. [PHASE CODE: HIGH WATER]
+* **Phase IV - Electric Grid Control (Network Capture):** Conduct a coordinated dynamic assault on the heavily fortified Electric Grid Control facility. Secure the central control room before the technical staff can trigger an automated emergency system wipe. Purge Sentinel administrative access codes and establish an encrypted remote link back to GBTF command. [PHASE CODE: SURGE]
+* **Phase V - Oceanic Power Plant (Power Diversion):** Infiltrate the Oceanic Power Plant's platform to sever the automated transmission links routing raw tidal energy exclusively to automated drone production. [PHASE CODE: TIDAL]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Aviation:** Direct air support unavailable due to high concentration of localized automated anti-aircraft turrets.
+* **Transportation:** Multiple RHIBs and fishing boats have been spotted by ISR along the coastlines, keep an eye out for a quick offshore transit.
+* **Equipment:** Makeshift insulation gear and circuit-disruption packages have been acquired from defecting Skell Tech engineers.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** DYNAMO
+* **Command:** VOLTAGE
+* **Frequency:** 88.30 MHz (Hopping / Cryptographic)
+* **Codewords:**
+  * **COAL** – Squad deployed from Harbor Cove Island Bivouac.
+  * **LIVE WIRE** – Auroa Power Plant transmission lines bypassed and regional power restored.
+  * **HIGH WATER** – Main Pumping Station stabilized and flow valves configured.
+  * **SURGE** – Electric Grid Control locked down and repurposed.
+  * **TIDAL** – Oceanic Power Plant transmission links severed.`,
   "INTRO TEXT.txt": `**GBTF STRATEGIC SITUATION REPORT: ARCHIPELAGO AUROA**
 
 **DOCUMENT REF:** CO-SITREP-001-ALPHA
