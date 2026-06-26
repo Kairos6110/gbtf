@@ -85,6 +85,47 @@ GBTF element **WARLOCK** is ordered to conduct a multi-phase sabotage and interd
   * **SLEDGEHAMMER** – Ammunition depot stockpiles destroyed.
   * **CYCLOPS** – West Radar Station tracking arrays disabled.
   * **WILDFIRE** – Demolition charges set at Fuel Storage; moving to exfil.`,
+  "3-liberty.txt": `**OPORD NO. 7103**
+
+**CALLSIGN:** SPECTRE
+
+### 1. SITUATION & MISSION
+
+Following our successful sabotage operations in the Seal Islands, we seized critical Sentinel naval manifests and intercepted encrypted communications detailing a planned mass roundup of high-value political and corporate targets. In response to the collapse of its maritime security, Sentinel has imposed an emergency lockdown across the metropolitan sector. Their forces are actively hunting down Skell Tech whistleblowers to prevent the disruption of their operations. The city of Liberty, Auroa's high-tech urban center, has been transformed into a fortress. Sentinel has converted the city's infrastructure into an extensive surveillance and tracking network while taking control of the detention center to imprison political dissidents and key corporate personnel. SPECTRE has been tasked with infiltrating the urban sector, disrupting Sentinel's logistics pipelines at critical transit hubs, and executing a precision breakout to extract the detained high-value assets before they disappear into Sentinel custody, or worse...
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Shelter Island Bivouac (Set Up):** Prep gear and deploy from Shelter Island Bivouac. [PHASE CODE: SHELTER]
+* **Phase II - Richard Cobden Residences (Asset Recovery):** Infiltrate the residential area under absolute light discipline. Conduct close-quarters breach of houses to recover a portable hard drive containing master administrative ST overrides before Sentinel CYBSEC teams can reach it. [PHASE CODE: OVERRIDE]
+* **Phase III - Liberty Transport Hub (Supply Recovery):** Identify and secure containers containing military supplies, then attach encrypted GPS beacons to guide Bandit-3 who is standing by for follow up maritime recovery. [PHASE CODE: LIFELINE]
+* **Phase IV - Liberty Airport (Transit Interdiction):** Move rapidly to Liberty Airport, clear the primary terminal hangar, and neutralize a private transport aircraft on the tarmac to prevent the outbound transfer of high-value corporate prisoners. [PHASE CODE: BROKEN ARROW]
+* **Phase V - Ayn Rand Residences (Civilian Protection):** Sentinel sweep squads are conducting violent, door-to-door summary interrogations of civilian households in this sector. Systematically clear the residential streets, secure compromised houses, protect civilian targets from execution, and eliminate the hostile forces. [PHASE CODE: GUARDIAN]
+* **Phase VI - John Dewey Residences (Asset Contact):** Locate and liberate our undercover asset, 'SPARROW', who has been pinned down in the John Dewey residential sector. Extract key intelligence regarding the exact holding cells and security configurations of the central Detention Facility. [PHASE CODE: SPARROW]
+* **Phase VII - Detention Center (High-Value Jailbreak):** Launch a high-intensity assault on the heavily defended Detention Center. Suppress the automated defense systems, breach the maximum-security holding blocks, rescue all POWs, and breach the COMMSNET using the asset recovered from Phase II to gather actionable intel on enemy activity. [PHASE CODE: FREEBIRD]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Transportation:** Unmarked civilian SUVs and Sedans have been spotted, along with RHIBs for covert approaches. Roads are quite hot though so proceed with caution if choosing the MSR.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** SPECTRE
+* **Command:** GREYMAN
+* **Frequency:** 62.45 MHz (Secure, Intrateam UHF)
+* **Codewords:**
+  * **SHELTER** – Gear prepared and squad deployed from Shelter Island Bivouac.
+  * **OVERRIDE** – Hard drive containing master administrative overrides recovered.
+  * **LIFELINE** – Military supply containers identified and tagged with GPS beacons.
+  * **BROKEN ARROW** – Liberty Airport runway neutralized and transit grid frozen.
+  * **GUARDIAN** – Ayn Rand residential sector swept and civilian targets secured.
+  * **SPARROW** – Undercover asset "SPARROW" liberated and intelligence extracted.
+  * **FREEBIRD** – POWs rescued and COMMSNET breached.`,
   "INTRO TEXT.txt": `**GBTF STRATEGIC SITUATION REPORT: ARCHIPELAGO AUROA**
 
 **DOCUMENT REF:** CO-SITREP-001-ALPHA
