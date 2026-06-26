@@ -1,0 +1,46 @@
+**OPORD NO. 7102**
+
+**CALLSIGN:** WARLOCK
+
+### 1. SITUATION & MISSION
+
+Following our operation on Windy Islands, intercepted SIGINT confirms the enemy is running scared. From their perspective, they were hit with incredible speed, surprise, and violence of action, and one of their senior lieutenants is now missing. They have no idea who we are or what our intentions are, but they know one thing for certain: an elite unit has arrived on Auroa. They have taken a significant blow, the situation on the ground is shifting against them, and we have forced them onto the defensive.
+
+The remaining enemy forces have been observed loading supplies onto RHIBs and patrol boats before withdrawing to the Naval Base further north. The good news is that indigenous resistance forces were able to retake Windy Islands following our intervention. Unfortunately, amid the chaos, the enemy captured one of our local POCs, who is now being held at the Naval Base. While our primary objectives remain unchanged, we must ensure their safe recovery if the opportunity presents itself.
+
+The Seal Islands serve as Sentinel Corp's primary maritime stronghold and strategic staging hub for the entire archipelago. By controlling the naval base, airfield, and deep-water fuel reserves, Sentinel maintains naval supremacy and rapid-response air capabilities throughout the southern sectors.
+
+GBTF element **WARLOCK** is ordered to conduct a multi-phase sabotage and interdiction operation to blind regional radar coverage, destroy critical fuel infrastructure, and cripple Sentinel's ability to rapidly deploy naval and aerial assets across the region.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - South Cape Station (Set Up):** Prep gear and transpo from South Cape Station. [PHASE CODE: BEACON]
+* **Phase II - Sentinel Corp Naval Base (HVT Rescue & Sabotage):** Infiltrate the naval base, locate and secure the captured local POC, and disable all enemy TOC equipment with H.A. EMP Grenades. [PHASE CODE: ANCHOR DROP]
+* **Phase III - Auroa Airfield (Interdiction):** Advance to the airfield, liberate additional possible friendlies, load the helicopter with Equipment and deliver the helicopter to South Cape Station, rebels are in dire need of a resupply. [PHASE CODE: GRIDLOCK]
+* **Phase IV - Ammunition Depot (Sabotage):** Infiltrate the ammunition depot and destroy the stored ordnance stockpiles to bottleneck regional supply capabilities. [PHASE CODE: SLEDGEHAMMER]
+* **Phase V - West Radar Station (Deafen):** Penetrate the perimeter of the West Radar Station, neutralize the technical staff, and upload a localized logic bomb to blind early-warning airspace tracking. [PHASE CODE: CYCLOPS]
+* **Phase VI - Fuel Storage (Bleed):** Move into the primary POL facility, disable all defenses, and plant timed thermite charges on the main fuel silos to cripple the supply chain. Debrief and R&R at nearest bivouac. [PHASE CODE: WILDFIRE]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **ISR:** Outcast-hacked civilian commercial drone provides periodic thermal updates on troop movements until Phase VI detonation.
+* **CAS:** RAIDER 2-1 (Overseer | Gatling) available on 5 mikes standby to assist the ground team with close air support at any OBJ.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** WARLOCK
+* **Command:** HAVOC
+* **Frequency:** 51.10 MHz (Sincgars / Ciphered)
+* **Codewords:**
+  * **BEACON** – Gear prepared and squad deployed from South Cape Station.
+  * **ANCHOR DROP** – Naval base infiltrated and enemy TOC equipment disabled.
+  * **GRIDLOCK** – Airfield secured and resupply helicopter delivered to South Cape Station.
+  * **SLEDGEHAMMER** – Ammunition depot stockpiles destroyed.
+  * **CYCLOPS** – West Radar Station tracking arrays disabled.
+  * **WILDFIRE** – Demolition charges set at Fuel Storage; moving to exfil.
