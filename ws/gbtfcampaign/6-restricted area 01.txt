@@ -1,0 +1,40 @@
+**OPORD NO. 7106**
+
+**CALLSIGN:** REAPER
+
+### 1. SITUATION & MISSION
+
+Following our successful operation on Egg Island, which dismantled the live drone testing program, Sentinel ICARUS Command has retaliated by dramatically increasing long-range Azrael UAV patrols and conducting coordinated strikes against Outcast positions along the border. The attacks have inflicted heavy casualties, including significant civilian losses. These assets must be neutralized before Sentinel can regain the initiative. Our first objective is a target of opportunity. Restricted Area 01 contains one of Sentinel's clandestine chemical weapons development laboratories. HUMINT from local sources indicates that only five or six such facilities exist across the Auroa archipelago. Current SIGINT confirms that Manchineel Station is actively synthesizing an industrial-grade toxic agent. Our main objective is the fleet of long-range Azrael UAVs, currently grounded at multiple maintenance sites for a scheduled service cycle. This presents a narrow window of opportunity to eliminate these strategic assets before they return to operational status. REAPER is tasked with conducting a precision sabotage operation to permanently disable the chemical weapons laboratory and destroy the grounded Azrael fleet, denying Sentinel both its chemical weapons capability and long-range ISR platform.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Ardmore Ridge Bivouac (Set Up & Deploy):** Prep gear and deploy from Ardmore Ridge Bivouac under cover of darkness to establish a forward observation point overlooking the valley. [PHASE CODE: STRATOS]
+* **Phase II - Manchineel Station (CBRN Interdiction):** Infiltrate the highly secure chemical development laboratory at Manchineel Station. Clear the security garrison, gather samples from the synthesizing vats, download all digital logs detailing Sentinel's chemical weapon deployment parameters. Radio in DECON team 'SCRUBBER' once site neutralized. [PHASE CODE: NOX]
+* **Phase III - Maintenance Area (Sabotage):** Breach the main Maintenance Area. Infiltrate the service bays and corrupt the central diagnostic terminals to disrupt the grounded UAV fleet's maintenance loop. Evacuate the site and conduct C4 demolition of all UAVs [PHASE CODE: CORRUPT]
+* **Phase IV - Assembly Hall Omega 02 (Hangar Breach):** Breach Assembly Hall Omega-02, the secondary launch site for Sentinel's long-range Azrael UAVs. Download telemetry data from the command terminals, then destroy all grounded UAVs with C4 charges. **[PHASE CODE: BLIND]**
+* **Phase V - Arrow Testing Zone (Control Intercept):** Assault Sentinel's primary UAV launch complex. Rescue the civilian workers held hostage on-site, wipe the mission control servers, recover the two gunship helicopters and deliver them to nearest Abandoned Site for handoff to Bandit 6, then move to final target. **[PHASE CODE: BLACKOUT]**
+* **Phase VI - Nugget Cliff (HVT Capture & Handoff):** Track the high-ranking element in charge of UAV attacks who is holding a clandestine meeting at the mountainous Nugget Cliff mine. Infiltrate the meeting site, capture the commanding officer (any enemy), and transport him via vehicle to the nearest 'Abandoned Site' for handoff to Outcast Bandit 2 R Team. End Op and Debrief there. [PHASE CODE: REAPER]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Tactical Gear:** Standard CBRN (Chemical, Biological, Radiological, and Nuclear) protective masks are mandatory for all operators during the Phase II breach at Manchineel Station.
+* **EXFIL:** 1x Unmarked Sentinel transport VHC will be hotwired and utilized to transport the captured HVT to the designated Outcast safehouse.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** REAPER
+* **Command:** HORUS
+* **Frequency:** 99.40 MHz (Encrypted Satellite Uplink)
+* **Codewords:**
+  * **STRATOS** – Bivouac deployed and observation post established.
+  * **NOX** – Manchineel Station laboratory breached and samples gathered.
+  * **CORRUPT** – Hangar maintenance terminal network infected.
+  * **BLIND** – Azrael optical arrays and guidance systems disabled.
+  * **BLACKOUT** – Arrow Testing Zone launch control disabled.
+  * **REAPER** – HVT captured at Nugget Cliff and safely transferred.
