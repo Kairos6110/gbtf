@@ -589,6 +589,19 @@
       margin-top: 0.15rem;
     }
 
+    .phase-indicator.phase-indicator-num {
+      background: #8b0000;
+      border: 1px solid #660000;
+      color: #ffffff;
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      line-height: 1;
+      padding-bottom: 2px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
     .phase-content {
       font-size: 0.85rem;
       line-height: 1.5;
@@ -898,7 +911,6 @@
       let opName = fileName.replace(/^\d+-/, '').replace('.txt', '').trim();
       opName = opName.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 
-      let opordNumber = "OPORD NO. " + String(orderNum).padStart(2, '0');
       let callsign = "UNKNOWN";
       let situation = "";
       let execution = [];
@@ -986,6 +998,8 @@
         }
       }
 
+      const opordNumber = `${String(orderNum).padStart(2, '0')} OPERATION ${callsign.toUpperCase()}`;
+
       return {
         fileName,
         order: orderNum,
@@ -1052,7 +1066,7 @@
             <span class="operation-name">${op.name}</span>
             <span class="operation-callsign-sub">${op.callsign}</span>
           </div>
-          <span class="operation-type-badge ${badgeClass}">${badgeLabel}</span>
+          ${(badgeLabel !== "Auroa" && badgeLabel !== "NZTOC") ? `<span class="operation-type-badge ${badgeClass}">${badgeLabel}</span>` : ''}
         `;
 
         item.addEventListener("click", () => {
@@ -1111,25 +1125,6 @@
 
 
 
-      let tacmapHTML = "";
-      if (op.order === 1) {
-        tacmapHTML = `
-          <div class="opord-section">
-            <h3><span class="icon bi bi-map"></span>TACMAP SEQUENCE</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
-              <div>
-                <div style="font-size: 0.75rem; color: var(--muted); font-weight: bold; margin-bottom: 0.25rem; text-transform: uppercase;">Laptop to exploit during phase 2</div>
-                <img src="01 intel.jpg" alt="Windy Islands Intel" style="width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--line-soft);">
-              </div>
-              <div>
-                <div style="font-size: 0.75rem; color: var(--muted); font-weight: bold; margin-bottom: 0.25rem; text-transform: uppercase;">Tactical Map Sequence</div>
-                <img src="01 tacmap sequence.png" alt="Windy Islands Tactical Map Sequence" style="width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--line-soft);">
-              </div>
-            </div>
-          </div>
-        `;
-      }
-
       briefingContent.innerHTML = `
         <div class="opord-header">
           <h1 class="opord-number">${op.opordNumber}</h1>
@@ -1153,6 +1148,16 @@
 
         <div class="opord-section">
           <h3><span class="icon bi bi-crosshair"></span>EXECUTION</h3>
+          ${op.order === 1 ? `
+            <div style="margin-bottom: 1.5rem; max-width: 800px;">
+              <img src="01 tacmap sequence.png" alt="Windy Islands Tactical Map Sequence" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            </div>
+          ` : ''}
+          ${op.order === 2 ? `
+            <div style="margin-bottom: 1.5rem; max-width: 800px;">
+              <img src="02tacmap.png" alt="Seal Islands Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            </div>
+          ` : ''}
           <ul class="phase-list">
             ${op.execution.map((phase, idx) => {
               const splitIdx = phase.indexOf(":");
@@ -1166,14 +1171,16 @@
                 mainContent = phase.replace(/\*\*/g, '');
               }
               
-              const indicatorHTML = (op.order === 1)
+              const indicatorHTML = (op.order === 1 || op.order === 2)
                 ? String(idx + 1)
                 : `<span class="bi bi-chevron-right" style="font-size: 0.65rem;"></span>`;
               
               return `
                 <li class="phase-card">
-                  <div class="phase-indicator">${indicatorHTML}</div>
-                  <div class="phase-content">${mainContent}</div>
+                  <div class="phase-indicator ${(op.order === 1 || op.order === 2) ? 'phase-indicator-num' : ''}">${indicatorHTML}</div>
+                  <div class="phase-content">
+                    <div>${mainContent}</div>
+                  </div>
                 </li>
               `;
             }).join('')}
@@ -1181,8 +1188,6 @@
         </div>
 
         ${supportHTML}
-
-        ${tacmapHTML}
 
         <div class="briefing-navigation">
           <button class="button button-sm" id="btn-prev-op" ${index === 0 ? 'disabled style="opacity: 0.4; cursor: not-allowed;"' : ''}>
