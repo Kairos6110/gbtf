@@ -1,0 +1,45 @@
+**OPORD NO. 7104**
+
+**CALLSIGN:** PEQUOD
+
+### 1. SITUATION & MISSION
+
+Following our successful rescue operations at the Liberty Detention Center and the subsequent breach of the COMMSNET, the extracted intelligence has exposed a chilling new protocol. Sentinel, scrambling to contain the uprising, has escalated its psychological warfare tactics to terrorize the civilian populace into submission. Egg Island has been completely isolated and converted into a live-fire testing range for Skell Technology’s militarized autonomous drone programs. Human intelligence confirms a deeply disturbing program: Sentinel Corp is transporting political dissidents and captured Outcast prisoners to the island, stripping them of gear, and releasing them into the wilderness to act as live tracking targets for their prototype weapon platforms. 
+
+PEQUOD element is ordered to conduct a highly kinetic, air-to-ground interdiction of the testing grounds, systematically destroy all autonomous threats, eliminate the range handlers, and gather additional actionable intelligence on Egg Island.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Round Top Bivouac (Set Up & Deploy):** Prep gear and deploy from Round Top Bivouac using Outcast-supplied air assets (Overseer or Deinos gunship). Establish air-to-ground coordination, with a 2-man air crew providing continuous Close Air Support (CAS) and call-for-fire capability, while a 2-man ground team (1 pointman 1 JTAC) inserts onto Egg Island. [PHASE CODE: HARPOON]
+* **Phase II - Murmur Hotspot Alpha (Air Interdiction):** Ground team inserts on the northern sector of Egg Island. Locate and neutralize the first swarm before they can alert the main network. [PHASE CODE: DEAFEN]
+* **Phase III - Aamon Patrol Alpha (Armor Interdiction):** Advance southeast to locate and destroy the first Aamon UGV ground drone patrol using explosives or anti-tank munitions. [PHASE CODE: CRIPPLE]
+* **Phase IV - Murmur Hotspot Bravo (Air Interdiction):** Move west to locate and neutralize the second Murmur UAV drone swarm monitoring the transit corridors. [PHASE CODE: FLASH]
+* **Phase V - Aamon Patrol Bravo (Armor Interdiction):** Eliminate the second Aamon UGV ground drone patrol southeast. [PHASE CODE: CRUSH]
+* **Phase VI - Murmur Hotspot Charlie (Air Interdiction):** Reach the southern shore and disable the third and final Murmur UAV drone swarm. [PHASE CODE: ECLIPSE]
+* **Phase VII - Aamon Patrol Charlie (Armor Interdiction):** Sweep the western perimeter to locate and destroy the third and final Aamon UGV patrol securing the approach to Range Control. ISR has confirmed that the commanding officer overseeing the Egg Island project is operating in the area. Capture the HVT, conduct a tactical field interrogation if feasible, call GYPS for extract and move him to South Cape Station for prosecution. [PHASE CODE: SHIELD]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Loadout:** EMP grenades, 40MM grenade launchers, and high-caliber or armor-piercing weapon systems are highly recommended.
+* **EXFIL:** 1x Outcast GYPS chaff-equipped helicopter will execute a high-speed, low-altitude extraction on the southern shore of Egg Island once all local threats are confirmed neutralized.
+* **Medical:** Casualties will be stabilized via field TCCC on-site; no immediate medevac is available. Bring extra tactical medical kits.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** PEQUOD
+* **Command:** ORCA
+* **Frequency:** 73.10 MHz (Tactical VHF, Encrypted)
+* **Codewords:**
+  * **HARPOON** – Air asset deployed and air-ground coordination established.
+  * **DEAFEN** – First Murmur UAV hotspot neutralized.
+  * **CRIPPLE** – First Aamon UGV patrol destroyed.
+  * **FLASH** – Second Murmur UAV hotspot neutralized.
+  * **CRUSH** – Second Aamon UGV patrol destroyed.
+  * **ECLIPSE** – Third Murmur UAV hotspot neutralized.
+  * **SHIELD** – Third Aamon UGV patrol destroyed and HVT secured.

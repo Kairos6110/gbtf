@@ -1126,6 +1126,12 @@
       briefingContent.innerHTML = `
         <div class="opord-header">
           <h1 class="opord-number">${op.opordNumber}</h1>
+          ${op.order === 4 ? `
+            <div style="margin-top: 0.75rem; padding: 0.75rem 1rem; background: rgba(220, 53, 69, 0.15); border: 1px solid var(--danger); border-radius: var(--radius); color: #ff6b6b; font-family: monospace; font-size: 0.82rem; font-weight: bold; display: flex; align-items: center; gap: 0.5rem; letter-spacing: 0.05em; text-transform: uppercase;">
+              <span class="bi bi-exclamation-triangle-fill" style="font-size: 1rem;"></span>
+              <span>DRONE PARAMETER = CLASSIC FOR THIS OP OR THE ISLAND WILL BE EMPTY</span>
+            </div>
+          ` : ''}
         </div>
 
         <div class="opord-meta-grid" style="margin-bottom: 1.5rem;">
@@ -1161,6 +1167,11 @@
               <img src="03tacmap.png" alt="Liberty Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
             </div>
           ` : ''}
+          ${op.order === 4 ? `
+            <div style="margin-bottom: 1.5rem; max-width: 800px;">
+              <img src="04tacmap.png" alt="Egg Island Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            </div>
+          ` : ''}
           <ul class="phase-list">
             ${op.execution.map((phase, idx) => {
               const splitIdx = phase.indexOf(":");
@@ -1174,13 +1185,13 @@
                 mainContent = phase.replace(/\*\*/g, '');
               }
               
-              const indicatorHTML = (op.order === 1 || op.order === 2 || op.order === 3)
+              const indicatorHTML = (op.order === 1 || op.order === 2 || op.order === 3 || op.order === 4)
                 ? String(idx + 1)
                 : `<span class="bi bi-chevron-right" style="font-size: 0.65rem;"></span>`;
               
               return `
                 <li class="phase-card">
-                  <div class="phase-indicator ${(op.order === 1 || op.order === 2 || op.order === 3) ? 'phase-indicator-num' : ''}">${indicatorHTML}</div>
+                  <div class="phase-indicator ${(op.order === 1 || op.order === 2 || op.order === 3 || op.order === 4) ? 'phase-indicator-num' : ''}">${indicatorHTML}</div>
                   <div class="phase-content">
                     <div>${mainContent}</div>
                   </div>
