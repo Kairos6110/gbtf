@@ -365,7 +365,7 @@ Lake Country serves as the primary technical incubator for Skell Security’s hi
 ### 5. COMMAND & SIGNAL
 
 * **Task Force Callsign:** PHANTOM
-* **Command:** ECLIPSE ACTUAL
+* **Command:** RAVEN
 * **Frequency:** 99.45 MHz (Secure SATCOM)
 * **Codewords:**
   * **MIRAGE** – Staging area established at Duart Mountain Bivouac.
