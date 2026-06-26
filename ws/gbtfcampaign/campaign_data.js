@@ -251,6 +251,44 @@ Following our successful operation on Egg Island, which dismantled the live dron
   * **BLIND** – Azrael optical arrays and guidance systems disabled.
   * **BLACKOUT** – Arrow Testing Zone launch control disabled.
   * **REAPER** – HVT captured at Nugget Cliff and safely transferred.`,
+  "7-new stirling.txt": `**OPORD NO. 7107**
+
+**CALLSIGN:** TALON
+
+### 1. SITUATION & MISSION
+
+The agricultural region of New Stirling has been weaponized by Sentinel Corp to secure a self-sustaining food supply chain for their occupying forces and to mask a localized electronic tracking web. Operating under the "Viper" network protocol, Sentinel has established highly fortified checkpoints and listening posts hidden within the rolling farmlands to monitor and suppress agrarian resistance groups. The situation is becoming increasingly dire. The remaining civilian population is facing severe food shortages, while Sentinel forces continue to raid local communities, abducting civilians and transporting them to forced labor camps further north. TALON is ordered to conduct rural interdiction operations, eliminate the tactical security layers, and dismantle the regional electronic surveillance hub.
+
+**Possible additional target of opportunity:** Keep an eye out for possible Intel trail linked to the Vega Residences or the Medical Center up north, there are rumors of an injured lieutenant that could be transiting through there. There is also ISR that seems to suggest the enemy are using supply trucks to transport IEDs to plant on bridges in the AO, if confirmed, conduct off site demolition of supply trucks.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Dark Wood Bivouac (Set Up & Deploy):** Prep gear and deploy from Dark Wood Bivouac. Establish a silent staging area on the edge of the New Stirling agricultural plains. [PHASE CODE: DARKWOOD]
+* **Phase II - Dunback Farm (Logistics Interdiction):** Infiltrate Dunback Farm. Clear Sentinel patrols guarding the grain silos and search the main farmhouse to recover shipping manifests detailing Sentinel's regional supply distribution vectors. [PHASE CODE: HARVEST]
+* **Phase III - Forsyth Farm (Surveillance Sabotage):** Advance to Forsyth Farm. Infiltrate the facility, neutralize the Sentinel communications team, and sabotage the localized electronic tracking relay hidden on-site. [PHASE CODE: SCYTHE]
+* **Phase IV - Burnside Orchard (Asset Recovery):** Move covertly to Burnside Orchard. Reach our undercover asset 'QUAKER' (any civilian present) who holds access keycards for the primary communication nodes and clear the perimeter patrols. It is paramount that no alert is raised at this location due to its close proximity to the SOF FOB to the northeast. Any alert could compromise the mission and result in the execution of the POWs. [PHASE CODE: TROPIC]
+* **Phase V - Blue Viper Outpost (Direct Action):** Execute synchronized assault on the heavily fortified Blue Viper Outpost. Eliminate the garrison, disable the automated defense arrays, and spike the regional tracking servers to dismantle the tracking web. ISR confirms thermal signature in a holding cell, possible friendly assets in the vicinity, keep an eye out for them. [PHASE CODE: MAMBA]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Logistics:** Roads and airspace are under heavy enemy surveillance. All movement will be conducted on foot. Once the team has secured the final outpost, we will radio APEX 3 to establish the position as a forward operating base (FOB), solidifying our presence in the region and enabling follow-on offensive operations toward the border.
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** TALON
+* **Command:** HARVEST
+* **Frequency:** 58.10 MHz (Tactical VHF, Encrypted)
+* **Codewords:**
+  * **DARKWOOD** – Bivouac deployed and forward staging area established.
+  * **HARVEST** – Dunback Farm cleared and logistics manifests recovered.
+  * **SCYTHE** – Forsyth Farm tracking relay dismantled.
+  * **TROPIC** – Undercover asset QUAKER reached and access keycards obtained.
+  * **MAMBA** – Blue Viper Outpost neutralized and tracking web offline.`,
   "INTRO TEXT.txt": `**GBTF STRATEGIC SITUATION REPORT: ARCHIPELAGO AUROA**
 
 **DOCUMENT REF:** CO-SITREP-001-ALPHA
