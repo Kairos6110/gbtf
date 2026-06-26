@@ -13,9 +13,9 @@ DYNAMO element is set to infiltrate the critical coastal and maritime energy nod
 
 * **Phase I - Harbor Cove Island Bivouac (Set Up):** Prep gear and deploy from Harbor Cove Island Bivouac. [PHASE CODE: COAL]
 * **Phase II - Auroa Power Plant (Grid Override):** Advance to the main onshore Auroa Power Plant compound. Clear the peripheral guard towers and break into the high-voltage substation. Physically tap the main transformer relays with a hardware override bypass module to restore energy access to regional urban networks. [PHASE CODE: LIVE WIRE]
-* **Phase III - Main Pumping Station (Flow Control):** Infiltrate the Main Pumping Station, neutralizing security patrols and configuring the hydraulic valves to prevent a critical thermal overload at the primary grid core. [PHASE CODE: HIGH WATER]
-* **Phase IV - Electric Grid Control (Network Capture):** Conduct a coordinated dynamic assault on the heavily fortified Electric Grid Control facility. Secure the central control room before the technical staff can trigger an automated emergency system wipe. Purge Sentinel administrative access codes and establish an encrypted remote link back to GBTF command. [PHASE CODE: SURGE]
-* **Phase V - Oceanic Power Plant (Power Diversion):** Infiltrate the Oceanic Power Plant's platform to sever the automated transmission links routing raw tidal energy exclusively to automated drone production. [PHASE CODE: TIDAL]
+* **Phase III - Main Pumping Station (Flow Control):** Infiltrate the Main Pumping Station, neutralizing security patrols and configuring the hydraulic valves to prevent a critical thermal overload at the primary grid core. (Hack the computers in the control rooms) [PHASE CODE: HIGH WATER]
+* **Phase IV - Electric Grid Control (Network Capture):** Conduct a coordinated dynamic assault on the heavily fortified Electric Grid Control facility. Secure the central control room before the technical staff can trigger an automated emergency system wipe. Purge Sentinel administrative access codes and establish an encrypted remote link back to GBTF command. (Hack the computers in the control rooms) [PHASE CODE: SURGE]
+* **Phase V - Oceanic Power Plant (Power Diversion):** Infiltrate the Oceanic Power Plant's platform to sever the automated transmission links routing raw tidal energy exclusively to automated drone production. (Hack the computers in the control rooms) [PHASE CODE: TIDAL]
 
 ---
 

@@ -142,11 +142,11 @@ PEQUOD element is set to conduct a highly kinetic, air-to-ground interdiction of
 
 * **Phase I - Round Top Bivouac (Set Up & Deploy):** Prep gear and deploy from Round Top Bivouac using Outcast-supplied air assets (Overseer or Deinos gunship). Establish air-to-ground coordination, with a 2-man air crew providing continuous Close Air Support (CAS) and call-for-fire capability, while a 2-man ground team (1 pointman 1 JTAC) inserts onto Egg Island. [PHASE CODE: HARPOON]
 * **Phase II - Murmur Hotspot Alpha (Air Interdiction):** Ground team inserts on the northern sector of Egg Island. Locate and neutralize the first swarm before they can alert the main network. [PHASE CODE: DEAFEN]
-* **Phase III - Aamon Patrol Alpha (Armor Interdiction):** Advance southeast to locate and destroy the first Aamon UGV ground drone patrol using explosives or anti-tank munitions. [PHASE CODE: CRIPPLE]
+* **Phase III - Aamon Patrol Alpha (Armor Interdiction):** Advance southeast to locate and destroy the first Aamon UGV ground drone patrol using explosives or anti-tank munitions. Look for survivors and bag any intel left behind. [PHASE CODE: CRIPPLE]
 * **Phase IV - Murmur Hotspot Bravo (Air Interdiction):** Move west to locate and neutralize the second Murmur UAV drone swarm monitoring the transit corridors. [PHASE CODE: FLASH]
-* **Phase V - Aamon Patrol Bravo (Armor Interdiction):** Eliminate the second Aamon UGV ground drone patrol southeast. [PHASE CODE: CRUSH]
+* **Phase V - Aamon Patrol Bravo (Armor Interdiction):** Eliminate the second Aamon UGV ground drone patrol southeast. Look for survivors and bag any intel left behind. [PHASE CODE: CRUSH]
 * **Phase VI - Murmur Hotspot Charlie (Air Interdiction):** Reach the southern shore and disable the third and final Murmur UAV drone swarm. [PHASE CODE: ECLIPSE]
-* **Phase VII - Aamon Patrol Charlie (Armor Interdiction):** Sweep the western perimeter to locate and destroy the third and final Aamon UGV patrol securing the approach to Range Control. ISR has confirmed that the commanding officer overseeing the Egg Island project is operating in the area. Capture the HVT, conduct a tactical field interrogation if feasible, call GYPS for extract and move him to South Cape Station for prosecution. [PHASE CODE: SHIELD]
+* **Phase VII - Aamon Patrol Charlie (Armor Interdiction):** Sweep the western perimeter to locate and destroy the third and final Aamon UGV patrol. ISR has confirmed that the officer overseeing the Egg Island project is operating in the area. Capture the HVT (ANY ENEMY THAT SPAWNS NEAR FINAL SITE), call GYPS for extract and move him to South Cape Station for intterogation. [PHASE CODE: SHIELD]
 
 ---
 
@@ -186,9 +186,9 @@ DYNAMO element is set to infiltrate the critical coastal and maritime energy nod
 
 * **Phase I - Harbor Cove Island Bivouac (Set Up):** Prep gear and deploy from Harbor Cove Island Bivouac. [PHASE CODE: COAL]
 * **Phase II - Auroa Power Plant (Grid Override):** Advance to the main onshore Auroa Power Plant compound. Clear the peripheral guard towers and break into the high-voltage substation. Physically tap the main transformer relays with a hardware override bypass module to restore energy access to regional urban networks. [PHASE CODE: LIVE WIRE]
-* **Phase III - Main Pumping Station (Flow Control):** Infiltrate the Main Pumping Station, neutralizing security patrols and configuring the hydraulic valves to prevent a critical thermal overload at the primary grid core. [PHASE CODE: HIGH WATER]
-* **Phase IV - Electric Grid Control (Network Capture):** Conduct a coordinated dynamic assault on the heavily fortified Electric Grid Control facility. Secure the central control room before the technical staff can trigger an automated emergency system wipe. Purge Sentinel administrative access codes and establish an encrypted remote link back to GBTF command. [PHASE CODE: SURGE]
-* **Phase V - Oceanic Power Plant (Power Diversion):** Infiltrate the Oceanic Power Plant's platform to sever the automated transmission links routing raw tidal energy exclusively to automated drone production. [PHASE CODE: TIDAL]
+* **Phase III - Main Pumping Station (Flow Control):** Infiltrate the Main Pumping Station, neutralizing security patrols and configuring the hydraulic valves to prevent a critical thermal overload at the primary grid core. (Hack the computers in the control rooms) [PHASE CODE: HIGH WATER]
+* **Phase IV - Electric Grid Control (Network Capture):** Conduct a coordinated dynamic assault on the heavily fortified Electric Grid Control facility. Secure the central control room before the technical staff can trigger an automated emergency system wipe. Purge Sentinel administrative access codes and establish an encrypted remote link back to GBTF command. (Hack the computers in the control rooms) [PHASE CODE: SURGE]
+* **Phase V - Oceanic Power Plant (Power Diversion):** Infiltrate the Oceanic Power Plant's platform to sever the automated transmission links routing raw tidal energy exclusively to automated drone production. (Hack the computers in the control rooms) [PHASE CODE: TIDAL]
 
 ---
 
