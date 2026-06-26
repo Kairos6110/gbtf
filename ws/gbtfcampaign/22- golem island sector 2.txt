@@ -1,0 +1,44 @@
+**OPORD NO. 7122**
+
+**CALLSIGN:** ARCHER
+
+### 1. SITUATION & MISSION
+
+Following our successful sabotage of Golem Island's Chemical Refinery and the suppression of the long-range satellite dish in Sector 1, we have severely degraded the cooling systems of Golem Island's subterranean structures. Recovered decryption keys have pointed directly to Sector 2, the hardened military core of the Red Wolves.
+
+Golem Island Sector 2 acts as the hardened military core and tactical staging ground for the elite Sentinel Red Wolves detachment. Sentinel has retrofitted the Cold War-era **Missile Site Ruins**, converting the subterranean silos to house an unauthorized tactical ballistic asset capable of targeting maritime corridors across the South Pacific. This strategic installation is heavily shielded by two specialized forward operating bases: **Camp Phoenix**, an armored infantry garrison, and **Camp Salamander**, a motorized drone-patrol hub. Furthermore, Sentinel has established an advanced cryptographic intercept station inside the nearby **Forgotten Sanctuary** ruins to monitor regional task force traffic. ARCHER is ordered to conduct a high-intensity direct action mission to neutralize the perimeter outposts, disrupt the signals intercept station, and permanently sabotage the missile infrastructure.
+
+---
+
+> **Tactical Reconnaissance Note:** As shown in the overhead tracking profile, the Missile Site Ruins are integrated directly into the volcanic bluff. Defensive lines leverage old concrete trench systems and fortified blast rings. Flanking routes are constrained by the open volcanic shelf, requiring precise overwatch suppression during the final approach.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Sector 2 Staging Bivouac (Staging Area):** Establish a tactical staging area at the Sector 2 Staging Bivouac. Prepare gear and plan high-intensity infiltration routes into Golem Island's volcanic interior under limited visibility. [PHASE CODE: IGNIS]
+* **Phase II - Camp Phoenix & Camp Salamander (Perimeter Collapse):** Execute a covert terrestrial infiltration from the high mountain gaps. Strike **Camp Phoenix** under low-light conditions, neutralizing the automated heavy weapon towers and garrison barracks to eliminate the enemy's immediate quick-reaction force (QRF). Move immediately to hit **Camp Salamander**, using explosive or electronic sabotage packages to brick the automated motorized patrol vehicles before they can deploy to secure the access roads. [PHASE CODE: CINDER]
+* **Phase III - Forgotten Sanctuary (Cryptographic Break):** Advance under absolute noise discipline to the **Forgotten Sanctuary**. Breach the retrofitted technical tents hidden within the historic stone structures, eliminate the signals intelligence operators, and hard-tap the primary decryption servers. Secure all local signal maps and encryption keys to insulate task force communications. [PHASE CODE: CRYPT]
+* **Phase IV - Missile Site Ruins (Silo Sabotage):** Conduct a high-intensity dynamic breach of the fortified concrete perimeter at the **Missile Site Ruins**. Push past the elite inner-circle defensive detail to access the subterranean silo control decks. Plant synchronized high-yield demolition shapes on the primary hydraulic launch arms and structural tracking rings to permanently trap the missile assets beneath the concrete blast doors. [PHASE CODE: OBLIVION]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Aviation:** Entirely unavailable. Total electronic and kinetic deniability is enforced across the interior sectors.
+* **EXFIL:** 1x Heavily armored infantry carrier hotwired at the Camp Phoenix vehicle park post-clearance.
+* **Ordnance:** Linear breaching shapes, armor-piercing configurations, and high-yield structural charges are mandatory for the reinforced silo concrete.
+* **CASEVAC:** None. Volcanic thermal plumes and local missile defenses prohibit any medical evacuation flights.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** ARCHER
+* **Command:** ARCHON
+* **Frequency:** 242.90 MHz (Secure UHF / Low Probability of Intercept)
+* **Codewords:**
+  * **IGNIS** – Staging area established at Sector 2 Staging Bivouac.
+  * **CINDER** – Camp Phoenix and Camp Salamander garrisons neutralized.
+  * **CRYPT** – Cryptographic intercept servers successfully mirrored and purged.
+  * **OBLIVION** – Missile launch infrastructure permanently sabotaged; moving to extraction vehicle.

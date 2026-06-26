@@ -1,0 +1,41 @@
+**OPORD NO. 7115**
+
+**CALLSIGN:** RAZOR
+
+### 1. SITUATION & MISSION
+
+The Wild Coast is a critical industrial shoreline sector where Sentinel Corp manufactures heavy drone propulsion systems and manages high-volume distribution channels. Sentinel has also weaponized local industrial waste processing, turning the Toxic Storage Depot into a localized threat to enforce civilian submission. Furthermore, automated defensive perimeter infrastructure at Drone Station W031 secures the shoreline against conventional seaborne vectors. GBTF element RAZOR will deploy to isolate the coastal sector, disrupt heavy engine production lines, and neutralize the maritime distribution nodes.
+
+---
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Youth Spring & Drone Station W031 (Insertion & Suppression):** Conduct a low-profile overland insertion through the natural water channels at Youth Spring. Establish a temporary patrol base, then move rapidly to assault Drone Station W031. Sever the fiber optic relays connecting the coastal radar to the automated anti-ship missile sites to clear the maritime avenue of approach.
+* **Phase II - Engine R&D Center & Toxic Storage Depot (Industrial Interdiction):** Advance west under absolute noise discipline to the Engine R&D Center. Infiltrate the fabrication facility and plant specialized thermite blocks on the prototype multi-fuel drone turbines. Move directly to the Toxic Storage Depot to isolate the environmental control valves, preventing Sentinel from intentionally purging industrial wastewater into local aquifers as a defensive measure.
+* **Phase III - Wild Coast Freight Yard (Logistics Neutralization):** Conduct a high-intensity, synchronized assault on the primary Wild Coast Freight Yard. Suppress the automated gantry cranes and motorized security patrols. Interdict a high-priority cargo manifest from the central shipping office, and plant demolition charges on the primary rail switcher system to freeze all outbound industrial shipments.
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Armament:** Mid-to-long-range suppressed platforms are recommended for the initial phases. Heavy fragmentation and breach kits are authorized for Phase III.
+* **EXFIL:** 1x Non-standard coastal cargo vessel secured at the primary freight yard shipping docks by local Outcast maritime contacts.
+* **Logistics:** Self-sustained. Extra CBRN gear should be carried due to proximity to the Toxic Storage Depot.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** RAZOR
+* **Command:** ECLIPSE ACTUAL
+* **Frequency:** 168.95 MHz (Frequency Hopping, Encrypted)
+* **Codewords:**
+* **CLEAR WATER** – Youth Spring staging area secure; Drone Station blinded.
+* **COLD TURBINE** – Engine R&D blueprints secured; prototypes destroyed.
+* **GRIDLOCK** – Freight yard rail switchers destroyed; moving to extraction dock.
+
+
+
+---

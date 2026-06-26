@@ -873,7 +873,7 @@
         } else {
           // Parse operation files
           const parsed = parseOpord(fileName, text);
-          if (parsed) {
+          if (parsed && parsed.order <= 15) {
             operationsList.push(parsed);
           }
         }
@@ -1218,6 +1218,39 @@
               <img src="10tacmap.png" alt="Infinity Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
             </div>
           ` : ''}
+          ${op.order === 11 ? `
+            <div style="margin-bottom: 1.5rem; max-width: 800px;">
+              <img src="11tacmap.png" alt="Whalers Bay Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            </div>
+          ` : ''}
+          ${op.order === 12 ? `
+            <div style="margin-bottom: 1.5rem; max-width: 800px;">
+              <img src="12tac.png" alt="Silent Mountain Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            </div>
+          ` : ''}
+          ${op.order === 13 ? `
+            <div style="margin-bottom: 1.5rem; max-width: 800px;">
+              <img src="13tac.png" alt="New Argyll Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            </div>
+          ` : ''}
+          ${op.order === 14 ? `
+            <div style="margin-bottom: 1.5rem; max-width: 800px;">
+              <img src="14tac.png" alt="Wild Coast Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            </div>
+          ` : ''}
+          ${op.order === 15 ? `
+            <div style="margin-bottom: 1.5rem; max-width: 800px;">
+              <img src="15tac.png" alt="Mount Hodgson Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            </div>
+          ` : ''}
+          ${(op.order >= 16 && op.order <= 23) ? `
+            <div style="margin-bottom: 1.5rem; max-width: 800px; height: 350px; background: rgba(255,255,255,0.02); border: 1px dashed var(--line-soft); border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); position: relative; overflow: hidden;">
+              <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.15; background-image: radial-gradient(var(--olive-2) 1px, transparent 1px); background-size: 20px 20px;"></div>
+              <span class="bi bi-map" style="font-size: 2.5rem; margin-bottom: 0.75rem; color: var(--olive-2); opacity: 0.6;"></span>
+              <div style="font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 2px; color: var(--olive-2); margin-bottom: 0.25rem;">TACTICAL MAP PENDING</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">CLASSIFIED // SECURE LINK REQUIRED</div>
+            </div>
+          ` : ''}
           <ul class="phase-list">
             ${op.execution.map((phase, idx) => {
               const splitIdx = phase.indexOf(":");
@@ -1231,13 +1264,13 @@
                 mainContent = phase.replace(/\*\*/g, '');
               }
               
-              const indicatorHTML = (op.order === 1 || op.order === 2 || op.order === 3 || op.order === 4 || op.order === 5 || op.order === 6 || op.order === 7 || op.order === 8 || op.order === 9 || op.order === 10)
+              const indicatorHTML = (op.order >= 1 && op.order <= 23)
                 ? String(idx + 1)
                 : `<span class="bi bi-chevron-right" style="font-size: 0.65rem;"></span>`;
               
               return `
                 <li class="phase-card">
-                  <div class="phase-indicator ${(op.order === 1 || op.order === 2 || op.order === 3 || op.order === 4 || op.order === 5 || op.order === 6 || op.order === 7 || op.order === 8 || op.order === 9 || op.order === 10) ? 'phase-indicator-num' : ''}">${indicatorHTML}</div>
+                  <div class="phase-indicator ${(op.order >= 1 && op.order <= 23) ? 'phase-indicator-num' : ''}">${indicatorHTML}</div>
                   <div class="phase-content">
                     <div>${mainContent}</div>
                   </div>

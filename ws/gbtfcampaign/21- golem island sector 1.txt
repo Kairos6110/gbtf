@@ -1,0 +1,44 @@
+**OPORD NO. 7121**
+
+**CALLSIGN:** WOLFHOUND
+
+### 1. SITUATION & MISSION
+
+Following our successful raid on Camp Kodiak in the Driftwood Islets, we have secured naval routing logs and littoral telemetry overrides. This has opened a narrow gap in the coastline defenses, allowing us to launch our long-awaited assault on Golem Island, starting with the outer ring of Sector 1.
+
+The deployment theater has shifted off the mainland to Golem Island—a volcanic, highly unstable landmass heavily fortified by Sentinel’s elite Red Wolves detachment. Sector 1 contains the logistical and chemical backbone of the island's operations. Sentinel is utilizing the **Chemical Refinery** and its connected **Chemical Pipeline** to process volatile sulfur compounds and cooling elements necessary for their subterranean manufacturing complexes. This sector's security is anchored by the **Golem Island Satellite Dish**, which handles long-range telemetry override codes for the island's defense grid, and the **Ancient Harbor**, which serves as the primary maritime entry point. WOLFHOUND is ordered to conduct a deniable amphibious insertion, blind regional satellite uplink tracking, and disable the chemical refining infrastructure.
+
+---
+
+> **Target Sector Analysis:** As seen in the overhead tracking profile, the Chemical Refinery is embedded directly into the volcanic rock face, making conventional aerial bombardment completely unfeasible. The complex features a heavily guarded lower concrete vehicle bay and an intricate lattice of overhead piping structures that must be traversed to access the core valve controls.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Volcanic Staging Bivouac (Staging Area):** Establish a tactical staging area at the Volcanic Staging Bivouac on Golem Island's outer perimeter. Prepare gear and plan amphibious approaches to the island's rocky harbor under cover of darkness. [PHASE CODE: MAGMA]
+* **Phase II - Ancient Harbor (Infiltration & Secure):** Execute a low-signature maritime insertion under the cover of night. Infiltrate the stone sea walls of the **Ancient Harbor**, neutralize immediate sentinel patrols, and disable the harbor's automated surface radar to secure a covert extraction corridor for the element. [PHASE CODE: OBSIDIAN]
+* **Phase III - Golem Island Satellite Dish (Uplink Suppression):** Advance inland along the steep ridge lines to reach the high-ground position of the **Golem Island Satellite Dish**. Overpower the localized technical defense force, breach the primary control terminal, and upload a localized data loop to blind the facility’s long-range tracking capabilities. [PHASE CODE: CORONA]
+* **Phase IV - Chemical Pipeline & Chemical Refinery (Industrial Sabotage):** Descend into the industrial valley floor. Isolate the main **Chemical Pipeline** feed line, planting synchronized breaching shapes on the secondary emergency shutoff valves. Proceed immediately into the core **Chemical Refinery** complex. Traverse the catwalk infrastructure to access the primary pressure manifold room, override the safety lockouts, and vent the processed cooling compounds to permanently cripple the facility's production cycles. [PHASE CODE: VAPOR]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Aviation:** Entirely unavailable due to Golem Island's active automated anti-air networks.
+* **EXFIL:** 1x Unmarked high-speed tactical boat will be holding position in the blind spot beneath the cliffs of the Ancient Harbor.
+* **Logistics:** Independent operations footprint. Extended breathing apparatus and heavy protective layers are recommended due to localized chemical fumes and volcanic sulfur venting.
+* **CASEVAC:** None. Volcano thermal emissions and active anti-air networks deny all medical evacuation flight profiles.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** WOLFHOUND
+* **Command:** ARCHON
+* **Frequency:** 231.15 MHz (Crypto-Isolated Tactical Network)
+* **Codewords:**
+  * **MAGMA** – Staging area established at Volcanic Staging Bivouac.
+  * **OBSIDIAN** – Ancient Harbor security grid compromised.
+  * **CORONA** – Satellite Dish uplink disabled.
+  * **VAPOR** – Chemical Refinery valves successfully vented; moving to extraction.

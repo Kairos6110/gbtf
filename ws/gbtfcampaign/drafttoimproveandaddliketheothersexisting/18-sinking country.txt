@@ -1,0 +1,43 @@
+**OPORD NO. 7119**
+
+**CALLSIGN:** OUTLAW
+
+### 1. SITUATION & MISSION
+
+Sinking Country is an intricate, waterlogged coastal theater that Sentinel Corp has locked down using a dense network of overlapping anti-aircraft grids and island fortifications. By retrofitting the historic **Anti-Aircraft Ruins** with modern automated surface-to-air missile (SAM) arrays, Sentinel completely denies low-altitude flight operations to any external forces. This air shield protects their primary logistical staging hub, the **Sentinel Corp Land Base**, and two high-security island outposts: **Bunker Edgehod South** and **Camp Tiger**. Element OUTLAW will execute a high-risk Suppression of Enemy Air Defenses (SEAD) operation, decapitate regional land command structures, and neutralize the offshore island strongholds.
+
+---
+
+> **Operational Terrain Assessment:** The satellite tracking overlay highlights the highly isolated nature of the offshore island garrisons. To successfully assault Bunker Edgehod South and Camp Tiger, the mainland anti-aircraft radar umbrella must be completely neutralized in the opening phase of the engagement.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Anti-Aircraft Ruins (Airspace Deaden):** Conduct a low-profile terrestrial infiltration through the salt marshes under strict thermal masking. Scale the high ground of the historic **Anti-Aircraft Ruins**, clear the Sentinel security detail, and plant synchronized fragmentation charges directly on the cooling units of the retrofitted modern SAM batteries to permanently blind regional air-defense tracking.
+* **Phase II - Sentinel Corp Land Base (Command Raid):** Capitalize on the immediate airspace confusion. Conduct a aggressive assault on the **Sentinel Corp Land Base** command compound. Neutralize the tactical staff, intercept localized data transmissions, and execute **HVT "Major Kross"** (the regional defensive coordinator).
+* **Phase III - Bunker Edgehod South & Camp Tiger (Amphibious Assault):** Transition to high-speed waterborne infiltration assets. Cross the open channel to breach the reinforced sea doors of the island fortress at **Bunker Edgehod South**, disabling its automated coastal artillery arrays. Proceed immediately to **Camp Tiger (island)** to eliminate the elite mercenary garrison and reclaim a major cache of heavy weapons before Sentinel forces can execute a tactical retreat.
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Aviation:** 1x Unmarked transport helicopter on standby to perform rapid medical evacuation and heavy equipment transport *only* after Phase I confirmation of anti-aircraft destruction.
+* **Maritime:** 2x Combat Rubber Raiding Craft (CRRC) cached at a hidden drop point south of the land base for the Phase III island crossings.
+* **Ordnance:** High-yield C4 blocks, thermal breaching tools, and electronic bypass modules are required for the reinforced bunker systems.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** OUTLAW
+* **Command:** ECLIPSE ACTUAL
+* **Frequency:** 201.35 MHz (Sincgars Secure, Frequency Hopping)
+* **Codewords:**
+* **FLIGHT PATH** – Anti-Aircraft Ruins disabled; regional airspace open.
+* **CHECKMATE** – Sentinel Corp Land Base command structure eliminated.
+* **HAMMER DROP** – Island bunkers cleared; maritime caches secured.
+
+
+
+---

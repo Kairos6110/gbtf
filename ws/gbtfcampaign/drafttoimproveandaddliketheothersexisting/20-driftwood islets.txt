@@ -1,0 +1,43 @@
+**OPORD NO. 7121**
+
+**CALLSIGN:** ORION
+
+### 1. SITUATION & MISSION
+
+The Driftwood Islets form a fragmented archipelago off the coast, serving as Sentinel Corp’s primary forward operating point for littoral (coastal) patrol and tactical testing. Sentinel has constructed **Camp Kodiak** to anchor their maritime security forces in the sector, while leveraging the isolated **Driftwood Islets Testing Zone** to calibrate advanced close-range surveillance systems. Intelligence reports also indicate that Sentinel has hidden a mobile signals-intelligence interception team within the dense cover of the **Ancient Cemetery** to monitor rebel marine frequencies. Element ORION will execute a multi-island amphibious interdiction to blind the listening post, sabotage the littoral testing assets, and dismantle the regional naval staging base.
+
+---
+
+> **Tactical Topography Note:** As seen in the aerial reconnaissance overlay, the target area consists of highly isolated landmasses with minimal land bridges. Infiltration teams must coordinate waterborne maneuvers carefully to mask their approaches between the high-ground tracking installations and the coastal lowlands of the primary outposts.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Ancient Cemetery (Signals Interdiction):** Conduct a low-signature amphibious insertion using combat rubber raiding craft. Scale the forested bluffs to enter the perimeter of the **Ancient Cemetery**. Move under absolute noise discipline to locate and eliminate the hidden Sentinel signals team, capturing their tactical frequency maps and destroying their mobile transmission array.
+* **Phase II - Driftwood Islets Testing Zone (Technical Sabotage):** Transition via the coastline to the **Driftwood Islets Testing Zone**. Avoid automated littoral sensor arrays. Plant localized thermite blocks inside the telemetry control shacks and destroy the prototype high-speed marine tracking nodes positioned along the shoreline.
+* **Phase III - Camp Kodiak (Base Clearance & SSE):** Mount a aggressive, synchronized dynamic assault on the main compound at **Camp Kodiak**. Suppress the heavy machine gun emplacements defending the boat slips and clear the central operations barracks. Access the tactical terminal to secure all naval patrol logs and maritime routing data before the network triggers an automated lockout.
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Maritime:** 2x Combat Rubber Raiding Craft (CRRC) equipped with muffled outboards will be utilized for all inter-island transit phase lines.
+* **Fire Support:** Completely deniable operation. Naval gunfire and air assets are completely unavailable; total reliance on organic unit weapons.
+* **Logistics:** Sub-surface and wet-weather gear configurations are mandatory. Operators must carry standalone communications override kits for Phase III.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** ORION
+* **Command:** ECLIPSE ACTUAL
+* **Frequency:** 224.80 MHz (Cryptographic Tactical Net)
+* **Codewords:**
+* **GHOST LINE** – Ancient Cemetery signals team successfully eliminated.
+* **DEAD WAVE** – Testing Zone telemetry hardware permanently disabled.
+* **BEACHHEAD** – Camp Kodiak secured; maritime intelligence packages ready for transfer.
+
+
+
+---

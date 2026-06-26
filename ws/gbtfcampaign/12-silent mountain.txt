@@ -1,0 +1,41 @@
+**OPORD NO. 7112**
+
+**CALLSIGN:** VANDAL
+
+### 1. SITUATION & MISSION
+
+Following the successful sabotage of Sentinel's drone chassis factories and airfield at Whalers Bay, enemy production has been severely disrupted. Unable to sustain normal manufacturing, Sentinel has shifted its focus toward centralized command, logistics, and predictive battlefield management. Intercepted comms identify the source of these capabilities deep within the Silent Mountain AO.
+
+The high-altitude peaks of Silent Mountain house their central digital infrastructure. Within the heavily fortified Auroa Data Farm, Sentinel operates massive computing arrays responsible for processing regional communications, coordinating logistics, and running predictive battlefield algorithms across the archipelago. The facility also performs cryptographic reprogramming on captured military hardware. Operations are sustained by a dedicated high-capacity Battery Farm and a geothermal Pumping Station that provides critical cooling for the server infrastructure.
+
+VANDAL is tasked with infiltrating the mountain complex, systematically disabling the supporting utilities before assaulting the Data Farm itself. By crippling this facility, the team will severely degrade Sentinel's command, communications, and logistical coordination throughout Auroa.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Fortune Stream Bivouac (Staging Area):** Establish a tactical staging area at Fortune Stream Bivouac. Prepare gear and plan high-altitude infiltration parameters under freezing conditions. [PHASE CODE: AVALANCHE]
+* **Phase II - Pumping Station (Coolant Sabotage):** Execute a covert infiltration of the geothermal Pumping Station. Damage the main coolant valves to disrupt the cooling system of the primary data farm. *(Roleplay: Use C4 on pipes heading downhill.)* [PHASE CODE: BLIZZARD]
+* **Phase III - Battery Farm (Power Disruption):** Infiltrate the Battery Farm and plant magnetic charges to disrupt backup power grids. *(Roleplay: Use EMPs.)* [PHASE CODE: SPARK]
+* **Phase IV - Auroa Data Farm (Network Purge & SSE):** Mount a dynamic assault on the Auroa Data Farm complex while its cooling systems are failing. Penetrate the subterranean server vault, eliminate security details, and upload a localized logic virus to permanently purge Sentinel’s processed operational intelligence. Secure hard data logs prior to server shutdown. [PHASE CODE: GLITCH]
+* **Phase V - Camp Black Widow (Garrison Clearance & Hold):** Advance to Camp Black Widow, Sentinel's primary quick-reaction and security base in the sector. Clear the garrison and hold the facility to await the arrival of friendly forces. This will be a major win for indig forces who will be able to resupply and take over the region. [PHASE CODE: SPIDER]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **CAS:** WRECKER 2 is on station and available for close air support with GATLING OVERSEER upon request. Civilians are confirmed at multiple objective areas. All calls for fire require PID and strict danger close discipline and marking.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** VANDAL
+* **Command:** ARCHON
+* **Frequency:** 152.80 MHz (Tactical SATCOM, Encrypted)
+* **Codewords:**
+  * **AVALANCHE** – Staging area established at Fortune Stream Bivouac.
+  * **BLIZZARD** – Geothermal pumping station cooling valves compromised.
+  * **SPARK** – Battery farm backup power grids disrupted.
+  * **GLITCH** – Data farm servers purged and intelligence secured.
+  * **SPIDER** – Camp Black Widow neutralized and secured; awaiting friendly forces.

@@ -1,0 +1,40 @@
+**OPORD NO. 7116**
+
+**CALLSIGN:** STALKER
+
+### 1. SITUATION & MISSION
+
+Following our successful infiltration and sabotage of Mount Hodgson's mining and refining infrastructure, the logs mirrored from the Mining Control Center have exposed Sentinel's primary shipping routes for these raw materials. Many of these processed elements are being funneled directly through the swampy wetlands of Fen Bog to evade detection.
+
+The Fen Bog province is a waterlogged, low-lying wetland vector that Sentinel Corp has converted into a high-security contraband corridor. Utilizing the marshy terrain as natural camouflage against satellite detection, Sentinel channels restricted hardware through **Fen Bog Port** and the primary **Shipping Center**. To maintain situational awareness in this dense environment, they have requisitioned a localized biometric tracking grid from the **Blue Corp Startup** facility, monitoring the sector via a forward listening post at **Andersons Farm**. STALKER is tasked with dismantling the wetland surveillance array, seizing cargo manifests, and cutting off Sentinel’s swamp-based supply lines.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Marshland Bivouac (Staging Area):** Establish a tactical staging area at the Marshland Bivouac. Prepare gear and plan waterborne infiltration parameters through the swampy wetlands of Fen Bog. [PHASE CODE: QUAGMIRE]
+* **Phase II - Andersons Farm & Blue Corp Startup (Surveillance Disruption):** Execute a low-profile amphibious infiltration through the southern marsh reeds. Strike the forward outpost at **Andersons Farm** to neutralize localized perimeter sensors. Move rapidly to the hyper-modern **Blue Corp Startup** complex, eliminate the technical security detail, and extract the source code for the regional biometric tracking network before it syncs with the island's central mainframe. [PHASE CODE: SNARE]
+* **Phase III - Fen Bog Port (Maritime Interdiction):** Advance along the primary waterways using low-signature skiffs. Infiltrate **Fen Bog Port**, plant delayed thermite charges on Sentinel patrol boats docked at the piers, and secure the harbor master’s digital transit logs to track incoming illicit cargo. [PHASE CODE: HARBOR]
+* **Phase IV - Shipping Center (Logistics Decapitation):** Conduct a synchronized dynamic assault on the main **Shipping Center** warehouses. Suppress the automated cargo handlers and garrison forces. Locate the central distribution servers, upload a destructive logic wipe, and secure high-value weapon crates pre-packaged for regional distribution. [PHASE CODE: WATERLOG]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Mobility:** 2x Non-standard flat-bottomed airboats cached by local Outcast guides near the western swamp perimeter.
+* **EXFIL:** MARITIME ACTUAL will coordinate a high-speed extraction at the northern edge of the shipping center docks via unmarked coastal interceptor craft.
+* **Logistics:** Wet-weather operations. All primary weapon systems must utilize waterproofed optical systems; signature-suppressed platforms are mandatory for Phase II to maintain the element of surprise across open water fields.
+* **CASEVAC:** None. Low-altitude waterlogged terrain limits landing zone viability; rescue elements are unavailable.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** STALKER
+* **Command:** ARCHON
+* **Frequency:** 182.10 MHz (Tactical VHF, Encrypted)
+* **Codewords:**
+  * **QUAGMIRE** – Staging area established at Marshland Bivouac.
+  * **SNARE** – Andersons Farm and Blue Corp tracking software compromised.
+  * **HARBOR** – Fen Bog Port maritime assets sabotaged.
+  * **WATERLOG** – Shipping Center cleared and logistics database wiped.

@@ -1,0 +1,46 @@
+**OPORD NO. 7111**
+
+**CALLSIGN:** CHIMERA
+
+### 1. SITUATION & MISSION
+
+After the infil and exploitation of the Skell Foundation Head Office in the Infinity province, recovered transaction ledgers and logistics schedules have mapped the flow of raw drone components back to their source. The trail leads directly to the heavy-industrial heart of Whalers Bay.
+
+Whalers Bay serves as the heavy-industrial heart of Sentinel's autonomous military output. This sector contains the critical manufacturing plants responsible for fabricating the raw structural frames—both aerial and ground-based—for their entire drone program. These uncompleted frames are held at a central Storage Depot before being distributed via the **Whalers Bay Airfield** for final software and weapon integration. CHIMERA is tasked with executing a multi-point industrial sabotage campaign to break Sentinel's mechanical supply line and lock down localized heavy air-transport capabilities.
+
+---
+
+### 3. EXECUTION
+
+**Whalers Bay Tactical Map**
+
+* **Phase I - Auctions Glade Bivouac (Set Up & Deploy):** Establish a staging area at Auctions Glade Bivouac. Conduct final equipment checks and begin a covert infiltration into Whalers Bay. [PHASE CODE: HEARTH]
+* **Phase II - Storage Depot (Supply Denial):** Secure the perimeter and infiltrate the Storage Depot. Destroy stockpiles of carbon fiber, titanium alloys, and other raw materials feeding Sentinel's drone production. *(Roleplay: Destroy designated crates with C4.)* [PHASE CODE: EMBER]
+* **Phase III - Land Chassis Factory (Industrial Sabotage):** Clear the Land Chassis Factory and disable the machinery producing ground drone chassis. *(Roleplay: Use EMP grenades to represent sabotaging the production equipment.)* [PHASE CODE: ANVIL]
+* **Phase IV - Air Chassis Factory (Production Interdiction):** Infiltrate the Air Chassis Factory and disable the assembly lines manufacturing aerial drone frames. *(Roleplay: Use EMP grenades to disable the factory systems.)* [PHASE CODE: SPINDLE]
+* **Phase V - Construction Site (Engineering Denial):** Sabotage site supporting Sentinel's military expansion in the sector. Gain access to RFID locked area for possible additional intel. [PHASE CODE: DEBRIS]
+* **Phase VI - Whalers Bay Airfield (Airfield Denial):** Assault the airfield, secure the control tower, and disable all cargo aircraft to prevent Sentinel from evacuating personnel or equipment. [PHASE CODE: FROST]
+* **Phase VII - Nor'wester Cliff Cave (Exfiltration & R&R):** Exfiltrate the sector on foot and regroup at the Nor'wester Cliff Cave staging area for rest and recuperation. [PHASE CODE: HAVEN]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Ordnance:** High-grade industrial demolition charges and specialized cyber-sabotage USB modules will be provided at the insertion point.
+* **CASEVAC:** None. No air assets available due to heavy anti-air defenses. Teams must rely on tactical field care and buddy-aid protocols.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** CHIMERA
+* **Command:** HARBINGER
+* **Frequency:** 145.20 MHz (Secure / Anti-Jamming Multi-Channel)
+* **Codewords:**
+  * **HEARTH** – Staging area established at Auctions Glade Bivouac.
+  * **EMBER** – Storage Depot material reserves successfully incinerated.
+  * **ANVIL** – Land Chassis production line permanently disabled.
+  * **SPINDLE** – Air Chassis production line recalibrated to fail.
+  * **DEBRIS** – Construction site heavy cranes and supplies sabotaged.
+  * **FROST** – Airfield locked down; moving to the heavy transport vehicle.
+  * **HAVEN** – Nor'wester Cliff Cave reached; team secure and off-grid.

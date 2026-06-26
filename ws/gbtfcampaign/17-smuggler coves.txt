@@ -1,0 +1,44 @@
+**OPORD NO. 7117**
+
+**CALLSIGN:** CORSAIR
+
+### 1. SITUATION & MISSION
+
+Following our successful interdiction of the swamp-based logistics lines in Fen Bog, the cargo manifests recovered from the Shipping Center have exposed an unmonitored maritime pipeline operating out of the rocky cliffs of Smuggler Coves. Wiping their swamp logistics network has forced Sentinel to divert their remaining smuggling shipments through this rugged coastal corridor.
+
+Sentinel Corp has exploited the deep-water inlets and historic coastal defensive positions of the Smuggler Coves province to build a completely unmonitored, black-market maritime pipeline. Operating primarily out of **Maunga Nui Port**, they are loading weaponized drone components onto unflagged commercial freighters. This shipping node is shielded by an early-warning tracking network at **Oleander Station** and a fortified quick-reaction base at **Outpost Red Tiger**. Sentinel’s regional command staff has retrofitted a highly secure, subterranean tactical operations center directly inside the historic stone walls of the **Spanish Fortress**. CORSAIR is tasked with blinding the tracking network, dismantling the port infrastructure, and raiding the historic fortress command vault to seize outbound cargo telemetry.
+
+---
+
+> **Tactical Reconnaissance Note:** The drone tracking view emphasizes the open maritime channels of Maunga Nui Port. Sentinel secures its transport vessels along the primary concrete berths, relying entirely on early warning data fed directly from the high-ground arrays at Oleander Station.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Shipwreck Bivouac (Staging Area):** Establish a tactical staging area at the Shipwreck Bivouac. Prepare gear and plan waterborne infiltration parameters around the jagged coastal cliffs. [PHASE CODE: REEF]
+* **Phase II - Oleander Station & Outpost Red Tiger (Deafen & Clear):** Infiltrate the sector via low-signature coastal watercraft. Conduct a vertical cliff ascent to reach **Oleander Station**, neutralize the technical guard force, and physical-spike the maritime surface-search radar arrays. Move rapidly inland to execute a synchronized flank assault on **Outpost Red Tiger** to collapse the primary infantry checkpoint protecting the valley floor. [PHASE CODE: CLIFFSIDE]
+* **Phase III - Maunga Nui Port (Seizure & Interdiction):** Advance onto the primary docks of **Maunga Nui Port**. Eliminate localized container-yard security details, breach the harbor master’s office, and recover the master digital manifest detailing international black-market buyers. Hard-tag all staged weapons containers with encrypted satellite beacons. [PHASE CODE: BLACKFLAG]
+* **Phase IV - Spanish Fortress (Bunker Breach & SSE):** Conduct a high-intensity dynamic assault on the thick stone ramparts of the **Spanish Fortress**. Neutralize the heavy weapons crews operating from the historical battlements, then execute an explosive breach of the reinforced steel doors leading into the subterranean colonial-era magazine tunnels. Eliminate the remaining command staff and secure all localized encryption drives. [PHASE CODE: IRONCLAD]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Aviation:** Unavailable due to overlapping mobile anti-aircraft missile batteries operating along the Smuggler Coves perimeter.
+* **EXFIL:** 1x Non-standard high-speed interceptor boat cached within a sea cave layout precisely 400 meters west of the Spanish Fortress ruins.
+* **Logistics:** Heavy breaching tools and thermite blocks are mandatory for Phase IV structure clearing.
+* **CASEVAC:** None. Active coastal anti-air envelopes prevent any medical evacuation flights.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** CORSAIR
+* **Command:** ARCHON
+* **Frequency:** 194.50 MHz (Crypto-Isolated Tactical Network)
+* **Codewords:**
+  * **REEF** – Staging area established at Shipwreck Bivouac.
+  * **CLIFFSIDE** – Oleander Station radar arrays disabled.
+  * **BLACKFLAG** – Maunga Nui Port manifests secured.
+  * **IRONCLAD** – Spanish Fortress subterranean vault cleared; moving to extraction.

@@ -1,0 +1,41 @@
+**OPORD NO. 7113**
+
+**CALLSIGN:** MARAUDER
+
+### 1. SITUATION & MISSION
+
+Following our successful purge of the Auroa Data Farm in Silent Mountain, the sudden network blackout has panicked Sentinel's regional command. Decrypted backup logs recovered from the data farm indicate that Sentinel is hunting down Skell corporate elites in New Argyll province to retrieve physical backup keys. We must beat them to it.
+
+The New Argyll province juxtaposes the ultra-luxury, high-security residential architecture of Skell’s corporate elite with the rugged, historic remnants of the archipelago's early settlements. Sentinel Corp has established **Outpost Black Tiger** to lock down the central valley corridor, while utilizing the strategic high-ground of the **Ancient Fort** to mount tactical signal-interception arrays. Concurrently, Sentinel death squads are sweeping the **Skell Estate** and **Long Valley Residences** to hunt down and eliminate high-ranking Skell executives who possess master network override tokens. MARAUDER will deploy to secure these high-value civilian assets, break the regional valley blockade, and destroy Sentinel's SIGINT footprint.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Carrick Ridge Bivouac (Staging Area):** Establish a tactical staging area at Carrick Ridge Bivouac. Prepare gear and plan rapid infiltration routes into New Argyll's valley sector. [PHASE CODE: CLANSMAN]
+* **Phase II - Ancient Fort (Death Squad Neutralization):** Eliminate the Sentinel death squad staging for deployment at this location. Field interrogate a senior member to determine which Skell Technology personnel are being targeted and identify the remaining individuals on Sentinel's priority list. [PHASE CODE: HIGHLAND]
+* **Phase III - Outpost Black Tiger (Breach & Clear):** Coordinated assault on **Outpost Black Tiger**. Neutralize the heavy machine gun emplacements and mortar pits to open up the valley corridor. [PHASE CODE: SABRE]
+* **Phase IV - Long Valley Residences (Asset Interdiction):** Conduct a low-profile infiltration into the high-end residential sector under a strict noise discipline protocol. High risk of hostages. Sweep the Long Valley Residences to locate and secure a hiding senior data engineer code-named Asset "Vanguard". [PHASE CODE: HARRIER]
+* **Phase V - Skell Estate (Encryption Key Recovery):** Advance to the main **Skell Estate** to secure physical biometric encryption keys before Sentinel extraction teams can breach the estate's residential panic vault. [PHASE CODE: KEYSTONE]
+* **Phase VI - Brown Homestead (Exfiltration & Debrief):** Secure the on-site helicopter at the estate and exfiltrate to **Brown Homestead** to debrief with regional POCs. [PHASE CODE: HOMESTEAD]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **CAS:** We have the rare support of **JAGUAR 1**, an Outcast Apache gunship, available for close air support. Its time on station is limited, so employ it decisively. Priority target is **Outpost Black Tiger**. All other objectives present an unacceptable risk due to civilian presence and the potential to compromise the mission.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** MARAUDER
+* **Command:** ARCHON
+* **Frequency:** 161.40 MHz (Encrypted, Low Probability of Intercept)
+* **Codewords:**
+  * **CLANSMAN** – Staging area established at Carrick Ridge Bivouac.
+  * **HIGHLAND** – Signal arrays at the Ancient Fort successfully destroyed.
+  * **SABRE** – Outpost Black Tiger cleared and valley corridor open.
+  * **HARRIER** – Asset "Vanguard" located and secured.
+  * **KEYSTONE** – Biometric keys secured from the Skell Estate panic vault.
+  * **HOMESTEAD** – Arrived at Brown Homestead via helicopter; debrief complete.

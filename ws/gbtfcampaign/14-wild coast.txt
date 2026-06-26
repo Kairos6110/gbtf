@@ -1,0 +1,39 @@
+**OPORD NO. 7114**
+
+**CALLSIGN:** RAZOR
+
+### 1. SITUATION & MISSION
+
+Wild Coast serves as one of Sentinel's remaining industrial strongholds, where heavy drone propulsion systems are manufactured, tested, and prepared for distribution. The sector integrates production, research, and logistics into a single coastal complex, allowing Sentinel to rapidly field and sustain its unmanned ground and aerial forces. Intelligence indicates the Hybrid Engine Factory and Engine R&D Center are operating at full capacity, while the adjacent freight yard is preparing a major outbound shipment of critical components. Intercepted communications reference an unidentified offshore buyer known only by the codename **"IHSAN,"** suggesting Sentinel is supplying advanced military technology to an external client. Following the devastating blows inflicted during our previous operations in southern Auroa, Wild Coast now represents Sentinel's last major industrial center capable of sustaining heavy drone production.
+
+RAZOR is tasked with infiltrating the area of operations under cover of darkness to cripple Sentinel's remaining heavy drone manufacturing capability. Destroy key production assets, recover any intelligence relating to the "IHSAN" network, and disrupt the distribution pipeline before the shipment departs. Success will severely degrade Sentinel's ability to produce and sustain heavy unmanned combat systems throughout the archipelago.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Two Lakes Valley Bivouac (Staging Area):** Establish a tactical staging area at Two Lakes Valley Bivouac. Prepare gear and plan infiltration parameters into the coastal sector. [PHASE CODE: SPRINGTIDE]
+* **Phase II - Youth Spring (Infiltration & Recon):** Move covertly to Youth Spring. Conduct reconnaissance on enemy patrol routes, secure the immediate vicinity, and exploit the computer network to search for intel about the IHSAN network. [PHASE CODE: HARPOON]
+* **Phase III - Hybrid Engine Factory (Production Sabotage):** Infiltrate the Hybrid Engine Factory. Sabotage the assembly line fabricating heavy drone engine components. [PHASE CODE: ACID]
+* **Phase IV - Wild Coast Freight Yard (Logistics Neutralization):** Conduct a synchronized assault on the primary Wild Coast Freight Yard. Secure shipping manifests and confirm where the components were supposed to be shipped. [PHASE CODE: GHOST TRAIN]
+* **Phase V - Engine R&D Center (Research Sabotage & SSE):** Infiltrate the Engine R&D Center. Secure developmental schematics and access the top floor office for confirmation on where the IHSAN network operates from and its operational scope. [PHASE CODE: THERMITE]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **APC SUPPORT:** STRIKER 2 will be rolling with us in a IC-8 Incursion Armored Personnel Carrier available at the staging point (spawn it if you have it in-game, optional) for the whole mission duration.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** RAZOR
+* **Command:** ARCHON
+* **Frequency:** 168.95 MHz (Frequency Hopping, Encrypted)
+* **Codewords:**
+  * **SPRINGTIDE** – Staging area established at Two Lakes Valley Bivouac.
+  * **HARPOON** – Youth Spring area secured and scouted.
+  * **ACID** – Hybrid Engine Factory production line permanently disabled.
+  * **GHOST TRAIN** – Freight yard rail switchers neutralized and cargo manifests secured.
+  * **THERMITE** – Engine prototypes destroyed at R&D Center; holding on-site.

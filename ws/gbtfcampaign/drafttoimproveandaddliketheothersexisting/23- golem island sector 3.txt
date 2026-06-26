@@ -1,0 +1,39 @@
+**OPORD NO. 7124**
+
+**CALLSIGN:** RAGNAROK
+
+### 1. SITUATION & MISSION
+
+This volcanic caldera hosts Sentinel's most heavily guarded secret: the **Prototype Workshop**, where next-generation, fully autonomous weapon matrices are entering final system integration. This installation is entirely sustained by rare-earth components extracted directly from the high-hazard **Scandium Mine** and shielded behind the fortification line known as **No Man's Land**. GBTF element RAGNAROK will execute a zero-fail, scorched-earth campaign to breach the perimeter outposts, collapse the critical mining infrastructure, and permanently neutralize Sentinel’s prototype development lines before the technology can be deployed or exported off-island.
+
+---
+
+> **Tactical Intelligence Report:** Airborne assets have captured the modular configuration of Sentinel's forward manufacturing footprint. The Red Wolves utilize automated robotic assembly arms inside secure, containerized lab environments to accelerate the final physical weapon integration for their prototype drone platforms.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - No Man's Land & Red Phoenix Outpost (The Breach):** Execute an aggressive infiltration through the heavily mined, sensor-choked trenches of **No Man's Land**. Employ specialized thermal tracking arrays to identify automated machine gun nests and bypass active minefields. Launch a sudden, overwhelming assault on **Red Phoenix Outpost** to seize control of the valley’s master gate overrides and eliminate the sector’s quick-reaction armor assets.
+* **Phase II - Scandium Mine (Resource Denial):** Advance rapidly into the subterranean tunnels of the **Scandium Mine**. Overpower the elite mercenary security teams garrisoned inside the refinement chambers. Plant high-yield thermite shapes directly onto the main autonomous sorting systems and structural support headers, forcing a controlled collapse of the shaft to cut off the raw material supply line completely.
+* **Phase III - Prototype Workshop (Endgame Sabotage & Purge):** Penetrate the heavily reinforced core facility at the **Prototype Workshop**. Isolate the assembly floors and eliminate the Red Wolves engineering cadre. Upload a terminal logic virus to permanently erase all local hardware master schematics, then plant synchronized demolition blocks on the prototype assembly lines and core server housing to finish the job.
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Aviation:** Entirely unavailable. Total electronic warfare isolation is active across the volcanic caldera.
+* **EXFIL:** 1x Captured Sentinel heavy armored personnel carrier will be utilized to violently punch through the eastern sea-gate checkpoint post-detonation.
+* **Ordnance:** Extended dynamic loadouts required. Heavy anti-materiel systems, linear breaching charges, and portable electronic jamming packages are mandatory for all fireteams.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** RAGNAROK
+* **Command:** ECLIPSE ACTUAL
+* **Frequency:** 250.00 MHz (Crypto-Isolated Tactical Network / Maximum Power)
+* **Codewords:**
+* **WALL BREAKER** – No Man's Land and Red Phoenix Outpost collapsed.
+* **BLACKSTONE** – Scandium Mine extraction infrastructure permanently buried.
+* **TERTIA OPTIO** – Prototype Workshop destroyed; final campaign objectives complete. Moving to extraction vector.
