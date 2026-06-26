@@ -30,7 +30,7 @@ The New Argyll province juxtaposes the ultra-luxury, high-security residential a
 ### 5. COMMAND & SIGNAL
 
 * **Task Force Callsign:** MARAUDER
-* **Command:** ARCHON
+* **Command:** BASTION
 * **Frequency:** 161.40 MHz (Encrypted, Low Probability of Intercept)
 * **Codewords:**
   * **CLANSMAN** – Staging area established at Carrick Ridge Bivouac.

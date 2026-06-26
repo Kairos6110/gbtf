@@ -32,7 +32,7 @@ During infiltration aboard HORUS 3, our contracted helicopter was engaged by a s
 ### 5. COMMAND & SIGNAL
 
 * **Task Force Callsign:** HUNTER
-* **Command:** ARCHON
+* **Command:** ONYX
 * **Frequency:** 174.45 MHz (Cryptographic Intra-Theater VHF)
 * **Codewords:**
   * **ICEBOUND** – Staging area established at Hodgson Mount Bivouac.

@@ -492,7 +492,7 @@ VANDAL is tasked with infiltrating the mountain complex, systematically disablin
 ### 5. COMMAND & SIGNAL
 
 * **Task Force Callsign:** VANDAL
-* **Command:** ARCHON
+* **Command:** SHROUD
 * **Frequency:** 152.80 MHz (Tactical SATCOM, Encrypted)
 * **Codewords:**
   * **AVALANCHE** – Staging area established at Fortune Stream Bivouac.
@@ -532,7 +532,7 @@ The New Argyll province juxtaposes the ultra-luxury, high-security residential a
 ### 5. COMMAND & SIGNAL
 
 * **Task Force Callsign:** MARAUDER
-* **Command:** ARCHON
+* **Command:** BASTION
 * **Frequency:** 161.40 MHz (Encrypted, Low Probability of Intercept)
 * **Codewords:**
   * **CLANSMAN** – Staging area established at Carrick Ridge Bivouac.
@@ -572,7 +572,7 @@ RAZOR is tasked with infiltrating the area of operations under cover of darkness
 ### 5. COMMAND & SIGNAL
 
 * **Task Force Callsign:** RAZOR
-* **Command:** ARCHON
+* **Command:** MAELSTROM
 * **Frequency:** 168.95 MHz (Frequency Hopping, Encrypted)
 * **Codewords:**
   * **SPRINGTIDE** – Staging area established at Two Lakes Valley Bivouac.
@@ -614,7 +614,7 @@ During infiltration aboard HORUS 3, our contracted helicopter was engaged by a s
 ### 5. COMMAND & SIGNAL
 
 * **Task Force Callsign:** HUNTER
-* **Command:** ARCHON
+* **Command:** ONYX
 * **Frequency:** 174.45 MHz (Cryptographic Intra-Theater VHF)
 * **Codewords:**
   * **ICEBOUND** – Staging area established at Hodgson Mount Bivouac.

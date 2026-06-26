@@ -31,7 +31,7 @@ VANDAL is tasked with infiltrating the mountain complex, systematically disablin
 ### 5. COMMAND & SIGNAL
 
 * **Task Force Callsign:** VANDAL
-* **Command:** ARCHON
+* **Command:** SHROUD
 * **Frequency:** 152.80 MHz (Tactical SATCOM, Encrypted)
 * **Codewords:**
   * **AVALANCHE** – Staging area established at Fortune Stream Bivouac.
