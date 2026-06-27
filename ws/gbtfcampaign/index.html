@@ -799,6 +799,58 @@
       padding-top: 1rem;
       margin-top: 1rem;
     }
+
+    /* Minimalist Video Player */
+    .sps-video-shell {
+      position: relative;
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      background: #000;
+    }
+
+    .sps-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .sps-video-play {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      border: 0;
+      background: linear-gradient(180deg, rgba(5, 8, 7, 0.18), rgba(5, 8, 7, 0.62));
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .sps-video-play .play-icon-circle {
+      display: grid;
+      place-items: center;
+      width: clamp(3.5rem, 10vw, 5.5rem);
+      height: clamp(3.5rem, 10vw, 5.5rem);
+      border: 1px solid rgba(241, 238, 224, 0.8);
+      border-radius: 999px;
+      background: rgba(32, 41, 22, 0.84);
+      box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.45);
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      color: var(--ink);
+      transition: background 0.25s, transform 0.25s;
+    }
+
+    .sps-video-play:hover .play-icon-circle {
+      background: rgba(43, 55, 29, 0.96);
+      transform: scale(1.05);
+    }
+
+    .sps-video-shell.is-playing .sps-video-play {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -1376,17 +1428,18 @@
 
       briefingContent.innerHTML = `
         <div class="intro-briefing">
-          <div class="opord-header">
-            <h1 class="opord-number" style="font-size: 1.5rem; line-height: 1.3;">INITIAL SITUATION REPORT</h1>
 
-          </div>
-
-          <div class="intro-banner" style="display: flex; justify-content: center; background: transparent; border: none; margin-bottom: 0.5rem;">
-            <img src="auroa.webp" alt="Archipelago Auroa Overview" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line);">
+          <div class="intro-banner" style="margin-bottom: 1rem;">
+            <div class="sps-video-shell">
+              <video class="sps-video" id="intro-video" src="https://github.com/Kairos6110/gbtf/releases/download/1.2/GBTF_FP.mp4" playsinline></video>
+              <button class="sps-video-play" type="button" onclick="const v=document.getElementById('intro-video'); v.muted=false; v.play(); v.controls=true; this.closest('.sps-video-shell').classList.add('is-playing');" aria-label="Play video with audio">
+                <span class="play-icon-circle"><i class="bi bi-play-fill"></i></span>
+              </button>
+            </div>
           </div>
 
           <div class="opord-section">
-            <h3><span class="icon bi bi-activity"></span>EXECUTIVE SUMMARY</h3>
+            <h3><span class="icon bi bi-activity"></span>INITIAL SITUATION REPORT</h3>
             <p>The Auroa Archipelago—a highly advanced, privatized tech-hub owned by Skell Technology—has gone completely dark. All commercial, civilian, and diplomatic communications from the island chain ceased less than 72 hours ago. National intelligence assets confirm a hostile corporate coup orchestrated by <strong>Sentinel Corp</strong>, a corrupt private military contractor (PMC). Sentinel has placed the entire civilian workforce under brutal martial law and seized control of Skell’s automated, cutting-edge drone manufacturing infrastructure.</p>
           </div>
 
