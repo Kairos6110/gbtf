@@ -730,7 +730,7 @@ We will conduct a rapid precision strike to dismantle both operations. Priority 
 * **Phase III - Skell Foundation Campus (Liberation):** Secure the Skell Foundation Campus where the last Skell Tech personnel are held against their will, and liberate them. Gather actionable Intel in the server rooms and neutralize all SAM sites before takeoff. [PHASE CODE: BEACON]
 * **Phase IV - Campus Relay Station (Isolate):** Using a helicopter obtained from the Campus, fly up to the Campus Relay Station and secure it, neutralizing the radar early warning system. [PHASE CODE: ZEPHYR]
 * **Phase V - Underwater Cable Station (Data Sever):** Advance to the Underwater Cable Station to physically disable the transoceanic fiber-optic cable splices installed by Sentinel. [PHASE CODE: ABYSS]
-* **Phase VI - Zimmy's Safehouse (Exfil):** Exfiltrate at what is know as "Zimmy's Safehouse" a friendly POC who has been providing us invaluable intelligence since the beginning of our Campaign but whom we have never met in person. He has given us coordinates to his luxury safehouse by the coast for some well needed R&R. [PHASE CODE: OASIS]
+* **Phase VI - Zimmy's Safehouse (Exfil):** Exfiltrate at what is known as "Zimmy's Safehouse" a friendly POC who has been providing us invaluable intelligence since the beginning of our Campaign but whom we have never met in person. He has given us coordinates to his luxury safehouse by the coast for some well needed R&R. [PHASE CODE: OASIS]
 ---
 
 ### 5. COMMAND & SIGNAL
