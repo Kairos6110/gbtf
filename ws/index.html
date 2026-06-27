@@ -1375,6 +1375,51 @@
       pointer-events: none;
     }
 
+    .campaign-panel {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1rem, 2.7vw, 1.8rem);
+      background:
+        linear-gradient(135deg, rgba(165, 168, 102, 0.16), transparent 32%),
+        linear-gradient(180deg, rgba(18, 27, 21, 0.96), rgba(10, 15, 12, 0.98));
+    }
+
+    .campaign-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(241, 238, 224, 0.04);
+      pointer-events: none;
+    }
+
+    .campaign-img-zoom {
+      width: min(100%, 30rem);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 0.5rem 1.5rem var(--shadow);
+    }
+
+    .campaign-img-zoom img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .campaign-panel .button {
+      font-size: 1.1rem;
+      padding: 0.9rem 2.2rem;
+      width: min(100%, 25rem);
+      white-space: nowrap;
+    }
+
     .principle-logo {
       width: min(20rem, 72vw);
     }
@@ -1841,6 +1886,7 @@
       <div class="nav-links" id="nav-links">
         <div class="nav-section nav-section-primary" aria-label="Page sections">
         <a href="#principle"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/compass.svg');"></span>Overview</a>
+        <a href="#campaign"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/journal-text.svg');"></span>Immersive Campaign</a>
         <a href="#gallery"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/images.svg');"></span>Gallery</a>
         <a href="#kits"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/backpack2.svg');"></span>Kits</a>
         <a href="#tactical"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/bullseye.svg');"></span>Tactics</a>
@@ -1889,7 +1935,7 @@
       </div>
       <div class="panel principle">
         <div class="principle-content">
-          <p>GBTF is a Ghost Recon Breakpoint community, occasionally active in other games, offering a streamlined, player-first TACSIM experience built around realism, teamwork, and freedom. There is no mandatory training, micromanagement, or restrictions on gear, weapons, classes, or game settings, operators are free to enjoy everything the game has to offer. We simply expect members to communicate, coordinate, and approach each operation with a realistic tactical mindset. With more than 100 custom operations, advanced immersion tools, detailed self-paced guides, and a friendly yet professional community, GBTF welcomes both new and experienced players seeking authentic special forces gameplay. Welcome home, Operator. Respect. Integrity. Honor.</p>
+          <p>GBTF is a Ghost Recon Breakpoint community, occasionally active in other games, offering a streamlined, player-first TACSIM experience built around realism, teamwork, and freedom. There is no mandatory training, micromanagement, or restrictions on gear, weapons, classes, or game settings, operators are free to enjoy everything the game has to offer. We simply expect members to communicate, coordinate, and approach each operation with a realistic tactical mindset. With OUR VERY OWN IMMERSIVE CAMPAIGN, multiple custom operations, advanced immersion tools, detailed self-paced guides, and a friendly yet professional community, GBTF welcomes both new and experienced players seeking authentic special forces gameplay. Welcome home, Operator. Respect. Integrity. Honor.</p>
           <div class="sps-video-panel" aria-label="GBTF SPS video">
             <div class="sps-video-shell">
               <video class="sps-video" id="sps-presentation-video" src="GBTF_PRES.mp4" poster="vidpreviewimage.jpg" preload="metadata" playsinline aria-label="GBTF SPS presentation video"></video>
@@ -1907,6 +1953,22 @@
             <span class="platform-chip"><span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/pc.svg');" aria-hidden="true"></span>PC</span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="campaign" aria-labelledby="campaign-title">
+      <div class="section-head">
+        <span class="section-kicker">Special Operations</span>
+        <span class="icon icon-lg" style="--icon: url('icons/node_modules/bootstrap-icons/icons/journal-text.svg');" aria-hidden="true"></span>
+        <h2 id="campaign-title">Immersive Campaign</h2>
+      </div>
+      <div class="panel campaign-panel">
+        <button class="image-zoom campaign-img-zoom" type="button" aria-label="Open Auroa map">
+          <img src="gbtfcampaign/auroa.webp" alt="Auroa tactical map">
+        </button>
+        <a class="button" href="https://kairos6110.github.io/gbtf/ws/gbtfcampaign/#sitrep" target="_blank" rel="noopener noreferrer">
+          <span class="icon" style="--icon: url('icons/node_modules/bootstrap-icons/icons/box-arrow-up-right.svg');"></span>START THE JOURNEY
+        </a>
       </div>
     </section>
 
