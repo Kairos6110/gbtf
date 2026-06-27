@@ -49,9 +49,9 @@ Following our operation on Windy Islands, intercepted SIGINT confirms the enemy 
 
 The remaining enemy forces have been observed loading supplies onto RHIBs and patrol boats before withdrawing to the Naval Base further north. The good news is that indigenous resistance forces were able to retake Windy Islands following our intervention. Unfortunately, amid the chaos, the enemy captured one of our local POCs, who is now being held at the Naval Base. While our primary objectives remain unchanged, we must ensure their safe recovery if the opportunity presents itself.
 
-The Seal Islands serve as Sentinel Corp's primary maritime stronghold and strategic staging hub for the entire archipelago. By controlling the naval base, airfield, and deep-water fuel reserves, Sentinel maintains naval supremacy and rapid-response air capabilities throughout the southern sectors.
+The Seal Islands serve as Sentinel Corp's primary maritime stronghold and strategic staging hub for the entire archipelago. By controlling the naval base, airfield, and benefiting from the Wolves' main equipment and ammunition depot, Sentinel maintains naval supremacy, rapid-response air capabilities, and logistical resupply throughout the southern sectors.
 
-GBTF element **WARLOCK** is ordered to conduct a multi-phase sabotage and interdiction operation to blind regional radar coverage, destroy critical fuel infrastructure, and cripple Sentinel's ability to rapidly deploy naval and aerial assets across the region.
+GBTF element **WARLOCK** is ordered to conduct a multi-phase sabotage and interdiction operation to blind regional radar coverage, secure the Wolves' main depot, and cripple Sentinel's ability to rapidly deploy naval and aerial assets across the region.
 
 ---
 
@@ -62,7 +62,7 @@ GBTF element **WARLOCK** is ordered to conduct a multi-phase sabotage and interd
 * **Phase III - Auroa Airfield (Interdiction):** Advance to the airfield, liberate additional possible friendlies, load the helicopter with Equipment and deliver the helicopter to South Cape Station, rebels are in dire need of a resupply. [PHASE CODE: GRIDLOCK]
 * **Phase IV - Ammunition Depot (Sabotage):** Infiltrate the ammunition depot and destroy the stored ordnance stockpiles to bottleneck regional supply capabilities. [PHASE CODE: SLEDGEHAMMER]
 * **Phase V - West Radar Station (Deafen):** Penetrate the perimeter of the West Radar Station, neutralize the technical staff, and upload a localized logic bomb to blind early-warning airspace tracking. [PHASE CODE: CYCLOPS]
-* **Phase VI - Fuel Storage (Bleed):** Move into the primary POL facility, disable all defenses, and plant timed thermite charges on the main fuel silos to cripple the supply chain. Debrief and R&R at nearest bivouac. [PHASE CODE: WILDFIRE]
+* **Phase VI - Abandoned Barracks (Secure Depot):** Infiltrate the Abandoned Barracks, the largest equipment and ammunition depot for the Wolves QRF in the region, and secure the facility to turn it over to Outcast hands. [PHASE CODE: WILDFIRE]
 
 ---
 
@@ -84,7 +84,7 @@ GBTF element **WARLOCK** is ordered to conduct a multi-phase sabotage and interd
   * **GRIDLOCK** – Airfield secured and resupply helicopter delivered to South Cape Station.
   * **SLEDGEHAMMER** – Ammunition depot stockpiles destroyed.
   * **CYCLOPS** – West Radar Station tracking arrays disabled.
-  * **WILDFIRE** – Demolition charges set at Fuel Storage; moving to exfil.`,
+  * **WILDFIRE** – Abandoned Barracks secured and turned over to Outcast hands.`,
   "3-liberty.txt": `**OPORD NO. 7103**
 
 **CALLSIGN:** SPECTRE
@@ -629,347 +629,336 @@ During infiltration aboard HORUS 3, our contracted helicopter was engaged by a s
 
 ### 1. SITUATION & MISSION
 
-Following our successful infiltration and sabotage of Mount Hodgson's mining and refining infrastructure, the logs mirrored from the Mining Control Center have exposed Sentinel's primary shipping routes for these raw materials. Many of these processed elements are being funneled directly through the swampy wetlands of Fen Bog to evade detection.
+Reports from ORT-6 has uncovered a major split within Sentinel's command structure. An extremist breakaway faction known only as **VANGUARD** has seized control of key infrastructure throughout the Fen Bog wetlands. Unlike conventional Sentinel forces, Vanguard operates independently and is willing to employ biological weapons to achieve its objectives.
 
-The Fen Bog province is a waterlogged, low-lying wetland vector that Sentinel Corp has converted into a high-security contraband corridor. Utilizing the marshy terrain as natural camouflage against satellite detection, Sentinel channels restricted hardware through **Fen Bog Port** and the primary **Shipping Center**. To maintain situational awareness in this dense environment, they have requisitioned a localized biometric tracking grid from the **Blue Corp Startup** facility, monitoring the sector via a forward listening post at **Andersons Farm**. STALKER is tasked with dismantling the wetland surveillance array, seizing cargo manifests, and cutting off Sentinel’s swamp-based supply lines.
+Intercepted communications indicate the group has successfully produced a weaponized anthrax agent at a covert laboratory hidden within Andersons Farm. The biological agent has already been transferred to the nearby Blue Corp Startup water treatment facility, where modified pumping systems have been prepared to inject it directly into the Diamond River, East Auroa's primary source of drinking water. The attack is scheduled to commence at first light, threatening civilians and creating a catastrophic ecological disaster.
+
+ISR confirms the Vanguard commander is personally overseeing the laboratory at Andersons Farm while a heavily defended SIGINT detachment operating from Control Station Tiger 03 coordinates the attack, intercepts regional communications, and jams signals.
+
+STALKER is tasked with infiltrating the wetlands under cover of darkness to prevent the biological attack before dawn. Stop the contamination of the Diamond River, destroy the anthrax production capability, capture the Vanguard commander alive for strategic interrogation, eliminate the enemy's SIGINT capability, and seize the transport helicopter before the cell can escape.
 
 ---
 
 ### 3. EXECUTION
 
-* **Phase I - Marshland Bivouac (Staging Area):** Establish a tactical staging area at the Marshland Bivouac. Prepare gear and plan waterborne infiltration parameters through the swampy wetlands of Fen Bog. [PHASE CODE: QUAGMIRE]
-* **Phase II - Andersons Farm & Blue Corp Startup (Surveillance Disruption):** Execute a low-profile amphibious infiltration through the southern marsh reeds. Strike the forward outpost at **Andersons Farm** to neutralize localized perimeter sensors. Move rapidly to the hyper-modern **Blue Corp Startup** complex, eliminate the technical security detail, and extract the source code for the regional biometric tracking network before it syncs with the island's central mainframe. [PHASE CODE: SNARE]
-* **Phase III - Fen Bog Port (Maritime Interdiction):** Advance along the primary waterways using low-signature skiffs. Infiltrate **Fen Bog Port**, plant delayed thermite charges on Sentinel patrol boats docked at the piers, and secure the harbor master’s digital transit logs to track incoming illicit cargo. [PHASE CODE: HARBOR]
-* **Phase IV - Shipping Center (Logistics Decapitation):** Conduct a synchronized dynamic assault on the main **Shipping Center** warehouses. Suppress the automated cargo handlers and garrison forces. Locate the central distribution servers, upload a destructive logic wipe, and secure high-value weapon crates pre-packaged for regional distribution. [PHASE CODE: WATERLOG]
+* **Phase I - Stinking Slough Bivouac (Staging Area):** Establish a tactical staging area at the Stinking Slough Bivouac. Conduct final equipment checks and begin a covert infiltration through the marshlands under limited visibility. [PHASE CODE: SLOUGH]
+* **Phase II - Fen Bog Port (Interdiction):** Infiltrate Fen Bog Port and destroy the patrol boats and all vehicles staged by the unit. Recover any operational documents detailing Vanguard's biological attack and prevent reinforcements from moving through the waterways. [PHASE CODE: HARBOR]
+* **Phase III - Blue Corp Startup (Contamination Prevention):** Assault the Blue Corp Startup water treatment facility. Shut down the pumping systems before the anthrax agent can be released into the Diamond River and secure any evidence related to the attack. Demolish the remaining supplies off-site using C4 (Supply Truck) [PHASE CODE: CRANK]
+* **Phase IV - Andersons Farm (CBRN Laboratory Raid):** Clear the covert laboratory at Andersons Farm. Capture the Vanguard commander alive (any hostile near the labs), secure all intelligence, and destroy the remaining anthrax production capability. [PHASE CODE: SILENCE]
+* **Phase V - Control Station Tiger 03 (SIGINT Neutralization):** Assault Control Station Tiger 03, eliminate the remainder of the Vanguard unit, destroy all communications and jamming equipment, and seize the transport helicopter before surviving Vanguard personnel can escape the area. [PHASE CODE: AIRBORNE]
+* **Phase VI - Summers Homestead (Exfiltration):** Fly the captured helicopter to Summers Homestead, delivering the captured HVT and recovered intelligence to friendly forces for immediate exploitation. [PHASE CODE: SAFE HAVEN]
 
 ---
 
 ### 4. SERVICE & SUPPORT
 
-* **Mobility:** 2x Non-standard flat-bottomed airboats cached by local Outcast guides near the western swamp perimeter.
-* **EXFIL:** MARITIME ACTUAL will coordinate a high-speed extraction at the northern edge of the shipping center docks via unmarked coastal interceptor craft.
-* **Logistics:** Wet-weather operations. All primary weapon systems must utilize waterproofed optical systems; signature-suppressed platforms are mandatory for Phase II to maintain the element of surprise across open water fields.
-* **CASEVAC:** None. Low-altitude waterlogged terrain limits landing zone viability; rescue elements are unavailable.
+* **Helicopter Transport:** Hijack the utility helicopter stationed at Control Station Tiger 03 during Phase V.
 
 ---
 
 ### 5. COMMAND & SIGNAL
 
 * **Task Force Callsign:** STALKER
-* **Command:** ARCHON
+* **Command:** MIST
 * **Frequency:** 182.10 MHz (Tactical VHF, Encrypted)
 * **Codewords:**
-  * **QUAGMIRE** – Staging area established at Marshland Bivouac.
-  * **SNARE** – Andersons Farm and Blue Corp tracking software compromised.
-  * **HARBOR** – Fen Bog Port maritime assets sabotaged.
-  * **WATERLOG** – Shipping Center cleared and logistics database wiped.`,
+  * **SLOUGH** – Staging area established at Stinking Slough Bivouac.
+  * **HARBOR** – Fen Bog Port maritime assets and patrol boats destroyed.
+  * **CRANK** – Water treatment pumping systems shut down and supply vehicles demolished.
+  * **SILENCE** – Andersons Farm CBRN laboratory cleared and commander captured.
+  * **AIRBORNE** – Control Station Tiger 03 communications arrays destroyed and helicopter secured.
+  * **SAFE HAVEN** – Commandeered helicopter landed at Summers Homestead; HVT and Intel handoff complete.`,
   "17-smuggler coves.txt": `**OPORD NO. 7117**
 
 **CALLSIGN:** CORSAIR
 
 ### 1. SITUATION & MISSION
 
-Following our successful interdiction of the swamp-based logistics lines in Fen Bog, the cargo manifests recovered from the Shipping Center have exposed an unmonitored maritime pipeline operating out of the rocky cliffs of Smuggler Coves. Wiping their swamp logistics network has forced Sentinel to divert their remaining smuggling shipments through this rugged coastal corridor.
+The indig unit operating from Summers Homestead have given us an actionable target package on a black-market smuggling network operated by Sentinel within Smuggler Coves. Intelligence indicates they are shipping weaponized drone components out of Maunga Nui Port, supported by a chemical toxin lab at Oleander Station and a primary quick-reaction force (QRF) garrison at Outpost Red Tiger.
 
-Sentinel Corp has exploited the deep-water inlets and historic coastal defensive positions of the Smuggler Coves province to build a completely unmonitored, black-market maritime pipeline. Operating primarily out of **Maunga Nui Port**, they are loading weaponized drone components onto unflagged commercial freighters. This shipping node is shielded by an early-warning tracking network at **Oleander Station** and a fortified quick-reaction base at **Outpost Red Tiger**. Sentinel’s regional command staff has retrofitted a highly secure, subterranean tactical operations center directly inside the historic stone walls of the **Spanish Fortress**. CORSAIR is tasked with blinding the tracking network, dismantling the port infrastructure, and raiding the historic fortress command vault to seize outbound cargo telemetry.
+Crucially, reports from local assets indicate a massive human trafficking ring operating in the sector. Sentinel is rounding up civilians and shipping them offshore. A disillusioned Sentinel rifleman stationed at the Spanish Fortress has discovered the operation and wants to defect. He is willing to supply critical intelligence on the trafficking ring's leadership, transport routes, and offshore destinations.
 
----
-
-> **Tactical Reconnaissance Note:** The drone tracking view emphasizes the open maritime channels of Maunga Nui Port. Sentinel secures its transport vessels along the primary concrete berths, relying entirely on early warning data fed directly from the high-ground arrays at Oleander Station.
+CORSAIR is tasked with starting from Shacks Valley Bivouac, raiding the chemical toxin lab at Oleander Station, launching a preemptive strike on Outpost Red Tiger to destroy their newly delivered munitions before they can launch an assault, securing Maunga Nui Port, and infiltrating the Spanish Fortress to secure the defector and conduct a long-term interrogation on-site to fully map the trafficking network.
 
 ---
 
 ### 3. EXECUTION
 
-* **Phase I - Shipwreck Bivouac (Staging Area):** Establish a tactical staging area at the Shipwreck Bivouac. Prepare gear and plan waterborne infiltration parameters around the jagged coastal cliffs. [PHASE CODE: REEF]
-* **Phase II - Oleander Station & Outpost Red Tiger (Deafen & Clear):** Infiltrate the sector via low-signature coastal watercraft. Conduct a vertical cliff ascent to reach **Oleander Station**, neutralize the technical guard force, and physical-spike the maritime surface-search radar arrays. Move rapidly inland to execute a synchronized flank assault on **Outpost Red Tiger** to collapse the primary infantry checkpoint protecting the valley floor. [PHASE CODE: CLIFFSIDE]
-* **Phase III - Maunga Nui Port (Seizure & Interdiction):** Advance onto the primary docks of **Maunga Nui Port**. Eliminate localized container-yard security details, breach the harbor master’s office, and recover the master digital manifest detailing international black-market buyers. Hard-tag all staged weapons containers with encrypted satellite beacons. [PHASE CODE: BLACKFLAG]
-* **Phase IV - Spanish Fortress (Bunker Breach & SSE):** Conduct a high-intensity dynamic assault on the thick stone ramparts of the **Spanish Fortress**. Neutralize the heavy weapons crews operating from the historical battlements, then execute an explosive breach of the reinforced steel doors leading into the subterranean colonial-era magazine tunnels. Eliminate the remaining command staff and secure all localized encryption drives. [PHASE CODE: IRONCLAD]
+* **Phase I - Shacks Valley Bivouac (Staging Area):** Establish a tactical staging area at the Shacks Valley Bivouac. Prepare gear, check weapon platforms, and plan movement vectors across the forest. [PHASE CODE: REEF]
+* **Phase II - Oleander Station (CBRN Interdiction):** Infiltrate the labs complex at **Oleander Station**, which Sentinel has converted into a chemical toxin production lab for enhanced interrogation. Execute a swift breach of the refining rooms and gather any actionable intel. *(Mandatory: Gas masks must be equipped prior to breaching due to airborne toxins).* [PHASE CODE: CLIFFSIDE]
+* **Phase III - Outpost Red Tiger (Preemptive Munitions Strike):** Locate the vulnerable QRF outpost at **Outpost Red Tiger**. Wolves SOF have recently delivered the bulk of their munitions and tactical equipment here for an upcoming offensive. Conduct a preemptive strike, planting charges to destroy the stockpiled weapons and disable their logistics lines. [PHASE CODE: SABOTAGE]
+* **Phase IV - Maunga Nui Port (Port Seizure & Manifest Recovery):** Secure the docks at **Maunga Nui Port**. Neutralize the localized security detail, secure the harbor master’s office, and recover shipping manifests detailing outbound illicit shipments. [PHASE CODE: BLACKFLAG]
+* **Phase V - Spanish Fortress (HVT Defector Interrogation):** Infiltrate the ancient **Spanish Fortress**. Locate the defector—a disillusioned Sentinel rifleman willing to trade secrets about the civilian human trafficking ring. (Roleplay: Eliminate all personnel EXCEPT the one inside the tower who is the defector). Establish a secure perimeter inside the fortress and conduct a long-term on-site interrogation to obtain full intel on the ring before planning exfiltration. [PHASE CODE: IRONCLAD]
 
 ---
 
 ### 4. SERVICE & SUPPORT
 
-* **Aviation:** Unavailable due to overlapping mobile anti-aircraft missile batteries operating along the Smuggler Coves perimeter.
-* **EXFIL:** 1x Non-standard high-speed interceptor boat cached within a sea cave layout precisely 400 meters west of the Spanish Fortress ruins.
-* **Logistics:** Heavy breaching tools and thermite blocks are mandatory for Phase IV structure clearing.
-* **CASEVAC:** None. Active coastal anti-air envelopes prevent any medical evacuation flights.
+* **Logistics:** Heavy breaching charges, chemical gas masks and sample collection kits will be equipped
 
 ---
 
 ### 5. COMMAND & SIGNAL
 
 * **Task Force Callsign:** CORSAIR
-* **Command:** ARCHON
+* **Command:** GALLEON
 * **Frequency:** 194.50 MHz (Crypto-Isolated Tactical Network)
 * **Codewords:**
-  * **REEF** – Staging area established at Shipwreck Bivouac.
-  * **CLIFFSIDE** – Oleander Station radar arrays disabled.
+  * **REEF** – Staging area established at Shacks Valley Bivouac.
+  * **CLIFFSIDE** – Oleander Station chemical toxin lab breached and disabled.
+  * **SABOTAGE** – Outpost Red Tiger munitions stockpile destroyed.
   * **BLACKFLAG** – Maunga Nui Port manifests secured.
-  * **IRONCLAD** – Spanish Fortress subterranean vault cleared; moving to extraction.`,
-  "18-sinking country.txt": `**OPORD NO. 7118**
-
-**CALLSIGN:** OUTLAW
-
-### 1. SITUATION & MISSION
-
-Following our successful raid on the Spanish Fortress in Smuggler Coves, the encrypted data telemetry recovered from the command vault has detailed Sentinel's regional air-defense network. This radar shield is anchored in the waterlogged sector of Sinking Country, protecting their primary land command structures and offshore islands.
-
-Sinking Country is an intricate, waterlogged coastal theater that Sentinel Corp has locked down using a dense network of overlapping anti-aircraft grids and island fortifications. By retrofitting the historic **Anti-Aircraft Ruins** with modern automated surface-to-air missile (SAM) arrays, Sentinel completely denies low-altitude flight operations to any external forces. This air shield protects their primary logistical staging hub, the **Sentinel Corp Land Base**, and two high-security island outposts: **Bunker Edgehod South** and **Camp Tiger**. OUTLAW will execute a high-risk Suppression of Enemy Air Defenses (SEAD) operation, decapitate regional land command structures, and neutralize the offshore island strongholds.
-
----
-
-> **Operational Terrain Assessment:** The satellite tracking overlay highlights the highly isolated nature of the offshore island garrisons. To successfully assault Bunker Edgehod South and Camp Tiger, the mainland anti-aircraft radar umbrella must be completely neutralized in the opening phase of the engagement.
-
----
-
-### 3. EXECUTION
-
-* **Phase I - Howard Grave Bivouac (Staging Area):** Establish a tactical staging area at the Howard Grave Bivouac. Prepare gear and plan terrestrial infiltration routes through the salt marshes under strict thermal masking. [PHASE CODE: BANSHEE]
-* **Phase II - Anti-Aircraft Ruins (Airspace Deaden):** Scale the high ground of the historic **Anti-Aircraft Ruins**, clear the Sentinel security detail, and plant synchronized fragmentation charges directly on the cooling units of the retrofitted modern SAM batteries to permanently blind regional air-defense tracking. [PHASE CODE: DEADEYE]
-* **Phase III - Sentinel Corp Land Base (Command Raid):** Capitalize on the immediate airspace confusion. Conduct an aggressive assault on the **Sentinel Corp Land Base** command compound. Neutralize the tactical staff, intercept localized data transmissions, and execute **HVT "Major Kross"** (the regional defensive coordinator). [PHASE CODE: REAPER]
-* **Phase IV - Bunker Edgehod South & Camp Tiger (Amphibious Assault):** Transition to high-speed waterborne infiltration assets. Cross the open channel to breach the reinforced sea doors of the island fortress at **Bunker Edgehod South**, disabling its automated coastal artillery arrays. Proceed immediately to **Camp Tiger (island)** to eliminate the elite mercenary garrison and reclaim a major cache of heavy weapons before Sentinel forces can execute a tactical retreat. [PHASE CODE: ABYSS]
-
----
-
-### 4. SERVICE & SUPPORT
-
-* **CASEVAC:** 1x Unmarked transport helicopter on standby to perform rapid medical evacuation *only* after Phase II confirmation of anti-aircraft destruction.
-* **Maritime:** 2x Combat Rubber Raiding Craft (CRRC) cached at a hidden drop point south of the land base for the Phase IV island crossings.
-* **Ordnance:** High-yield C4 blocks, thermal breaching tools, and electronic bypass modules are required for the reinforced bunker systems.
-
----
-
-### 5. COMMAND & SIGNAL
-
-* **Task Force Callsign:** OUTLAW
-* **Command:** ARCHON
-* **Frequency:** 201.35 MHz (Sincgars Secure, Frequency Hopping)
-* **Codewords:**
-  * **BANSHEE** – Staging area established at Howard Grave Bivouac.
-  * **DEADEYE** – Anti-Aircraft Ruins disabled; regional airspace open.
-  * **REAPER** – Sentinel Corp Land Base command structure eliminated.
-  * **ABYSS** – Island bunkers cleared; maritime caches secured.`,
-  "19-cape north.txt": `**OPORD NO. 7119**
+  * **IRONCLAD** – Defector rifleman secured and human trafficking intelligence extracted at Spanish Fortress.`,
+  "18-cape north.txt": `**OPORD NO. 7118**
 
 **CALLSIGN:** GRIFFIN
 
 ### 1. SITUATION & MISSION
 
-Following our successful SEAD operation in Sinking Country, which blinded Sentinel's regional SAM arrays, the air corridor is clear but their command has retreated further north. Recovered land base data points directly to Cape North, where Sentinel is finalizing their predictive tracking AI and running illegal underwater taps.
+The Sentinel defector captured at the Spanish Fortress has confirmed our worst fears. A specialized Sentinel unit responsible for procuring "human cargo" is preparing a coordinated assault on the remaining Skell Technology facilities across Cape North. Their objective is to abduct engineers, researchers, and civilians, then move them to coastal staging areas before transferring them to the IHSAN network, the same shadow organization previously identified as purchasing Sentinel's advanced drone technology. Intercepted communications now confirm IHSAN is trafficking both military hardware and human beings throughout the Middle East and Asia, making this the largest human trafficking operation uncovered on Auroa.
 
-Cape North is the isolated, high-tech northern edge where Skell Technology's most secretive artificial intelligence development interfaces with global communications networks. Sentinel Corp has seized this critical infrastructure, utilizing the **AI Experimental Center** to integrate autonomous weapon matrices and weaponize advanced predictive tracking. Simultaneously, they have taken control of the **Underwater Cable Station**, splicing physical data-taps directly into trans-oceanic fiber-optic lines to intercept and monitor international strategic communications. GRIFFIN is tasked with severing the illegal fiber-optic taps, isolating regional transmissions, and executing a zero-footprint raid on the research complex to purge the experimental AI training weights.
+At the same time, Sentinel has expanded its intelligence network across the region. A long-range radar at the Campus Relay Station now provides early warning of all aircraft operating over northern Auroa. Meanwhile, engineers at the Underwater Cable Station have physically tapped into the transoceanic fiber-optic network, allowing Sentinel to intercept international communications and monitor any attempt at outside intervention.
 
----
-
-> **Target Perimeter Analysis:** Aerial satellite reconnaissance captures the isolated, deep-water footprint of Cape North. Defensive positions are focused along the artificial seawalls and access roads, requiring an approach that exploits the blind spots between the maritime docks and the inner industrial facility boundaries.
+We will conduct a rapid precision strike to dismantle both operations. Priority one is to eliminate the trafficking cell before any civilians or Skell personnel can be moved off the island. Priority two is to destroy Sentinel's radar and communications interception capability, blinding their ISR network and severing their access to strategic intelligence. By the end of this operation, the trafficking network in Cape North must cease to exist.
 
 ---
 
 ### 3. EXECUTION
 
-* **Phase I - Cape Bivouac (Staging Area):** Establish a tactical staging area at the Cape Bivouac. Prepare gear and plan sub-surface or waterborne insertion parameters along the isolated northern shoreline under cover of night. [PHASE CODE: NORTHWIND]
-* **Phase II - Darkwood Island Port & Campus Relay Station (Isolate):** Conduct a low-signature maritime or sub-surface insertion. Infiltrate **Darkwood Island Port** to eliminate immediate coastal sentinel teams and secure terminal cargo manifests detailing outgoing high-tech server shipments. Move rapidly inland to the **Campus Relay Station** to physically sever the satellite link arrays, trapping Sentinel's active data traffic within the local sector and preventing remote system mirroring. [PHASE CODE: GLASS]
-* **Phase III - Underwater Cable Station (Data Sever):** Advance to the subterranean vaults of the **Underwater Cable Station**. Avoid the automated perimeter motion sensors, locate the primary trans-oceanic fiber junction boxes, and manually dismantle the illegal physical hardware taps installed by Sentinel signals intelligence personnel. [PHASE CODE: VOID]
-* **Phase IV - AI Experimental Center (Core Purge & Rescue):** Execute a high-intensity dynamic breach of the heavily secured **AI Experimental Center** research dome. Neutralize the elite corporate defensive detail. Locate the central server core, upload a localized destructive logic virus to permanently wipe the active AI predictive weapon weights, and locate and extract **Asset "Galileo"** (the lead AI ethicist holding master administrative security override tokens). [PHASE CODE: PROMETHEUS]
-
----
-
-### 4. SERVICE & SUPPORT
-
-* **Aviation:** Fire support entirely unavailable due to localized high-density surface-to-air missile systems guarding the northern cape.
-* **EXFIL:** 1x Non-standard high-speed stealth boat pre-staged by local Outcast maritime elements within a tidal inlet precisely 300 meters north of the AI Center.
-* **Logistics:** Independent operations. Specialized fiber-optic splicing diagnostics and standalone network override decks will be issued at the insertion point.
-* **CASEVAC:** None. Localized surface-to-air missile systems guarding the northern cape prevent any friendly air evacuation flights.
-
+* **Phase I - Lake St Patrick Bivouac (Staging Area):** Establish a tactical staging area at the Lake St Patrick Bivouac and prepare gear. [PHASE CODE: KEYSTONE]
+* **Phase II - Darkwood Island Port (Rescue):** Infiltrate Darkwood Island Port where we must urgently save the civilians trapped by the Sentinel trafficking unit. [PHASE CODE: HARVEST]
+* **Phase III - Skell Foundation Campus (Liberation):** Secure the Skell Foundation Campus where the last Skell Tech personnel are held against their will, and liberate them. Gather actionable Intel in the server rooms and neutralize all SAM sites before takeoff. [PHASE CODE: BEACON]
+* **Phase IV - Campus Relay Station (Isolate):** Using a helicopter obtained from the Campus, fly up to the Campus Relay Station and secure it, neutralizing the radar early warning system. [PHASE CODE: ZEPHYR]
+* **Phase V - Underwater Cable Station (Data Sever):** Advance to the Underwater Cable Station to physically disable the transoceanic fiber-optic cable splices installed by Sentinel. [PHASE CODE: ABYSS]
+* **Phase VI - Zimmy's Safehouse (Exfil):** Exfiltrate at what is know as "Zimmy's Safehouse" a friendly POC who has been providing us invaluable intelligence since the beginning of our Campaign but whom we have never met in person. He has given us coordinates to his luxury safehouse by the coast for some well needed R&R. [PHASE CODE: OASIS]
 ---
 
 ### 5. COMMAND & SIGNAL
 
 * **Task Force Callsign:** GRIFFIN
-* **Command:** ARCHON
+* **Command:** ORACLE
 * **Frequency:** 212.65 MHz (Frequency Hopping, Encrypted)
 * **Codewords:**
-  * **NORTHWIND** – Staging area established at Cape Bivouac.
-  * **GLASS** – Campus Relay Station destroyed; communications isolated.
-  * **VOID** – Underwater Cable Station fiber-splicing taps permanently dismantled.
-  * **PROMETHEUS** – AI core purged; Asset "Galileo" secured for extraction.`,
+  * **KEYSTONE** – Staging area established at Lake St Patrick Bivouac.
+  * **HARVEST** – Darkwood Island Port secured and civilians saved.
+  * **BEACON** – Skell Foundation Campus secured and personnel liberated.
+  * **ZEPHYR** – Campus Relay Station captured and secured.
+  * **ABYSS** – Underwater Cable Station fiber-splicing taps permanently dismantled.
+  * **OASIS** – Exfiltration complete at Zimmy's Safehouse.`,
+  "19-sinking country.txt": `**OPORD NO. 7119**
+
+**CALLSIGN:** REVENANT
+
+### 1. SITUATION & MISSION
+
+Even though the Cape North trafficking ring was successfully neutralized and a major crisis largely averted, our tactical victory was incomplete. Rebel scouts have alerted us that Sentinel operatives managed to relocate several civilians prior to our intervention. These prisoners have been moved into the Sinking Country province, a heavily fortified coastal region. 
+
+Sinking Country is currently controlled by one of the two last remaining Sentinel detachments on Auroa. Their regional operations are anchored by the **Sentinel Corp Land Base**—the headquarters for Sentinel land forces on the island—and protected by a dense anti-aircraft and surveillance network. Furthermore, a senior Sentinel commander has just arrived at **Bunker Hedgehog South** to hold an urgent meeting with his close guard, while the Wolves' last remaining offshore forward operating base at **Camp Tiger** remains active on a remote island. 
+
+Team REVENANT will deploy to Sinking Country to locate and liberate all prisoners, interdict regional assets, eliminate the visiting Sentinel commander, and capture the Wolves' commanding officer to strike fear into remaining hostile elements in the wild.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Dead Horse Swamp Bivouac (Infiltration):** Establish a tactical staging area at the Dead Horse Swamp Bivouac. Prepare gear and plan terrestrial infiltration routes through the waterlogged terrain. [PHASE CODE: BANSHEE]
+* **Phase II - Anti-Aircraft Ruins (Asset Interdiction & Prisoner Rescue):** Infiltrate the historic **Anti-Aircraft Ruins** where three civilian prisoners are believed to be held. Neutralize the guard details, secure the hostages, and either sabotage or deliver the high-value transportation assets to friendly forces nearby (nearest Abandoned Site handoff roleplay). [PHASE CODE: DEADEYE]
+* **Phase III - Sentinel Corp Land Base (Command HQ & Intel Extraction):** Conduct an aggressive raid on the **Sentinel Corp Land Base**, the HQ for Sentinel land forces on Auroa. Locate and liberate the single civilian prisoner held on-site. Breach the command center, exploiting this HQ will probably be a goldmine of intel on remaining forces. [PHASE CODE: REAPER]
+* **Phase IV - Bunker Hedgehog South (HVT Decapitation Strike):** Infiltrate the remote island facility at **Bunker Hedgehog South**. Locate and eliminate the visiting Sentinel commander and his close guard during their urgent tactical meeting to sever local command authority. [PHASE CODE: ANVIL]
+* **Phase V - Camp Tiger (Wolves FOB Infiltration):** Assault the underground meeting room at the remote **Camp Tiger**—the Wolves' final offshore forward operating base. Locate and capture the Wolves' commanding officer alive to strike fear into remaining hostile elements. [PHASE CODE: ABYSS]
+* **Phase VI - Russell Homestead (Exfiltration & Handoff):** Transport the captured commanding officer to **Russell Homestead** for exfiltration. Deliver the prisoner to rebel forces on-site who have something specific in mind to occupy him. [PHASE CODE: OASIS]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **CAS:** Two fully armed air assets (Overseer gunship, equipped with Gatling guns and rockets) are available for close air support and air-to-ground strike operations. Codenames MOTHER 3-2 and MOTHER 3-3.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** REVENANT
+* **Command:** VORTEX
+* **Frequency:** 201.35 MHz (Sincgars Secure, Frequency Hopping)
+* **Codewords:**
+  * **BANSHEE** – Staging area established at Dead Horse Swamp Bivouac.
+  * **DEADEYE** – Anti-Aircraft Ruins secured, hostages liberated, and high-value transportation assets secured or delivered.
+  * **REAPER** – Sentinel Corp Land Base breached, prisoner freed, and command Intel extracted.
+  * **ANVIL** – Sentinel Commander and close guard eliminated at Bunker Hedgehog South.
+  * **ABYSS** – Camp Tiger secured and Wolves commanding officer captured.
+  * **OASIS** – Commanding officer handoff completed at Russell Homestead.`,
   "20-driftwood islets.txt": `**OPORD NO. 7120**
 
 **CALLSIGN:** ORION
 
 ### 1. SITUATION & MISSION
 
-Following our successful purge of the AI Experimental Center at Cape North, the captured research files and decrypted security override keys have exposed Sentinel's littoral maritime patrol network. Their naval forces have clustered around the Driftwood Islets to prevent us from moving against Golem Island.
+The campaign to liberate Auroa is entering its final phase. The enemy has been driven from most of the archipelago and now clings to its last remaining strongholds. With close air support from our allied Outcast air assets now available, we are preparing to assault the Driftwood Islets, the last enemy-held region in northeastern Auroa, before launching the final assault against Golem Island.
 
-The Driftwood Islets form a fragmented archipelago off the coast, serving as Sentinel Corp’s primary forward operating point for littoral (coastal) patrol and tactical testing. Sentinel has constructed **Camp Kodiak** to anchor their maritime security forces in the sector, while leveraging the isolated **Driftwood Islets Testing Zone** to calibrate advanced close-range surveillance systems. Intelligence reports also indicate that Sentinel has hidden a mobile signals-intelligence interception team within the dense cover of the **Ancient Cemetery** to monitor rebel marine frequencies. ORION will execute a multi-island amphibious interdiction to blind the listening post, sabotage the littoral testing assets, and dismantle the regional naval staging base.
+Recognizing Golem Island as their last strategic stronghold, Sentinel and remaining Wolves SOF has concentrated its remaining naval and rapid reaction forces throughout the Driftwood Islets to prevent any advance across the channel. The archipelago serves as the enemy's primary forward operating area for maritime security, amphibious operations, and weapons testing. The Wolves have fortified **Camp Kodiak** as the logistical gateway between Auroa and Golem Island, making it the sole transit point for personnel, equipment, and supplies moving between the two islands. Recapturing Camp Kodiak is therefore essential to isolating Golem Island and cutting off all enemy reinforcement routes.
 
----
+Intelligence also indicates a clandestine weapons transaction is taking place at the **Ancient Sanctuary** near Dynamite Lake. The buyers remain unidentified, but intercepted communications suggest the shipment contains advanced military hardware intended for export before Sentinel loses control of the region.
 
-> **Tactical Topography Note:** As seen in the aerial reconnaissance overlay, the target area consists of highly isolated landmasses with minimal land bridges. Infiltration teams must coordinate waterborne maneuvers carefully to mask their approaches between the high-ground tracking installations and the coastal lowlands of the primary outposts.
+Team ORION will conduct a multi-island assault to eliminate Sentinel's remaining maritime presence and establish the testing facility as our northernmost forward operating base in preparation for the final assault on Golem Island.
 
 ---
 
 ### 3. EXECUTION
 
-* **Phase I - Driftwood Bivouac (Staging Area):** Establish a tactical staging area at the Driftwood Bivouac. Prepare gear and plan amphibious island-hopping routes using combat rubber raiding craft under cover of night. [PHASE CODE: LANDFALL]
-* **Phase II - Ancient Cemetery (Signals Interdiction):** Conduct a low-signature amphibious insertion using combat rubber raiding craft. Scale the forested bluffs to enter the perimeter of the **Ancient Cemetery**. Move under absolute noise discipline to locate and eliminate the hidden Sentinel signals team, capturing their tactical frequency maps and destroying their mobile transmission array. [PHASE CODE: TOMBSTONE]
-* **Phase III - Driftwood Islets Testing Zone (Technical Sabotage):** Transition via the coastline to the **Driftwood Islets Testing Zone**. Avoid automated littoral sensor arrays. Plant localized thermite blocks inside the telemetry control shacks and destroy the prototype high-speed marine tracking nodes positioned along the shoreline. [PHASE CODE: RIPTIDE]
-* **Phase IV - Camp Kodiak (Base Clearance & SSE):** Mount an aggressive, synchronized dynamic assault on the main compound at **Camp Kodiak**. Suppress the heavy machine gun emplacements defending the boat slips and clear the central operations barracks. Access the tactical terminal to secure all naval patrol logs and maritime routing data before the network triggers an automated lockout. [PHASE CODE: KODIAK]
+* **Phase I - Dusky Forest Bivouac (Infiltration):** Establish a tactical staging area at the Dusky Forest Bivouac. Prepare gear and plan terrestrial and amphibious infiltration routes. [PHASE CODE: LANDFALL]
+* **Phase II - Camp Kodiak (Maritime Base Sabotage):** Conduct a raid on **Camp Kodiak**. Neutralize the maritime security forces, disable the harbor's communication systems, and sabotage their patrol boats to sever Sentinel's littoral response capability. [PHASE CODE: KODIAK]
+* **Phase III - Ancient Sanctuary (Weapons Shipment Interception):** Move inland to the **Ancient Sanctuary** near Dynamite Lake. Locate and infiltrate the weapons deal site, neutralize all hostile security forces, and intercept or destroy the high-value weapons shipment. [PHASE CODE: TOMBSTONE]
+* **Phase IV - Driftwood Islets Testing Zone (FOB Establishment):** Assault the **Driftwood Islets Testing Zone**. Neutralize the automated UGVs and surveillance grids. Call in Outcast reinforcements and establish a secure, fortified perimeter on-site to convert the facility into the northernmost allied forward operating base supporting the Golem Island assault. [PHASE CODE: RIPTIDE]
 
 ---
 
 ### 4. SERVICE & SUPPORT
 
-* **Maritime:** 2x Combat Rubber Raiding Craft (CRRC) equipped with muffled outboards will be utilized for all inter-island transit phase lines.
-* **Fire Support:** Completely deniable operation. Naval gunfire and air assets are completely unavailable; total reliance on organic unit weapons.
-* **Logistics:** Sub-surface and wet-weather gear configurations are mandatory. Operators must carry standalone communications override kits for Phase IV.
-* **CASEVAC:** None. Anti-air radar nets along the archipelago restrict any medical evacuation flights.
+* **CAS:** Two fully armed air assets (Overseer gunship, equipped with Gatling guns and rockets) are available for close air support and air-to-ground strike operations. Codenames MOTHER 3-2 and MOTHER 3-3.
 
 ---
 
 ### 5. COMMAND & SIGNAL
 
 * **Task Force Callsign:** ORION
-* **Command:** ARCHON
+* **Command:** SIREN
 * **Frequency:** 224.80 MHz (Cryptographic Tactical Net)
 * **Codewords:**
-  * **LANDFALL** – Staging area established at Driftwood Bivouac.
-  * **TOMBSTONE** – Ancient Cemetery signals team successfully eliminated.
-  * **RIPTIDE** – Testing Zone telemetry hardware permanently disabled.
-  * **KODIAK** – Camp Kodiak secured; maritime intelligence packages ready for transfer.`,
+  * **LANDFALL** – Staging area established at Dusky Forest Bivouac.
+  * **KODIAK** – Camp Kodiak maritime assets and defenses neutralized.
+  * **TOMBSTONE** – Ancient Sanctuary weapons deal interdicted and cargo secured.
+  * **RIPTIDE** – Testing Zone secured and converted into an allied forward operating base.`,
   "21- golem island sector 1.txt": `**OPORD NO. 7121**
 
 **CALLSIGN:** WOLFHOUND
 
 ### 1. SITUATION & MISSION
 
-Following our successful raid on Camp Kodiak in the Driftwood Islets, we have secured naval routing logs and littoral telemetry overrides. This has opened a narrow gap in the coastline defenses, allowing us to launch our long-awaited assault on Golem Island, starting with the outer ring of Sector 1.
+Following our successful establishment of the FOB at the Driftwood Islets Testing Zone, we have secured naval routing logs. This has opened a narrow gap in the coastline defenses, allowing us to launch our long-awaited assault on Golem Island, starting with Sector 1.
 
-The deployment theater has shifted off the mainland to Golem Island—a volcanic, highly unstable landmass heavily fortified by Sentinel’s elite Red Wolves detachment. Sector 1 contains the logistical and chemical backbone of the island's operations. Sentinel is utilizing the **Chemical Refinery** and its connected **Chemical Pipeline** to process volatile sulfur compounds and cooling elements necessary for their subterranean manufacturing complexes. This sector's security is anchored by the **Golem Island Satellite Dish**, which handles long-range telemetry override codes for the island's defense grid, and the **Ancient Harbor**, which serves as the primary maritime entry point. WOLFHOUND is ordered to conduct a deniable amphibious insertion, blind regional satellite uplink tracking, and disable the chemical refining infrastructure.
+The deployment theater has shifted off the mainland to Golem Island—a volcanic, highly unstable landmass heavily fortified by Sentinel’s elite "Red Wolves" detachment. Sector 1 contains the logistical and chemical backbone of the island's operations. Sentinel is utilizing the **Chemical Refinery** and its connected **Chemical Pipeline** to process compounds and cooling elements necessary for the **Prototype Workshop** further east. This sector's security is anchored by the **Golem Island Satellite Dish**, which handles surveillance linked to an hijacked **Skell Tech** satellite, and the **Ancient Harbor**, which serves as the primary maritime entry point for equipment. The team will conduct the first assault on the island, at sundown.
 
----
 
-> **Target Sector Analysis:** As seen in the overhead tracking profile, the Chemical Refinery is embedded directly into the volcanic rock face, making conventional aerial bombardment completely unfeasible. The complex features a heavily guarded lower concrete vehicle bay and an intricate lattice of overhead piping structures that must be traversed to access the core valve controls.
-
----
 
 ### 3. EXECUTION
 
-* **Phase I - Volcanic Staging Bivouac (Staging Area):** Establish a tactical staging area at the Volcanic Staging Bivouac on Golem Island's outer perimeter. Prepare gear and plan amphibious approaches to the island's rocky harbor under cover of darkness. [PHASE CODE: MAGMA]
-* **Phase II - Ancient Harbor (Infiltration & Secure):** Execute a low-signature maritime insertion under the cover of night. Infiltrate the stone sea walls of the **Ancient Harbor**, neutralize immediate sentinel patrols, and disable the harbor's automated surface radar to secure a covert extraction corridor for the element. [PHASE CODE: OBSIDIAN]
-* **Phase III - Golem Island Satellite Dish (Uplink Suppression):** Advance inland along the steep ridge lines to reach the high-ground position of the **Golem Island Satellite Dish**. Overpower the localized technical defense force, breach the primary control terminal, and upload a localized data loop to blind the facility’s long-range tracking capabilities. [PHASE CODE: CORONA]
-* **Phase IV - Chemical Pipeline & Chemical Refinery (Industrial Sabotage):** Descend into the industrial valley floor. Isolate the main **Chemical Pipeline** feed line, planting synchronized breaching shapes on the secondary emergency shutoff valves. Proceed immediately into the core **Chemical Refinery** complex. Traverse the catwalk infrastructure to access the primary pressure manifold room, override the safety lockouts, and vent the processed cooling compounds to permanently cripple the facility's production cycles. [PHASE CODE: VAPOR]
+* **Phase I - Wreck Ship Bivouac (Staging Area):** Establish a tactical staging area at the Wreck Ship Bivouac on Golem Island's outer perimeter. Prepare gear and plan amphibious approaches to the island's rocky harbor under cover of darkness. [PHASE CODE: MAGMA]
+* **Phase II - Ancient Harbor (Infiltration & Secure):** Execute a low-signature maritime insertion, neutralizing immediate Sentinel patrols and prioritizing Radio Operators so they do not warn the satellite control station. Conduct C4 demolition on weapon caches. [PHASE CODE: OBSIDIAN]
+* **Phase III - Golem Island Satellite Dish (Uplink Suppression):** Advance inland to reach the **Golem Island Satellite Dish**. Overpower the localized technical defense force, breach the primary control terminal, and upload a CYBSEC package to regain control of the **Skell Tech** satellite. [PHASE CODE: CORONA]
+* **Phase IV - Chemical Refinery (Refinery Venting):** Traverse the catwalk infrastructure to access the primary pressure manifold room, override the safety lockouts, and vent the processed cooling compounds to permanently cripple the facility's production cycles (hack computers in the top right office area). [PHASE CODE: VAPOR]
+* **Phase V - Chemical Pipeline (Industrial Sabotage):** Move offshore to the pipeline platform and secure the facility before the operators can alert the processing plant to the east. Activate the emergency isolation valves to halt the flow of industrial chemicals to the facility while preventing an environmental spill. [PHASE CODE: NITRO]
+* **Phase VI - Underground Abandoned Bunker (Exfiltration):** Exfiltrate by relocating to the 4-story deep underground abandoned bunker down south for R&R and planning of the next assault. [PHASE CODE: BUNKER]
 
 ---
 
 ### 4. SERVICE & SUPPORT
 
-* **Aviation:** Entirely unavailable due to Golem Island's active automated anti-air networks.
-* **EXFIL:** 1x Unmarked high-speed tactical boat will be holding position in the blind spot beneath the cliffs of the Ancient Harbor.
-* **Logistics:** Independent operations footprint. Extended breathing apparatus and heavy protective layers are recommended due to localized chemical fumes and volcanic sulfur venting.
-* **CASEVAC:** None. Volcano thermal emissions and active anti-air networks deny all medical evacuation flight profiles.
+* **Aviation:** Possible CAS from mainland (Wild Island Bivouac nearest) but SAM sites must be disabled before Outcast assets will accept to fly in. Interrogating enemy personnel or looking for map intel inside compounds might pinpoint exact SAM sites locations.
 
 ---
 
 ### 5. COMMAND & SIGNAL
 
 * **Task Force Callsign:** WOLFHOUND
-* **Command:** ARCHON
+* **Command:** VULCAN
 * **Frequency:** 231.15 MHz (Crypto-Isolated Tactical Network)
 * **Codewords:**
-  * **MAGMA** – Staging area established at Volcanic Staging Bivouac.
+  * **MAGMA** – Staging area established at Wreck Ship Bivouac.
   * **OBSIDIAN** – Ancient Harbor security grid compromised.
   * **CORONA** – Satellite Dish uplink disabled.
-  * **VAPOR** – Chemical Refinery valves successfully vented; moving to extraction.`,
-  "22- golem island sector 2.txt": `**OPORD NO. 7122**
-
-**CALLSIGN:** ARCHER
-
-### 1. SITUATION & MISSION
-
-Following our successful sabotage of Golem Island's Chemical Refinery and the suppression of the long-range satellite dish in Sector 1, we have severely degraded the cooling systems of Golem Island's subterranean structures. Recovered decryption keys have pointed directly to Sector 2, the hardened military core of the Red Wolves.
-
-Golem Island Sector 2 acts as the hardened military core and tactical staging ground for the elite Sentinel Red Wolves detachment. Sentinel has retrofitted the Cold War-era **Missile Site Ruins**, converting the subterranean silos to house an unauthorized tactical ballistic asset capable of targeting maritime corridors across the South Pacific. This strategic installation is heavily shielded by two specialized forward operating bases: **Camp Phoenix**, an armored infantry garrison, and **Camp Salamander**, a motorized drone-patrol hub. Furthermore, Sentinel has established an advanced cryptographic intercept station inside the nearby **Forgotten Sanctuary** ruins to monitor regional task force traffic. ARCHER is ordered to conduct a high-intensity direct action mission to neutralize the perimeter outposts, disrupt the signals intercept station, and permanently sabotage the missile infrastructure.
-
----
-
-> **Tactical Reconnaissance Note:** As shown in the overhead tracking profile, the Missile Site Ruins are integrated directly into the volcanic bluff. Defensive lines leverage old concrete trench systems and fortified blast rings. Flanking routes are constrained by the open volcanic shelf, requiring precise overwatch suppression during the final approach.
-
----
-
-### 3. EXECUTION
-
-* **Phase I - Sector 2 Staging Bivouac (Staging Area):** Establish a tactical staging area at the Sector 2 Staging Bivouac. Prepare gear and plan high-intensity infiltration routes into Golem Island's volcanic interior under limited visibility. [PHASE CODE: IGNIS]
-* **Phase II - Camp Phoenix & Camp Salamander (Perimeter Collapse):** Execute a covert terrestrial infiltration from the high mountain gaps. Strike **Camp Phoenix** under low-light conditions, neutralizing the automated heavy weapon towers and garrison barracks to eliminate the enemy's immediate quick-reaction force (QRF). Move immediately to hit **Camp Salamander**, using explosive or electronic sabotage packages to brick the automated motorized patrol vehicles before they can deploy to secure the access roads. [PHASE CODE: CINDER]
-* **Phase III - Forgotten Sanctuary (Cryptographic Break):** Advance under absolute noise discipline to the **Forgotten Sanctuary**. Breach the retrofitted technical tents hidden within the historic stone structures, eliminate the signals intelligence operators, and hard-tap the primary decryption servers. Secure all local signal maps and encryption keys to insulate task force communications. [PHASE CODE: CRYPT]
-* **Phase IV - Missile Site Ruins (Silo Sabotage):** Conduct a high-intensity dynamic breach of the fortified concrete perimeter at the **Missile Site Ruins**. Push past the elite inner-circle defensive detail to access the subterranean silo control decks. Plant synchronized high-yield demolition shapes on the primary hydraulic launch arms and structural tracking rings to permanently trap the missile assets beneath the concrete blast doors. [PHASE CODE: OBLIVION]
-
----
-
-### 4. SERVICE & SUPPORT
-
-* **Aviation:** Entirely unavailable. Total electronic and kinetic deniability is enforced across the interior sectors.
-* **EXFIL:** 1x Heavily armored infantry carrier hotwired at the Camp Phoenix vehicle park post-clearance.
-* **Ordnance:** Linear breaching shapes, armor-piercing configurations, and high-yield structural charges are mandatory for the reinforced silo concrete.
-* **CASEVAC:** None. Volcanic thermal plumes and local missile defenses prohibit any medical evacuation flights.
-
----
-
-### 5. COMMAND & SIGNAL
-
-* **Task Force Callsign:** ARCHER
-* **Command:** ARCHON
-* **Frequency:** 242.90 MHz (Secure UHF / Low Probability of Intercept)
-* **Codewords:**
-  * **IGNIS** – Staging area established at Sector 2 Staging Bivouac.
-  * **CINDER** – Camp Phoenix and Camp Salamander garrisons neutralized.
-  * **CRYPT** – Cryptographic intercept servers successfully mirrored and purged.
-  * **OBLIVION** – Missile launch infrastructure permanently sabotaged; moving to extraction vehicle.`,
-  "23- golem island sector 3.txt": `**OPORD NO. 7123**
+  * **VAPOR** – Chemical Refinery valves successfully vented.
+  * **NITRO** – Chemical Pipeline shutoff valves breached.
+  * **BUNKER** – Team successfully exfiltrated to the underground abandoned bunker down south.`,
+  "22- golem island sector 3.txt": `**OPORD NO. 7122**
 
 **CALLSIGN:** RAGNAROK
 
 ### 1. SITUATION & MISSION
 
-Following our successful destruction of the ballistic missile silo in Sector 2, the Red Wolves have retreated into Golem Island's final stronghold: the volcanic caldera of Sector 3. With their logistics networks collapsed and communication chains shattered, they are preparing to finalize their prototype drone weapon systems for immediate export. This is our final objective.
+Disabling the **Chemical Refinery** and **Pipeline** has severed primary logistics and coolant corridors to **Sector 3**, completely isolating the **Prototype Workshop** from the island's strategic defense grid. Thanks to our breach at **GISD**, we now have a direct SIGINT intercept on enemy communications; intelligence shows they are scrambling to assess the failure. We have a narrow tactical window to strike.
 
-This volcanic caldera hosts Sentinel's most heavily guarded secret: the **Prototype Workshop**, where next-generation, fully autonomous weapon matrices are entering final system integration. This installation is entirely sustained by rare-earth components extracted directly from the high-hazard **Scandium Mine** and shielded behind the fortification line known as **No Man's Land**. RAGNAROK will execute a zero-fail, scorched-earth campaign to breach the perimeter outposts, collapse the critical mining infrastructure, and permanently neutralize Sentinel’s prototype development lines before the technology can be deployed or exported off-island.
+Deep within **Sector 3** lies the **Prototype Workshop**, Sentinel's most heavily guarded black site, where an experimental, nuclear-capable autonomous UGV is undergoing final system integration. This facility relies on rare-earth elements extracted from the high-hazard **Scandium Mine**, which intelligence indicates is currently being run as a forced labor camp. Operating out of the **Sector 3 Eastern Bivouac**, RAGNAROK will execute a zero-fail operation: neutralize the enemy QRF holding the **No Man's Land** / **Red Phoenix Outpost** choke point, liberate the **Scandium Mine**, and secure the highly sensitive technology at the **Prototype Workshop** for future analysis.
 
 ---
 
-> **Tactical Intelligence Report:** Airborne assets have captured the modular configuration of Sentinel's forward manufacturing footprint. The Red Wolves utilize automated robotic assembly arms inside secure, containerized lab environments to accelerate the final physical weapon integration for their prototype drone platforms.
+> **Tactical Intelligence Report:** Local surveillance indicates that the Red Wolves utilize automated robotic assembly arms inside secure, containerized lab environments to accelerate the final physical weapon integration for their prototype drone platforms. Disabling the workshop will put an end to their next-generation automation capabilities.
 
 ---
 
 ### 3. EXECUTION
 
-* **Phase I - Caldera Staging Bivouac (Staging Area):** Establish a tactical staging area at the Caldera Staging Bivouac. Prepare gear and plan the final assault into Golem Island's heavily fortified Sector 3 under cover of darkness. [PHASE CODE: DOOMSDAY]
-* **Phase II - No Man's Land & Red Phoenix Outpost (The Breach):** Execute an aggressive infiltration through the heavily mined, sensor-choked trenches of **No Man's Land**. Employ specialized thermal tracking arrays to identify automated machine gun nests and bypass active minefields. Launch a sudden, overwhelming assault on **Red Phoenix Outpost** to seize control of the valley’s master gate overrides and eliminate the sector’s quick-reaction armor assets. [PHASE CODE: CATACLYSM]
-* **Phase III - Scandium Mine (Resource Denial):** Advance rapidly into the subterranean tunnels of the **Scandium Mine**. Overpower the elite mercenary security teams garrisoned inside the refinement chambers. Plant high-yield thermite shapes directly onto the main autonomous sorting systems and structural support headers, forcing a controlled collapse of the shaft to cut off the raw material supply line completely. [PHASE CODE: SULFUR]
-* **Phase IV - Prototype Workshop (Endgame Sabotage & Purge):** Penetrate the heavily reinforced core facility at the **Prototype Workshop**. Isolate the assembly floors and eliminate the Red Wolves engineering cadre. Upload a terminal logic virus to permanently erase all local hardware master schematics, then plant synchronized demolition blocks on the prototype assembly lines and core server housing to finish the job. [PHASE CODE: TERTIA OPTIO]
+* **Phase I - Sector 3 Eastern Bivouac (Staging Area):** Hike southeast around the lava flow. Team must equip gas masks and thermal NODs due to the extreme environmental pollution. This is a low-visibility, toxic environment; all precautions must be taken. [PHASE CODE: ASH]
+* **Phase II - No Man's Land (The Infiltration):** Secure this heavily defended site. SIGINT indicates the unit stationed here may be a rogue element that has turned against Sentinel; be ready for anything and look for signs of active infighting / executions of Sentinel personnel. [PHASE CODE: CATACLYSM]
+* **Phase III - Red Phoenix Outpost (Outpost Breach):** Launch a sudden, synchronized assault on the **Red Phoenix Outpost**. Seize control of the valley's master gate overrides, sever local backup communications, and neutralize the sector's quick-reaction assets before they can deploy. [PHASE CODE: GATEWAY]
+* **Phase IV - Scandium Mine (Resource Denial):** Neutralize elite mercenary forces guarding the labor camp. ISR confirms bodies are being disposed of in the acid baths on site. If any survivors remain, ensure their security. Plant C4 charges to force a controlled collapse of the mining shafts. [PHASE CODE: SULFUR]
+* **Phase V - Prototype Workshop (Endgame Sabotage & Purge):** Infiltrate the now-isolated **Prototype Workshop** to deliver the final strike. Neutralize the remaining engineering officers, connect a CYBSEC device to mirror and upload all workshop data to HQ for future analysis, and debrief on-site to prepare for the final assault on **Sector 2**. [PHASE CODE: FUNGUS]
 
 ---
 
 ### 4. SERVICE & SUPPORT
 
-* **Aviation:** Entirely unavailable. Total electronic warfare isolation is active across the volcanic caldera.
-* **EXFIL:** 1x Captured Sentinel heavy armored personnel carrier will be utilized to violently punch through the eastern sea-gate checkpoint post-detonation.
-* **Ordnance:** Extended dynamic loadouts required. Heavy anti-materiel systems, linear breaching charges, and portable electronic jamming packages are mandatory for all fireteams.
-* **CASEVAC:** None. Caldera atmospheric interference and extreme threat level deny any rescue flight operations.
+* **Aviation:** Possible CAS from mainland (Wild Island Bivouac nearest) but SAM sites must be disabled before Outcast assets will accept to fly in. Interrogating enemy personnel or looking for map intel inside compounds might pinpoint exact SAM sites locations.
 
 ---
 
 ### 5. COMMAND & SIGNAL
 
 * **Task Force Callsign:** RAGNAROK
-* **Command:** ARCHON
+* **Command:** TARTARUS
 * **Frequency:** 250.00 MHz (Crypto-Isolated Tactical Network / Maximum Power)
 * **Codewords:**
-  * **DOOMSDAY** – Staging area established at Caldera Bivouac.
-  * **CATACLYSM** – No Man's Land and Red Phoenix Outpost collapsed.
+  * **ASH** – Staging area established at Sector 3 Eastern Bivouac.
+  * **CATACLYSM** – No Man's Land defenses bypassed and neutralized.
+  * **GATEWAY** – Red Phoenix Outpost gate overrides secured.
   * **SULFUR** – Scandium Mine extraction infrastructure permanently buried.
-  * **TERTIA OPTIO** – Prototype Workshop destroyed; final campaign objectives complete. Moving to extraction vector.`,
+  * **FUNGUS** – Prototype Workshop mirrored and secured; moving to extraction vector.`,
+  "23- golem island sector 2.txt": `**OPORD NO. 7123**
+
+**CALLSIGN:** ARMAGEDDON
+
+### 1. SITUATION & MISSION
+
+Golem Island Sector 2 has become the final entrenchment for the remaining Wolves and Sentinel PMC forces. Trapped in the center of the island and surrounded on all sides by Outcast and indig rebels, the enemy is completely cut off, desperate, and resorting to improvised explosive devices (IEDs) and suicide vests (S-VESTs) in a frantic attempt to bleed local rebel fighters. This is the end. We are terminating this menace once and for all.
+
+Sentinel's last stand is anchored by three critical nodes: the Cold War-era **Missile Site Ruins** silo launch deck, the east checkpoint at **Camp Salamander**, and the garrison at **Camp Phoenix** acting as their final QRF element. Meanwhile, the final command elements of the Red Wolves are confirmed holed up at the **Golem Island Heliport**, preparing for a desperate evacuation flight out of Auroa. Local air assets are already deployed to interdict inbound transport and ensure they never reach Golem Island. **ARMAGEDDON** is ordered to execute a high-intensity direct action operation to disable all assets, neutralize the QRF at **Camp Phoenix**, and assault the heliport to prevent the escape of high-value targets at all costs. This is it gentlemen.
+
+
+
+### 3. EXECUTION
+
+* **Phase I - Sector 2 Eastern Bivouac (Staging Area):** Establish a tactical staging area at the **Sector 2 Eastern Bivouac**. Prepare gear and plan the attack. [PHASE CODE: IGNIS]
+* **Phase II - Missile Site Ruins (Silo & TOC Sabotage):** Neutralize the security detail to access the underground Tactical Operations Center (TOC) and primary control nodes. Reminder: the enemy is suspected to be wearing S-VESTs and utilizing IEDs; proceed with extreme caution. They may attempt to collapse the tunnels to take the team down with them in a desperate last-ditch effort. [PHASE CODE: OBLIVION]
+* **Phase III - Camp Salamander (Drone Hub Sabotage):** Strike **Camp Salamander**, their final checkpoint trying to hold off forces from the east. Using explosive and EMP packages, brick all remaining assets. [PHASE CODE: CINDER]
+* **Phase IV - Camp Phoenix (QRF Elimination):** Advance to **Camp Phoenix** to engage and eliminate the Wolves' last remaining Quick Reaction Force (QRF) element, neutralizing immediate reinforcements and securing the base infrastructure. This will surely be a goldmine of intel, as it was the site where the high command of the Red Wolves lived and operated. Do not destroy assets; conduct site exploitation to gather intelligence on the remaining elements at the Heliport. [PHASE CODE: CRYPT]
+* **Phase V - Golem Island Heliport (Command Elimination & Escape Prevention):** Launch a final, direct assault on the **Golem Island Heliport**, where the last remaining commanding elements are all holed up awaiting their evacuation flight out of Auroa. Prevent their escape at all costs. [PHASE CODE: FINIS]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Aviation:** A fully loaded gunship is available for the final assault. Apex 1-3 is on 7 MIKE standby to provide close air support.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** ARMAGEDDON
+* **Command:** CERBERUS
+* **Frequency:** 242.90 MHz (Secure UHF / Low Probability of Intercept)
+* **Codewords:**
+  * **IGNIS** – Staging area established at Sector 2 Eastern Bivouac.
+  * **OBLIVION** – Missile launch infrastructure and underground TOC permanently sabotaged.
+  * **CINDER** – Camp Salamander drone assets disabled; perimeter traps avoided.
+  * **CRYPT** – Camp Phoenix QRF element eliminated and base secured.
+  * **FINIS** – Wolves command neutralized at Golem Island Heliport; escape prevented and campaign complete.`,
+  "24- campaign complete.txt": `**OPORD NO. 7124**
+
+**CALLSIGN:** BRAVO ZULU
+
+### 4. SERVICE & SUPPORT
+
+* **CAMPAIGN COMPLETE:** GBTF, deployed as the final covert option to liberate Auroa, has successfully accomplished its strategic objectives. Following 60 days of sustained operations, they have dismantled Sentinel's military infrastructure, eliminated the Wolves' command structure, and destroyed the logistics network that sustained the occupation. With the capture of Golem Island, Sentinel's final stronghold, organized enemy resistance across the Auroa Archipelago has been effectively eliminated.<br><br>With major combat operations complete, the mission now transitions to stabilization. GBTF elements will remain temporarily deployed alongside the Outcasts and allied security forces to secure critical infrastructure, eliminate any remaining hostile pockets, and assist in restoring civil order. As security conditions improve, international humanitarian organizations, engineering teams, and reconstruction personnel will begin restoring essential services and rebuilding the Auroa Archipelago.<br><br>Outstanding work, gentlemen. Against overwhelming odds, you accomplished the mission and liberated Auroa.<br><br>Mission accomplished.<br><br>BRAVO ZULU.`,
   "INTRO TEXT.txt": `**GBTF STRATEGIC SITUATION REPORT: ARCHIPELAGO AUROA**
 
 **DOCUMENT REF:** CO-SITREP-001-ALPHA

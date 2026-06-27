@@ -4,27 +4,26 @@
 
 ### 1. SITUATION & MISSION
 
-The deployment theater has shifted off the mainland to Golem Island—a volcanic, highly unstable landmass heavily fortified by Sentinel’s elite Red Wolves detachment. Sector 1 contains the logistical and chemical backbone of the island's operations. Sentinel is utilizing the **Chemical Refinery** and its connected **Chemical Pipeline** to process volatile sulfur compounds and cooling elements necessary for their subterranean manufacturing complexes. This sector's security is anchored by the **Golem Island Satellite Dish**, which handles long-range telemetry override codes for the island's defense grid, and the **Ancient Harbor**, which serves as the primary maritime entry point. WOLFHOUND is ordered to conduct a deniable amphibious insertion, blind regional satellite uplink tracking, and disable the chemical refining infrastructure.
+Following our successful establishment of the FOB at the Driftwood Islets Testing Zone, we have secured naval routing logs. This has opened a narrow gap in the coastline defenses, allowing us to launch our long-awaited assault on Golem Island, starting with Sector 1.
 
----
+The deployment theater has shifted off the mainland to Golem Island—a volcanic, highly unstable landmass heavily fortified by Sentinel’s elite "Red Wolves" detachment. Sector 1 contains the logistical and chemical backbone of the island's operations. Sentinel is utilizing the **Chemical Refinery** and its connected **Chemical Pipeline** to process compounds and cooling elements necessary for the **Prototype Workshop** further east. This sector's security is anchored by the **Golem Island Satellite Dish**, which handles surveillance linked to an hijacked **Skell Tech** satellite, and the **Ancient Harbor**, which serves as the primary maritime entry point for equipment. The team will conduct the first assault on the island, at sundown.
 
-> **Target Sector Analysis:** As seen in the overhead tracking profile, the Chemical Refinery is embedded directly into the volcanic rock face, making conventional aerial bombardment completely unfeasible. The complex features a heavily guarded lower concrete vehicle bay and an intricate lattice of overhead piping structures that must be traversed to access the core valve controls.
 
----
 
 ### 3. EXECUTION
 
-* **Phase I - Ancient Harbor (Infiltration & Secure):** Execute a low-signature maritime insertion under the cover of night. Infiltrate the stone sea walls of the **Ancient Harbor**, neutralize immediate sentinel patrols, and disable the harbor's automated surface radar to secure a covert extraction corridor for the element.
-* **Phase II - Golem Island Satellite Dish (Uplink Suppression):** Advance inland along the steep ridge lines to reach the high-ground position of the **Golem Island Satellite Dish**. Overpower the localized technical defense force, breach the primary control terminal, and upload a localized data loop to blind the facility’s long-range tracking capabilities.
-* **Phase III - Chemical Pipeline & Chemical Refinery (Industrial Sabotage):** Descend into the industrial valley floor. Isolate the main **Chemical Pipeline** feed line, planting synchronized breaching shapes on the secondary emergency shutoff valves. Proceed immediately into the core **Chemical Refinery** complex. Traverse the catwalk infrastructure to access the primary pressure manifold room, override the safety lockouts, and vent the processed cooling compounds to permanently cripple the facility's production cycles.
+* **Phase I - Wreck Ship Bivouac (Staging Area):** Establish a tactical staging area at the Wreck Ship Bivouac on Golem Island's outer perimeter. Prepare gear and plan amphibious approaches to the island's rocky harbor under cover of darkness.
+* **Phase II - Ancient Harbor (Infiltration & Secure):** Execute a low-signature maritime insertion, neutralizing immediate Sentinel patrols and prioritizing Radio Operators so they do not warn the satellite control station. Conduct C4 demolition on weapon caches. [PHASE CODE: OBSIDIAN]
+* **Phase III - Golem Island Satellite Dish (Uplink Suppression):** Advance inland to reach the **Golem Island Satellite Dish**. Overpower the localized technical defense force, breach the primary control terminal, and upload a CYBSEC package to regain control of the **Skell Tech** satellite. [PHASE CODE: CORONA]
+* **Phase IV - Chemical Refinery (Refinery Venting):** Traverse the catwalk infrastructure to access the primary pressure manifold room, override the safety lockouts, and vent the processed cooling compounds to permanently cripple the facility's production cycles (hack computers in the top right office area). [PHASE CODE: VAPOR]
+* **Phase V - Chemical Pipeline (Industrial Sabotage):** Move offshore to the pipeline platform and secure the facility before the operators can alert the processing plant to the east. Activate the emergency isolation valves to halt the flow of industrial chemicals to the facility while preventing an environmental spill. [PHASE CODE: NITRO]
+* **Phase VI - Underground Abandoned Bunker (Exfiltration):** Exfiltrate by relocating to the 4-story deep underground abandoned bunker down south for R&R and planning of the next assault. [PHASE CODE: BUNKER]
 
 ---
 
 ### 4. SERVICE & SUPPORT
 
-* **Aviation:** Entirely unavailable due to Golem Island's active automated anti-air networks.
-* **EXFIL:** 1x Unmarked high-speed tactical boat will be holding position in the blind spot beneath the cliffs of the Ancient Harbor.
-* **Logistics:** Independent operations footprint. Extended breathing apparatus and heavy protective layers are recommended due to localized chemical fumes and volcanic sulfur venting.
+* **Aviation:** Possible CAS from mainland (Wild Island Bivouac nearest) but SAM sites must be disabled before Outcast assets will accept to fly in. Interrogating enemy personnel or looking for map intel inside compounds might pinpoint exact SAM sites locations.
 
 ---
 
@@ -34,9 +33,12 @@ The deployment theater has shifted off the mainland to Golem Island—a volcanic
 * **Command:** ECLIPSE ACTUAL
 * **Frequency:** 231.15 MHz (Crypto-Isolated Tactical Network)
 * **Codewords:**
+* **MAGMA** – Staging area established at Wreck Ship Bivouac.
 * **DARK HARBOR** – Ancient Harbor security grid compromised.
 * **ECLIPSE** – Satellite Dish uplink disabled.
-* **VAPOR TRAIL** – Chemical Refinery valves successfully vented; moving to extraction.
+* **VAPOR TRAIL** – Chemical Refinery valves successfully vented.
+* **LINE BREACH** – Chemical Pipeline shutoff valves breached.
+* **BUNKER** – Team successfully exfiltrated to the underground abandoned bunker down south.
 
 
 

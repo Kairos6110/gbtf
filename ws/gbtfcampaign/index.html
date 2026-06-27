@@ -873,7 +873,7 @@
         } else {
           // Parse operation files
           const parsed = parseOpord(fileName, text);
-          if (parsed && parsed.order <= 15) {
+          if (parsed && parsed.order <= 24) {
             operationsList.push(parsed);
           }
         }
@@ -997,7 +997,9 @@
         }
       }
 
-      const opordNumber = `${String(orderNum).padStart(2, '0')} OPERATION ${callsign.toUpperCase()}`;
+      const opordNumber = orderNum === 24
+        ? "24 CAMPAIGN COMPLETE"
+        : `${String(orderNum).padStart(2, '0')} OPERATION ${callsign.toUpperCase()}`;
 
       return {
         fileName,
@@ -1072,7 +1074,7 @@
         item.setAttribute("aria-label", `Select operation ${op.order}: ${op.name}`);
         
         const badgeClass = op.isIntro ? "badge-intro" : (op.isGolem ? "badge-golem" : "badge-mainland");
-        const badgeLabel = op.isIntro ? "NZTOC" : (op.isGolem ? "Golem" : "Auroa");
+        const badgeLabel = op.isIntro ? "NZTOC" : "Auroa";
 
         item.innerHTML = `
           <div class="operation-num">${String(op.order).padStart(2, '0')}</div>
@@ -1122,19 +1124,35 @@
       let supportHTML = "";
       const supportKeys = Object.keys(op.support);
       if (supportKeys.length > 0) {
-        supportHTML = `
-          <div class="opord-section">
-            <h3><span class="icon bi bi-shield-fill-check"></span>SERVICE & SUPPORT</h3>
-            <ul class="support-list">
-              ${supportKeys.map(k => `
-                <li class="support-card">
-                  <span class="support-title">${k}</span>
-                  <span class="support-body">${op.support[k]}</span>
-                </li>
-              `).join('')}
-            </ul>
-          </div>
-        `;
+        if (op.order === 24) {
+          supportHTML = `
+            <div class="opord-section">
+              <h3><span class="icon bi bi-flag-fill"></span>BRAVO ZULU</h3>
+              <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 1.5rem; color: var(--text-color);">
+                <p style="margin: 0 0 1.5rem 0; line-height: 1.6; font-size: 0.95rem; color: var(--text-color); opacity: 0.9;">
+                  ${op.support["CAMPAIGN COMPLETE"] || Object.values(op.support)[0] || ''}
+                </p>
+                <div style="max-width: 800px; margin: 0 auto; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line-soft);">
+                  <img src="missioncoomplete.png" alt="Mission Complete - Sunset Walk" style="width: 100%; height: auto; display: block;">
+                </div>
+              </div>
+            </div>
+          `;
+        } else {
+          supportHTML = `
+            <div class="opord-section">
+              <h3><span class="icon bi bi-shield-fill-check"></span>SERVICE & SUPPORT</h3>
+              <ul class="support-list">
+                ${supportKeys.map(k => `
+                  <li class="support-card">
+                    <span class="support-title">${k}</span>
+                    <span class="support-body">${op.support[k]}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+          `;
+        }
       }
 
 
@@ -1150,6 +1168,7 @@
           ` : ''}
         </div>
 
+        ${op.order === 24 ? '' : `
         <div class="opord-meta-grid" style="margin-bottom: 1.5rem;">
           <div class="meta-item">
             <span class="meta-label"><span class="bi bi-broadcast" style="margin-right: 0.25rem;"></span>Squad Callsign</span>
@@ -1160,12 +1179,16 @@
             <span class="meta-val" style="color: var(--olive-2); font-size: 1.1rem;">${op.signal["Command"] || 'ECLIPSE'}</span>
           </div>
         </div>
+        `}
 
+        ${op.order === 24 ? '' : `
         <div class="opord-section">
           <h3><span class="icon bi bi-bookmark-fill"></span>SITUATION & MISSION</h3>
           <p>${op.situation.replace(/\*\*/g, '')}</p>
         </div>
+        `}
 
+        ${op.order === 24 ? '' : `
         <div class="opord-section">
           <h3><span class="icon bi bi-crosshair"></span>EXECUTION</h3>
           ${op.order === 1 ? `
@@ -1243,12 +1266,44 @@
               <img src="15tac.png" alt="Mount Hodgson Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
             </div>
           ` : ''}
-          ${(op.order >= 16 && op.order <= 23) ? `
-            <div style="margin-bottom: 1.5rem; max-width: 800px; height: 350px; background: rgba(255,255,255,0.02); border: 1px dashed var(--line-soft); border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); position: relative; overflow: hidden;">
-              <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.15; background-image: radial-gradient(var(--olive-2) 1px, transparent 1px); background-size: 20px 20px;"></div>
-              <span class="bi bi-map" style="font-size: 2.5rem; margin-bottom: 0.75rem; color: var(--olive-2); opacity: 0.6;"></span>
-              <div style="font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 2px; color: var(--olive-2); margin-bottom: 0.25rem;">TACTICAL MAP PENDING</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">CLASSIFIED // SECURE LINK REQUIRED</div>
+          ${op.order === 16 ? `
+            <div style="margin-bottom: 1.5rem; max-width: 800px;">
+              <img src="16tac.png" alt="Fen Bog Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            </div>
+          ` : ''}
+          ${op.order === 17 ? `
+            <div style="margin-bottom: 1.5rem; max-width: 800px;">
+              <img src="17tac.png" alt="Smuggler Coves Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            </div>
+          ` : ''}
+          ${op.order === 18 ? `
+            <div style="margin-bottom: 1.5rem; max-width: 800px;">
+              <img src="18tac.png" alt="Cape North Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            </div>
+          ` : ''}
+          ${op.order === 19 ? `
+            <div style="margin-bottom: 1.5rem; max-width: 800px;">
+              <img src="19tac.png" alt="Sinking Country Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            </div>
+          ` : ''}
+          ${op.order === 20 ? `
+            <div style="margin-bottom: 1.5rem; max-width: 800px;">
+              <img src="20tac.png" alt="Driftwood Islets Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            </div>
+          ` : ''}
+          ${op.order === 21 ? `
+            <div style="margin-bottom: 1.5rem; max-width: 800px;">
+              <img src="21tac.png" alt="Golem Island Sector 1 Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            </div>
+          ` : ''}
+          ${op.order === 22 ? `
+            <div style="margin-bottom: 1.5rem; max-width: 800px;">
+              <img src="22tac.png" alt="Golem Island Sector 3 Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            </div>
+          ` : ''}
+          ${op.order === 23 ? `
+            <div style="margin-bottom: 1.5rem; max-width: 800px;">
+              <img src="23tac.png" alt="Golem Island Sector 2 Tactical Map" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
             </div>
           ` : ''}
           <ul class="phase-list">
@@ -1264,13 +1319,13 @@
                 mainContent = phase.replace(/\*\*/g, '');
               }
               
-              const indicatorHTML = (op.order >= 1 && op.order <= 23)
+              const indicatorHTML = (op.order >= 1 && op.order <= 24)
                 ? String(idx + 1)
                 : `<span class="bi bi-chevron-right" style="font-size: 0.65rem;"></span>`;
               
               return `
                 <li class="phase-card">
-                  <div class="phase-indicator ${(op.order >= 1 && op.order <= 23) ? 'phase-indicator-num' : ''}">${indicatorHTML}</div>
+                  <div class="phase-indicator ${(op.order >= 1 && op.order <= 24) ? 'phase-indicator-num' : ''}">${indicatorHTML}</div>
                   <div class="phase-content">
                     <div>${mainContent}</div>
                   </div>
@@ -1279,6 +1334,7 @@
             }).join('')}
           </ul>
         </div>
+        `}
 
         ${supportHTML}
 

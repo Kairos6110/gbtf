@@ -4,41 +4,38 @@
 
 ### 1. SITUATION & MISSION
 
-Following our successful interdiction of the swamp-based logistics lines in Fen Bog, the cargo manifests recovered from the Shipping Center have exposed an unmonitored maritime pipeline operating out of the rocky cliffs of Smuggler Coves. Wiping their swamp logistics network has forced Sentinel to divert their remaining smuggling shipments through this rugged coastal corridor.
+The indig unit operating from Summers Homestead have given us an actionable target package on a black-market smuggling network operated by Sentinel within Smuggler Coves. Intelligence indicates they are shipping weaponized drone components out of Maunga Nui Port, supported by a chemical toxin lab at Oleander Station and a primary quick-reaction force (QRF) garrison at Outpost Red Tiger.
 
-Sentinel Corp has exploited the deep-water inlets and historic coastal defensive positions of the Smuggler Coves province to build a completely unmonitored, black-market maritime pipeline. Operating primarily out of **Maunga Nui Port**, they are loading weaponized drone components onto unflagged commercial freighters. This shipping node is shielded by an early-warning tracking network at **Oleander Station** and a fortified quick-reaction base at **Outpost Red Tiger**. Sentinel’s regional command staff has retrofitted a highly secure, subterranean tactical operations center directly inside the historic stone walls of the **Spanish Fortress**. CORSAIR is tasked with blinding the tracking network, dismantling the port infrastructure, and raiding the historic fortress command vault to seize outbound cargo telemetry.
+Crucially, reports from local assets indicate a massive human trafficking ring operating in the sector. Sentinel is rounding up civilians and shipping them offshore. A disillusioned Sentinel rifleman stationed at the Spanish Fortress has discovered the operation and wants to defect. He is willing to supply critical intelligence on the trafficking ring's leadership, transport routes, and offshore destinations.
 
----
-
-> **Tactical Reconnaissance Note:** The drone tracking view emphasizes the open maritime channels of Maunga Nui Port. Sentinel secures its transport vessels along the primary concrete berths, relying entirely on early warning data fed directly from the high-ground arrays at Oleander Station.
+CORSAIR is tasked with starting from Shacks Valley Bivouac, raiding the chemical toxin lab at Oleander Station, launching a preemptive strike on Outpost Red Tiger to destroy their newly delivered munitions before they can launch an assault, securing Maunga Nui Port, and infiltrating the Spanish Fortress to secure the defector and conduct a long-term interrogation on-site to fully map the trafficking network.
 
 ---
 
 ### 3. EXECUTION
 
-* **Phase I - Shipwreck Bivouac (Staging Area):** Establish a tactical staging area at the Shipwreck Bivouac. Prepare gear and plan waterborne infiltration parameters around the jagged coastal cliffs. [PHASE CODE: REEF]
-* **Phase II - Oleander Station & Outpost Red Tiger (Deafen & Clear):** Infiltrate the sector via low-signature coastal watercraft. Conduct a vertical cliff ascent to reach **Oleander Station**, neutralize the technical guard force, and physical-spike the maritime surface-search radar arrays. Move rapidly inland to execute a synchronized flank assault on **Outpost Red Tiger** to collapse the primary infantry checkpoint protecting the valley floor. [PHASE CODE: CLIFFSIDE]
-* **Phase III - Maunga Nui Port (Seizure & Interdiction):** Advance onto the primary docks of **Maunga Nui Port**. Eliminate localized container-yard security details, breach the harbor master’s office, and recover the master digital manifest detailing international black-market buyers. Hard-tag all staged weapons containers with encrypted satellite beacons. [PHASE CODE: BLACKFLAG]
-* **Phase IV - Spanish Fortress (Bunker Breach & SSE):** Conduct a high-intensity dynamic assault on the thick stone ramparts of the **Spanish Fortress**. Neutralize the heavy weapons crews operating from the historical battlements, then execute an explosive breach of the reinforced steel doors leading into the subterranean colonial-era magazine tunnels. Eliminate the remaining command staff and secure all localized encryption drives. [PHASE CODE: IRONCLAD]
+* **Phase I - Shacks Valley Bivouac (Staging Area):** Establish a tactical staging area at the Shacks Valley Bivouac. Prepare gear, check weapon platforms, and plan movement vectors across the forest. [PHASE CODE: REEF]
+* **Phase II - Oleander Station (CBRN Interdiction):** Infiltrate the labs complex at **Oleander Station**, which Sentinel has converted into a chemical toxin production lab for enhanced interrogation. Execute a swift breach of the refining rooms and gather any actionable intel. *(Mandatory: Gas masks must be equipped prior to breaching due to airborne toxins).* [PHASE CODE: CLIFFSIDE]
+* **Phase III - Outpost Red Tiger (Preemptive Munitions Strike):** Locate the vulnerable QRF outpost at **Outpost Red Tiger**. Wolves SOF have recently delivered the bulk of their munitions and tactical equipment here for an upcoming offensive. Conduct a preemptive strike, planting charges to destroy the stockpiled weapons and disable their logistics lines. [PHASE CODE: SABOTAGE]
+* **Phase IV - Maunga Nui Port (Port Seizure & Manifest Recovery):** Secure the docks at **Maunga Nui Port**. Neutralize the localized security detail, secure the harbor master’s office, and recover shipping manifests detailing outbound illicit shipments. [PHASE CODE: BLACKFLAG]
+* **Phase V - Spanish Fortress (HVT Defector Interrogation):** Infiltrate the ancient **Spanish Fortress**. Locate the defector—a disillusioned Sentinel rifleman willing to trade secrets about the civilian human trafficking ring. (Roleplay: Eliminate all personnel EXCEPT the one inside the tower who is the defector). Establish a secure perimeter inside the fortress and conduct a long-term on-site interrogation to obtain full intel on the ring before planning exfiltration. [PHASE CODE: IRONCLAD]
 
 ---
 
 ### 4. SERVICE & SUPPORT
 
-* **Aviation:** Unavailable due to overlapping mobile anti-aircraft missile batteries operating along the Smuggler Coves perimeter.
-* **EXFIL:** 1x Non-standard high-speed interceptor boat cached within a sea cave layout precisely 400 meters west of the Spanish Fortress ruins.
-* **Logistics:** Heavy breaching tools and thermite blocks are mandatory for Phase IV structure clearing.
-* **CASEVAC:** None. Active coastal anti-air envelopes prevent any medical evacuation flights.
+* **Logistics:** Heavy breaching charges, chemical gas masks and sample collection kits will be equipped
 
 ---
 
 ### 5. COMMAND & SIGNAL
 
 * **Task Force Callsign:** CORSAIR
-* **Command:** ARCHON
+* **Command:** GALLEON
 * **Frequency:** 194.50 MHz (Crypto-Isolated Tactical Network)
 * **Codewords:**
-  * **REEF** – Staging area established at Shipwreck Bivouac.
-  * **CLIFFSIDE** – Oleander Station radar arrays disabled.
+  * **REEF** – Staging area established at Shacks Valley Bivouac.
+  * **CLIFFSIDE** – Oleander Station chemical toxin lab breached and disabled.
+  * **SABOTAGE** – Outpost Red Tiger munitions stockpile destroyed.
   * **BLACKFLAG** – Maunga Nui Port manifests secured.
-  * **IRONCLAD** – Spanish Fortress subterranean vault cleared; moving to extraction.
+  * **IRONCLAD** – Defector rifleman secured and human trafficking intelligence extracted at Spanish Fortress.

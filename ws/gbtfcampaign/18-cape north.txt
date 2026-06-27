@@ -1,0 +1,36 @@
+**OPORD NO. 7118**
+
+**CALLSIGN:** GRIFFIN
+
+### 1. SITUATION & MISSION
+
+The Sentinel defector captured at the Spanish Fortress has confirmed our worst fears. A specialized Sentinel unit responsible for procuring "human cargo" is preparing a coordinated assault on the remaining Skell Technology facilities across Cape North. Their objective is to abduct engineers, researchers, and civilians, then move them to coastal staging areas before transferring them to the IHSAN network, the same shadow organization previously identified as purchasing Sentinel's advanced drone technology. Intercepted communications now confirm IHSAN is trafficking both military hardware and human beings throughout the Middle East and Asia, making this the largest human trafficking operation uncovered on Auroa.
+
+At the same time, Sentinel has expanded its intelligence network across the region. A long-range radar at the Campus Relay Station now provides early warning of all aircraft operating over northern Auroa. Meanwhile, engineers at the Underwater Cable Station have physically tapped into the transoceanic fiber-optic network, allowing Sentinel to intercept international communications and monitor any attempt at outside intervention.
+
+We will conduct a rapid precision strike to dismantle both operations. Priority one is to eliminate the trafficking cell before any civilians or Skell personnel can be moved off the island. Priority two is to destroy Sentinel's radar and communications interception capability, blinding their ISR network and severing their access to strategic intelligence. By the end of this operation, the trafficking network in Cape North must cease to exist.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Lake St Patrick Bivouac (Staging Area):** Establish a tactical staging area at the Lake St Patrick Bivouac and prepare gear. [PHASE CODE: KEYSTONE]
+* **Phase II - Darkwood Island Port (Rescue):** Infiltrate Darkwood Island Port where we must urgently save the civilians trapped by the Sentinel trafficking unit. [PHASE CODE: HARVEST]
+* **Phase III - Skell Foundation Campus (Liberation):** Secure the Skell Foundation Campus where the last Skell Tech personnel are held against their will, and liberate them. Gather actionable Intel in the server rooms and neutralize all SAM sites before takeoff. [PHASE CODE: BEACON]
+* **Phase IV - Campus Relay Station (Isolate):** Using a helicopter obtained from the Campus, fly up to the Campus Relay Station and secure it, neutralizing the radar early warning system. [PHASE CODE: ZEPHYR]
+* **Phase V - Underwater Cable Station (Data Sever):** Advance to the Underwater Cable Station to physically disable the transoceanic fiber-optic cable splices installed by Sentinel. [PHASE CODE: ABYSS]
+* **Phase VI - Zimmy's Safehouse (Exfil):** Exfiltrate at what is know as "Zimmy's Safehouse" a friendly POC who has been providing us invaluable intelligence since the beginning of our Campaign but whom we have never met in person. He has given us coordinates to his luxury safehouse by the coast for some well needed R&R. [PHASE CODE: OASIS]
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** GRIFFIN
+* **Command:** ORACLE
+* **Frequency:** 212.65 MHz (Frequency Hopping, Encrypted)
+* **Codewords:**
+  * **KEYSTONE** – Staging area established at Lake St Patrick Bivouac.
+  * **HARVEST** – Darkwood Island Port secured and civilians saved.
+  * **BEACON** – Skell Foundation Campus secured and personnel liberated.
+  * **ZEPHYR** – Campus Relay Station captured and secured.
+  * **ABYSS** – Underwater Cable Station fiber-splicing taps permanently dismantled.
+  * **OASIS** – Exfiltration complete at Zimmy's Safehouse.

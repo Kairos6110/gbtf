@@ -1,0 +1,43 @@
+**OPORD NO. 7122**
+
+**CALLSIGN:** RAGNAROK
+
+### 1. SITUATION & MISSION
+
+Disabling the **Chemical Refinery** and **Pipeline** has severed primary logistics and coolant corridors to **Sector 3**, completely isolating the **Prototype Workshop** from the island's strategic defense grid. Thanks to our breach at **GISD**, we now have a direct SIGINT intercept on enemy communications; intelligence shows they are scrambling to assess the failure. We have a narrow tactical window to strike.
+
+Deep within **Sector 3** lies the **Prototype Workshop**, Sentinel's most heavily guarded black site, where an experimental, nuclear-capable autonomous UGV is undergoing final system integration. This facility relies on rare-earth elements extracted from the high-hazard **Scandium Mine**, which intelligence indicates is currently being run as a forced labor camp. Operating out of the **Sector 3 Eastern Bivouac**, RAGNAROK will execute a zero-fail operation: neutralize the enemy QRF holding the **No Man's Land** / **Red Phoenix Outpost** choke point, liberate the **Scandium Mine**, and secure the highly sensitive technology at the **Prototype Workshop** for future analysis.
+
+---
+
+> **Tactical Intelligence Report:** Local surveillance indicates that the Red Wolves utilize automated robotic assembly arms inside secure, containerized lab environments to accelerate the final physical weapon integration for their prototype drone platforms. Disabling the workshop will put an end to their next-generation automation capabilities.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Sector 3 Eastern Bivouac (Staging Area):** Hike southeast around the lava flow. Team must equip gas masks and thermal NODs due to the extreme environmental pollution. This is a low-visibility, toxic environment; all precautions must be taken. [PHASE CODE: ASH]
+* **Phase II - No Man's Land (The Infiltration):** Secure this heavily defended site. SIGINT indicates the unit stationed here may be a rogue element that has turned against Sentinel; be ready for anything and look for signs of active infighting / executions of Sentinel personnel. [PHASE CODE: CATACLYSM]
+* **Phase III - Red Phoenix Outpost (Outpost Breach):** Launch a sudden, synchronized assault on the **Red Phoenix Outpost**. Seize control of the valley's master gate overrides, sever local backup communications, and neutralize the sector's quick-reaction assets before they can deploy. [PHASE CODE: GATEWAY]
+* **Phase IV - Scandium Mine (Resource Denial):** Neutralize elite mercenary forces guarding the labor camp. ISR confirms bodies are being disposed of in the acid baths on site. If any survivors remain, ensure their security. Plant C4 charges to force a controlled collapse of the mining shafts. [PHASE CODE: SULFUR]
+* **Phase V - Prototype Workshop (Endgame Sabotage & Purge):** Infiltrate the now-isolated **Prototype Workshop** to deliver the final strike. Neutralize the remaining engineering officers, connect a CYBSEC device to mirror and upload all workshop data to HQ for future analysis, and debrief on-site to prepare for the final assault on **Sector 2**. [PHASE CODE: FUNGUS]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **Aviation:** Possible CAS from mainland (Wild Island Bivouac nearest) but SAM sites must be disabled before Outcast assets will accept to fly in. Interrogating enemy personnel or looking for map intel inside compounds might pinpoint exact SAM sites locations.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** RAGNAROK
+* **Command:** TARTARUS
+* **Frequency:** 250.00 MHz (Crypto-Isolated Tactical Network / Maximum Power)
+* **Codewords:**
+  * **ASH** – Staging area established at Sector 3 Eastern Bivouac.
+  * **CATACLYSM** – No Man's Land defenses bypassed and neutralized.
+  * **GATEWAY** – Red Phoenix Outpost gate overrides secured.
+  * **SULFUR** – Scandium Mine extraction infrastructure permanently buried.
+  * **FUNGUS** – Prototype Workshop mirrored and secured; moving to extraction vector.

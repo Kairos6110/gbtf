@@ -1,0 +1,44 @@
+**OPORD NO. 7119**
+
+**CALLSIGN:** REVENANT
+
+### 1. SITUATION & MISSION
+
+Even though the Cape North trafficking ring was successfully neutralized and a major crisis largely averted, our tactical victory was incomplete. Rebel scouts have alerted us that Sentinel operatives managed to relocate several civilians prior to our intervention. These prisoners have been moved into the Sinking Country province, a heavily fortified coastal region. 
+
+Sinking Country is currently controlled by one of the two last remaining Sentinel detachments on Auroa. Their regional operations are anchored by the **Sentinel Corp Land Base**—the headquarters for Sentinel land forces on the island—and protected by a dense anti-aircraft and surveillance network. Furthermore, a senior Sentinel commander has just arrived at **Bunker Hedgehog South** to hold an urgent meeting with his close guard, while the Wolves' last remaining offshore forward operating base at **Camp Tiger** remains active on a remote island. 
+
+Team REVENANT will deploy to Sinking Country to locate and liberate all prisoners, interdict regional assets, eliminate the visiting Sentinel commander, and capture the Wolves' commanding officer to strike fear into remaining hostile elements in the wild.
+
+---
+
+### 3. EXECUTION
+
+* **Phase I - Dead Horse Swamp Bivouac (Infiltration):** Establish a tactical staging area at the Dead Horse Swamp Bivouac. Prepare gear and plan terrestrial infiltration routes through the waterlogged terrain. [PHASE CODE: BANSHEE]
+* **Phase II - Anti-Aircraft Ruins (Asset Interdiction & Prisoner Rescue):** Infiltrate the historic **Anti-Aircraft Ruins** where three civilian prisoners are believed to be held. Neutralize the guard details, secure the hostages, and either sabotage or deliver the high-value transportation assets to friendly forces nearby (nearest Abandoned Site handoff roleplay). [PHASE CODE: DEADEYE]
+* **Phase III - Sentinel Corp Land Base (Command HQ & Intel Extraction):** Conduct an aggressive raid on the **Sentinel Corp Land Base**, the HQ for Sentinel land forces on Auroa. Locate and liberate the single civilian prisoner held on-site. Breach the command center, exploiting this HQ will probably be a goldmine of intel on remaining forces. [PHASE CODE: REAPER]
+* **Phase IV - Bunker Hedgehog South (HVT Decapitation Strike):** Infiltrate the remote island facility at **Bunker Hedgehog South**. Locate and eliminate the visiting Sentinel commander and his close guard during their urgent tactical meeting to sever local command authority. [PHASE CODE: ANVIL]
+* **Phase V - Camp Tiger (Wolves FOB Infiltration):** Assault the underground meeting room at the remote **Camp Tiger**—the Wolves' final offshore forward operating base. Locate and capture the Wolves' commanding officer alive to strike fear into remaining hostile elements. [PHASE CODE: ABYSS]
+* **Phase VI - Russell Homestead (Exfiltration & Handoff):** Transport the captured commanding officer to **Russell Homestead** for exfiltration. Deliver the prisoner to rebel forces on-site who have something specific in mind to occupy him. [PHASE CODE: OASIS]
+
+---
+
+### 4. SERVICE & SUPPORT
+
+* **CAS:** Two fully armed air assets (Overseer gunship, equipped with Gatling guns and rockets) are available for close air support and air-to-ground strike operations. Codenames MOTHER 3-2 and MOTHER 3-3.
+
+---
+
+### 5. COMMAND & SIGNAL
+
+* **Task Force Callsign:** REVENANT
+* **Command:** VORTEX
+* **Frequency:** 201.35 MHz (Sincgars Secure, Frequency Hopping)
+* **Codewords:**
+  * **BANSHEE** – Staging area established at Dead Horse Swamp Bivouac.
+  * **DEADEYE** – Anti-Aircraft Ruins secured, hostages liberated, and high-value transportation assets secured or delivered.
+  * **REAPER** – Sentinel Corp Land Base breached, prisoner freed, and command Intel extracted.
+  * **ANVIL** – Sentinel Commander and close guard eliminated at Bunker Hedgehog South.
+  * **ABYSS** – Camp Tiger secured and Wolves commanding officer captured.
+  * **OASIS** – Commanding officer handoff completed at Russell Homestead.
+

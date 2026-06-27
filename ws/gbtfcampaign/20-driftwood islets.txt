@@ -4,41 +4,38 @@
 
 ### 1. SITUATION & MISSION
 
-Following our successful purge of the AI Experimental Center at Cape North, the captured research files and decrypted security override keys have exposed Sentinel's littoral maritime patrol network. Their naval forces have clustered around the Driftwood Islets to prevent us from moving against Golem Island.
+The campaign to liberate Auroa is entering its final phase. The enemy has been driven from most of the archipelago and now clings to its last remaining strongholds. With close air support from our allied Outcast air assets now available, we are preparing to assault the Driftwood Islets, the last enemy-held region in northeastern Auroa, before launching the final assault against Golem Island.
 
-The Driftwood Islets form a fragmented archipelago off the coast, serving as Sentinel Corp’s primary forward operating point for littoral (coastal) patrol and tactical testing. Sentinel has constructed **Camp Kodiak** to anchor their maritime security forces in the sector, while leveraging the isolated **Driftwood Islets Testing Zone** to calibrate advanced close-range surveillance systems. Intelligence reports also indicate that Sentinel has hidden a mobile signals-intelligence interception team within the dense cover of the **Ancient Cemetery** to monitor rebel marine frequencies. ORION will execute a multi-island amphibious interdiction to blind the listening post, sabotage the littoral testing assets, and dismantle the regional naval staging base.
+Recognizing Golem Island as their last strategic stronghold, Sentinel and remaining Wolves SOF has concentrated its remaining naval and rapid reaction forces throughout the Driftwood Islets to prevent any advance across the channel. The archipelago serves as the enemy's primary forward operating area for maritime security, amphibious operations, and weapons testing. The Wolves have fortified **Camp Kodiak** as the logistical gateway between Auroa and Golem Island, making it the sole transit point for personnel, equipment, and supplies moving between the two islands. Recapturing Camp Kodiak is therefore essential to isolating Golem Island and cutting off all enemy reinforcement routes.
 
----
+Intelligence also indicates a clandestine weapons transaction is taking place at the **Ancient Sanctuary** near Dynamite Lake. The buyers remain unidentified, but intercepted communications suggest the shipment contains advanced military hardware intended for export before Sentinel loses control of the region.
 
-> **Tactical Topography Note:** As seen in the aerial reconnaissance overlay, the target area consists of highly isolated landmasses with minimal land bridges. Infiltration teams must coordinate waterborne maneuvers carefully to mask their approaches between the high-ground tracking installations and the coastal lowlands of the primary outposts.
+Team ORION will conduct a multi-island assault to eliminate Sentinel's remaining maritime presence and establish the testing facility as our northernmost forward operating base in preparation for the final assault on Golem Island.
 
 ---
 
 ### 3. EXECUTION
 
-* **Phase I - Driftwood Bivouac (Staging Area):** Establish a tactical staging area at the Driftwood Bivouac. Prepare gear and plan amphibious island-hopping routes using combat rubber raiding craft under cover of night. [PHASE CODE: LANDFALL]
-* **Phase II - Ancient Cemetery (Signals Interdiction):** Conduct a low-signature amphibious insertion using combat rubber raiding craft. Scale the forested bluffs to enter the perimeter of the **Ancient Cemetery**. Move under absolute noise discipline to locate and eliminate the hidden Sentinel signals team, capturing their tactical frequency maps and destroying their mobile transmission array. [PHASE CODE: TOMBSTONE]
-* **Phase III - Driftwood Islets Testing Zone (Technical Sabotage):** Transition via the coastline to the **Driftwood Islets Testing Zone**. Avoid automated littoral sensor arrays. Plant localized thermite blocks inside the telemetry control shacks and destroy the prototype high-speed marine tracking nodes positioned along the shoreline. [PHASE CODE: RIPTIDE]
-* **Phase IV - Camp Kodiak (Base Clearance & SSE):** Mount an aggressive, synchronized dynamic assault on the main compound at **Camp Kodiak**. Suppress the heavy machine gun emplacements defending the boat slips and clear the central operations barracks. Access the tactical terminal to secure all naval patrol logs and maritime routing data before the network triggers an automated lockout. [PHASE CODE: KODIAK]
+* **Phase I - Dusky Forest Bivouac (Infiltration):** Establish a tactical staging area at the Dusky Forest Bivouac. Prepare gear and plan terrestrial and amphibious infiltration routes. [PHASE CODE: LANDFALL]
+* **Phase II - Camp Kodiak (Maritime Base Sabotage):** Conduct a raid on **Camp Kodiak**. Neutralize the maritime security forces, disable the harbor's communication systems, and sabotage their patrol boats to sever Sentinel's littoral response capability. [PHASE CODE: KODIAK]
+* **Phase III - Ancient Sanctuary (Weapons Shipment Interception):** Move inland to the **Ancient Sanctuary** near Dynamite Lake. Locate and infiltrate the weapons deal site, neutralize all hostile security forces, and intercept or destroy the high-value weapons shipment. [PHASE CODE: TOMBSTONE]
+* **Phase IV - Driftwood Islets Testing Zone (FOB Establishment):** Assault the **Driftwood Islets Testing Zone**. Neutralize the automated UGVs and surveillance grids. Call in Outcast reinforcements and establish a secure, fortified perimeter on-site to convert the facility into the northernmost allied forward operating base supporting the Golem Island assault. [PHASE CODE: RIPTIDE]
 
 ---
 
 ### 4. SERVICE & SUPPORT
 
-* **Maritime:** 2x Combat Rubber Raiding Craft (CRRC) equipped with muffled outboards will be utilized for all inter-island transit phase lines.
-* **Fire Support:** Completely deniable operation. Naval gunfire and air assets are completely unavailable; total reliance on organic unit weapons.
-* **Logistics:** Sub-surface and wet-weather gear configurations are mandatory. Operators must carry standalone communications override kits for Phase IV.
-* **CASEVAC:** None. Anti-air radar nets along the archipelago restrict any medical evacuation flights.
+* **CAS:** Two fully armed air assets (Overseer gunship, equipped with Gatling guns and rockets) are available for close air support and air-to-ground strike operations. Codenames MOTHER 3-2 and MOTHER 3-3.
 
 ---
 
 ### 5. COMMAND & SIGNAL
 
 * **Task Force Callsign:** ORION
-* **Command:** ARCHON
+* **Command:** SIREN
 * **Frequency:** 224.80 MHz (Cryptographic Tactical Net)
 * **Codewords:**
-  * **LANDFALL** – Staging area established at Driftwood Bivouac.
-  * **TOMBSTONE** – Ancient Cemetery signals team successfully eliminated.
-  * **RIPTIDE** – Testing Zone telemetry hardware permanently disabled.
-  * **KODIAK** – Camp Kodiak secured; maritime intelligence packages ready for transfer.
+  * **LANDFALL** – Staging area established at Dusky Forest Bivouac.
+  * **KODIAK** – Camp Kodiak maritime assets and defenses neutralized.
+  * **TOMBSTONE** – Ancient Sanctuary weapons deal interdicted and cargo secured.
+  * **RIPTIDE** – Testing Zone secured and converted into an allied forward operating base.

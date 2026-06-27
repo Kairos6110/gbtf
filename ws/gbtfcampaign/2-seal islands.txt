@@ -8,9 +8,9 @@ Following our operation on Windy Islands, intercepted SIGINT confirms the enemy 
 
 The remaining enemy forces have been observed loading supplies onto RHIBs and patrol boats before withdrawing to the Naval Base further north. The good news is that indigenous resistance forces were able to retake Windy Islands following our intervention. Unfortunately, amid the chaos, the enemy captured one of our local POCs, who is now being held at the Naval Base. While our primary objectives remain unchanged, we must ensure their safe recovery if the opportunity presents itself.
 
-The Seal Islands serve as Sentinel Corp's primary maritime stronghold and strategic staging hub for the entire archipelago. By controlling the naval base, airfield, and deep-water fuel reserves, Sentinel maintains naval supremacy and rapid-response air capabilities throughout the southern sectors.
+The Seal Islands serve as Sentinel Corp's primary maritime stronghold and strategic staging hub for the entire archipelago. By controlling the naval base, airfield, and benefiting from the Wolves' main equipment and ammunition depot, Sentinel maintains naval supremacy, rapid-response air capabilities, and logistical resupply throughout the southern sectors.
 
-GBTF element **WARLOCK** is ordered to conduct a multi-phase sabotage and interdiction operation to blind regional radar coverage, destroy critical fuel infrastructure, and cripple Sentinel's ability to rapidly deploy naval and aerial assets across the region.
+GBTF element **WARLOCK** is ordered to conduct a multi-phase sabotage and interdiction operation to blind regional radar coverage, secure the Wolves' main depot, and cripple Sentinel's ability to rapidly deploy naval and aerial assets across the region.
 
 ---
 
@@ -21,7 +21,7 @@ GBTF element **WARLOCK** is ordered to conduct a multi-phase sabotage and interd
 * **Phase III - Auroa Airfield (Interdiction):** Advance to the airfield, liberate additional possible friendlies, load the helicopter with Equipment and deliver the helicopter to South Cape Station, rebels are in dire need of a resupply. [PHASE CODE: GRIDLOCK]
 * **Phase IV - Ammunition Depot (Sabotage):** Infiltrate the ammunition depot and destroy the stored ordnance stockpiles to bottleneck regional supply capabilities. [PHASE CODE: SLEDGEHAMMER]
 * **Phase V - West Radar Station (Deafen):** Penetrate the perimeter of the West Radar Station, neutralize the technical staff, and upload a localized logic bomb to blind early-warning airspace tracking. [PHASE CODE: CYCLOPS]
-* **Phase VI - Fuel Storage (Bleed):** Move into the primary POL facility, disable all defenses, and plant timed thermite charges on the main fuel silos to cripple the supply chain. Debrief and R&R at nearest bivouac. [PHASE CODE: WILDFIRE]
+* **Phase VI - Abandoned Barracks (Secure Depot):** Infiltrate the Abandoned Barracks, the largest equipment and ammunition depot for the Wolves QRF in the region, and secure the facility to turn it over to Outcast hands. [PHASE CODE: WILDFIRE]
 
 ---
 
@@ -43,4 +43,4 @@ GBTF element **WARLOCK** is ordered to conduct a multi-phase sabotage and interd
   * **GRIDLOCK** – Airfield secured and resupply helicopter delivered to South Cape Station.
   * **SLEDGEHAMMER** – Ammunition depot stockpiles destroyed.
   * **CYCLOPS** – West Radar Station tracking arrays disabled.
-  * **WILDFIRE** – Demolition charges set at Fuel Storage; moving to exfil.
+  * **WILDFIRE** – Abandoned Barracks secured and turned over to Outcast hands.
