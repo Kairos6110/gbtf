@@ -27,7 +27,16 @@ TITAN is tasked with infiltrating Infinity Province, disrupting Sentinel's trans
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/10/1.jpeg
+ISR/10/2.jpeg
+ISR/10/3.jpeg
+ISR/10/4.jpeg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** TITAN
 * **Command:** OLYMPUS

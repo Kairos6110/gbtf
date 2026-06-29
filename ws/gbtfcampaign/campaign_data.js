@@ -399,7 +399,16 @@ GRIZZLY is tasked with infiltrating the alpine sector, eliminating the mountain 
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/8/1.jpeg
+ISR/8/2.jpeg
+ISR/8/3.jpeg
+ISR/8/4.jpeg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** GRIZZLY
 * **Command:** LYNX
@@ -439,7 +448,16 @@ Lake Country serves as the primary technical incubator for Skell Security’s hi
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/9/1.jpeg
+ISR/9/2.jpeg
+ISR/9/3.jpeg
+ISR/9/4.jpeg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** PHANTOM
 * **Command:** RAVEN
@@ -479,7 +497,16 @@ TITAN is tasked with infiltrating Infinity Province, disrupting Sentinel's trans
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/10/1.jpeg
+ISR/10/2.jpeg
+ISR/10/3.jpeg
+ISR/10/4.jpeg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** TITAN
 * **Command:** OLYMPUS
