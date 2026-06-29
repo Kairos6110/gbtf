@@ -537,7 +537,7 @@ Whalers Bay serves as the heavy-industrial heart of Sentinel's autonomous milita
 * **Phase II - Storage Depot (Supply Denial):** Secure the perimeter and infiltrate the Storage Depot. Destroy stockpiles of carbon fiber, titanium alloys, and other raw materials feeding Sentinel's drone production. *(Roleplay: Destroy designated crates with C4.)* [PHASE CODE: EMBER]
 * **Phase III - Land Chassis Factory (Industrial Sabotage):** Clear the Land Chassis Factory and disable the machinery producing ground drone chassis. *(Roleplay: Use EMP grenades to represent sabotaging the production equipment.)* [PHASE CODE: ANVIL]
 * **Phase IV - Air Chassis Factory (Production Interdiction):** Infiltrate the Air Chassis Factory and disable the assembly lines manufacturing aerial drone frames. *(Roleplay: Use EMP grenades to disable the factory systems.)* [PHASE CODE: SPINDLE]
-* **Phase V - Construction Site (Engineering Denial):** Sabotage the construction site supporting Sentinel's military expansion in the sector. Gain access to the RFID-locked area for possible additional intelligence. [PHASE CODE: DEBRIS]
+* **Phase V - Construction Site (Engineering Denial):** Sabotage the construction site supporting Sentinel's military expansion in the sector. Gain access to the office area for possible additional intelligence. [PHASE CODE: DEBRIS]
 * **Phase VI - Whalers Bay Airfield (Airfield Denial):** Assault the airfield, secure the control tower, and disable all cargo aircraft to prevent Sentinel from evacuating personnel or equipment. [PHASE CODE: FROST]
 * **Phase VII - Nor'wester Cliff Cave (Exfiltration & R&R):** Exfiltrate the sector on foot and regroup at the Nor'wester Cliff Cave staging area for rest and recuperation. [PHASE CODE: HAVEN]
 
@@ -550,7 +550,18 @@ Whalers Bay serves as the heavy-industrial heart of Sentinel's autonomous milita
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/11/1.jpg
+ISR/11/2.jpg
+ISR/11/3.jpg
+ISR/11/4.jpg
+ISR/11/5.jpg
+ISR/11/6.jpg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** CHIMERA
 * **Command:** HARBINGER
