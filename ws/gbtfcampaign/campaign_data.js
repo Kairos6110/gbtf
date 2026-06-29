@@ -604,7 +604,16 @@ VANDAL is tasked with infiltrating the mountain complex, systematically disablin
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/12/1.jpeg
+ISR/12/2.jpeg
+ISR/12/3.jpeg
+ISR/12/4.jpeg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** VANDAL
 * **Command:** SHROUD
