@@ -27,7 +27,20 @@ DYNAMO element is set to infiltrate the critical coastal and maritime energy nod
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/5/1.jpeg
+ISR/5/2.jpeg
+ISR/5/3.jpeg
+ISR/5/4.jpeg
+ISR/5/5.jpeg
+ISR/5/6.jpeg
+ISR/5/7.jpeg
+ISR/5/8.jpeg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** DYNAMO
 * **Command:** VOLTAGE
