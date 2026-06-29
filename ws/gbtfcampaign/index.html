@@ -875,12 +875,13 @@
       border-color: var(--olive-2);
       transform: scale(1.05);
     }
+
     #floating-soundboard-panel {
       position: fixed;
-      top: 5rem;
+      top: 5.5rem;
       right: 1.5rem;
-      width: 280px;
-      background: rgba(16, 23, 19, 0.96);
+      width: 290px;
+      background: rgba(10, 15, 12, 0.98);
       backdrop-filter: blur(10px);
       border: 1.5px solid var(--line);
       border-radius: var(--radius);
@@ -891,7 +892,7 @@
       padding: 0.75rem;
       gap: 0.5rem;
       font-family: monospace;
-      max-height: 80vh;
+      max-height: 85vh;
       overflow-y: auto;
     }
     #floating-soundboard-panel.show {
@@ -911,44 +912,51 @@
       align-items: center;
     }
     .soundboard-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
     }
     .soundboard-btn {
-      background: rgba(255, 255, 255, 0.03);
+      position: relative;
+      background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--line-soft);
       color: var(--muted);
       border-radius: var(--radius);
-      padding: 0.45rem 0.6rem;
-      font-size: 0.75rem;
-      text-align: left;
+      aspect-ratio: 1.15 / 1;
+      padding: 0.35rem 0.2rem;
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-align: center;
       cursor: pointer;
       transition: all 0.2s ease;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
+      gap: 0.25rem;
+      line-height: 1.15;
     }
     .soundboard-btn:hover {
-      background: rgba(165, 168, 102, 0.1);
+      background: rgba(165, 168, 102, 0.15);
       color: var(--ink);
       border-color: var(--line);
     }
     .soundboard-btn.active {
-      background: rgba(200, 179, 93, 0.2);
-      color: var(--danger);
+      background: rgba(220, 53, 69, 0.15);
+      color: #ff6b6b;
       border-color: var(--danger);
       font-weight: bold;
     }
     .soundboard-btn .status-dot {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: transparent;
+      transition: all 0.2s ease;
     }
     .soundboard-btn.active .status-dot {
       background: var(--danger);
-      box-shadow: 0 0 8px var(--danger);
+      box-shadow: 0 0 6px var(--danger);
     }
   </style>
 </head>
@@ -1956,19 +1964,18 @@
 
     // FLOATING SOUNDBOARD LOGIC
     const SOUNDS = [
-      { id: 'keyradio', label: 'Keying Radio', file: 'keyradio.mp3' },
-      { id: 'radio1', label: 'Radio Reply 1 Short', file: 'radioreply1.mp3' },
-      { id: 'radio2', label: 'Radio Reply 2 Short', file: 'radioreply2.mp3' },
-      { id: 'radio3', label: 'Radio Reply 3 Long', file: 'radioreply3long.mp3' },
-      { id: 'ziptie', label: 'Zip Tie HVT', file: 'ziptie.mp3' },
-      { id: 'hackcomputer', label: 'Accessing Computer', file: 'computer.mp3' },
-      { id: 'searchingDocuments', label: 'Grabbing Intel Documents', file: 'searchingDocuments.mp3' },
-      { id: 'medic', label: 'Medic TCCC', file: 'medic.mp3' },
-      { id: 'panelWiretap', label: 'Placing Wiretap', file: 'paneltools.mp3' },
-      { id: 'geiger', label: 'Geiger (Radiation)', file: 'geiger.mp3' },
-      { id: 'alarm', label: 'Helicopter Alarm', file: 'helicopter_alarm.mp3' },
-      { id: 'samlaunch', label: 'SAM Lock & Launch', file: 'samLockandLaunch.mp3' },
-      { id: 'wood', label: 'Wood Creaking', file: 'woodcreak.mp3' }
+      { id: 'keyradio', label: 'Keying Radio', short: 'Radio Key', file: 'keyradio.mp3' },
+      { id: 'radio1', label: 'Radio Reply 1 Short', short: 'Reply 1', file: 'radioreply1.mp3' },
+      { id: 'radio2', label: 'Radio Reply 2 Short', short: 'Reply 2', file: 'radioreply2.mp3' },
+      { id: 'radio3', label: 'Radio Reply 3 Long', short: 'Reply 3', file: 'radioreply3long.mp3' },
+      { id: 'ziptie', label: 'Zip Tie HVT', short: 'Zip Tie', file: 'ziptie.mp3' },
+      { id: 'hackcomputer', label: 'Accessing Computer', short: 'Hack PC', file: 'computer.mp3' },
+      { id: 'searchingDocuments', label: 'Grabbing Intel Documents', short: 'Intel Docs', file: 'searchingDocuments.mp3' },
+      { id: 'medic', label: 'Medic TCCC', short: 'Medic', file: 'medic.mp3' },
+      { id: 'panelWiretap', label: 'Placing Wiretap', short: 'Wiretap', file: 'paneltools.mp3' },
+      { id: 'geiger', label: 'Geiger (Radiation)', short: 'Geiger', file: 'geiger.mp3' },
+      { id: 'alarm', label: 'Helicopter Alarm', short: 'Heli Alarm', file: 'helicopter_alarm.mp3' },
+      { id: 'samlaunch', label: 'SAM Lock & Launch', short: 'SAM Launch', file: 'samLockandLaunch.mp3' }
     ];
 
     const audioInstances = {};
@@ -1982,8 +1989,9 @@
       const btn = document.createElement('button');
       btn.className = 'soundboard-btn';
       btn.id = `sb-btn-${sound.id}`;
+      btn.title = sound.label; // Full tooltip description
       btn.innerHTML = `
-        <span>${sound.label}</span>
+        <span>${sound.short}</span>
         <span class="status-dot"></span>
       `;
       btn.addEventListener('click', () => toggleSoundboardAudio(sound.id, sound.file, btn));
