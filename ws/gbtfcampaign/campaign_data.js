@@ -295,7 +295,17 @@ Following our successful operation on Egg Island, which dismantled the live dron
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/6/1.jpeg
+ISR/6/2.jpeg
+ISR/6/3.jpeg
+ISR/6/4.jpeg
+ISR/6/5.jpg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** REAPER
 * **Command:** HORUS
@@ -332,9 +342,20 @@ The agricultural region of New Stirling has been weaponized by Sentinel Corp to 
 ### 4. SERVICE & SUPPORT
 
 * **Logistics:** Roads and airspace are under heavy enemy surveillance. All movement will be conducted on foot. Once the team has secured the final outpost, we will radio APEX 3 to establish the position as a forward operating base (FOB), solidifying our presence in the region and enabling follow-on offensive operations toward the border.
+
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/7/1.jpeg
+ISR/7/2.jpeg
+ISR/7/3.jpeg
+ISR/7/4.jpeg
+ISR/7/5.jpeg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** TALON
 * **Command:** HARVEST

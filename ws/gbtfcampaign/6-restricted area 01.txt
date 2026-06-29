@@ -26,7 +26,17 @@ Following our successful operation on Egg Island, which dismantled the live dron
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/6/1.jpeg
+ISR/6/2.jpeg
+ISR/6/3.jpeg
+ISR/6/4.jpeg
+ISR/6/5.jpg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** REAPER
 * **Command:** HORUS
