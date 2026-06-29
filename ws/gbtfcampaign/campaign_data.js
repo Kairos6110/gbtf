@@ -753,7 +753,18 @@ During infiltration aboard HORUS 3, our contracted helicopter was engaged by a s
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/15/1.jpg
+ISR/15/2.jpg
+ISR/15/3.jpg
+ISR/15/4.jpg
+ISR/15/5.jpg
+ISR/15/6.jpg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** HUNTER
 * **Command:** ONYX
