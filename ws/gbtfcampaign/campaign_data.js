@@ -191,7 +191,17 @@ PEQUOD element is set to conduct a highly kinetic, air-to-ground interdiction of
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/4/1.jpeg
+ISR/4/2.jpeg
+ISR/4/3.jpeg
+ISR/4/4.jpg
+ISR/4/5.jpg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** PEQUOD
 * **Command:** ORCA
