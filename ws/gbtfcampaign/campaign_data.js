@@ -702,7 +702,16 @@ RAZOR is tasked with infiltrating the area of operations under cover of darkness
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/14/1.jpeg
+ISR/14/2.jpeg
+ISR/14/3.jpeg
+ISR/14/4.jpeg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** RAZOR
 * **Command:** MAELSTROM
