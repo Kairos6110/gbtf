@@ -29,7 +29,16 @@ Team REVENANT will deploy to Sinking Country to locate and liberate all prisoner
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/19/1.jpeg
+ISR/19/2.jpeg
+ISR/19/3.jpeg
+ISR/19/4.jpeg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** REVENANT
 * **Command:** VORTEX

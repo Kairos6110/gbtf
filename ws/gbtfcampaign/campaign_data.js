@@ -902,9 +902,19 @@ We will conduct a rapid precision strike to dismantle both operations. Priority 
 * **Phase IV - Campus Relay Station (Isolate):** Using a helicopter obtained from the Campus, fly up to the Campus Relay Station and secure it, neutralizing the radar early warning system. [PHASE CODE: ZEPHYR]
 * **Phase V - Underwater Cable Station (Data Sever):** Advance to the Underwater Cable Station to physically disable the transoceanic fiber-optic cable splices installed by Sentinel. [PHASE CODE: ABYSS]
 * **Phase VI - Zimmy's Safehouse (Exfil):** Exfiltrate at what is known as "Zimmy's Safehouse" a friendly POC who has been providing us invaluable intelligence since the beginning of our Campaign but whom we have never met in person. He has given us coordinates to his luxury safehouse by the coast for some well needed R&R. [PHASE CODE: OASIS]
+
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/18/1.jpeg
+ISR/18/2.jpeg
+ISR/18/3.jpeg
+ISR/18/4.jpeg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** GRIFFIN
 * **Command:** ORACLE
@@ -947,7 +957,16 @@ Team REVENANT will deploy to Sinking Country to locate and liberate all prisoner
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/19/1.jpeg
+ISR/19/2.jpeg
+ISR/19/3.jpeg
+ISR/19/4.jpeg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** REVENANT
 * **Command:** VORTEX
@@ -990,7 +1009,16 @@ Team ORION will conduct a multi-island assault to eliminate Sentinel's remaining
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/20/1.jpeg
+ISR/20/2.jpeg
+ISR/20/3.jpeg
+ISR/20/4.jpeg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** ORION
 * **Command:** SIREN
@@ -1029,7 +1057,16 @@ The deployment theater has shifted off the mainland to Golem Island—a volcanic
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/21/1.jpeg
+ISR/21/2.jpeg
+ISR/21/3.jpeg
+ISR/21/4.jpeg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** WOLFHOUND
 * **Command:** VULCAN

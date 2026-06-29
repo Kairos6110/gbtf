@@ -29,7 +29,16 @@ Team ORION will conduct a multi-island assault to eliminate Sentinel's remaining
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/20/1.jpeg
+ISR/20/2.jpeg
+ISR/20/3.jpeg
+ISR/20/4.jpeg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** ORION
 * **Command:** SIREN
