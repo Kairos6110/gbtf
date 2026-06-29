@@ -1110,7 +1110,16 @@ Deep within **Sector 3** lies the **Prototype Workshop**, Sentinel's most heavil
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/22/1.jpeg
+ISR/22/2.jpeg
+ISR/22/3.jpeg
+ISR/22/4.jpeg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** RAGNAROK
 * **Command:** TARTARUS
@@ -1149,7 +1158,16 @@ Sentinel's last stand is anchored by three critical nodes: the Cold War-era **Mi
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/23/1.jpeg
+ISR/23/2.jpeg
+ISR/23/3.jpeg
+ISR/23/4.jpeg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** ARMAGEDDON
 * **Command:** CERBERUS
