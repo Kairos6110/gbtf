@@ -28,7 +28,16 @@ CORSAIR is tasked with starting from Shacks Valley Bivouac, raiding the chemical
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/17/1.jpeg
+ISR/17/2.jpeg
+ISR/17/3.jpeg
+ISR/17/4.jpeg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** CORSAIR
 * **Command:** GALLEON

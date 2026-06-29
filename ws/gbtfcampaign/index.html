@@ -1712,6 +1712,18 @@
         </div>
         ` : ''}
 
+        ${op.order === 17 ? `
+        <div class="opord-section">
+          <h3><span class="icon bi bi-eye-fill"></span>ISR</h3>
+          <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 800px; margin-top: 1rem;">
+            <img src="ISR/17/1.jpeg" alt="ISR 1" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            <img src="ISR/17/2.jpeg" alt="ISR 2" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            <img src="ISR/17/3.jpeg" alt="ISR 3" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            <img src="ISR/17/4.jpeg" alt="ISR 4" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+          </div>
+        </div>
+        ` : ''}
+
         <div class="briefing-navigation">
           <button class="button button-sm" id="btn-prev-op" ${index === 0 ? 'disabled style="opacity: 0.4; cursor: not-allowed;"' : ''}>
             <span class="icon bi bi-arrow-left"></span> Previous
