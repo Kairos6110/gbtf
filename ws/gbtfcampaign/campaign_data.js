@@ -653,7 +653,16 @@ The New Argyll province juxtaposes the ultra-luxury, high-security residential a
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/13/1.jpeg
+ISR/13/2.jpeg
+ISR/13/3.jpeg
+ISR/13/4.jpeg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** MARAUDER
 * **Command:** BASTION
