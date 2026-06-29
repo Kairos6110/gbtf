@@ -119,7 +119,7 @@ Following our successful sabotage operations in the Seal Islands, we seized crit
 
 * **Phase I - Shelter Island Bivouac (Set Up):** Prep gear and deploy from Shelter Island Bivouac. [PHASE CODE: SHELTER]
 * **Phase II - Richard Cobden Residences (Asset Recovery):** Infiltrate the residential area under absolute light discipline. Conduct close-quarters breach of houses to recover a portable hard drive containing master administrative ST overrides before Sentinel CYBSEC teams can reach it. [PHASE CODE: OVERRIDE]
-* **Phase III - Liberty Transport Hub (Supply Recovery):** Identify and secure containers containing military supplies, then attach encrypted GPS beacons to guide Bandit-3 who is standing by for follow up maritime recovery. [PHASE CODE: LIFELINE]
+* **Phase III - Liberty Transport Hub (Supply Recovery):** Identify and secure crates containing military supplies, then attach encrypted GPS beacons to guide Bandit-3 who is standing by for follow up maritime recovery. [PHASE CODE: LIFELINE]
 * **Phase IV - Liberty Airport (Transit Interdiction):** Move rapidly to Liberty Airport, clear the primary terminal hangar, and neutralize a private transport aircraft on the tarmac to prevent the outbound transfer of high-value corporate prisoners. [PHASE CODE: BROKEN ARROW]
 * **Phase V - Ayn Rand Residences (Civilian Protection):** Sentinel sweep squads are conducting violent, door-to-door summary interrogations of civilian households in this sector. Systematically clear the residential streets, secure compromised houses, protect civilian targets from execution, and eliminate the hostile forces. [PHASE CODE: GUARDIAN]
 * **Phase VI - John Dewey Residences (Asset Contact):** Locate and liberate our undercover asset, 'SPARROW', who has been pinned down in the John Dewey residential sector. Extract key intelligence regarding the exact holding cells and security configurations of the central Detention Facility. [PHASE CODE: SPARROW]
@@ -133,7 +133,20 @@ Following our successful sabotage operations in the Seal Islands, we seized crit
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/3/1.jpg
+ISR/3/2.jpg
+ISR/3/3.jpg
+ISR/3/3.1.jpg
+ISR/3/4.jpg
+ISR/3/5.jpg
+ISR/3/6.jpg
+ISR/3/7.jpg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** SPECTRE
 * **Command:** GREYMAN

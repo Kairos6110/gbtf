@@ -1109,10 +1109,6 @@
           currentSection = "support";
           continue;
         }
-        if (line.includes("ISR")) {
-          currentSection = "isr";
-          continue;
-        }
         if (line.includes("COMMAND & SIGNAL")) {
           currentSection = "signal";
           continue;
@@ -1507,15 +1503,44 @@
 
         ${supportHTML}
 
-        ${(op.order === 1 || op.order === 2) ? `
+        ${op.order === 1 ? `
         <div class="opord-section">
           <h3><span class="icon bi bi-eye-fill"></span>ISR</h3>
           <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 800px; margin-top: 1rem;">
-            <img src="ISR/${op.order}/1.jpg" alt="ISR 1" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
-            <img src="ISR/${op.order}/2.jpg" alt="ISR 2" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
-            <img src="ISR/${op.order}/3.jpg" alt="ISR 3" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
-            <img src="ISR/${op.order}/4.jpg" alt="ISR 4" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
-            <img src="ISR/${op.order}/5.jpg" alt="ISR 5" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            <img src="ISR/1/1.jpg" alt="ISR 1" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            <img src="ISR/1/2.jpg" alt="ISR 2" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            <img src="ISR/1/3.jpg" alt="ISR 3" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            <img src="ISR/1/4.jpg" alt="ISR 4" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            <img src="ISR/1/5.jpg" alt="ISR 5" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+          </div>
+        </div>
+        ` : ''}
+
+        ${op.order === 2 ? `
+        <div class="opord-section">
+          <h3><span class="icon bi bi-eye-fill"></span>ISR</h3>
+          <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 800px; margin-top: 1rem;">
+            <img src="ISR/2/1.jpg" alt="ISR 1" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            <img src="ISR/2/2.jpg" alt="ISR 2" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            <img src="ISR/2/3.jpg" alt="ISR 3" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            <img src="ISR/2/4.jpg" alt="ISR 4" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            <img src="ISR/2/5.jpg" alt="ISR 5" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+          </div>
+        </div>
+        ` : ''}
+
+        ${op.order === 3 ? `
+        <div class="opord-section">
+          <h3><span class="icon bi bi-eye-fill"></span>ISR</h3>
+          <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 800px; margin-top: 1rem;">
+            <img src="ISR/3/1.jpg" alt="ISR 1" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            <img src="ISR/3/2.jpg" alt="ISR 2" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            <img src="ISR/3/3.jpg" alt="ISR 3" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            <img src="ISR/3/3.1.jpg" alt="ISR 3.1" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            <img src="ISR/3/4.jpg" alt="ISR 4" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            <img src="ISR/3/5.jpg" alt="ISR 5" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            <img src="ISR/3/6.jpg" alt="ISR 6" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
+            <img src="ISR/3/7.jpg" alt="ISR 7" style="width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line-soft);">
           </div>
         </div>
         ` : ''}
