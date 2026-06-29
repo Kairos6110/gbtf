@@ -32,7 +32,17 @@ GBTF element **WARLOCK** is ordered to conduct a multi-phase sabotage and interd
 
 ---
 
-### 5. COMMAND & SIGNAL
+### 5. ISR
+
+ISR/2/1.jpg
+ISR/2/2.jpg
+ISR/2/3.jpg
+ISR/2/4.jpg
+ISR/2/5.jpg
+
+---
+
+### 6. COMMAND & SIGNAL
 
 * **Task Force Callsign:** WARLOCK
 * **Command:** HAVOC
