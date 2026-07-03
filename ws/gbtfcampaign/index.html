@@ -2029,7 +2029,7 @@
 
       if (audio.paused || audio.ended) {
         audio.currentTime = 0;
-        audio.play().catch(err => console.error("Error playing audio:", err));
+        audio.play().catch(err => console.error("Error playing audio :", err));
         btnElement.classList.add('active');
       } else {
         audio.pause();
