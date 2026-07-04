@@ -65,18 +65,12 @@
 
     .brand { display: flex; align-items: center; gap: 15px; }
 
-    .insignia {
-      width: 46px;
-      aspect-ratio: 1;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--green-dim);
-      color: var(--green);
-      font: 700 1.4rem "Barlow Condensed", sans-serif;
-      transform: rotate(45deg);
+    .brand-logo {
+      height: 56px;
+      width: auto;
+      max-width: 180px;
+      object-fit: contain;
     }
-
-    .insignia span { transform: rotate(-45deg); }
 
     h1 {
       margin: 0;
@@ -188,6 +182,32 @@
       text-transform: uppercase;
     }
 
+    .visualizer-container {
+      width: 100%;
+      height: 60px;
+      border: 1px solid var(--line);
+      background: #060907;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+      box-shadow: inset 0 0 10px rgba(145, 242, 159, 0.05);
+    }
+    .visualizer-container::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.3) 50%), 
+                  linear-gradient(90deg, rgba(145, 242, 159, 0.03), rgba(0, 0, 0, 0), rgba(145, 242, 159, 0.03));
+      background-size: 100% 4px, 6px 100%;
+      pointer-events: none;
+    }
+    #waveform {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
     .ptt-row {
       --ptt-size: 190px;
       display: flex;
@@ -271,6 +291,13 @@
       .voice-control .section-label { display: block; }
       .voice-control select { padding-top: 8px; padding-bottom: 8px; }
       .radio-status { min-height: 20px; margin-bottom: 5px; color: #a7b3a9; }
+      .visualizer-container {
+        height: 44px;
+        margin-bottom: 8px;
+        width: min(100%, 420px);
+        margin-left: auto;
+        margin-right: auto;
+      }
       .ptt-row {
         --ptt-size: min(36vw, 138px);
         margin-bottom: 8px;
@@ -283,12 +310,153 @@
       .hint { font-size: .6rem; line-height: 1.35; }
       .message { max-width: 92%; }
       header { padding: 10px 14px; }
-      .insignia { width: 38px; }
+      .brand-logo { height: 44px; }
       h1 { font-size: clamp(1.55rem, 7vw, 2rem); }
       .transcript { padding: 10px 14px 12px; }
       #heard { min-height: 18px; margin-bottom: 7px; font-size: .75rem; }
       input { padding: 9px 11px; font-size: .78rem; }
       .send { padding: 0 12px; }
+    }
+
+    #info-trigger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      min-height: 24px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-family: inherit;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 0;
+      margin-left: 4px;
+      transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+    }
+    #info-trigger:hover {
+      color: var(--green);
+      border-color: var(--green);
+      background: var(--panel-2);
+    }
+
+    /* Overlay styles */
+    #info-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(8, 11, 9, 0.85);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+    #info-overlay.overlay-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    #info-content {
+      width: min(100%, 540px);
+      background: #0d120f;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 15px rgba(145, 242, 159, 0.05);
+      padding: 30px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 4px;
+      animation: zoomIn 0.2s ease-out;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    #info-content h2 {
+      margin-top: 0;
+      font: 700 1.6rem "Barlow Condensed", sans-serif;
+      color: var(--green);
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 10px;
+    }
+    #info-content a {
+      color: var(--green);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    #info-content a:hover {
+      text-decoration: underline;
+    }
+    #info-content p, #info-content li {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--text);
+    }
+    #info-content ol {
+      padding-left: 20px;
+      margin: 20px 0;
+    }
+    #info-content li {
+      margin-bottom: 12px;
+    }
+    #info-content blockquote {
+      margin: 8px 0 0;
+      padding: 8px 12px;
+      border-left: 2px solid var(--amber);
+      background: #151a16;
+      font-style: italic;
+      color: #b5c1b7;
+    }
+    .warning-alert {
+      border: 1px solid rgba(239, 98, 88, 0.3);
+      background: rgba(239, 98, 88, 0.08);
+      padding: 10px 12px;
+      color: #f79089 !important;
+      border-radius: 2px;
+    }
+    .note-text {
+      color: var(--muted) !important;
+      font-size: 0.76rem !important;
+      margin-top: 20px;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+    .enjoy-text {
+      text-align: center;
+      font-weight: bold;
+      color: var(--green) !important;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0;
+    }
+    .website-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .website-link a {
+      font-size: 0.72rem !important;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--green) !important;
+      border: 1px solid var(--green-dim);
+      background: rgba(145, 242, 159, 0.04);
+      padding: 8px 16px;
+      border-radius: 2px;
+      display: inline-block;
+      transition: all 0.15s ease;
+    }
+    .website-link a:hover {
+      background: rgba(145, 242, 159, 0.12);
+      border-color: var(--green);
+      text-decoration: none !important;
+      box-shadow: 0 0 10px rgba(145, 242, 159, 0.2);
     }
   </style>
 </head>
@@ -296,11 +464,12 @@
   <main class="shell">
     <header>
       <div class="brand">
-        <div class="insignia"><span>H</span></div>
+        <img class="brand-logo" src="gbtfnbg.png" alt="GBTF Logo">
         <div>
           <div class="kicker">GBTF TOC</div>
           <h1>HAVOC</h1>
         </div>
+        <button id="info-trigger" type="button" title="INSTRUCTIONS" aria-label="Show instructions">?</button>
       </div>
       <div class="connection"><span>ZULU-4 // ENCR</span><span class="dot"></span></div>
     </header>
@@ -328,6 +497,9 @@
         </div>
         <div class="section-label">Radio control</div>
         <div class="radio-status" id="status">Ready to receive</div>
+        <div class="visualizer-container">
+          <canvas id="waveform" width="256" height="60"></canvas>
+        </div>
         <div class="ptt-row">
           <button id="ptt" type="button" aria-label="Hold the radio to push to talk">
             <img class="radio-visual" src="radio.jpg" alt="">
@@ -337,6 +509,32 @@
       </aside>
     </div>
   </main>
+
+  <!-- Info Overlay -->
+  <div id="info-overlay" class="overlay-hidden">
+    <div id="info-content">
+      <h2>GBTF TOC SIM</h2>
+      
+      <p class="warning-alert"><strong><a href="https://www.google.com/search?q=Install+Microsoft+Edge+Browser" target="_blank" style="color: inherit; text-decoration: underline;">Microsoft Edge is required</a>.</strong> This tool only works as intended in <strong>Microsoft Edge</strong>.</p>
+      
+      <ol>
+        <li>Open the page in <strong>Microsoft Edge</strong>.</li>
+        <li>In Microsoft Edge settings, click <strong>Read Aloud</strong> once to initialize Edge's Text-to-Speech engine. If successful, <strong>Microsoft Steffan</strong> should appear as the selected default voice.</li>
+        <li>Hold the <strong>Push-to-Talk</strong> radio button and transmit naturally, for example:
+          <blockquote>"Havoc, we have eyes on the HVT. What's the intent on target, over?"</blockquote>
+        </li>
+        <li><strong>HAVOC</strong> (the fictional TOC Commander) will respond with dynamic orders or information generated in real time using <strong>Gemini AI</strong>, providing immersive tactical radio roleplay.</li>
+      </ol>
+      
+      <p class="note-text">Responses are AI-generated and may occasionally make mistakes, but they are designed to enhance mission immersion and communications roleplay.</p>
+      
+      <p class="enjoy-text">Enjoy, operators.</p>
+      
+      <div class="website-link">
+        <a href="https://kairos6110.github.io/gbtf/ws/" target="_blank">visit our main website</a>
+      </div>
+    </div>
+  </div>
 
   <script>
     const REMOTE_API = 'https://unvascular-malachi-isolatedly.ngrok-free.dev';
@@ -356,30 +554,15 @@
     const send = document.querySelector('#send');
     const empty = document.querySelector('#empty');
     const history = [];
-    const radioKeySound = new Audio('keyradio.mp3');
-    radioKeySound.preload = 'auto';
-    radioKeySound.volume = 0.25;
-    let radioKeyBuffer = null;
     let radioAudioContext = null;
     let radioNoise = null;
     let radioNoiseBuffer = null;
-
-    // Pre-fetch the audio as an ArrayBuffer as early as possible for Web Audio API
-    const keyradioFetchPromise = fetch('keyradio.mp3')
-      .then(r => r.arrayBuffer())
-      .catch(err => console.error('Failed to fetch keyradio.mp3', err));
 
     function forceUnlockAudio() {
       const context = unlockRadioAudio();
       if (context && context.state === 'suspended') {
         context.resume().catch(() => {});
       }
-      try {
-        radioKeySound.play().then(() => {
-          radioKeySound.pause();
-          radioKeySound.currentTime = 0;
-        }).catch(() => {});
-      } catch (_) {}
     }
     window.addEventListener('click', forceUnlockAudio, { capture: true, once: true });
     window.addEventListener('touchstart', forceUnlockAudio, { capture: true, once: true });
@@ -427,74 +610,86 @@
       if (preferredVoice) localStorage.setItem('havoc-voice', preferredVoice.name);
     });
 
-    async function playRadioKey(waitForEnd = false) {
-      const context = unlockRadioAudio();
-      if (context && radioKeyBuffer) {
-        try {
-          const source = context.createBufferSource();
-          source.buffer = radioKeyBuffer;
-          const gain = context.createGain();
-          gain.gain.value = 0.25;
-          source.connect(gain).connect(context.destination);
-          
-          return new Promise(resolve => {
-            if (waitForEnd) {
-              source.onended = resolve;
-              setTimeout(resolve, (radioKeyBuffer.duration * 1000) + 100);
-            } else {
-              resolve();
-            }
-            source.start(0);
-          });
-        } catch (e) {
-          console.error('Web Audio playRadioKey error, falling back', e);
-        }
-      }
-
-      try {
-        radioKeySound.pause();
-        radioKeySound.currentTime = 0;
-        if (!waitForEnd) {
-          await radioKeySound.play();
-          return;
-        }
-
-        await new Promise(resolve => {
-          let finished = false;
-          const finish = () => {
-            if (finished) return;
-            finished = true;
-            clearTimeout(timeout);
-            radioKeySound.removeEventListener('ended', finish);
-            radioKeySound.removeEventListener('error', finish);
-            resolve();
-          };
-          const timeout = setTimeout(finish, 3000);
-          radioKeySound.addEventListener('ended', finish, {once: true});
-          radioKeySound.addEventListener('error', finish, {once: true});
-          radioKeySound.play().catch(finish);
-        });
-      } catch (_) {
-        // Speech should still work if a browser blocks or cannot decode the cue.
-      }
-    }
-
     function unlockRadioAudio() {
       const AudioContextClass = window.AudioContext || window.webkitAudioContext;
       if (!AudioContextClass) return null;
       if (!radioAudioContext) {
         radioAudioContext = new AudioContextClass();
-        keyradioFetchPromise.then(arrayBuffer => {
-          if (arrayBuffer && radioAudioContext) {
-            radioAudioContext.decodeAudioData(arrayBuffer.slice(0))
-              .then(buffer => { radioKeyBuffer = buffer; })
-              .catch(err => console.error('decodeAudioData error', err));
-          }
-        });
       }
       if (radioAudioContext.state === 'suspended') radioAudioContext.resume().catch(() => {});
       return radioAudioContext;
     }
+
+    function playRadioKeyBeep() {
+      const context = unlockRadioAudio();
+      if (!context) return Promise.resolve();
+      const now = context.currentTime;
+      
+      const osc = context.createOscillator();
+      const gain = context.createGain();
+      osc.connect(gain);
+      gain.connect(context.destination);
+      
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1000, now);
+      
+      gain.gain.setValueAtTime(0, now);
+      gain.gain.linearRampToValueAtTime(0.08, now + 0.005);
+      gain.gain.setValueAtTime(0.08, now + 0.075);
+      gain.gain.linearRampToValueAtTime(0, now + 0.08);
+      
+      osc.start(now);
+      osc.stop(now + 0.1);
+      
+      return new Promise(resolve => setTimeout(resolve, 85));
+    }
+
+    function playSquelchTail() {
+      const context = unlockRadioAudio();
+      if (!context) return;
+      const now = context.currentTime;
+      
+      if (!radioNoiseBuffer) {
+        radioNoiseBuffer = context.createBuffer(1, context.sampleRate * 2, context.sampleRate);
+        const samples = radioNoiseBuffer.getChannelData(0);
+        for (let i = 0; i < samples.length; i++) samples[i] = Math.random() * 2 - 1;
+      }
+      
+      const noise = context.createBufferSource();
+      noise.buffer = radioNoiseBuffer;
+      
+      const filter = context.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(800, now);
+      filter.frequency.exponentialRampToValueAtTime(1600, now + 0.14);
+      filter.Q.setValueAtTime(1.5, now);
+      
+      const gain = context.createGain();
+      gain.gain.setValueAtTime(0.14, now);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.13);
+      
+      noise.connect(filter).connect(gain).connect(context.destination);
+      noise.start(now);
+      noise.stop(now + 0.14);
+      
+      const osc = context.createOscillator();
+      const clickGain = context.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(75, now + 0.12);
+      osc.frequency.exponentialRampToValueAtTime(15, now + 0.14);
+      
+      clickGain.gain.setValueAtTime(0, now);
+      clickGain.gain.setValueAtTime(0.18, now + 0.12);
+      clickGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.145);
+      
+      osc.connect(clickGain).connect(context.destination);
+      osc.start(now + 0.12);
+      osc.stop(now + 0.15);
+    }
+
+
+
+    let staticCrackleInterval = null;
 
     function startRadioNoise() {
       stopRadioNoise();
@@ -518,13 +713,34 @@
       lowpass.type = 'lowpass';
       lowpass.frequency.value = 3200;
       gain.gain.setValueAtTime(0.0001, context.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.03, context.currentTime + 0.04);
+      gain.gain.exponentialRampToValueAtTime(0.025, context.currentTime + 0.04);
       source.connect(highpass).connect(lowpass).connect(gain).connect(context.destination);
       source.start();
       radioNoise = {source, gain, context};
+
+      staticCrackleInterval = setInterval(() => {
+        if (!radioNoise) {
+          clearInterval(staticCrackleInterval);
+          return;
+        }
+        const now = context.currentTime;
+        if (Math.random() < 0.35) {
+          const duration = 0.04 + Math.random() * 0.12;
+          const peakVol = 0.035 + Math.random() * 0.07;
+          
+          gain.gain.setValueAtTime(gain.gain.value, now);
+          gain.gain.linearRampToValueAtTime(peakVol, now + 0.008);
+          gain.gain.setValueAtTime(peakVol, now + duration - 0.008);
+          gain.gain.linearRampToValueAtTime(0.02, now + duration);
+        }
+      }, 250);
     }
 
     function stopRadioNoise() {
+      if (staticCrackleInterval) {
+        clearInterval(staticCrackleInterval);
+        staticCrackleInterval = null;
+      }
       if (!radioNoise) return;
       const {source, gain, context} = radioNoise;
       radioNoise = null;
@@ -541,13 +757,22 @@
       statusEl.style.color = type === 'error' ? 'var(--red)' : type === 'active' ? 'var(--green)' : '';
     }
 
+    function getZuluTimestamp() {
+      const d = new Date();
+      const pad = (n) => String(n).padStart(2, '0');
+      return `${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}:${pad(d.getUTCSeconds())}Z`;
+    }
+
     function addMessage(role, text) {
       empty?.remove();
       const item = document.createElement('article');
       item.className = `message ${role === 'user' ? 'operator' : 'havoc'}`;
       const meta = document.createElement('div');
       meta.className = 'message-meta';
-      meta.textContent = role === 'user' ? 'FIELD TRANSMISSION' : 'HAVOC // TOC COMMAND';
+      const zuluTime = getZuluTimestamp();
+      meta.textContent = role === 'user' 
+        ? `[${zuluTime}] FIELD TRANSMISSION` 
+        : `[${zuluTime}] HAVOC // TOC COMMAND`;
       const body = document.createElement('div');
       body.className = 'message-body';
       body.textContent = text;
@@ -559,7 +784,7 @@
     async function speakReply(text) {
       if (!window.speechSynthesis) return;
       speechSynthesis.cancel();
-      await playRadioKey(true);
+      await playRadioKeyBeep();
       const utterance = new SpeechSynthesisUtterance(text);
       loadPreferredVoice();
       if (preferredVoice) utterance.voice = preferredVoice;
@@ -573,10 +798,12 @@
       };
       utterance.onend = () => {
         stopRadioNoise();
+        playSquelchTail();
         setStatus('Ready to receive');
       };
       utterance.onerror = () => {
         stopRadioNoise();
+        playSquelchTail();
         setStatus('Response received');
       };
       speechSynthesis.speak(utterance);
@@ -691,7 +918,8 @@
       heard.textContent = 'Keying radio…';
       heard.classList.add('listening');
       setStatus('Opening channel', 'active');
-      playRadioKey(false);
+      playRadioKeyBeep();
+      startMicCapture();
       if (!holding || busy) return;
       heard.textContent = 'Listening…';
       setStatus('Receiving transmission', 'active');
@@ -705,6 +933,7 @@
       holding = false;
       ptt.classList.remove('active');
       try { recognition.stop(); } catch (_) {}
+      playSquelchTail();
       const message = `${finalText} ${interimText}`.trim();
       if (message) transmit(message);
       else {
@@ -722,10 +951,178 @@
     manual.addEventListener('keydown', event => {
       if (event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); send.click(); }
     });
+    let micStream = null;
+    let micSource = null;
+    let analyser = null;
+
+    async function startMicCapture() {
+      const context = unlockRadioAudio();
+      if (!context) return;
+      if (!analyser) {
+        analyser = context.createAnalyser();
+        analyser.fftSize = 256;
+      }
+      if (!micStream) {
+        try {
+          micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          micSource = context.createMediaStreamSource(micStream);
+          micSource.connect(analyser);
+        } catch (err) {
+          console.warn('Microphone stream access for visualizer denied/failed', err);
+        }
+      }
+    }
+
+    const canvas = document.getElementById('waveform');
+    const ctx = canvas.getContext('2d');
+
+    function drawVisualizer() {
+      requestAnimationFrame(drawVisualizer);
+      const width = canvas.width;
+      const height = canvas.height;
+      
+      // Clear background
+      ctx.fillStyle = '#060907';
+      ctx.fillRect(0, 0, width, height);
+      
+      // Draw grid lines
+      ctx.strokeStyle = 'rgba(145, 242, 159, 0.06)';
+      ctx.lineWidth = 1;
+      
+      // Vertical grid lines
+      const gridSpacing = 20;
+      for (let x = 0; x < width; x += gridSpacing) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, height);
+        ctx.stroke();
+      }
+      
+      // Horizontal grid lines
+      for (let y = 0; y < height; y += gridSpacing) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
+        ctx.stroke();
+      }
+      
+      // Center reference line
+      ctx.strokeStyle = 'rgba(145, 242, 159, 0.12)';
+      ctx.beginPath();
+      ctx.moveTo(0, height / 2);
+      ctx.lineTo(width, height / 2);
+      ctx.stroke();
+      
+      const midY = height / 2;
+      const values = [];
+      
+      if (holding) {
+        if (analyser) {
+          // Speak / Mic active: draw real mic wave
+          const dataArray = new Uint8Array(analyser.frequencyBinCount);
+          analyser.getByteTimeDomainData(dataArray);
+          for (let i = 0; i < width; i++) {
+            const sliceWidth = width / dataArray.length;
+            const index = Math.floor(i / sliceWidth);
+            const v = dataArray[index] / 128.0;
+            const y = v * midY;
+            values.push(y);
+          }
+        } else {
+          // Fake speaking wave if mic not connected yet
+          const now = performance.now() * 0.02;
+          for (let i = 0; i < width; i++) {
+            const freq1 = Math.sin(now + i * 0.08) * 6;
+            const freq2 = Math.sin(now * 1.3 + i * 0.15) * 4;
+            const noise = (Math.random() - 0.5) * 1.5;
+            values.push(midY + freq1 + freq2 + noise);
+          }
+        }
+      } else if (speechSynthesis && speechSynthesis.speaking) {
+        // HAVOC speaking: draw simulated voice modulation
+        const now = performance.now() * 0.01;
+        for (let i = 0; i < width; i++) {
+          const freq1 = Math.sin(now + i * 0.06) * 7;
+          const freq2 = Math.sin(now * 1.8 + i * 0.14) * 4;
+          const noise = (Math.random() - 0.5) * 1.5;
+          const envelope = Math.abs(Math.sin(now * 0.25)) * 1.2;
+          values.push(midY + (freq1 + freq2 + noise) * envelope);
+        }
+      } else if (busy) {
+        // Thinking state: scanning line
+        const now = performance.now() * 0.015;
+        for (let i = 0; i < width; i++) {
+          const distToCenter = Math.abs(i - width / 2) / (width / 2);
+          const pulse = Math.sin(now - i * 0.08) * 3.5 * (1 - distToCenter);
+          values.push(midY + pulse);
+        }
+      } else {
+        // Idle static jitter
+        for (let i = 0; i < width; i++) {
+          const noise = (Math.random() - 0.5) * 1.2;
+          values.push(midY + noise);
+        }
+      }
+      
+      // Draw waveform
+      ctx.beginPath();
+      ctx.lineWidth = 1.8;
+      ctx.strokeStyle = '#91f29f';
+      ctx.shadowBlur = 4;
+      ctx.shadowColor = '#91f29f';
+      
+      for (let i = 0; i < width; i++) {
+        if (i === 0) {
+          ctx.moveTo(i, values[i]);
+        } else {
+          ctx.lineTo(i, values[i]);
+        }
+      }
+      
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+    }
+
+    // Start rendering visualizer
+    drawVisualizer();
+
+    // Request microphone permission on page load to pre-clear the browser authorization prompt.
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(stream => {
+          // Stop the tracks immediately so the tab does not show a persistent recording indicator.
+          stream.getTracks().forEach(track => track.stop());
+        })
+        .catch(err => {
+          console.warn('Initial microphone permission check failed or denied:', err);
+        });
+    }
+
+    const infoTrigger = document.getElementById('info-trigger');
+    const infoOverlay = document.getElementById('info-overlay');
+
+    infoTrigger.addEventListener('click', (event) => {
+      event.stopPropagation();
+      infoOverlay.classList.remove('overlay-hidden');
+    });
+
+    infoOverlay.addEventListener('click', () => {
+      infoOverlay.classList.add('overlay-hidden');
+    });
+
+    // Prevent clicking on the links inside the content card from closing the overlay
+    infoOverlay.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', (event) => {
+        event.stopPropagation();
+      });
+    });
+
     window.addEventListener('beforeunload', () => {
       stopRadioNoise();
       speechSynthesis?.cancel();
     });
   </script>
+
+
 </body>
 </html>
