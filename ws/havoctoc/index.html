@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b09">
+  <title>HAVOC // TOC Commander</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+    :root {
+      color-scheme: dark;
+      --bg: #080b09;
+      --panel: #101511;
+      --panel-2: #151c17;
+      --line: #29342b;
+      --muted: #7e8c81;
+      --text: #e7eee8;
+      --green: #91f29f;
+      --green-dim: #355f3b;
+      --amber: #f4b860;
+      --red: #ef6258;
+      font-family: "IBM Plex Mono", Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background:
+        linear-gradient(rgba(145, 242, 159, .025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(145, 242, 159, .025) 1px, transparent 1px),
+        radial-gradient(circle at 50% 0%, #152019 0, var(--bg) 52%);
+      background-size: 28px 28px, 28px 28px, 100% 100%;
+      color: var(--text);
+      padding: 22px;
+    }
+
+    .shell {
+      width: min(1080px, 100%);
+      min-height: calc(100vh - 44px);
+      margin: auto;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      overflow: hidden;
+      background: rgba(12, 16, 13, .94);
+      border: 1px solid var(--line);
+      box-shadow: 0 25px 80px #000a;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--line);
+      background: #0c110d;
+    }
+
+    .brand { display: flex; align-items: center; gap: 15px; }
+
+    .insignia {
+      width: 46px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--green-dim);
+      color: var(--green);
+      font: 700 1.4rem "Barlow Condensed", sans-serif;
+      transform: rotate(45deg);
+    }
+
+    .insignia span { transform: rotate(-45deg); }
+
+    h1 {
+      margin: 0;
+      font: 700 clamp(1.8rem, 4vw, 2.5rem)/.9 "Barlow Condensed", sans-serif;
+      letter-spacing: .08em;
+    }
+
+    .kicker, .connection {
+      color: var(--muted);
+      font-size: .7rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .connection { display: flex; align-items: center; gap: 9px; color: var(--green); }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; box-shadow: 0 0 12px currentColor; }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      min-height: 0;
+    }
+
+    .comms { display: grid; grid-template-rows: 1fr auto; min-height: 560px; }
+
+    #log {
+      min-height: 0;
+      max-height: calc(100vh - 310px);
+      overflow-y: auto;
+      padding: 30px;
+      scroll-behavior: smooth;
+    }
+
+    .empty { color: var(--muted); margin-top: 80px; text-align: center; }
+    .empty strong { display: block; color: #b5c1b7; font: 600 1.4rem "Barlow Condensed", sans-serif; letter-spacing: .08em; margin-bottom: 10px; }
+
+    .message { max-width: 82%; margin-bottom: 24px; animation: appear .2s ease-out; }
+    .message.operator { margin-left: auto; }
+    .message-meta { margin-bottom: 7px; color: var(--muted); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; }
+    .operator .message-meta { text-align: right; }
+    .message-body { padding: 14px 16px; border-left: 2px solid var(--green); background: var(--panel-2); line-height: 1.55; white-space: pre-wrap; }
+    .operator .message-body { border: 1px solid #344038; border-left: 0; background: #111713; }
+
+    @keyframes appear { from { opacity: 0; transform: translateY(6px); } }
+
+    .transcript {
+      padding: 20px 30px 26px;
+      border-top: 1px solid var(--line);
+      background: #0d120f;
+    }
+
+    #heard { min-height: 24px; margin-bottom: 13px; color: #aeb9b0; font-size: .85rem; }
+    #heard.listening { color: var(--green); }
+
+    .manual-row { display: flex; gap: 10px; }
+    input {
+      width: 100%;
+      min-width: 0;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      outline: none;
+      background: #080c09;
+      color: var(--text);
+      font: inherit;
+    }
+    input:focus { border-color: var(--green-dim); box-shadow: 0 0 0 3px #91f29f10; }
+
+    .send {
+      padding: 0 19px;
+      border: 1px solid var(--green-dim);
+      background: #17261a;
+      color: var(--green);
+      font: 600 .72rem inherit;
+      letter-spacing: .08em;
+      cursor: pointer;
+    }
+
+    aside {
+      padding: 26px 22px;
+      border-left: 1px solid var(--line);
+      background: #0b100c;
+    }
+
+    .section-label { margin: 0 0 9px; color: var(--muted); font-size: .65rem; letter-spacing: .16em; text-transform: uppercase; }
+    .radio-status {
+      min-height: 44px;
+      margin-bottom: 18px;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    #ptt {
+      position: relative;
+      width: 180px;
+      aspect-ratio: 1;
+      margin: 0 auto 24px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #3c493e;
+      border-radius: 50%;
+      background: radial-gradient(circle, #263028 0 52%, #151b16 53% 61%, #252e26 62% 64%, #0e130f 65%);
+      color: #d4ddd5;
+      box-shadow: inset 0 0 40px #0008, 0 10px 25px #0008;
+      cursor: pointer;
+      user-select: none;
+      touch-action: none;
+      transition: transform .12s, color .12s, border-color .12s;
+    }
+
+    #ptt span { font: 700 1.25rem "Barlow Condensed", sans-serif; letter-spacing: .12em; text-align: center; }
+    #ptt small { display: block; margin-top: 4px; color: var(--muted); font: 500 .58rem "IBM Plex Mono", monospace; }
+    #ptt:active, #ptt.active { transform: scale(.96); color: var(--green); border-color: var(--green); box-shadow: inset 0 0 35px #91f29f16, 0 0 22px #91f29f20; }
+    #ptt.active::after { content: ""; position: absolute; inset: -8px; border: 1px solid var(--green); border-radius: 50%; animation: pulse 1s infinite; }
+    #ptt:disabled { opacity: .45; cursor: wait; }
+    @keyframes pulse { 50% { inset: -14px; opacity: .15; } }
+
+    .hint { color: var(--muted); font-size: .68rem; line-height: 1.6; text-align: center; }
+    .hint strong { color: #b8c2ba; }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 18px;
+      border-top: 1px solid var(--line);
+      color: #59645b;
+      background: #080c09;
+      font-size: .6rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 760px) {
+      body { padding: 0; }
+      .shell { min-height: 100vh; border: 0; }
+      .workspace { grid-template-columns: 1fr; }
+      .comms { min-height: 55vh; }
+      #log { max-height: 48vh; padding: 22px 18px; }
+      aside { border: 0; border-top: 1px solid var(--line); }
+      .message { max-width: 92%; }
+      header { padding: 16px 18px; }
+      .connection span:last-child, footer span:last-child { display: none; }
+      .transcript { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div class="brand">
+        <div class="insignia"><span>H</span></div>
+        <div>
+          <div class="kicker">Tactical Operations Center</div>
+          <h1>COMMANDER HAVOC</h1>
+        </div>
+      </div>
+      <div class="connection"><span class="dot"></span><span>Command net online</span></div>
+    </header>
+
+    <div class="workspace">
+      <section class="comms">
+        <div id="log" aria-live="polite">
+          <div class="empty" id="empty"><strong>RADIO NET IS CLEAR</strong>Hold push-to-talk and deliver your SITREP.</div>
+        </div>
+        <div class="transcript">
+          <div id="heard">Awaiting transmission…</div>
+          <div class="manual-row">
+            <input id="manual" maxlength="4000" autocomplete="off" placeholder="Or type a radio message…" aria-label="Radio message">
+            <button class="send" id="send" type="button">TRANSMIT</button>
+          </div>
+        </div>
+      </section>
+
+      <aside>
+        <div class="section-label">Radio control</div>
+        <div class="radio-status" id="status">Ready to receive</div>
+        <button id="ptt" type="button">
+          <span>PUSH TO TALK<small>HOLD BUTTON</small></span>
+        </button>
+        <div class="hint"><strong>Press and hold</strong> while speaking.<br>Release to transmit to HAVOC.</div>
+      </aside>
+    </div>
+
+    <footer><span>NET // TOC-CMD</span><span>AI RESPONSE SYSTEM // GEMINI 3.1 FLASH-LITE</span></footer>
+  </main>
+
+  <script>
+    const REMOTE_API = 'https://unvascular-malachi-isolatedly.ngrok-free.dev';
+    const ON_GITHUB_PAGES = location.hostname === 'github.io' || location.hostname.endsWith('.github.io');
+    const API_BASE = ON_GITHUB_PAGES ? REMOTE_API : location.origin;
+    const sessionToken = sessionStorage.getItem('havoc-session');
+    if (ON_GITHUB_PAGES && !sessionToken) location.replace('login.html');
+
+    const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const ptt = document.querySelector('#ptt');
+    const statusEl = document.querySelector('#status');
+    const heard = document.querySelector('#heard');
+    const log = document.querySelector('#log');
+    const manual = document.querySelector('#manual');
+    const send = document.querySelector('#send');
+    const empty = document.querySelector('#empty');
+    const history = [];
+    let recognition = null;
+    let holding = false;
+    let busy = false;
+    let finalText = '';
+    let interimText = '';
+
+    function setStatus(text, type = '') {
+      statusEl.textContent = text;
+      statusEl.style.color = type === 'error' ? 'var(--red)' : type === 'active' ? 'var(--green)' : '';
+    }
+
+    function addMessage(role, text) {
+      empty?.remove();
+      const item = document.createElement('article');
+      item.className = `message ${role === 'user' ? 'operator' : 'havoc'}`;
+      const meta = document.createElement('div');
+      meta.className = 'message-meta';
+      meta.textContent = role === 'user' ? 'FIELD TRANSMISSION' : 'HAVOC // TOC COMMAND';
+      const body = document.createElement('div');
+      body.className = 'message-body';
+      body.textContent = text;
+      item.append(meta, body);
+      log.append(item);
+      log.scrollTop = log.scrollHeight;
+    }
+
+    function speakReply(text) {
+      if (!window.speechSynthesis) return;
+      speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 0.94;
+      utterance.pitch = 0.82;
+      utterance.onstart = () => setStatus('HAVOC transmitting', 'active');
+      utterance.onend = () => setStatus('Ready to receive');
+      utterance.onerror = () => setStatus('Response received');
+      speechSynthesis.speak(utterance);
+    }
+
+    async function transmit(rawText) {
+      const message = rawText.trim();
+      if (!message || busy) return;
+      busy = true;
+      ptt.disabled = true;
+      send.disabled = true;
+      heard.textContent = `TX: ${message}`;
+      heard.classList.remove('listening');
+      addMessage('user', message);
+      setStatus('Awaiting HAVOC…', 'active');
+
+      try {
+        const response = await fetch(`${API_BASE}/api/transmit`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'ngrok-skip-browser-warning': '1',
+            ...(sessionToken ? {'Authorization': `Bearer ${sessionToken}`} : {})
+          },
+          body: JSON.stringify({message, history})
+        });
+        const data = await response.json().catch(() => ({}));
+        if (response.status === 401) {
+          sessionStorage.removeItem('havoc-session');
+          location.replace('login.html');
+          return;
+        }
+        if (!response.ok) {
+          const wrongServer = response.status === 501
+            ? 'An old server is running. Close it and relaunch run.bat.'
+            : `Server error ${response.status}`;
+          throw new Error(data.error || wrongServer);
+        }
+        addMessage('model', data.reply);
+        history.push({role: 'user', text: message}, {role: 'model', text: data.reply});
+        if (history.length > 12) history.splice(0, history.length - 12);
+        speakReply(data.reply);
+      } catch (error) {
+        setStatus('Transmission failed', 'error');
+        heard.textContent = error.message;
+      } finally {
+        busy = false;
+        ptt.disabled = false;
+        send.disabled = false;
+      }
+    }
+
+    if (Recognition) {
+      recognition = new Recognition();
+      recognition.lang = 'en-US';
+      recognition.continuous = true;
+      recognition.interimResults = true;
+
+      recognition.onresult = (event) => {
+        interimText = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          const text = event.results[i][0].transcript;
+          if (event.results[i].isFinal) finalText += `${text} `;
+          else interimText += text;
+        }
+        heard.textContent = (finalText + interimText).trim() || 'Listening…';
+      };
+
+      recognition.onerror = (event) => {
+        if (event.error === 'aborted' || event.error === 'no-speech') return;
+        holding = false;
+        ptt.classList.remove('active');
+        setStatus(event.error === 'not-allowed' ? 'Microphone permission denied' : `Mic error: ${event.error}`, 'error');
+      };
+
+      recognition.onend = () => {
+        if (holding && !busy) {
+          try { recognition.start(); } catch (_) {}
+        }
+      };
+    } else {
+      ptt.disabled = true;
+      setStatus('Voice input needs Chrome or Edge', 'error');
+      heard.textContent = 'Voice recognition is unavailable. Use the text field below.';
+    }
+
+    function startTalking(event) {
+      event.preventDefault();
+      if (!recognition || busy || holding) return;
+      speechSynthesis?.cancel();
+      holding = true;
+      finalText = '';
+      interimText = '';
+      ptt.classList.add('active');
+      ptt.setPointerCapture?.(event.pointerId);
+      heard.textContent = 'Listening…';
+      heard.classList.add('listening');
+      setStatus('Receiving transmission', 'active');
+      try { recognition.start(); }
+      catch (_) { setStatus('Microphone is already active', 'error'); }
+    }
+
+    function stopTalking(event) {
+      if (!holding) return;
+      event?.preventDefault();
+      holding = false;
+      ptt.classList.remove('active');
+      try { recognition.stop(); } catch (_) {}
+      const message = (finalText + interimText).trim();
+      if (message) transmit(message);
+      else {
+        heard.textContent = 'No speech detected. Hold the button and try again.';
+        heard.classList.remove('listening');
+        setStatus('Ready to receive');
+      }
+    }
+
+    ptt.addEventListener('pointerdown', startTalking);
+    ptt.addEventListener('pointerup', stopTalking);
+    ptt.addEventListener('pointercancel', stopTalking);
+    ptt.addEventListener('contextmenu', event => event.preventDefault());
+    send.addEventListener('click', () => { const value = manual.value; manual.value = ''; transmit(value); });
+    manual.addEventListener('keydown', event => {
+      if (event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); send.click(); }
+    });
+    window.addEventListener('beforeunload', () => speechSynthesis?.cancel());
+  </script>
+</body>
+</html>

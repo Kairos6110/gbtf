@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b09">
+  <title>HAVOC // Secure Access</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+    :root { color-scheme: dark; font-family: "IBM Plex Mono", monospace; background: #080b09; color: #e7eee8; }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh; margin: 0; padding: 24px; display: grid; place-items: center;
+      background: linear-gradient(#91f29f08 1px, transparent 1px), linear-gradient(90deg, #91f29f08 1px, transparent 1px), radial-gradient(circle at 50% 20%, #172219, #080b09 55%);
+      background-size: 28px 28px, 28px 28px, 100% 100%;
+    }
+    main { width: min(100%, 420px); padding: 38px; border: 1px solid #29342b; background: #0d120fee; box-shadow: 0 25px 70px #000b; }
+    .mark { width: 54px; height: 54px; margin: 0 auto 28px; display: grid; place-items: center; border: 1px solid #355f3b; color: #91f29f; font: 700 1.6rem "Barlow Condensed"; transform: rotate(45deg); }
+    .mark span { transform: rotate(-45deg); }
+    .eyebrow { margin-bottom: 7px; color: #7e8c81; font-size: .65rem; letter-spacing: .17em; text-align: center; text-transform: uppercase; }
+    h1 { margin: 0 0 10px; font: 700 2.15rem "Barlow Condensed"; letter-spacing: .08em; text-align: center; }
+    p { margin: 0 0 28px; color: #7e8c81; font-size: .75rem; line-height: 1.6; text-align: center; }
+    label { display: block; margin-bottom: 8px; color: #9aa69c; font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; }
+    input { width: 100%; padding: 14px; border: 1px solid #29342b; outline: 0; background: #080c09; color: #e7eee8; font: inherit; letter-spacing: .1em; }
+    input:focus { border-color: #91f29f; box-shadow: 0 0 0 3px #91f29f12; }
+    button { width: 100%; margin-top: 12px; padding: 14px; border: 1px solid #355f3b; background: #17261a; color: #91f29f; font: 600 .72rem inherit; letter-spacing: .12em; cursor: pointer; }
+    button:hover { background: #203423; }
+    button:disabled { opacity: .5; cursor: wait; }
+    #error { min-height: 20px; margin-top: 16px; color: #ef6258; font-size: .7rem; text-align: center; }
+    .secure { margin-top: 20px; color: #536056; font-size: .58rem; letter-spacing: .1em; text-align: center; text-transform: uppercase; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="mark"><span>H</span></div>
+    <div class="eyebrow">Restricted command net</div>
+    <h1>HAVOC ACCESS</h1>
+    <p>Authentication is required to enter the Tactical Operations Center.</p>
+    <form id="login">
+      <label for="password">Access code</label>
+      <input id="password" type="password" autocomplete="current-password" autofocus required>
+      <button id="submit" type="submit">AUTHENTICATE</button>
+      <div id="error" role="alert"></div>
+    </form>
+    <div class="secure">● Encrypted session control</div>
+  </main>
+  <script>
+    const REMOTE_API = 'https://unvascular-malachi-isolatedly.ngrok-free.dev';
+    const ON_GITHUB_PAGES = location.hostname === 'github.io' || location.hostname.endsWith('.github.io');
+    const API_BASE = ON_GITHUB_PAGES ? REMOTE_API : location.origin;
+    const form = document.querySelector('#login');
+    const password = document.querySelector('#password');
+    const submit = document.querySelector('#submit');
+    const error = document.querySelector('#error');
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      submit.disabled = true;
+      error.textContent = '';
+      try {
+        const response = await fetch(`${API_BASE}/api/login`, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json', 'ngrok-skip-browser-warning': '1'},
+          body: JSON.stringify({password: password.value})
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(data.error || 'Access denied');
+        if (data.token) sessionStorage.setItem('havoc-session', data.token);
+        location.replace('index.html');
+      } catch (failure) {
+        error.textContent = failure.message;
+        password.select();
+      } finally { submit.disabled = false; }
+    });
+  </script>
+</body>
+</html>
