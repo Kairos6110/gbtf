@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080b09">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%9F%3C/text%3E%3C/svg%3E">
-  <title>HAVOC // TOC Commander</title>
+  <title>HAVOC // GBTF TOC</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
@@ -26,8 +26,10 @@
 
     * { box-sizing: border-box; }
 
+    html, body { height: 100%; overflow: hidden; }
+
     body {
-      min-height: 100vh;
+      height: 100dvh;
       margin: 0;
       background:
         linear-gradient(rgba(145, 242, 159, .025) 1px, transparent 1px),
@@ -40,7 +42,8 @@
 
     .shell {
       width: min(1080px, 100%);
-      min-height: calc(100vh - 44px);
+      height: calc(100dvh - 44px);
+      min-height: 0;
       margin: auto;
       display: grid;
       grid-template-rows: auto 1fr auto;
@@ -95,13 +98,13 @@
       display: grid;
       grid-template-columns: minmax(0, 1fr) 300px;
       min-height: 0;
+      overflow: hidden;
     }
 
-    .comms { display: grid; grid-template-rows: 1fr auto; min-height: 560px; }
+    .comms { display: grid; grid-template-rows: minmax(0, 1fr) auto; min-height: 0; overflow: hidden; }
 
     #log {
       min-height: 0;
-      max-height: calc(100vh - 310px);
       overflow-y: auto;
       padding: 30px;
       scroll-behavior: smooth;
@@ -156,6 +159,7 @@
       padding: 26px 22px;
       border-left: 1px solid var(--line);
       background: #0b100c;
+      overflow: hidden;
     }
 
     .section-label { margin: 0 0 9px; color: var(--muted); font-size: .65rem; letter-spacing: .16em; text-transform: uppercase; }
@@ -184,17 +188,50 @@
       text-transform: uppercase;
     }
 
+    .ptt-row {
+      --ptt-size: 190px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: var(--ptt-size);
+      height: var(--ptt-size);
+      margin: 0 auto 24px;
+    }
+
+    .radio-visual {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 50%;
+      filter: drop-shadow(0 8px 7px #000c);
+      user-select: none;
+      pointer-events: none;
+    }
+
     #ptt {
       position: relative;
-      width: 180px;
+      width: var(--ptt-size);
+      height: var(--ptt-size);
+      min-width: var(--ptt-size);
+      min-height: var(--ptt-size);
+      max-width: var(--ptt-size);
+      max-height: var(--ptt-size);
+      flex: 0 0 var(--ptt-size);
       aspect-ratio: 1;
-      margin: 0 auto 24px;
+      margin: 0;
       display: grid;
       place-items: center;
       border: 1px solid #3c493e;
       border-radius: 50%;
-      background: radial-gradient(circle, #263028 0 52%, #151b16 53% 61%, #252e26 62% 64%, #0e130f 65%);
+      padding: 8px;
+      background: radial-gradient(circle at 45% 38%, #273229 0, #151b16 72%, #0e130f 100%);
       color: #d4ddd5;
+      overflow: hidden;
       box-shadow: inset 0 0 40px #0008, 0 10px 25px #0008;
       cursor: pointer;
       user-select: none;
@@ -202,10 +239,8 @@
       transition: transform .12s, color .12s, border-color .12s;
     }
 
-    #ptt span { font: 700 1.25rem "Barlow Condensed", sans-serif; letter-spacing: .12em; text-align: center; }
-    #ptt small { display: block; margin-top: 4px; color: var(--muted); font: 500 .58rem "IBM Plex Mono", monospace; }
     #ptt:active, #ptt.active { transform: scale(.96); color: var(--green); border-color: var(--green); box-shadow: inset 0 0 35px #91f29f16, 0 0 22px #91f29f20; }
-    #ptt.active::after { content: ""; position: absolute; inset: -8px; border: 1px solid var(--green); border-radius: 50%; animation: pulse 1s infinite; }
+    .ptt-row:has(#ptt.active)::after { content: ""; position: absolute; inset: -8px; border: 1px solid var(--green); border-radius: 50%; animation: pulse 1s infinite; pointer-events: none; }
     #ptt:disabled { opacity: .45; cursor: wait; }
     @keyframes pulse { 50% { inset: -14px; opacity: .15; } }
 
@@ -226,13 +261,14 @@
 
     @media (max-width: 760px) {
       body { padding: 0; }
-      .shell { min-height: 100vh; border: 0; }
-      .workspace { display: flex; flex-direction: column; }
-      .comms { min-height: 55vh; }
-      #log { max-height: 48vh; padding: 22px 18px; }
+      .shell { width: 100%; height: 100dvh; min-height: 0; border: 0; }
+      .workspace { display: flex; flex-direction: column; min-height: 0; }
+      .comms { min-height: 0; flex: 1 1 auto; }
+      #log { min-height: 0; padding: 14px 16px; }
       aside {
         order: -1;
-        padding: 18px 18px 20px;
+        flex: 0 0 auto;
+        padding: 10px 16px 12px;
         border: 0;
         border-bottom: 1px solid var(--green-dim);
         background:
@@ -241,23 +277,30 @@
         box-shadow: 0 12px 30px #0007;
       }
       aside .section-label { text-align: center; }
-      .voice-control { width: min(100%, 420px); margin: 0 auto 15px; }
+      .voice-control { width: min(100%, 420px); margin: 0 auto 8px; }
       .voice-control .section-label { display: block; }
-      .radio-status { min-height: 28px; margin-bottom: 10px; color: #a7b3a9; }
+      .voice-control select { padding-top: 8px; padding-bottom: 8px; }
+      .radio-status { min-height: 20px; margin-bottom: 5px; color: #a7b3a9; }
+      .ptt-row {
+        --ptt-size: min(36vw, 138px);
+        margin-bottom: 8px;
+      }
       #ptt {
-        width: min(46vw, 168px);
-        margin-bottom: 14px;
         border-width: 2px;
         border-color: var(--green-dim);
         box-shadow: inset 0 0 40px #0008, 0 8px 30px #000b, 0 0 0 7px #101711;
       }
-      #ptt span { font-size: 1.35rem; }
-      #ptt small { margin-top: 6px; color: #91a095; }
-      .hint { font-size: .65rem; }
+      .hint { font-size: .6rem; line-height: 1.35; }
       .message { max-width: 92%; }
-      header { padding: 16px 18px; }
+      header { padding: 10px 14px; }
+      .insignia { width: 38px; }
+      h1 { font-size: clamp(1.55rem, 7vw, 2rem); }
       .connection span:last-child, footer span:last-child { display: none; }
-      .transcript { padding: 18px; }
+      .transcript { padding: 10px 14px 12px; }
+      #heard { min-height: 18px; margin-bottom: 7px; font-size: .75rem; }
+      input { padding: 9px 11px; font-size: .78rem; }
+      .send { padding: 0 12px; }
+      footer { padding: 7px 12px; }
     }
   </style>
 </head>
@@ -267,11 +310,11 @@
       <div class="brand">
         <div class="insignia"><span>H</span></div>
         <div>
-          <div class="kicker">Tactical Operations Center</div>
-          <h1>COMMANDER HAVOC</h1>
+          <div class="kicker">GBTF TOC</div>
+          <h1>HAVOC</h1>
         </div>
       </div>
-      <div class="connection"><span class="dot"></span><span>Command net online</span></div>
+      <div class="connection"><span class="dot"></span><span>ZULU-4 // ENCR</span></div>
     </header>
 
     <div class="workspace">
@@ -297,9 +340,11 @@
         </div>
         <div class="section-label">Radio control</div>
         <div class="radio-status" id="status">Ready to receive</div>
-        <button id="ptt" type="button">
-          <span>PUSH TO TALK<small>HOLD BUTTON</small></span>
-        </button>
+        <div class="ptt-row">
+          <button id="ptt" type="button" aria-label="Hold the radio to push to talk">
+            <img class="radio-visual" src="radio2.png" alt="">
+          </button>
+        </div>
         <div class="hint"><strong>Press and hold</strong> while speaking.<br>Release to transmit to HAVOC.</div>
       </aside>
     </div>

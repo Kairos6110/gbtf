@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080b09">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%9F%3C/text%3E%3C/svg%3E">
-  <title>HAVOC // Secure Access</title>
+  <title>Restricted Net</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
     :root { color-scheme: dark; font-family: "IBM Plex Mono", monospace; background: #080b09; color: #e7eee8; }
@@ -34,16 +34,15 @@
 <body>
   <main>
     <div class="mark"><span>H</span></div>
-    <div class="eyebrow">Restricted command net</div>
-    <h1>HAVOC ACCESS</h1>
-    <p>Authentication is required to enter the Tactical Operations Center.</p>
+    <h1>RESTRICTED NET</h1>
+    <p>Authentication is required</p>
     <form id="login">
       <label for="password">Access code</label>
       <input id="password" type="password" autocomplete="current-password" autofocus required>
       <button id="submit" type="submit">AUTHENTICATE</button>
       <div id="error" role="alert"></div>
     </form>
-    <div class="secure">● Encrypted session control</div>
+    <div class="secure">● Encryption control</div>
   </main>
   <script>
     const REMOTE_API = 'https://unvascular-malachi-isolatedly.ngrok-free.dev';
