@@ -312,6 +312,7 @@
     const ON_GITHUB_PAGES = location.hostname === 'github.io' || location.hostname.endsWith('.github.io');
     const API_BASE = ON_GITHUB_PAGES ? REMOTE_API : location.origin;
     const sessionToken = sessionStorage.getItem('havoc-session');
+    const IS_ANDROID = /Android/i.test(navigator.userAgent);
     if (ON_GITHUB_PAGES && !sessionToken) location.replace('login.html');
 
     const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -548,20 +549,29 @@
     if (Recognition) {
       recognition = new Recognition();
       recognition.lang = 'en-US';
-      recognition.continuous = true;
+      recognition.continuous = !IS_ANDROID;
       recognition.interimResults = true;
 
       recognition.onresult = (event) => {
         // Mobile Chromium may revise earlier interim words several times. Rebuild
-        // the current phrase instead of appending each revision as new speech.
-        finalText = '';
-        interimText = '';
+        // the current phrase and collapse progressive prefix duplicates.
+        const phrases = [];
         for (let i = 0; i < event.results.length; i++) {
-          const text = event.results[i][0].transcript;
-          if (event.results[i].isFinal) finalText += `${text} `;
-          else interimText += `${text} `;
+          const text = event.results[i][0].transcript.trim();
+          if (!text) continue;
+          const current = {text, final: event.results[i].isFinal};
+          const previous = phrases.at(-1);
+          if (!previous) {
+            phrases.push(current);
+            continue;
+          }
+          const priorWords = previous.text.toLowerCase();
+          const currentWords = current.text.toLowerCase();
+          if (currentWords.startsWith(priorWords)) phrases[phrases.length - 1] = current;
+          else if (!priorWords.startsWith(currentWords)) phrases.push(current);
         }
-        heard.textContent = (finalText + interimText).trim() || 'Listening…';
+        finalText = phrases.filter(phrase => phrase.final).map(phrase => phrase.text).join(' ');
+        interimText = phrases.filter(phrase => !phrase.final).map(phrase => phrase.text).join(' ');
       };
 
       recognition.onerror = (event) => {
@@ -584,19 +594,22 @@
       heard.textContent = 'Voice recognition is unavailable. Use the text field below.';
     }
 
-    function startTalking(event) {
+    async function startTalking(event) {
       event.preventDefault();
       if (!recognition || busy || holding) return;
       unlockRadioAudio();
       speechSynthesis?.cancel();
-      void playRadioKey();
       holding = true;
       finalText = '';
       interimText = '';
       ptt.classList.add('active');
       ptt.setPointerCapture?.(event.pointerId);
-      heard.textContent = 'Listening…';
+      heard.textContent = 'Keying radio…';
       heard.classList.add('listening');
+      setStatus('Opening channel', 'active');
+      await playRadioKey(true);
+      if (!holding || busy) return;
+      heard.textContent = 'Listening…';
       setStatus('Receiving transmission', 'active');
       try { recognition.start(); }
       catch (_) { setStatus('Microphone is already active', 'error'); }
@@ -608,7 +621,7 @@
       holding = false;
       ptt.classList.remove('active');
       try { recognition.stop(); } catch (_) {}
-      const message = (finalText + interimText).trim();
+      const message = `${finalText} ${interimText}`.trim();
       if (message) transmit(message);
       else {
         heard.textContent = 'No speech detected. Hold the button and try again.';
