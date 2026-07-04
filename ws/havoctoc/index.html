@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080b09">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%9F%3C/text%3E%3C/svg%3E">
   <title>HAVOC // TOC Commander</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
@@ -158,6 +159,19 @@
     }
 
     .section-label { margin: 0 0 9px; color: var(--muted); font-size: .65rem; letter-spacing: .16em; text-transform: uppercase; }
+    .voice-control { margin-bottom: 25px; }
+    .voice-control select {
+      width: 100%;
+      padding: 11px 34px 11px 12px;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      outline: none;
+      background: #080c09;
+      color: #c6d1c8;
+      font: 500 .7rem "IBM Plex Mono", monospace;
+      cursor: pointer;
+    }
+    .voice-control select:focus { border-color: var(--green-dim); box-shadow: 0 0 0 3px #91f29f10; }
     .radio-status {
       min-height: 44px;
       margin-bottom: 18px;
@@ -227,6 +241,8 @@
         box-shadow: 0 12px 30px #0007;
       }
       aside .section-label { text-align: center; }
+      .voice-control { width: min(100%, 420px); margin: 0 auto 15px; }
+      .voice-control .section-label { display: block; }
       .radio-status { min-height: 28px; margin-bottom: 10px; color: #a7b3a9; }
       #ptt {
         width: min(46vw, 168px);
@@ -273,6 +289,12 @@
       </section>
 
       <aside>
+        <div class="voice-control">
+          <label class="section-label" for="voice">HAVOC voice</label>
+          <select id="voice" aria-label="HAVOC text-to-speech voice">
+            <option>Loading en-US voices…</option>
+          </select>
+        </div>
         <div class="section-label">Radio control</div>
         <div class="radio-status" id="status">Ready to receive</div>
         <button id="ptt" type="button">
@@ -295,12 +317,19 @@
     const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const ptt = document.querySelector('#ptt');
     const statusEl = document.querySelector('#status');
+    const voiceSelect = document.querySelector('#voice');
     const heard = document.querySelector('#heard');
     const log = document.querySelector('#log');
     const manual = document.querySelector('#manual');
     const send = document.querySelector('#send');
     const empty = document.querySelector('#empty');
     const history = [];
+    const radioKeySound = new Audio('keyradio.mp3');
+    radioKeySound.preload = 'auto';
+    radioKeySound.volume = 0.25;
+    let radioAudioContext = null;
+    let radioNoise = null;
+    let radioNoiseBuffer = null;
     let recognition = null;
     let holding = false;
     let busy = false;
@@ -310,16 +339,117 @@
 
     function loadPreferredVoice() {
       if (!window.speechSynthesis) return;
-      const voices = speechSynthesis.getVoices();
-      preferredVoice = voices.find(voice =>
-        voice.name === 'Microsoft Christopher Online (Natural) - English (United States)'
-      ) || voices.find(voice =>
-        voice.name.includes('Microsoft Christopher Online') && voice.lang.toLowerCase() === 'en-us'
-      ) || null;
+      const voices = speechSynthesis.getVoices().filter(voice =>
+        voice.lang.replace('_', '-').toLowerCase() === 'en-us'
+      );
+      if (!voices.length) {
+        voiceSelect.innerHTML = '<option value="">Default en-US voice</option>';
+        preferredVoice = null;
+        return;
+      }
+
+      const savedVoice = localStorage.getItem('havoc-voice');
+      preferredVoice = voices.find(voice => voice.name === savedVoice)
+        || voices.find(voice => voice.name === 'Microsoft Steffan Online (Natural) - English (United States)')
+        || voices.find(voice => voice.name.includes('Microsoft Steffan Online'))
+        || voices[0];
+
+      const selectedName = preferredVoice.name;
+      voiceSelect.replaceChildren(...voices.map(voice => {
+        const option = document.createElement('option');
+        option.value = voice.name;
+        option.textContent = `${voice.name}${voice.localService ? ' — device' : ' — online'}`;
+        option.selected = voice.name === selectedName;
+        return option;
+      }));
     }
 
     loadPreferredVoice();
     speechSynthesis?.addEventListener?.('voiceschanged', loadPreferredVoice);
+    voiceSelect.addEventListener('change', () => {
+      preferredVoice = speechSynthesis.getVoices().find(voice =>
+        voice.name === voiceSelect.value
+        && voice.lang.replace('_', '-').toLowerCase() === 'en-us'
+      ) || null;
+      if (preferredVoice) localStorage.setItem('havoc-voice', preferredVoice.name);
+    });
+
+    async function playRadioKey(waitForEnd = false) {
+      try {
+        radioKeySound.pause();
+        radioKeySound.currentTime = 0;
+        if (!waitForEnd) {
+          await radioKeySound.play();
+          return;
+        }
+
+        await new Promise(resolve => {
+          let finished = false;
+          const finish = () => {
+            if (finished) return;
+            finished = true;
+            clearTimeout(timeout);
+            radioKeySound.removeEventListener('ended', finish);
+            radioKeySound.removeEventListener('error', finish);
+            resolve();
+          };
+          const timeout = setTimeout(finish, 3000);
+          radioKeySound.addEventListener('ended', finish, {once: true});
+          radioKeySound.addEventListener('error', finish, {once: true});
+          radioKeySound.play().catch(finish);
+        });
+      } catch (_) {
+        // Speech should still work if a browser blocks or cannot decode the cue.
+      }
+    }
+
+    function unlockRadioAudio() {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) return null;
+      if (!radioAudioContext) radioAudioContext = new AudioContextClass();
+      if (radioAudioContext.state === 'suspended') radioAudioContext.resume().catch(() => {});
+      return radioAudioContext;
+    }
+
+    function startRadioNoise() {
+      stopRadioNoise();
+      const context = unlockRadioAudio();
+      if (!context) return;
+
+      if (!radioNoiseBuffer) {
+        radioNoiseBuffer = context.createBuffer(1, context.sampleRate * 2, context.sampleRate);
+        const samples = radioNoiseBuffer.getChannelData(0);
+        for (let i = 0; i < samples.length; i++) samples[i] = Math.random() * 2 - 1;
+      }
+
+      const source = context.createBufferSource();
+      const highpass = context.createBiquadFilter();
+      const lowpass = context.createBiquadFilter();
+      const gain = context.createGain();
+      source.buffer = radioNoiseBuffer;
+      source.loop = true;
+      highpass.type = 'highpass';
+      highpass.frequency.value = 450;
+      lowpass.type = 'lowpass';
+      lowpass.frequency.value = 3200;
+      gain.gain.setValueAtTime(0.0001, context.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.03, context.currentTime + 0.04);
+      source.connect(highpass).connect(lowpass).connect(gain).connect(context.destination);
+      source.start();
+      radioNoise = {source, gain, context};
+    }
+
+    function stopRadioNoise() {
+      if (!radioNoise) return;
+      const {source, gain, context} = radioNoise;
+      radioNoise = null;
+      try {
+        gain.gain.cancelScheduledValues(context.currentTime);
+        gain.gain.setValueAtTime(Math.max(gain.gain.value, 0.0001), context.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, context.currentTime + 0.06);
+        source.stop(context.currentTime + 0.07);
+      } catch (_) {}
+    }
 
     function setStatus(text, type = '') {
       statusEl.textContent = text;
@@ -341,24 +471,36 @@
       log.scrollTop = log.scrollHeight;
     }
 
-    function speakReply(text) {
+    async function speakReply(text) {
       if (!window.speechSynthesis) return;
       speechSynthesis.cancel();
+      await playRadioKey(true);
       const utterance = new SpeechSynthesisUtterance(text);
       loadPreferredVoice();
       if (preferredVoice) utterance.voice = preferredVoice;
       utterance.lang = preferredVoice?.lang || 'en-US';
-      utterance.rate = 0.94;
+      utterance.rate = 1.18;
       utterance.pitch = 0.82;
-      utterance.onstart = () => setStatus('HAVOC transmitting', 'active');
-      utterance.onend = () => setStatus('Ready to receive');
-      utterance.onerror = () => setStatus('Response received');
+      utterance.volume = 0.92;
+      utterance.onstart = () => {
+        startRadioNoise();
+        setStatus('HAVOC transmitting', 'active');
+      };
+      utterance.onend = () => {
+        stopRadioNoise();
+        setStatus('Ready to receive');
+      };
+      utterance.onerror = () => {
+        stopRadioNoise();
+        setStatus('Response received');
+      };
       speechSynthesis.speak(utterance);
     }
 
     async function transmit(rawText) {
       const message = rawText.trim();
       if (!message || busy) return;
+      unlockRadioAudio();
       busy = true;
       ptt.disabled = true;
       send.disabled = true;
@@ -392,7 +534,7 @@
         addMessage('model', data.reply);
         history.push({role: 'user', text: message}, {role: 'model', text: data.reply});
         if (history.length > 12) history.splice(0, history.length - 12);
-        speakReply(data.reply);
+        await speakReply(data.reply);
       } catch (error) {
         setStatus('Transmission failed', 'error');
         heard.textContent = error.message;
@@ -445,7 +587,9 @@
     function startTalking(event) {
       event.preventDefault();
       if (!recognition || busy || holding) return;
+      unlockRadioAudio();
       speechSynthesis?.cancel();
+      void playRadioKey();
       holding = true;
       finalText = '';
       interimText = '';
@@ -481,7 +625,10 @@
     manual.addEventListener('keydown', event => {
       if (event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); send.click(); }
     });
-    window.addEventListener('beforeunload', () => speechSynthesis?.cancel());
+    window.addEventListener('beforeunload', () => {
+      stopRadioNoise();
+      speechSynthesis?.cancel();
+    });
   </script>
 </body>
 </html>
