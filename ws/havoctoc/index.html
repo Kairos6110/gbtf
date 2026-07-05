@@ -479,7 +479,7 @@
       <div class="brand">
         <img class="brand-logo" src="gbtfnbg.png" alt="GBTF Logo">
         <div>
-          <div class="kicker">GBTF TOC</div>
+          <div class="kicker">GBTF TOC v.2.1</div>
           <h1>HAVOC</h1>
         </div>
       </div>
@@ -570,6 +570,7 @@
       if (context && context.state === 'suspended') {
         context.resume().catch(() => {});
       }
+      unlockHavocAudio();
     }
     window.addEventListener('click', forceUnlockAudio, { capture: true, once: true });
     window.addEventListener('touchstart', forceUnlockAudio, { capture: true, once: true });
@@ -579,6 +580,10 @@
     let finalText = '';
     let interimText = '';
     const havocAudio = new Audio();
+    havocAudio.playsInline = true;
+    havocAudio.preload = 'auto';
+    const SILENT_AUDIO = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQQAAACAgICA';
+    let havocAudioUnlocked = false;
     let havocAudioPlaying = false;
     const savedVoice = localStorage.getItem('havoc-voice');
     if ([...voiceSelect.options].some(option => option.value === savedVoice)) {
@@ -596,6 +601,21 @@
       }
       if (radioAudioContext.state === 'suspended') radioAudioContext.resume().catch(() => {});
       return radioAudioContext;
+    }
+
+    function unlockHavocAudio() {
+      if (havocAudioUnlocked) return;
+      // iOS only authorizes an HTMLAudioElement while a touch gesture is active.
+      // Prime this same element now so it can play the reply after the API wait.
+      havocAudio.src = SILENT_AUDIO;
+      const playback = havocAudio.play();
+      if (playback) {
+        playback.then(() => {
+          havocAudio.pause();
+          havocAudio.currentTime = 0;
+          havocAudioUnlocked = true;
+        }).catch(() => {});
+      }
     }
 
     function playRadioKeyBeep() {
@@ -758,7 +778,7 @@
       log.scrollTop = log.scrollHeight;
     }
 
-    async function speakReply(audioUrl, onStart) {
+    async function speakReply(audioUrl) {
       havocAudio.pause();
       const response = await fetch(`${API_BASE}${audioUrl}`, {
         headers: {
@@ -774,7 +794,6 @@
       await new Promise((resolve, reject) => {
         havocAudio.onplay = () => {
           havocAudioPlaying = true;
-          onStart();
           startRadioNoise();
           setStatus('HAVOC transmitting', 'active');
         };
@@ -837,7 +856,15 @@
         }
         history.push({role: 'user', text: message}, {role: 'model', text: data.reply});
         if (history.length > 12) history.splice(0, history.length - 12);
-        await speakReply(data.audioUrl, () => addMessage('model', data.reply));
+        addMessage('model', data.reply);
+        try {
+          await speakReply(data.audioUrl);
+        } catch (audioError) {
+          setStatus('Response received — audio unavailable', 'error');
+          heard.textContent = audioError.name === 'NotAllowedError'
+            ? 'iPhone blocked reply audio. Tap the radio once, then try again.'
+            : audioError.message;
+        }
       } catch (error) {
         setStatus('Transmission failed', 'error');
         heard.textContent = error.message;
@@ -900,7 +927,8 @@
       event.preventDefault();
       if (!recognition || busy || holding) return;
       unlockRadioAudio();
-      havocAudio.pause();
+      if (havocAudioUnlocked) havocAudio.pause();
+      unlockHavocAudio();
       holding = true;
       finalText = '';
       interimText = '';
