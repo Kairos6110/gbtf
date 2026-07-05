@@ -479,7 +479,7 @@
       <div class="brand">
         <img class="brand-logo" src="gbtfnbg.png" alt="GBTF Logo">
         <div>
-          <div class="kicker">GBTF TOC v.2.1</div>
+          <div class="kicker">GBTF TOC v.2.2</div>
           <h1>HAVOC</h1>
         </div>
       </div>
@@ -878,7 +878,7 @@
     if (Recognition) {
       recognition = new Recognition();
       recognition.lang = 'en-US';
-      recognition.continuous = !IS_ANDROID;
+      recognition.continuous = !IS_MOBILE;
       recognition.interimResults = true;
 
       recognition.onresult = (event) => {
@@ -1106,24 +1106,10 @@
     // Start rendering visualizer
     drawVisualizer();
 
-    // Request microphone permission to pre-clear the browser authorization prompt.
+    // SpeechRecognition requests its own permission on mobile. Starting a
+    // simultaneous getUserMedia request can conflict with Safari's prompt.
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      if (IS_MOBILE) {
-        // Mobile browsers require a user gesture to prompt getUserMedia.
-        // We prompt on the first touch/click anywhere on the screen.
-        const clearPerms = () => {
-          navigator.mediaDevices.getUserMedia({ audio: true })
-            .then(stream => {
-              stream.getTracks().forEach(track => track.stop());
-              console.log('Mobile microphone permission pre-cleared via gesture.');
-            })
-            .catch(err => {
-              console.warn('Initial mobile microphone check failed:', err);
-            });
-        };
-        window.addEventListener('click', clearPerms, { once: true, capture: true });
-        window.addEventListener('touchstart', clearPerms, { once: true, capture: true });
-      } else {
+      if (!IS_MOBILE) {
         // Desktop can prompt immediately on load
         navigator.mediaDevices.getUserMedia({ audio: true })
           .then(stream => {
