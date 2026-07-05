@@ -322,26 +322,39 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 24px;
-      height: 24px;
-      min-width: 24px;
-      min-height: 24px;
-      border-radius: 50%;
+      gap: 8px;
+      padding: 8px 16px;
       border: 1px solid var(--line);
       background: var(--panel);
-      color: var(--muted);
-      font-size: 0.8rem;
+      color: #ffffff;
+      font-size: 0.68rem;
       font-family: inherit;
-      font-weight: bold;
+      font-weight: 700;
       cursor: pointer;
-      padding: 0;
-      margin-left: 4px;
-      transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+      letter-spacing: 0.08em;
+      transition: all 0.15s ease;
+      border-radius: 2px;
     }
     #info-trigger:hover {
       color: var(--green);
       border-color: var(--green);
       background: var(--panel-2);
+      box-shadow: 0 0 10px rgba(145, 242, 159, 0.05);
+    }
+    .sigil {
+      color: var(--amber);
+      font-size: 0.6rem;
+      text-shadow: 0 0 6px var(--amber);
+      animation: alert-pulse 1.2s infinite alternate ease-in-out;
+      line-height: 1;
+    }
+    #info-trigger:hover .sigil {
+      color: var(--green);
+      text-shadow: 0 0 6px var(--green);
+    }
+    @keyframes alert-pulse {
+      from { opacity: 0.4; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1.15); }
     }
 
     /* Overlay styles */
@@ -469,16 +482,13 @@
           <div class="kicker">GBTF TOC</div>
           <h1>HAVOC</h1>
         </div>
-        <button id="info-trigger" type="button" title="INSTRUCTIONS" aria-label="Show instructions">?</button>
       </div>
-      <div class="connection"><span>ZULU-4 // ENCR</span><span class="dot"></span></div>
+      <button id="info-trigger" type="button" title="INSTRUCTIONS" aria-label="Show instructions"><span class="sigil">●</span>INSTRUCTIONS</button>
     </header>
 
     <div class="workspace">
       <section class="comms">
-        <div id="log" aria-live="polite">
-          <div class="empty" id="empty"><strong>RADIO NET IS CLEAR</strong>Hold push-to-talk and deliver your SITREP.</div>
-        </div>
+        <div id="log" aria-live="polite"></div>
         <div class="transcript">
           <div id="heard">Awaiting transmission…</div>
           <div class="manual-row">
@@ -519,7 +529,7 @@
       
       <ol>
         <li>Open the page in <strong>Microsoft Edge</strong>.</li>
-        <li>In Microsoft Edge settings, click <strong>Read Aloud</strong> once to initialize Edge's Text-to-Speech engine. If successful, <strong>Microsoft Steffan</strong> should appear as the selected default voice.</li>
+        <li>In Edge settings, click <strong>Read Aloud</strong> once then stop it, to initialize Edge's Text-to-Speech engine. If successful, <strong>Microsoft Steffan</strong> should appear as the selected default voice.</li>
         <li>Hold the <strong>Push-to-Talk</strong> radio button and transmit naturally, for example:
           <blockquote>"Havoc, we have eyes on the HVT. What's the intent on target, over?"</blockquote>
         </li>
@@ -542,6 +552,7 @@
     const API_BASE = ON_GITHUB_PAGES ? REMOTE_API : location.origin;
     const sessionToken = sessionStorage.getItem('havoc-session');
     const IS_ANDROID = /Android/i.test(navigator.userAgent);
+    const IS_MOBILE = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     if (ON_GITHUB_PAGES && !sessionToken) location.replace('login.html');
 
     const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -552,7 +563,6 @@
     const log = document.querySelector('#log');
     const manual = document.querySelector('#manual');
     const send = document.querySelector('#send');
-    const empty = document.querySelector('#empty');
     const history = [];
     let radioAudioContext = null;
     let radioNoise = null;
@@ -764,7 +774,6 @@
     }
 
     function addMessage(role, text) {
-      empty?.remove();
       const item = document.createElement('article');
       item.className = `message ${role === 'user' ? 'operator' : 'havoc'}`;
       const meta = document.createElement('div');
@@ -956,6 +965,7 @@
     let analyser = null;
 
     async function startMicCapture() {
+      if (IS_MOBILE) return; // Disable Web Audio mic stream on mobile to prevent clashing with SpeechRecognition
       const context = unlockRadioAudio();
       if (!context) return;
       if (!analyser) {
@@ -1086,16 +1096,33 @@
     // Start rendering visualizer
     drawVisualizer();
 
-    // Request microphone permission on page load to pre-clear the browser authorization prompt.
+    // Request microphone permission to pre-clear the browser authorization prompt.
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices.getUserMedia({ audio: true })
-        .then(stream => {
-          // Stop the tracks immediately so the tab does not show a persistent recording indicator.
-          stream.getTracks().forEach(track => track.stop());
-        })
-        .catch(err => {
-          console.warn('Initial microphone permission check failed or denied:', err);
-        });
+      if (IS_MOBILE) {
+        // Mobile browsers require a user gesture to prompt getUserMedia.
+        // We prompt on the first touch/click anywhere on the screen.
+        const clearPerms = () => {
+          navigator.mediaDevices.getUserMedia({ audio: true })
+            .then(stream => {
+              stream.getTracks().forEach(track => track.stop());
+              console.log('Mobile microphone permission pre-cleared via gesture.');
+            })
+            .catch(err => {
+              console.warn('Initial mobile microphone check failed:', err);
+            });
+        };
+        window.addEventListener('click', clearPerms, { once: true, capture: true });
+        window.addEventListener('touchstart', clearPerms, { once: true, capture: true });
+      } else {
+        // Desktop can prompt immediately on load
+        navigator.mediaDevices.getUserMedia({ audio: true })
+          .then(stream => {
+            stream.getTracks().forEach(track => track.stop());
+          })
+          .catch(err => {
+            console.warn('Initial microphone permission check failed or denied:', err);
+          });
+      }
     }
 
     const infoTrigger = document.getElementById('info-trigger');
