@@ -502,7 +502,8 @@
         <div class="voice-control">
           <label class="section-label" for="voice">HAVOC voice</label>
           <select id="voice" aria-label="HAVOC text-to-speech voice">
-            <option>Loading en-US voices…</option>
+            <option value="en-US-SteffanNeural">Steffan Neural — default</option>
+            <option value="en-US-EricNeural">Eric Neural</option>
           </select>
         </div>
         <div class="section-label">Radio control</div>
@@ -525,20 +526,16 @@
     <div id="info-content">
       <h2>GBTF TOC SIM</h2>
       
-      <p class="warning-alert"><strong><a href="https://www.google.com/search?q=Install+Microsoft+Edge+Browser" target="_blank" style="color: inherit; text-decoration: underline;">Microsoft Edge is required</a>.</strong> This tool only works as intended in <strong>Microsoft Edge</strong>.</p>
-      
       <ol>
-        <li>Open the page in <strong>Microsoft Edge</strong>.</li>
-        <li>In Edge settings, click <strong>Read Aloud</strong> once then stop it, to initialize Edge's Text-to-Speech engine. If successful, <strong>Microsoft Steffan</strong> should appear as the selected default voice.</li>
-        <li>Hold the <strong>Push-to-Talk</strong> radio button and transmit naturally, for example:
-          <blockquote>"Havoc, we have eyes on the HVT. What's the intent on target, over?"</blockquote>
+        <li>Open the page in a modern browser and allow microphone access when/if prompted.</li>
+        <li>Hold the <strong>Push-to-Talk</strong> radio button and transmit naturally. Speak clearly and as close to your microphone as possible. For example:
+          <blockquote>"Havoc, this is Reaper 1. We need air support, over."</blockquote>
         </li>
         <li><strong>HAVOC</strong> (the fictional TOC Commander) will respond with dynamic orders or information generated in real time using <strong>Gemini AI</strong>, providing immersive tactical radio roleplay.</li>
       </ol>
       
-      <p class="note-text">Responses are AI-generated and may occasionally make mistakes, but they are designed to enhance mission immersion and communications roleplay.</p>
+      <p class="note-text">Responses are AI-generated and may occasionally make mistakes, but they are designed to enhance mission immersion and communications roleplay. Do not abuse the system, as each request requires resources on the backend.</p>
       
-      <p class="enjoy-text">Enjoy, operators.</p>
       
       <div class="website-link">
         <a href="https://kairos6110.github.io/gbtf/ws/" target="_blank">visit our main website</a>
@@ -581,43 +578,14 @@
     let busy = false;
     let finalText = '';
     let interimText = '';
-    let preferredVoice = null;
-
-    function loadPreferredVoice() {
-      if (!window.speechSynthesis) return;
-      const voices = speechSynthesis.getVoices().filter(voice =>
-        voice.lang.replace('_', '-').toLowerCase() === 'en-us'
-      );
-      if (!voices.length) {
-        voiceSelect.innerHTML = '<option value="">Default en-US voice</option>';
-        preferredVoice = null;
-        return;
-      }
-
-      const savedVoice = localStorage.getItem('havoc-voice');
-      preferredVoice = voices.find(voice => voice.name === savedVoice)
-        || voices.find(voice => voice.name === 'Microsoft Steffan Online (Natural) - English (United States)')
-        || voices.find(voice => voice.name.includes('Microsoft Steffan Online'))
-        || voices[0];
-
-      const selectedName = preferredVoice.name;
-      voiceSelect.replaceChildren(...voices.map(voice => {
-        const option = document.createElement('option');
-        option.value = voice.name;
-        option.textContent = `${voice.name}${voice.localService ? ' — device' : ' — online'}`;
-        option.selected = voice.name === selectedName;
-        return option;
-      }));
+    const havocAudio = new Audio();
+    let havocAudioPlaying = false;
+    const savedVoice = localStorage.getItem('havoc-voice');
+    if ([...voiceSelect.options].some(option => option.value === savedVoice)) {
+      voiceSelect.value = savedVoice;
     }
-
-    loadPreferredVoice();
-    speechSynthesis?.addEventListener?.('voiceschanged', loadPreferredVoice);
     voiceSelect.addEventListener('change', () => {
-      preferredVoice = speechSynthesis.getVoices().find(voice =>
-        voice.name === voiceSelect.value
-        && voice.lang.replace('_', '-').toLowerCase() === 'en-us'
-      ) || null;
-      if (preferredVoice) localStorage.setItem('havoc-voice', preferredVoice.name);
+      localStorage.setItem('havoc-voice', voiceSelect.value);
     });
 
     function unlockRadioAudio() {
@@ -790,32 +758,47 @@
       log.scrollTop = log.scrollHeight;
     }
 
-    async function speakReply(text) {
-      if (!window.speechSynthesis) return;
-      speechSynthesis.cancel();
+    async function speakReply(audioUrl, onStart) {
+      havocAudio.pause();
+      const response = await fetch(`${API_BASE}${audioUrl}`, {
+        headers: {
+          'ngrok-skip-browser-warning': '1',
+          ...(sessionToken ? {'Authorization': `Bearer ${sessionToken}`} : {})
+        }
+      });
+      if (!response.ok) throw new Error('HAVOC voice audio unavailable');
+      const objectUrl = URL.createObjectURL(await response.blob());
+      havocAudio.src = objectUrl;
+      havocAudio.volume = 0.92;
       await playRadioKeyBeep();
-      const utterance = new SpeechSynthesisUtterance(text);
-      loadPreferredVoice();
-      if (preferredVoice) utterance.voice = preferredVoice;
-      utterance.lang = preferredVoice?.lang || 'en-US';
-      utterance.rate = 1.25;
-      utterance.pitch = 0.82;
-      utterance.volume = 0.92;
-      utterance.onstart = () => {
-        startRadioNoise();
-        setStatus('HAVOC transmitting', 'active');
-      };
-      utterance.onend = () => {
-        stopRadioNoise();
-        playSquelchTail();
-        setStatus('Ready to receive');
-      };
-      utterance.onerror = () => {
-        stopRadioNoise();
-        playSquelchTail();
-        setStatus('Response received');
-      };
-      speechSynthesis.speak(utterance);
+      await new Promise((resolve, reject) => {
+        havocAudio.onplay = () => {
+          havocAudioPlaying = true;
+          onStart();
+          startRadioNoise();
+          setStatus('HAVOC transmitting', 'active');
+        };
+        havocAudio.onended = () => {
+          havocAudioPlaying = false;
+          stopRadioNoise();
+          playSquelchTail();
+          setStatus('Ready to receive');
+          URL.revokeObjectURL(objectUrl);
+          resolve();
+        };
+        havocAudio.onerror = () => {
+          havocAudioPlaying = false;
+          stopRadioNoise();
+          URL.revokeObjectURL(objectUrl);
+          reject(new Error('Could not play HAVOC voice audio'));
+        };
+        havocAudio.play().catch(error => {
+          havocAudioPlaying = false;
+          stopRadioNoise();
+          URL.revokeObjectURL(objectUrl);
+          reject(error);
+        });
+      });
     }
 
     async function transmit(rawText) {
@@ -838,7 +821,7 @@
             'ngrok-skip-browser-warning': '1',
             ...(sessionToken ? {'Authorization': `Bearer ${sessionToken}`} : {})
           },
-          body: JSON.stringify({message, history})
+          body: JSON.stringify({message, history, voice: voiceSelect.value})
         });
         const data = await response.json().catch(() => ({}));
         if (response.status === 401) {
@@ -852,10 +835,9 @@
             : `Server error ${response.status}`;
           throw new Error(data.error || wrongServer);
         }
-        addMessage('model', data.reply);
         history.push({role: 'user', text: message}, {role: 'model', text: data.reply});
         if (history.length > 12) history.splice(0, history.length - 12);
-        await speakReply(data.reply);
+        await speakReply(data.audioUrl, () => addMessage('model', data.reply));
       } catch (error) {
         setStatus('Transmission failed', 'error');
         heard.textContent = error.message;
@@ -918,7 +900,7 @@
       event.preventDefault();
       if (!recognition || busy || holding) return;
       unlockRadioAudio();
-      speechSynthesis?.cancel();
+      havocAudio.pause();
       holding = true;
       finalText = '';
       interimText = '';
@@ -1048,7 +1030,7 @@
             values.push(midY + freq1 + freq2 + noise);
           }
         }
-      } else if (speechSynthesis && speechSynthesis.speaking) {
+      } else if (havocAudioPlaying) {
         // HAVOC speaking: draw simulated voice modulation
         const now = performance.now() * 0.01;
         for (let i = 0; i < width; i++) {
@@ -1146,7 +1128,7 @@
 
     window.addEventListener('beforeunload', () => {
       stopRadioNoise();
-      speechSynthesis?.cancel();
+      havocAudio.pause();
     });
   </script>
 
