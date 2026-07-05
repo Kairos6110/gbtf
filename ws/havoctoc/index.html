@@ -479,7 +479,7 @@
       <div class="brand">
         <img class="brand-logo" src="gbtfnbg.png" alt="GBTF Logo">
         <div>
-          <div class="kicker">GBTF TOC v.2.2</div>
+          <div class="kicker">GBTF TOC v.2.3</div>
           <h1>HAVOC</h1>
         </div>
       </div>
@@ -577,8 +577,12 @@
     let recognition = null;
     let holding = false;
     let busy = false;
+    let capturedText = '';
     let finalText = '';
     let interimText = '';
+    let finishingRecognition = false;
+    let recognitionFinishTimer = null;
+    let recognitionRestartTimer = null;
     const havocAudio = new Audio();
     havocAudio.playsInline = true;
     havocAudio.preload = 'auto';
@@ -903,6 +907,27 @@
         interimText = phrases.filter(phrase => !phrase.final).map(phrase => phrase.text).join(' ');
       };
 
+      function commitRecognitionCycle() {
+        const cycleText = `${finalText} ${interimText}`.trim();
+        if (cycleText) capturedText = `${capturedText} ${cycleText}`.trim();
+        finalText = '';
+        interimText = '';
+      }
+
+      function finishTalking() {
+        if (!finishingRecognition) return;
+        finishingRecognition = false;
+        clearTimeout(recognitionFinishTimer);
+        commitRecognitionCycle();
+        const message = capturedText.trim();
+        if (message) transmit(message);
+        else {
+          heard.textContent = 'No speech detected. Hold the button and try again.';
+          heard.classList.remove('listening');
+          setStatus('Ready to receive');
+        }
+      }
+
       recognition.onerror = (event) => {
         if (event.error === 'aborted' || event.error === 'no-speech') return;
         holding = false;
@@ -911,11 +936,22 @@
       };
 
       recognition.onend = () => {
-        // Do not restart here. Mobile recognition often returns the same phrase
-        // after a restart, producing duplicated and progressively revised text.
-        if (holding && (finalText || interimText)) {
-          setStatus('Speech captured — release to transmit', 'active');
+        if (!holding) {
+          finishTalking();
+          return;
         }
+
+        // A browser may end recognition after silence while PTT is still held.
+        // Keep that phrase, then start another recognition cycle.
+        commitRecognitionCycle();
+        setStatus('Receiving transmission', 'active');
+        heard.textContent = capturedText ? `${capturedText} …` : 'Listening…';
+        clearTimeout(recognitionRestartTimer);
+        recognitionRestartTimer = setTimeout(() => {
+          if (!holding || busy) return;
+          try { recognition.start(); }
+          catch (_) {}
+        }, 75);
       };
     } else {
       ptt.disabled = true;
@@ -930,6 +966,10 @@
       if (havocAudioUnlocked) havocAudio.pause();
       unlockHavocAudio();
       holding = true;
+      finishingRecognition = false;
+      clearTimeout(recognitionFinishTimer);
+      clearTimeout(recognitionRestartTimer);
+      capturedText = '';
       finalText = '';
       interimText = '';
       ptt.classList.add('active');
@@ -950,16 +990,15 @@
       if (!holding) return;
       event?.preventDefault();
       holding = false;
+      finishingRecognition = true;
+      clearTimeout(recognitionRestartTimer);
       ptt.classList.remove('active');
       try { recognition.stop(); } catch (_) {}
       playSquelchTail();
-      const message = `${finalText} ${interimText}`.trim();
-      if (message) transmit(message);
-      else {
-        heard.textContent = 'No speech detected. Hold the button and try again.';
-        heard.classList.remove('listening');
-        setStatus('Ready to receive');
-      }
+      setStatus('Finalizing transmission', 'active');
+      // stop() emits the last result asynchronously. onend normally completes
+      // this; the timeout covers engines that fail to emit onend.
+      recognitionFinishTimer = setTimeout(finishTalking, 800);
     }
 
     ptt.addEventListener('pointerdown', startTalking);
