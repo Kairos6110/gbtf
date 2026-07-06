@@ -479,7 +479,7 @@
       <div class="brand">
         <img class="brand-logo" src="gbtfnbg.png" alt="GBTF Logo">
         <div>
-          <div class="kicker">GBTF TOC v.2.3</div>
+          <div class="kicker">GBTF TOC v.2.4</div>
           <h1>HAVOC</h1>
         </div>
       </div>
@@ -577,6 +577,7 @@
     let recognition = null;
     let holding = false;
     let busy = false;
+    const RECOGNITION_RELEASE_GRACE_MS = 150;
     let capturedText = '';
     let finalText = '';
     let interimText = '';
@@ -996,9 +997,9 @@
       try { recognition.stop(); } catch (_) {}
       playSquelchTail();
       setStatus('Finalizing transmission', 'active');
-      // stop() emits the last result asynchronously. onend normally completes
-      // this; the timeout covers engines that fail to emit onend.
-      recognitionFinishTimer = setTimeout(finishTalking, 800);
+      // Give the engine a brief chance to finalize its last result. If it does
+      // not, transmit the latest interim text instead of adding a long tail.
+      recognitionFinishTimer = setTimeout(finishTalking, RECOGNITION_RELEASE_GRACE_MS);
     }
 
     ptt.addEventListener('pointerdown', startTalking);
