@@ -481,7 +481,7 @@
       <div class="brand">
         <img class="brand-logo" src="gbtfnbg.png" alt="GBTF Logo">
         <div>
-          <div class="kicker">GBTF TOC v.2.7</div>
+          <div class="kicker">GBTF TOC v.3.0</div>
           <h1>HAVOC</h1>
         </div>
       </div>
@@ -587,6 +587,7 @@
     let recognitionFinishTimer = null;
     let recognitionRestartTimer = null;
     let recognitionTiming = null;
+    let onDeviceRecognitionAvailable = false;
     const havocAudio = new Audio();
     havocAudio.playsInline = true;
     havocAudio.preload = 'auto';
@@ -902,6 +903,17 @@
       recognition.continuous = !IS_MOBILE;
       recognition.interimResults = true;
 
+      // Use the lower-latency local engine when the browser already has its
+      // English language pack. Unsupported browsers and missing packs keep
+      // using the browser's normal remote recognition service.
+      if ('processLocally' in recognition && typeof Recognition.available === 'function') {
+        Recognition.available({ langs: ['en-US'], processLocally: true })
+          .then(result => {
+            onDeviceRecognitionAvailable = result === 'available';
+          })
+          .catch(() => {});
+      }
+
       function markRecognitionTiming(name) {
         if (!recognitionTiming || recognitionTiming[name] !== null) return;
         recognitionTiming[name] = performance.now() - recognitionTiming.pressedAt;
@@ -1047,6 +1059,9 @@
       setStatus('Opening channel', 'active');
       playRadioKeyBeep();
       if (!holding || busy) return;
+      if ('processLocally' in recognition) {
+        recognition.processLocally = onDeviceRecognitionAvailable;
+      }
       try { recognition.start(); }
       catch (_) { setStatus('Microphone is already active', 'error'); }
     }
@@ -1076,10 +1091,34 @@
     });
     const canvas = document.getElementById('waveform');
     const ctx = canvas.getContext('2d');
-    let havocWaveLevel = 0;
-    let havocWaveTarget = 0;
-    let havocWaveChangeAt = 0;
-    let havocWavePhase = 0;
+    const operatorWave = { level: 0, target: 0, changeAt: 0, phase: 0 };
+    const havocWave = { level: 0, target: 0, changeAt: 0, phase: 0 };
+
+    function buildSpeechWave(state, width, midY) {
+      // Speech-like envelopes: quick attacks, softer releases, short pauses,
+      // and irregular peaks prevent the waveform from becoming a sine loop.
+      const frameNow = performance.now();
+      if (frameNow >= state.changeAt) {
+        const isPause = Math.random() < 0.2;
+        const isPeak = !isPause && Math.random() < 0.18;
+        state.target = isPause ? 0.04 : isPeak ? 1.45 : 0.3 + Math.random() * 0.8;
+        state.changeAt = frameNow + 45 + Math.random() * 120;
+      }
+
+      const response = state.target > state.level ? 0.48 : 0.22;
+      state.level += (state.target - state.level) * response;
+      state.phase += 0.12 + Math.random() * 0.1;
+
+      const values = [];
+      for (let i = 0; i < width; i++) {
+        const syllableShape = 0.45 + Math.abs(Math.sin(state.phase * 0.7 + i * 0.035)) * 0.55;
+        const low = Math.sin(state.phase + i * 0.085) * 7;
+        const high = Math.sin(state.phase * 2.4 + i * 0.21) * 4;
+        const roughness = (Math.random() - 0.5) * 5;
+        values.push(midY + (low + high + roughness) * state.level * syllableShape);
+      }
+      return values;
+    }
 
     function drawVisualizer() {
       requestAnimationFrame(drawVisualizer);
@@ -1119,38 +1158,14 @@
       ctx.stroke();
       
       const midY = height / 2;
-      const values = [];
+      let values = [];
       
       if (holding) {
-        // Keep the PTT animation synthetic so it never opens a second mic
+        // Match HAVOC's speech motion without opening a second microphone
         // capture that could contend with SpeechRecognition startup.
-        const now = performance.now() * 0.02;
-        for (let i = 0; i < width; i++) {
-          const freq1 = Math.sin(now + i * 0.08) * 6;
-          const freq2 = Math.sin(now * 1.3 + i * 0.15) * 4;
-          const noise = (Math.random() - 0.5) * 1.5;
-          values.push(midY + freq1 + freq2 + noise);
-        }
+        values = buildSpeechWave(operatorWave, width, midY);
       } else if (havocAudioPlaying) {
-        // Randomized syllables, brief pauses, and occasional sharp peaks keep
-        // the synthetic HAVOC waveform from settling into a repeating loop.
-        const frameNow = performance.now();
-        if (frameNow >= havocWaveChangeAt) {
-          const isPause = Math.random() < 0.2;
-          const isPeak = !isPause && Math.random() < 0.18;
-          havocWaveTarget = isPause ? 0.04 : isPeak ? 1.45 : 0.3 + Math.random() * 0.8;
-          havocWaveChangeAt = frameNow + 45 + Math.random() * 120;
-        }
-        const response = havocWaveTarget > havocWaveLevel ? 0.48 : 0.22;
-        havocWaveLevel += (havocWaveTarget - havocWaveLevel) * response;
-        havocWavePhase += 0.12 + Math.random() * 0.1;
-        for (let i = 0; i < width; i++) {
-          const syllableShape = 0.45 + Math.abs(Math.sin(havocWavePhase * 0.7 + i * 0.035)) * 0.55;
-          const low = Math.sin(havocWavePhase + i * 0.085) * 7;
-          const high = Math.sin(havocWavePhase * 2.4 + i * 0.21) * 4;
-          const roughness = (Math.random() - 0.5) * 5;
-          values.push(midY + (low + high + roughness) * havocWaveLevel * syllableShape);
-        }
+        values = buildSpeechWave(havocWave, width, midY);
       } else if (busy) {
         // Thinking state: scanning line
         const now = performance.now() * 0.015;
