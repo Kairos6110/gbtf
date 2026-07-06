@@ -481,7 +481,7 @@
       <div class="brand">
         <img class="brand-logo" src="gbtfnbg.png" alt="GBTF Logo">
         <div>
-          <div class="kicker">GBTF TOC v.3.0</div>
+          <div class="kicker">GBTF TOC v.3.5</div>
           <h1>HAVOC</h1>
         </div>
       </div>
@@ -624,6 +624,68 @@
           havocAudio.currentTime = 0;
           havocAudioUnlocked = true;
         }).catch(() => {});
+      }
+    }
+
+    let havocAudioSource = null;
+    let radioEffectsSetUp = false;
+
+    function makeDistortionCurve(amount) {
+      const k = 44100;
+      const curve = new Float32Array(k);
+      for (let i = 0; i < k; ++i) {
+        const x = (i * 2) / k - 1;
+        // Soft clipping curve using hyperbolic tangent
+        curve[i] = Math.tanh(x * amount);
+      }
+      return curve;
+    }
+
+    function setupRadioEffects(context) {
+      if (radioEffectsSetUp) return;
+      try {
+        // Route HTMLAudioElement output through the Web Audio graph
+        havocAudioSource = context.createMediaElementSource(havocAudio);
+
+        // 1. Highpass filter to cut bass (replicates small radio speaker lack of low end)
+        const hpFilter = context.createBiquadFilter();
+        hpFilter.type = 'highpass';
+        hpFilter.frequency.setValueAtTime(450, context.currentTime);
+        hpFilter.Q.setValueAtTime(1.0, context.currentTime);
+
+        // 2. Lowpass filter to cut treble (high frequency transmission limit)
+        const lpFilter = context.createBiquadFilter();
+        lpFilter.type = 'lowpass';
+        lpFilter.frequency.setValueAtTime(2600, context.currentTime);
+        lpFilter.Q.setValueAtTime(1.0, context.currentTime);
+
+        // 3. Peaking filter to add classic mid-range speaker/capsule resonance
+        const peakFilter = context.createBiquadFilter();
+        peakFilter.type = 'peaking';
+        peakFilter.frequency.setValueAtTime(1200, context.currentTime);
+        peakFilter.Q.setValueAtTime(1.5, context.currentTime);
+        peakFilter.gain.setValueAtTime(5, context.currentTime); // +5dB boost at 1.2kHz
+
+        // 4. WaveShaper for vintage analog saturation/distortion
+        const distortion = context.createWaveShaper();
+        distortion.curve = makeDistortionCurve(1.6);
+        distortion.oversample = '4x';
+
+        // 5. Post-distortion volume trim
+        const postGain = context.createGain();
+        postGain.gain.setValueAtTime(0.85, context.currentTime);
+
+        // Chain nodes: Source -> HP -> LP -> Peak -> Distortion -> Gain -> Destination
+        havocAudioSource.connect(hpFilter);
+        hpFilter.connect(lpFilter);
+        lpFilter.connect(peakFilter);
+        peakFilter.connect(distortion);
+        distortion.connect(postGain);
+        postGain.connect(context.destination);
+
+        radioEffectsSetUp = true;
+      } catch (err) {
+        console.warn('Could not set up Web Audio radio effects:', err);
       }
     }
 
@@ -806,6 +868,10 @@
       havocAudio.src = objectUrl;
       havocAudio.volume = 0.92;
       await playRadioKeyBeep();
+      const context = unlockRadioAudio();
+      if (context) {
+        setupRadioEffects(context);
+      }
       await new Promise((resolve, reject) => {
         let playbackStarted = false;
         havocAudio.onplaying = () => {
