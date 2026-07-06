@@ -481,7 +481,7 @@
       <div class="brand">
         <img class="brand-logo" src="gbtfnbg.png" alt="GBTF Logo">
         <div>
-          <div class="kicker">GBTF TOC v.3.1</div>
+          <div class="kicker">GBTF TOC v.3.0</div>
           <h1>HAVOC</h1>
         </div>
       </div>
@@ -579,7 +579,7 @@
     let recognition = null;
     let holding = false;
     let busy = false;
-    const RECOGNITION_RELEASE_GRACE_MS = 150;
+    const RECOGNITION_RELEASE_GRACE_MS = 1200;
     let capturedText = '';
     let finalText = '';
     let interimText = '';
@@ -974,7 +974,7 @@
         }
         finalText = phrases.filter(phrase => phrase.final).map(phrase => phrase.text).join(' ');
         interimText = phrases.filter(phrase => !phrase.final).map(phrase => phrase.text).join(' ');
-        if (holding) {
+        if (holding || finishingRecognition) {
           const liveText = `${capturedText} ${finalText} ${interimText}`.trim();
           heard.textContent = liveText || 'Speech detected…';
         }
@@ -1160,7 +1160,7 @@
       const midY = height / 2;
       let values = [];
       
-      if (holding) {
+      if (holding || finishingRecognition) {
         // Match HAVOC's speech motion without opening a second microphone
         // capture that could contend with SpeechRecognition startup.
         values = buildSpeechWave(operatorWave, width, midY);
