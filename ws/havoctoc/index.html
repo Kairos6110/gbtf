@@ -113,6 +113,8 @@
     .operator .message-meta { text-align: right; }
     .message-body { padding: 14px 16px; border-left: 2px solid var(--green); background: var(--panel-2); line-height: 1.55; white-space: pre-wrap; }
     .operator .message-body { border: 1px solid #344038; border-left: 0; background: #111713; }
+    .message-telemetry { margin-top: 7px; color: var(--muted); font-size: .64rem; letter-spacing: .06em; }
+    .operator .message-telemetry { text-align: right; }
 
     @keyframes appear { from { opacity: 0; transform: translateY(6px); } }
 
@@ -479,7 +481,7 @@
       <div class="brand">
         <img class="brand-logo" src="gbtfnbg.png" alt="GBTF Logo">
         <div>
-          <div class="kicker">GBTF TOC v.2.4</div>
+          <div class="kicker">GBTF TOC v.2.5</div>
           <h1>HAVOC</h1>
         </div>
       </div>
@@ -584,6 +586,7 @@
     let finishingRecognition = false;
     let recognitionFinishTimer = null;
     let recognitionRestartTimer = null;
+    let recognitionTiming = null;
     const havocAudio = new Audio();
     havocAudio.playsInline = true;
     havocAudio.preload = 'auto';
@@ -766,7 +769,7 @@
       return `${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}:${pad(d.getUTCSeconds())}Z`;
     }
 
-    function addMessage(role, text) {
+    function addMessage(role, text, telemetry = '') {
       const item = document.createElement('article');
       item.className = `message ${role === 'user' ? 'operator' : 'havoc'}`;
       const meta = document.createElement('div');
@@ -779,11 +782,17 @@
       body.className = 'message-body';
       body.textContent = text;
       item.append(meta, body);
+      if (telemetry) {
+        const timing = document.createElement('div');
+        timing.className = 'message-telemetry';
+        timing.textContent = telemetry;
+        item.append(timing);
+      }
       log.append(item);
       log.scrollTop = log.scrollHeight;
     }
 
-    async function speakReply(audioUrl) {
+    async function speakReply(audioUrl, onPlaybackStart) {
       havocAudio.pause();
       const response = await fetch(`${API_BASE}${audioUrl}`, {
         headers: {
@@ -797,10 +806,14 @@
       havocAudio.volume = 0.92;
       await playRadioKeyBeep();
       await new Promise((resolve, reject) => {
-        havocAudio.onplay = () => {
+        let playbackStarted = false;
+        havocAudio.onplaying = () => {
+          if (playbackStarted) return;
+          playbackStarted = true;
           havocAudioPlaying = true;
           startRadioNoise();
           setStatus('HAVOC transmitting', 'active');
+          onPlaybackStart?.();
         };
         havocAudio.onended = () => {
           havocAudioPlaying = false;
@@ -825,7 +838,7 @@
       });
     }
 
-    async function transmit(rawText) {
+    async function transmit(rawText, speechTelemetry = '') {
       const message = rawText.trim();
       if (!message || busy) return;
       unlockRadioAudio();
@@ -834,10 +847,11 @@
       send.disabled = true;
       heard.textContent = `TX: ${message}`;
       heard.classList.remove('listening');
-      addMessage('user', message);
+      addMessage('user', message, speechTelemetry);
       setStatus('Awaiting HAVOC…', 'active');
 
       try {
+        const requestStartedAt = performance.now();
         const response = await fetch(`${API_BASE}/api/transmit`, {
           method: 'POST',
           headers: {
@@ -861,9 +875,11 @@
         }
         history.push({role: 'user', text: message}, {role: 'model', text: data.reply});
         if (history.length > 12) history.splice(0, history.length - 12);
-        addMessage('model', data.reply);
         try {
-          await speakReply(data.audioUrl);
+          await speakReply(data.audioUrl, () => {
+            const responseSeconds = (performance.now() - requestStartedAt) / 1000;
+            addMessage('model', data.reply, `Audio playback started in ${responseSeconds.toFixed(2)}s`);
+          });
         } catch (audioError) {
           setStatus('Response received — audio unavailable', 'error');
           heard.textContent = audioError.name === 'NotAllowedError'
@@ -886,7 +902,47 @@
       recognition.continuous = !IS_MOBILE;
       recognition.interimResults = true;
 
+      function markRecognitionTiming(name) {
+        if (!recognitionTiming || recognitionTiming[name] !== null) return;
+        recognitionTiming[name] = performance.now() - recognitionTiming.pressedAt;
+      }
+
+      function formatRecognitionTiming() {
+        if (!recognitionTiming) return '';
+        const fields = [
+          ['engineStart', 'Engine'],
+          ['audioStart', 'Mic'],
+          ['speechStart', 'Speech'],
+          ['firstResult', 'Decoded']
+        ];
+        return fields
+          .filter(([name]) => recognitionTiming[name] !== null)
+          .map(([name, label]) => `${label} ${(recognitionTiming[name] / 1000).toFixed(2)}s`)
+          .join(' · ');
+      }
+
+      recognition.onstart = () => {
+        markRecognitionTiming('engineStart');
+        if (!holding) return;
+        heard.textContent = 'Connecting microphone…';
+        setStatus('Opening channel', 'active');
+      };
+
+      recognition.onaudiostart = () => {
+        markRecognitionTiming('audioStart');
+        if (!holding) return;
+        heard.textContent = 'Listening…';
+        setStatus('Receiving transmission', 'active');
+      };
+
+      recognition.onspeechstart = () => {
+        markRecognitionTiming('speechStart');
+        if (!holding) return;
+        heard.textContent = 'Speech detected…';
+      };
+
       recognition.onresult = (event) => {
+        markRecognitionTiming('firstResult');
         // Mobile Chromium may revise earlier interim words several times. Rebuild
         // the current phrase and collapse progressive prefix duplicates.
         const phrases = [];
@@ -906,6 +962,10 @@
         }
         finalText = phrases.filter(phrase => phrase.final).map(phrase => phrase.text).join(' ');
         interimText = phrases.filter(phrase => !phrase.final).map(phrase => phrase.text).join(' ');
+        if (holding) {
+          const liveText = `${capturedText} ${finalText} ${interimText}`.trim();
+          heard.textContent = liveText || 'Speech detected…';
+        }
       };
 
       function commitRecognitionCycle() {
@@ -921,7 +981,7 @@
         clearTimeout(recognitionFinishTimer);
         commitRecognitionCycle();
         const message = capturedText.trim();
-        if (message) transmit(message);
+        if (message) transmit(message, formatRecognitionTiming());
         else {
           heard.textContent = 'No speech detected. Hold the button and try again.';
           heard.classList.remove('listening');
@@ -945,8 +1005,8 @@
         // A browser may end recognition after silence while PTT is still held.
         // Keep that phrase, then start another recognition cycle.
         commitRecognitionCycle();
-        setStatus('Receiving transmission', 'active');
-        heard.textContent = capturedText ? `${capturedText} …` : 'Listening…';
+        setStatus('Reopening channel', 'active');
+        heard.textContent = capturedText ? `${capturedText} …` : 'Reconnecting microphone…';
         clearTimeout(recognitionRestartTimer);
         recognitionRestartTimer = setTimeout(() => {
           if (!holding || busy) return;
@@ -960,7 +1020,7 @@
       heard.textContent = 'Voice recognition is unavailable. Use the text field below.';
     }
 
-    async function startTalking(event) {
+    function startTalking(event) {
       event.preventDefault();
       if (!recognition || busy || holding) return;
       unlockRadioAudio();
@@ -973,16 +1033,20 @@
       capturedText = '';
       finalText = '';
       interimText = '';
+      recognitionTiming = {
+        pressedAt: performance.now(),
+        engineStart: null,
+        audioStart: null,
+        speechStart: null,
+        firstResult: null
+      };
       ptt.classList.add('active');
       ptt.setPointerCapture?.(event.pointerId);
       heard.textContent = 'Keying radio…';
       heard.classList.add('listening');
       setStatus('Opening channel', 'active');
       playRadioKeyBeep();
-      startMicCapture();
       if (!holding || busy) return;
-      heard.textContent = 'Listening…';
-      setStatus('Receiving transmission', 'active');
       try { recognition.start(); }
       catch (_) { setStatus('Microphone is already active', 'error'); }
     }
@@ -1010,31 +1074,12 @@
     manual.addEventListener('keydown', event => {
       if (event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); send.click(); }
     });
-    let micStream = null;
-    let micSource = null;
-    let analyser = null;
-
-    async function startMicCapture() {
-      if (IS_MOBILE) return; // Disable Web Audio mic stream on mobile to prevent clashing with SpeechRecognition
-      const context = unlockRadioAudio();
-      if (!context) return;
-      if (!analyser) {
-        analyser = context.createAnalyser();
-        analyser.fftSize = 256;
-      }
-      if (!micStream) {
-        try {
-          micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-          micSource = context.createMediaStreamSource(micStream);
-          micSource.connect(analyser);
-        } catch (err) {
-          console.warn('Microphone stream access for visualizer denied/failed', err);
-        }
-      }
-    }
-
     const canvas = document.getElementById('waveform');
     const ctx = canvas.getContext('2d');
+    let havocWaveLevel = 0;
+    let havocWaveTarget = 0;
+    let havocWaveChangeAt = 0;
+    let havocWavePhase = 0;
 
     function drawVisualizer() {
       requestAnimationFrame(drawVisualizer);
@@ -1077,36 +1122,34 @@
       const values = [];
       
       if (holding) {
-        if (analyser) {
-          // Speak / Mic active: draw real mic wave
-          const dataArray = new Uint8Array(analyser.frequencyBinCount);
-          analyser.getByteTimeDomainData(dataArray);
-          for (let i = 0; i < width; i++) {
-            const sliceWidth = width / dataArray.length;
-            const index = Math.floor(i / sliceWidth);
-            const v = dataArray[index] / 128.0;
-            const y = v * midY;
-            values.push(y);
-          }
-        } else {
-          // Fake speaking wave if mic not connected yet
-          const now = performance.now() * 0.02;
-          for (let i = 0; i < width; i++) {
-            const freq1 = Math.sin(now + i * 0.08) * 6;
-            const freq2 = Math.sin(now * 1.3 + i * 0.15) * 4;
-            const noise = (Math.random() - 0.5) * 1.5;
-            values.push(midY + freq1 + freq2 + noise);
-          }
+        // Keep the PTT animation synthetic so it never opens a second mic
+        // capture that could contend with SpeechRecognition startup.
+        const now = performance.now() * 0.02;
+        for (let i = 0; i < width; i++) {
+          const freq1 = Math.sin(now + i * 0.08) * 6;
+          const freq2 = Math.sin(now * 1.3 + i * 0.15) * 4;
+          const noise = (Math.random() - 0.5) * 1.5;
+          values.push(midY + freq1 + freq2 + noise);
         }
       } else if (havocAudioPlaying) {
-        // HAVOC speaking: draw simulated voice modulation
-        const now = performance.now() * 0.01;
+        // Randomized syllables, brief pauses, and occasional sharp peaks keep
+        // the synthetic HAVOC waveform from settling into a repeating loop.
+        const frameNow = performance.now();
+        if (frameNow >= havocWaveChangeAt) {
+          const isPause = Math.random() < 0.2;
+          const isPeak = !isPause && Math.random() < 0.18;
+          havocWaveTarget = isPause ? 0.04 : isPeak ? 1.45 : 0.3 + Math.random() * 0.8;
+          havocWaveChangeAt = frameNow + 45 + Math.random() * 120;
+        }
+        const response = havocWaveTarget > havocWaveLevel ? 0.48 : 0.22;
+        havocWaveLevel += (havocWaveTarget - havocWaveLevel) * response;
+        havocWavePhase += 0.12 + Math.random() * 0.1;
         for (let i = 0; i < width; i++) {
-          const freq1 = Math.sin(now + i * 0.06) * 7;
-          const freq2 = Math.sin(now * 1.8 + i * 0.14) * 4;
-          const noise = (Math.random() - 0.5) * 1.5;
-          const envelope = Math.abs(Math.sin(now * 0.25)) * 1.2;
-          values.push(midY + (freq1 + freq2 + noise) * envelope);
+          const syllableShape = 0.45 + Math.abs(Math.sin(havocWavePhase * 0.7 + i * 0.035)) * 0.55;
+          const low = Math.sin(havocWavePhase + i * 0.085) * 7;
+          const high = Math.sin(havocWavePhase * 2.4 + i * 0.21) * 4;
+          const roughness = (Math.random() - 0.5) * 5;
+          values.push(midY + (low + high + roughness) * havocWaveLevel * syllableShape);
         }
       } else if (busy) {
         // Thinking state: scanning line
