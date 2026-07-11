@@ -979,6 +979,7 @@
       align-items: center;
       gap: 0.25rem;
       line-height: 1.15;
+      text-decoration: none;
     }
     .soundboard-btn:hover {
       background: rgba(165, 168, 102, 0.15);
@@ -2079,7 +2080,6 @@
       { id: 'ziptie', label: 'Zip Tie HVT', short: 'Zip Tie', file: 'ziptie.mp3' },
       { id: 'hackcomputer', label: 'Accessing Computer', short: 'Hack PC', file: 'computer.mp3' },
       { id: 'searchingDocuments', label: 'Grabbing Intel Documents', short: 'Intel Docs', file: 'searchingDocuments.mp3' },
-      { id: 'medic', label: 'Medic TCCC', short: 'Medic Care', file: 'medic.mp3' },
       { id: 'panelWiretap', label: 'Placing Wiretap', short: 'Wiretap', file: 'paneltools.mp3' },
       { id: 'geiger', label: 'Geiger (Radiation)', short: 'Geiger', file: 'geiger.mp3' },
       { id: 'alarm', label: 'Helicopter Alarm', short: 'Heli Alarm', file: 'helicopter_alarm.mp3' },
@@ -2105,6 +2105,19 @@
       btn.addEventListener('click', () => toggleSoundboardAudio(sound.id, sound.file, btn));
       sbButtonsContainer.appendChild(btn);
     });
+
+    const havocBtn = document.createElement('a');
+    havocBtn.className = 'soundboard-btn';
+    havocBtn.href = 'https://kairos6110.github.io/gbtf/ws/havoctoc/';
+    havocBtn.target = '_blank';
+    havocBtn.rel = 'noopener noreferrer';
+    havocBtn.title = 'Open HAVOC';
+    havocBtn.setAttribute('aria-label', 'Open HAVOC in a new window');
+    havocBtn.innerHTML = `
+      <span>HAVOC</span>
+      <span class="bi bi-box-arrow-up-right" aria-hidden="true"></span>
+    `;
+    sbButtonsContainer.prepend(havocBtn);
 
     // Toggle menu visibility
     sbTrigger.addEventListener('click', (e) => {
