@@ -1394,14 +1394,14 @@
           </div>
           <div class="meta-item">
             <span class="meta-label"><span class="bi bi-broadcast" style="margin-right: 0.25rem;"></span>Command Callsign</span>
-            <span class="meta-val" style="color: var(--olive-2); font-size: 1.1rem;">${op.signal["Command"] || 'ECLIPSE'}</span>
+            <span class="meta-val" style="color: var(--olive-2); font-size: 1.1rem;">HAVOC</span>
           </div>
         </div>
         `}
 
-        ${op.order === 1 ? `
+        ${op.order >= 1 && op.order <= 24 ? `
         <div class="briefing-audio" data-briefing-player>
-          <audio preload="metadata" src="01.mp3"></audio>
+          <audio preload="metadata" src="${String(op.order).padStart(2, '0')}.mp3"></audio>
           <button class="briefing-audio__play" type="button" aria-label="Play briefing">
             <span class="bi bi-play-fill" aria-hidden="true"></span>
           </button>
@@ -1911,6 +1911,25 @@
             <div class="sps-video-shell">
               <iframe class="sps-video" src="https://www.youtube.com/embed/lX4uzNbkVac?rel=0&modestbranding=1&playsinline=1&iv_load_policy=3" title="Intro Video" style="border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
+          </div>
+
+          <div class="briefing-audio" data-briefing-player>
+            <audio preload="metadata" src="00.mp3"></audio>
+            <button class="briefing-audio__play" type="button" aria-label="Play briefing">
+              <span class="bi bi-play-fill" aria-hidden="true"></span>
+            </button>
+            <div class="briefing-audio__body">
+              <span class="briefing-audio__label">LISTEN TO BRIEFING</span>
+              <div class="briefing-audio__timeline">
+                <span class="briefing-audio__time" data-current-time>0:00</span>
+                <input class="briefing-audio__seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Briefing progress">
+                <span class="briefing-audio__time" data-duration>0:00</span>
+              </div>
+            </div>
+            <label class="briefing-audio__volume">
+              <span class="bi bi-volume-up-fill" aria-hidden="true"></span>
+              <input type="range" min="0" max="1" value="1" step="0.05" aria-label="Briefing volume">
+            </label>
           </div>
 
           <div class="opord-section">
