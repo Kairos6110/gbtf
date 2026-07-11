@@ -508,6 +508,50 @@
       font-family: monospace;
     }
 
+    .briefing-audio {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 0.9rem;
+      margin: -0.75rem 0 1.5rem;
+      padding: 0.85rem 1rem;
+      background: linear-gradient(135deg, rgba(165, 168, 102, 0.12), rgba(8, 13, 11, 0.72));
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--olive);
+      border-radius: var(--radius);
+    }
+
+    .briefing-audio__play {
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 1px solid var(--olive);
+      border-radius: 50%;
+      color: var(--ink);
+      background: rgba(165, 168, 102, 0.16);
+      cursor: pointer;
+    }
+
+    .briefing-audio__body { min-width: 0; }
+    .briefing-audio__label {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--olive-2);
+      font: 800 0.7rem monospace;
+      letter-spacing: 0.13em;
+    }
+
+    .briefing-audio__timeline { display: flex; align-items: center; gap: 0.65rem; }
+    .briefing-audio__time { color: var(--muted); font: 0.65rem monospace; white-space: nowrap; }
+    .briefing-audio input[type="range"] { accent-color: var(--olive-2); cursor: pointer; }
+    .briefing-audio__seek { width: 100%; min-width: 4rem; }
+    .briefing-audio__volume { display: flex; align-items: center; gap: 0.45rem; color: var(--muted); }
+    .briefing-audio__volume input { width: 4.5rem; }
+
+    @media (max-width: 540px) {
+      .briefing-audio { grid-template-columns: auto minmax(0, 1fr); }
+      .briefing-audio__volume { grid-column: 2; }
+    }
+
     .opord-section {
       display: flex;
       flex-direction: column;
@@ -1354,6 +1398,27 @@
         </div>
         `}
 
+        ${op.order === 1 ? `
+        <div class="briefing-audio" data-briefing-player>
+          <audio preload="metadata" src="01.mp3"></audio>
+          <button class="briefing-audio__play" type="button" aria-label="Play briefing">
+            <span class="bi bi-play-fill" aria-hidden="true"></span>
+          </button>
+          <div class="briefing-audio__body">
+            <span class="briefing-audio__label">LISTEN TO BRIEFING</span>
+            <div class="briefing-audio__timeline">
+              <span class="briefing-audio__time" data-current-time>0:00</span>
+              <input class="briefing-audio__seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Briefing progress">
+              <span class="briefing-audio__time" data-duration>0:00</span>
+            </div>
+          </div>
+          <label class="briefing-audio__volume">
+            <span class="bi bi-volume-up-fill" aria-hidden="true"></span>
+            <input type="range" min="0" max="1" value="1" step="0.05" aria-label="Briefing volume">
+          </label>
+        </div>
+        ` : ''}
+
         ${op.order === 24 ? '' : `
         <div class="opord-section">
           <h3><span class="icon bi bi-bookmark-fill"></span>SITUATION & MISSION</h3>
@@ -1922,6 +1987,49 @@
       currentSearch = e.target.value;
       renderList();
     });
+
+    function formatAudioTime(seconds) {
+      if (!Number.isFinite(seconds)) return "0:00";
+      return `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`;
+    }
+
+    briefingContent.addEventListener("click", (event) => {
+      const button = event.target.closest(".briefing-audio__play");
+      if (!button) return;
+      const audio = button.closest("[data-briefing-player]").querySelector("audio");
+      audio.paused ? audio.play() : audio.pause();
+    });
+
+    briefingContent.addEventListener("input", (event) => {
+      const player = event.target.closest("[data-briefing-player]");
+      if (!player) return;
+      const audio = player.querySelector("audio");
+      if (event.target.classList.contains("briefing-audio__seek") && Number.isFinite(audio.duration)) {
+        audio.currentTime = (event.target.value / 100) * audio.duration;
+      } else if (event.target.closest(".briefing-audio__volume")) {
+        audio.volume = event.target.value;
+      }
+    });
+
+    briefingContent.addEventListener("loadedmetadata", (event) => {
+      if (!event.target.matches("[data-briefing-player] audio")) return;
+      event.target.closest("[data-briefing-player]").querySelector("[data-duration]").textContent = formatAudioTime(event.target.duration);
+    }, true);
+
+    briefingContent.addEventListener("timeupdate", (event) => {
+      if (!event.target.matches("[data-briefing-player] audio")) return;
+      const player = event.target.closest("[data-briefing-player]");
+      player.querySelector("[data-current-time]").textContent = formatAudioTime(event.target.currentTime);
+      player.querySelector(".briefing-audio__seek").value = event.target.duration ? (event.target.currentTime / event.target.duration) * 100 : 0;
+    }, true);
+
+    ["play", "pause", "ended"].forEach(type => briefingContent.addEventListener(type, (event) => {
+      if (!event.target.matches("[data-briefing-player] audio")) return;
+      const playing = !event.target.paused;
+      const button = event.target.closest("[data-briefing-player]").querySelector(".briefing-audio__play");
+      button.setAttribute("aria-label", playing ? "Pause briefing" : "Play briefing");
+      button.querySelector("span").className = `bi ${playing ? "bi-pause-fill" : "bi-play-fill"}`;
+    }, true));
 
     // INITIALIZATION
     renderList();
