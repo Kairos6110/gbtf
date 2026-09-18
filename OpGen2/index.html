@@ -1679,8 +1679,8 @@
     const MAX_NATIVE_ZOOM = 6;
     const SEARCH_RESULT_ZOOM = 4.5;
     const ENABLE_BACKEND_OPORD_FEATURES = false;
-    const OPORD_LLM_ENDPOINT = "https://freeaixyz4all.vercel.app/api/v1/chat/completions";
-    const OPORD_LLM_MODEL = "tb/gemini-3.6-flash";
+    const OPORD_LLM_ENDPOINT = "https://text.pollinations.ai/";
+    const OPORD_LLM_MODEL = "openai";
     const OPORD_ENDPOINT = "https://unvascular-malachi-isolatedly.ngrok-free.dev";
     const COMMUNITY_OPORDS_ENDPOINT = `${OPORD_ENDPOINT}/community-opords`;
     const OPORD_LOADING_MESSAGE = "Generating OPORD...";
@@ -2857,7 +2857,9 @@ ${selectedLocationLines}
           let errorDetail = "";
           try {
             const errBody = await response.json();
-            if (errBody?.error?.message) {
+            if (typeof errBody?.error === "string") {
+              errorDetail = ` (${errBody.error})`;
+            } else if (errBody?.error?.message) {
               errorDetail = ` (${errBody.error.message})`;
             }
           } catch (_) {}
@@ -2868,8 +2870,15 @@ ${selectedLocationLines}
           return;
         }
 
-        const data = await response.json();
-        const content = data?.choices?.[0]?.message?.content;
+        const rawText = await response.text();
+        let content = "";
+
+        try {
+          const data = JSON.parse(rawText);
+          content = data?.choices?.[0]?.message?.content || data?.content || (typeof data === "string" ? data : "");
+        } catch (_) {
+          content = rawText ? rawText.trim() : "";
+        }
 
         if (content) {
           setOpordResultState(
